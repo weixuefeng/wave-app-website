@@ -1,10 +1,10 @@
 import axios, { Axios } from 'axios'
 import { Api } from './api'
 import { getToken } from '../utils/token'
-// import { PAGE_SIZE } from 'constants/constant'
 import { encode } from 'js-base64'
-import { config } from 'process'
 import { sign } from 'utils/sign_utils'
+import { BaseResponse } from 'model/base'
+import { UserInfo } from 'model/user'
 
 let hasToken = false
 let client = refreshClient()
@@ -94,12 +94,12 @@ class Http {
   }
 
   // login
-  login(email: string, code: string) {
+  login(email: string, code: string): Promise<BaseResponse<UserInfo>> {
     let params = {
       email: email,
       code: code,
     }
-    return _post(Api.login, params)
+    return _post(Api.login, params) as Promise<BaseResponse<UserInfo>>
   }
 }
 

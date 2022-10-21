@@ -10,6 +10,7 @@ export default function Login() {
       .login(email, verifyCode)
       .then(response => {
         console.log(response)
+        response.result.avatar
       })
       .catch(error => {
         console.log(error)
