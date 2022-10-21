@@ -1,0 +1,59 @@
+.header {
+  @apply z-50 flex h-[100px] w-full items-center px-4;
+  dl {
+    @apply relative ml-3 h-4 cursor-pointer leading-4;
+    &:hover {
+      dd {
+        @apply block h-10 w-auto;
+      }
+    }
+  }
+  dd {
+    @apply absolute top-[18px] right-0 hidden leading-6;
+  }
+}
+.menu-header {
+  a {
+    @apply my-4 flex items-center justify-center text-base;
+  }
+}
+.header-pc {
+  @apply hidden w-full lg:block;
+  > div {
+    @apply flex h-[100px] w-full items-center justify-center;
+    > div {
+      @apply flex w-52 cursor-pointer;
+      img {
+        @apply w-full;
+      }
+    }
+    span {
+      @apply ml-3 mt-3 h-4 rounded bg-black px-1 text-xs leading-4 text-white;
+    }
+  }
+  p {
+    @apply ml-auto;
+  }
+
+  a {
+    @apply ml-14 xl:ml-10;
+  }
+}
+.mobile-header {
+  @apply flex w-full lg:hidden;
+  > a {
+    @apply flex;
+  }
+  img {
+    @apply w-20;
+  }
+  span {
+    @apply ml-1 mt-1 h-[10px] rounded bg-black px-1 text-xs leading-[10px] text-white md:h-4;
+  }
+  > button {
+    @apply ml-auto;
+  }
+}
+.mobile-sidebar {
+  @apply w-full bg-gray-100;
+}

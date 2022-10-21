@@ -1,0 +1,13 @@
+.container {
+  @apply mx-auto flex max-w-[1200px] flex-col;
+  // min-height: 100vh;
+  padding: 0 0.5rem;
+}
+
+.main {
+  @apply flex flex-col;
+  padding: 2rem 0;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
