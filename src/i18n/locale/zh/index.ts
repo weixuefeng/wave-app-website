@@ -1,5 +1,5 @@
 export const zhTransaction = {
-  WAVE: '破浪',
+  WAVE: '浪潮',
   FEATURES: '特点',
   COMMUNITY: '社区',
   FAQ: '问题',

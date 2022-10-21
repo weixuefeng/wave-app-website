@@ -1,9 +1,11 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-13 11:06:46
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-10-13 11:06:56
- * @FilePath: /nextjs-starter-boilerplate/src/constants/setting.ts
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-10-21 17:06:34
+ * @FilePath: /wave-app-webiste/src/constants/setting.ts
  */
 export const WAVE_BASE_URL = process.env.NEXT_PUBLIC_WAVE_BASE_URL
+export const APP_VERSION = process.env.NEXT_PUBLIC_APP_VERSION
+export const APP_KEY = process.env.NEXT_PUBLIC_APP_KEY
+export const APP_SECRET = process.env.NEXT_PUBLIC_APP_SECRET

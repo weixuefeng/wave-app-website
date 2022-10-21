@@ -2,6 +2,8 @@ import React, { Fragment, useState } from 'react'
 import Link from 'next/link'
 import { Dialog, Transition } from '@headlessui/react'
 import { useTranslation } from 'react-i18next'
+import { putLocalData } from 'localstorage/localstorage'
+import { LocalKey } from 'constants/key'
 
 export default function Header(props) {
   const languageTitle = [
@@ -64,7 +66,13 @@ export default function Header(props) {
             <dd>
               {languageTitle.map((item, index) => {
                 return (
-                  <a key={index} onClick={() => i18n.changeLanguage(item.language)}>
+                  <a
+                    key={index}
+                    onClick={() => {
+                      i18n.changeLanguage(item.language)
+                      putLocalData(LocalKey.LANGUAGE, item.language)
+                    }}
+                  >
                     {item.title}
                   </a>
                 )
@@ -85,7 +93,13 @@ export default function Header(props) {
           <dd>
             {languageTitle.map((item, index) => {
               return (
-                <a key={index} onClick={() => i18n.changeLanguage(item.language)}>
+                <a
+                  key={index}
+                  onClick={() => {
+                    i18n.changeLanguage(item.language)
+                    putLocalData(LocalKey.LANGUAGE, item.language)
+                  }}
+                >
                   {item.title}
                 </a>
               )

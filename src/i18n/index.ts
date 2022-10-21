@@ -1,4 +1,6 @@
+import { LocalKey } from 'constants/key'
 import i18n from 'i18next'
+import { getLocalData } from 'localstorage/localstorage'
 import { initReactI18next } from 'react-i18next'
 import { zhTransaction, enTransaction } from './locale'
 

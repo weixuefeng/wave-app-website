@@ -4,6 +4,7 @@ import { getToken } from '../utils/token'
 // import { PAGE_SIZE } from 'constants/constant'
 import { encode } from 'js-base64'
 import { config } from 'process'
+import { sign } from 'utils/sign_utils'
 
 let hasToken = false
 let client = refreshClient()
@@ -29,12 +30,9 @@ function checkToken() {
 }
 
 function _post(url: string, param: any, config: any = null) {
-  if (!hasToken) {
-    checkToken()
-  }
   return new Promise(function (resolve, reject) {
     let data = {
-      params: param,
+      params: sign(param),
       internal_url: url,
     }
     client
@@ -78,7 +76,7 @@ function _get(url) {
 let httpInstance: Http = null
 
 class Http {
-  static getInstance() {
+  static getInstance(): Http {
     if (httpInstance === undefined || httpInstance == null) {
       httpInstance = new Http()
     }
@@ -89,8 +87,10 @@ class Http {
   requestVerifyCode(email: string): Promise<any> {
     let params = {
       email: email,
+      action: 'login',
+      captcha_service_type: 'null',
     }
-    return _post(Api.emailCode, params)
+    return _post(Api.commonEmailCode, params)
   }
 
   // login
@@ -100,21 +100,6 @@ class Http {
       code: code,
     }
     return _post(Api.login, params)
-  }
-
-  export(params) {
-    return _post(Api.export, params, {
-      responseType: 'arraybuffer',
-    })
-  }
-
-  // public
-  getOptions() {
-    return _get(Api.options)
-  }
-
-  getDetail(id) {
-    return _get(Api.bills + '/' + id + '/details')
   }
 }
 

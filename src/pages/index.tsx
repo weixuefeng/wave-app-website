@@ -2,8 +2,8 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-10-21 14:33:32
- * @FilePath: /nextjs-starter-boilerplate/src/pages/index.tsx
+ * @LastEditTime: 2022-10-21 19:45:52
+ * @FilePath: /wave-app-webiste/src/pages/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE)
  */
 
@@ -12,6 +12,7 @@ import NormalLayout from 'components/layout/normalLayout'
 import { PageModel } from 'model/navModel'
 import { useTranslation } from 'react-i18next'
 import { postRequest } from 'services/getAxios'
+import { sign } from 'utils/sign_utils'
 export default Home
 
 function Home() {
@@ -26,6 +27,7 @@ function Main() {
 
   useEffect(() => {
     getCollectionInfo()
+    sign({ name: 'weixuefeng', age: 12, binfo: 'bssd', c: 'a' })
   }, [])
   const getCollectionInfo = async () => {
     let params = {
@@ -40,7 +42,9 @@ function Main() {
   }
   return (
     <div className={'container'}>
-      <div className={'main'}>{t('Content')}</div>
+      <div className={'main'} onClick={() => sign({ haha: 'sadf' })}>
+        {t('Content')}
+      </div>
     </div>
   )
 }
