@@ -3,8 +3,10 @@ import { Api } from './api'
 import { getToken } from '../utils/token'
 import { encode } from 'js-base64'
 import { sign } from 'utils/sign_utils'
-import { BaseResponse } from 'model/base'
+import { BaseResponse, Pagination } from 'model/base'
 import { UserInfo } from 'model/user'
+import { HomeData } from 'model/asset'
+import { Banner } from 'model/banner'
 
 let hasToken = false
 let client = refreshClient()
@@ -100,6 +102,17 @@ class Http {
       code: code,
     }
     return _post(Api.login, params) as Promise<BaseResponse<UserInfo>>
+  }
+
+  // home
+  getHomeBanner() {
+    let params = {}
+    return _post(Api.bannerList, params) as Promise<BaseResponse<Pagination<Banner>>>
+  }
+
+  getHomeList() {
+    let params = {}
+    return _post(Api.nftIndex, params) as Promise<BaseResponse<HomeData>>
   }
 }
 

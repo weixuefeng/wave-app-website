@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-10-21 21:18:07
+ * @LastEditTime: 2022-10-23 16:09:04
  * @FilePath: /wave-app-webiste/src/pages/index.tsx
  */
 
@@ -10,7 +10,11 @@ import React, { useState, useEffect } from 'react'
 import NormalLayout from 'components/layout/normalLayout'
 import { PageModel } from 'model/navModel'
 import { useTranslation } from 'react-i18next'
-import { sign } from 'utils/sign_utils'
+import Http from 'services/http'
+import BannerComponent from 'components/home/BannerComponent'
+import { Banner } from 'model/banner'
+import HomeDataComonent from 'components/home/HomeDataComonent'
+import { HomeData } from 'model/asset'
 export default Home
 
 function Home() {
@@ -18,31 +22,43 @@ function Home() {
   return <>{NormalLayout(Main(), pageModel)}</>
 }
 
-const newLocal = '/api/hello'
-const collectionUrl = newLocal
 function Main() {
-  let { i18n } = useTranslation()
   const { t } = useTranslation()
+  const [banners, setBanners] = useState<Array<Banner>>([])
+  const [homeData, setHomeData] = useState<HomeData>()
 
   useEffect(() => {
-    getCollectionInfo()
-    sign({ name: 'weixuefeng', age: 12, binfo: 'bssd', c: 'a' })
+    getHomeData()
+    getHomeBanner()
   }, [])
-  const getCollectionInfo = async () => {
-    let params = {
-      collection_id: 4,
-    }
-    // const res = await postRequest(collectionUrl, params)
-    // console.log('res:',res)
-    // if (res.status == 200 && res.data.error_code == 1) {
-    //   const info = res.data.result
-    //   console.log('info:',info)
-    // }
+
+  const getHomeBanner = async () => {
+    Http.getInstance()
+      .getHomeBanner()
+      .then(response => {
+        setBanners(response.result.data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
+
+  const getHomeData = async () => {
+    Http.getInstance()
+      .getHomeList()
+      .then(response => {
+        setHomeData(response.result)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
   return (
     <div className={'container'}>
-      <div className={'main'} onClick={() => sign({ haha: 'sadf' })}>
-        {t('Content')}
+      <div className={'home'}>
+        <BannerComponent banners={banners} />
+        <HomeDataComonent homeData={homeData} />
       </div>
     </div>
   )
