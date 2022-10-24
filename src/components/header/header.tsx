@@ -185,7 +185,7 @@ export default function Header(props) {
               </Transition.Child>
               <nav>
                 <div className="space-y-2 px-2" onClick={() => setMobileSidebarOpen(false)}>
-                  <SiteNavMenu date={props.date} />
+                  <SiteNavMenu date={navList} />
                 </div>
               </nav>
             </div>
@@ -198,6 +198,7 @@ export default function Header(props) {
 }
 const SiteNavMenu = props => {
   const { t } = useTranslation()
+  console.log(props);
   return (
     <p className={'menu-header'}>
       {props.date.map((item, index) => {
