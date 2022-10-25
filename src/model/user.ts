@@ -9,3 +9,9 @@ export interface UserInfo {
   is_new: number
   is_kyc: number
 }
+
+
+export interface LoginParams {
+  email: string,
+  code: string
+}

@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-10-23 16:09:04
+ * @LastEditTime: 2022-10-25 11:47:16
  * @FilePath: /wave-app-webiste/src/pages/index.tsx
  */
 
@@ -15,6 +15,9 @@ import BannerComponent from 'components/home/BannerComponent'
 import { Banner } from 'model/banner'
 import HomeDataComonent from 'components/home/HomeDataComonent'
 import { HomeData } from 'model/asset'
+import { useSelector } from 'react-redux'
+import { selectUser } from 'reducer/userReducer'
+import UserComponent from 'components/home/UserComponent'
 export default Home
 
 function Home() {
@@ -23,7 +26,6 @@ function Home() {
 }
 
 function Main() {
-  const { t } = useTranslation()
   const [banners, setBanners] = useState<Array<Banner>>([])
   const [homeData, setHomeData] = useState<HomeData>()
 
@@ -57,6 +59,7 @@ function Main() {
   return (
     <div className={'container'}>
       <div className={'home'}>
+        <UserComponent/>
         <BannerComponent banners={banners} />
         <HomeDataComonent homeData={homeData} />
       </div>

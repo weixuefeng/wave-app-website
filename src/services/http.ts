@@ -1,6 +1,5 @@
 import axios, { Axios } from 'axios'
 import { Api } from './api'
-import { getToken } from '../utils/token'
 import { encode } from 'js-base64'
 import { sign } from 'utils/sign_utils'
 import { BaseResponse, Pagination } from 'model/base'
@@ -8,7 +7,6 @@ import { UserInfo } from 'model/user'
 import { HomeData } from 'model/asset'
 import { Banner } from 'model/banner'
 
-let hasToken = false
 let client = refreshClient()
 
 function refreshClient(): Axios {
@@ -16,7 +14,6 @@ function refreshClient(): Axios {
     url: Api.baseUrl,
     timeout: 15000,
     headers: {
-      AccessToken: getToken('access_token'),
       AcceptLanguage: 'zh',
     },
   })
@@ -24,11 +21,7 @@ function refreshClient(): Axios {
 
 // check token
 function checkToken() {
-  let token = getToken('access_token')
-  if (token) {
-    client = refreshClient()
-    hasToken = true
-  }
+  
 }
 
 function _post(url: string, param: any, config: any = null) {
@@ -54,9 +47,6 @@ function _post(url: string, param: any, config: any = null) {
 }
 
 function _get(url) {
-  if (!hasToken) {
-    checkToken()
-  }
   return new Promise(function (resolve, reject) {
     const getUrl = `/api/proxy/?path=${encode(url)}`
     client
