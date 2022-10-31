@@ -11,7 +11,7 @@
   }
 
   .assets {
-    @apply flex;
+    @apply flex flex-col;
     @apply mt-2 mb-2;
     @apply w-full;
   }
