@@ -1,0 +1,18 @@
+#home {
+  .blind {
+    .title {
+      @apply text-2xl text-gray-800 mt-2;
+    }
+  }
+  .recommend {
+    .title {
+      @apply text-2xl text-gray-800 mt-2;
+    }
+  }
+
+  .assets {
+    @apply flex;
+    @apply mt-2 mb-2;
+    @apply w-full;
+  }
+}

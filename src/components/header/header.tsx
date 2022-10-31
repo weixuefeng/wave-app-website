@@ -198,7 +198,6 @@ export default function Header(props) {
 }
 const SiteNavMenu = props => {
   const { t } = useTranslation()
-  console.log(props);
   return (
     <p className={'menu-header'}>
       {props.date.map((item, index) => {
