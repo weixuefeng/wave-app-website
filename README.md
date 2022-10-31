@@ -6,6 +6,7 @@
 nextjs + tailwindcss + redux + react-i18n + sentry
 
 ### 目录结构说明
+```
 ├── package.json
 ├── postcss.config.js
 ├── prettier.config.js
@@ -88,7 +89,7 @@ nextjs + tailwindcss + redux + react-i18n + sentry
 ├── tailwind.config.js
 ├── tsconfig.json
 └── yarn.lock
-
+```
 ### 环境配置:
 node-version: 16.10
 
