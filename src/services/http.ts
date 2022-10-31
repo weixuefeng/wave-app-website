@@ -6,6 +6,7 @@ import { BaseResponse, Pagination } from 'model/base'
 import { UserInfo } from 'model/user'
 import { HomeData } from 'model/asset'
 import { Banner } from 'model/banner'
+import { NFTDetail } from 'model/nft_asset'
 
 let client = refreshClient()
 
@@ -103,6 +104,12 @@ class Http {
   getHomeList() {
     let params = {}
     return _post(Api.nftIndex, params) as Promise<BaseResponse<HomeData>>
+  }
+
+  // asset detail
+  getNFTInfo(nftId: number): Promise<BaseResponse<NFTDetail>>{
+    let params = {'nft_id': nftId}
+    return _post(Api.nftInfo, params) as Promise<BaseResponse<NFTDetail>>
   }
 }
 
