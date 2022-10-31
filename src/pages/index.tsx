@@ -1,8 +1,8 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-10-25 11:47:16
+ * @LastEditors: zxt0805 zhuxiaotong@diynova.com
+ * @LastEditTime: 2022-10-31 16:39:09
  * @FilePath: /wave-app-webiste/src/pages/index.tsx
  */
 
@@ -12,8 +12,9 @@ import { PageModel } from 'model/navModel'
 import { useTranslation } from 'react-i18next'
 import Http from 'services/http'
 import BannerComponent from 'components/home/BannerComponent'
-import { Banner } from 'model/banner'
+import { Banner, Mystery, Recommend } from 'model/banner'
 import HomeDataComonent from 'components/home/HomeDataComonent'
+import MysteryItem from 'components/mystery/mystery_item'
 import { HomeData } from 'model/asset'
 import { useSelector } from 'react-redux'
 import { selectUser } from 'reducer/userReducer'
@@ -27,8 +28,10 @@ function Home() {
 
 function Main() {
   const [banners, setBanners] = useState<Array<Banner>>([])
-  const [homeData, setHomeData] = useState<HomeData>()
-
+  const [homeData, setHomeData] = useState<any>()
+  const [mysteryData, setMysteryData] = useState<Array<Mystery>>([])
+  const [recommendData, setRecommendData] = useState<Array<Recommend>>([])
+  
   useEffect(() => {
     getHomeData()
     getHomeBanner()
@@ -49,7 +52,11 @@ function Main() {
     Http.getInstance()
       .getHomeList()
       .then(response => {
+        let res: any = response.result
         setHomeData(response.result)
+        // console.log('homeData',response.result)
+        setMysteryData(res.mystery_boxes)
+        setRecommendData(res.recommend)
       })
       .catch(error => {
         console.log(error)
@@ -61,6 +68,13 @@ function Main() {
       <div className={'home'}>
         <UserComponent/>
         <BannerComponent banners={banners} />
+        <div className="flex flex-wrap justify-between">
+        {
+          mysteryData && mysteryData.map((item, index) => {
+            return <div className='index-mystery-wrap'><MysteryItem collectionInfo={item} key={index} width="w-[343px]" height="h-[343px]" /></div>
+          })
+        }
+        </div>
         <HomeDataComonent homeData={homeData} />
       </div>
     </div>

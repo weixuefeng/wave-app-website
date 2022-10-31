@@ -1,0 +1,15 @@
+.head-img {
+  @apply relative text-white;
+  img{
+    object-fit: cover;
+  }
+  .time-onimg {
+    @apply absolute left-6 top-7 rounded-[0.25rem] bg-black p-2 text-base bg-opacity-60;
+  }
+  .status-onimg {
+    @apply absolute  left-6 bottom-7  rounded-[0.25rem] bg-black bg-opacity-30 px-2 py-1 text-xs;
+  }
+  .disabled {
+    @apply bg-whitef0 bg-opacity-80 text-gray6a;
+  }
+}
