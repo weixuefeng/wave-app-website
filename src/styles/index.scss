@@ -1,7 +1,7 @@
 .index-wrap{
-  @apply md:w-[1200px] mx-auto;
+  @apply md:max-w-[1200px] mx-auto;
   .index-mystery-wrap{
-    @apply md:w-[343px] mb-4 rounded-lg overflow-hidden;
+    @apply w-[343px] mb-4 rounded-lg overflow-hidden;
   }
 }
 
