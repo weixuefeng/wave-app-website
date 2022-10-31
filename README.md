@@ -79,7 +79,7 @@ nextjs + tailwindcss + redux + react-i18n + sentry
 │   │   └── http.ts
 │   ├── store
 │   │   └── store.ts
-│   ├── styles
+│   ├── styles     # 样式表
 │   │   ├── login.scss
 │   │   └── style.scss
 │   └── utils
@@ -105,6 +105,10 @@ node-version: 16.10
 ......
 - 格式化代码: `yarn ff`
 
-### 部署
+### 构建
 - `SENTRY_AUTH_TOKEN=d604cf7148fa48fd8cb93b7dec6867896593a02a34e544218b3bb8bf28d45dd0 yarn build`
-- ...
+
+### 部署:
+```
+pm2 start npm --name "wave-app-website" -- start
+```
