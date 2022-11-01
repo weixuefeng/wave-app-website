@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next'
 
 import React, { useEffect, useState } from 'react'
+import { getAssetDetailPath } from 'utils/route'
+import Link from 'next/link'
 
 export function BlindBox(props) {
   const { item } = props
@@ -89,26 +91,28 @@ export function BlindBox(props) {
   }
 
   return (
-    <div className="item">
-      <div className="cover">
-        <div className="perfect_square">
-          <img alt={item.name} src={item.image} />
-          {/* <div className="status">sold out</div> */}
-          {timeJudge()}
-          {statusJudge()}
-        </div>
-      </div>
-      <div className="profile">
-        <h3>{item.name}</h3>
-        <div className="footer">
-          <div className="num-wrap">
-            <div className="num-name">{t('CURRENT_RELEASE')}</div>
-            <div className="num">{item.blind_box_total}</div>
+    <Link href={getAssetDetailPath(item)}>
+      <div className="item">
+        <div className="cover">
+          <div className="perfect_square">
+            <img alt={item.name} src={item.image} />
+            {/* <div className="status">sold out</div> */}
+            {timeJudge()}
+            {statusJudge()}
           </div>
-          <div className="price">{Number(item.price)} NEW</div>
+        </div>
+        <div className="profile">
+          <h3>{item.name}</h3>
+          <div className="footer">
+            <div className="num-wrap">
+              <div className="num-name">{t('CURRENT_RELEASE')}</div>
+              <div className="num">{item.blind_box_total}</div>
+            </div>
+            <div className="price">{Number(item.price)} NEW</div>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
