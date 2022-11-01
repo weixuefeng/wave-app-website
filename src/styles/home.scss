@@ -37,6 +37,12 @@
               @apply bg-gray-500 text-white opacity-75;
               @apply px-2 py-1;
             }
+            .time-onimg {
+              @apply absolute left-6 top-7 rounded-[0.25rem] bg-black bg-opacity-60 p-2 text-base;
+            }
+            .status-onimg {
+              @apply absolute left-2 bottom-2 rounded-md bg-black bg-opacity-30 px-2 py-1 text-xs text-white;
+            }
             img {
               @apply absolute h-full w-full rounded-lg object-cover;
               top: 50%;
