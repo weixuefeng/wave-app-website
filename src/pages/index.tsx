@@ -2,24 +2,17 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-01 11:29:59
+ * @LastEditTime: 2022-11-01 17:31:22
  * @FilePath: /wave-app-webiste/src/pages/index.tsx
  */
 
 import React, { useState, useEffect } from 'react'
 import NormalLayout from 'components/layout/normalLayout'
 import { PageModel } from 'model/navModel'
-import { useTranslation } from 'react-i18next'
 import Http from 'services/http'
 import BannerComponent from 'components/home/BannerComponent'
 import { Banner, Mystery, Recommend } from 'model/banner'
 import HomeDataComonent from 'components/home/HomeDataComonent'
-import MysteryItem from 'components/home/mystery/mystery_item'
-import RecommendItem from 'components/home/recommend/recommend_item'
-import { HomeData } from 'model/asset'
-import { useSelector } from 'react-redux'
-import { selectUser } from 'reducer/userReducer'
-import UserComponent from 'components/home/UserComponent'
 export default Home
 
 function Home() {
@@ -67,7 +60,6 @@ function Main() {
     <div className={'container'}>
       <div className={'home'}>
         <BannerComponent banners={banners} />
-
         <HomeDataComonent homeData={homeData} />
       </div>
     </div>

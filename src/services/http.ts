@@ -7,6 +7,7 @@ import { UserInfo } from 'model/user'
 import { HomeData } from 'model/asset'
 import { Banner } from 'model/banner'
 import { NFTDetail } from 'model/nft_asset'
+import { EVTDetail } from 'model/evt_asset'
 
 let client = refreshClient()
 
@@ -108,6 +109,11 @@ class Http {
   getNFTInfo(nftId: number): Promise<BaseResponse<NFTDetail>> {
     let params = { nft_id: nftId }
     return _post(Api.nftInfo, params) as Promise<BaseResponse<NFTDetail>>
+  }
+
+  getEvtDetail(collectionId: number): Promise<BaseResponse<EVTDetail>> {
+    let params = { collection_id: collectionId.toString() }
+    return _post(Api.evtDetail, params) as Promise<BaseResponse<EVTDetail>>
   }
 }
 

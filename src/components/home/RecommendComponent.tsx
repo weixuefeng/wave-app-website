@@ -7,7 +7,7 @@ import Link from 'next/link'
 export function Recommend(props) {
   const { item } = props
   const { t } = useTranslation()
- 
+
   return (
     <Link href={getAssetDetailPath(item)}>
       <div className="item">
@@ -15,12 +15,10 @@ export function Recommend(props) {
           <div className="perfect_square">
             <img alt={item.name} src={item.image} />
             {item.type === 0 && <div className="evt-icon">EVT</div>}
-          {item.type === 4 && (
-            <img alt={item.name} src={item.icon} className="img-icon" />
-          )}
+            {item.type === 4 && <img alt={item.name} src={item.icon} className="img-icon" />}
           </div>
         </div>
-        
+
         <div className="info-box">
           {item.type !== 4 ? (
             <div className="title">

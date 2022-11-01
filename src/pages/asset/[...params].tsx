@@ -1,12 +1,16 @@
 import CollectionComponent from 'components/asset/CollectionComponent'
 import EVTDetailComponent from 'components/asset/EVTDetailComponent'
 import NFTDetailComponent from 'components/asset/NFTDetailComponent'
+import NormalLayout from 'components/layout/normalLayout'
 import { AssetType } from 'model/asset'
+import { PageModel } from 'model/navModel'
 import { useRouter } from 'next/router'
 import React from 'react'
 
 export default function AssetDetail() {
   const router = useRouter()
+  let pageModel = new PageModel('Asset', 'AssetDetail', '')
+
   const param = router.query.params || []
   if (param.length < 2) {
     return <>Error Params</>
@@ -15,25 +19,26 @@ export default function AssetDetail() {
   const type = parseInt(param[0])
   const id = parseInt(param[1])
 
-  if (type == AssetType.NFT) {
-    return (
-      <div>
-        <NFTDetailComponent id={id} />
-      </div>
-    )
-  } else if (type == AssetType.MOVIE) {
-    return (
-      <div>
-        <EVTDetailComponent id={id} />
-      </div>
-    )
-  } else if (type == AssetType.COLLECTION) {
-    return (
-      <div>
-        <CollectionComponent id={id} />
-      </div>
-    )
-  } else {
-    return <div>AssetDetail</div>
+  function getContentByType() {
+    switch (type) {
+      case AssetType.NFT:
+        return <NFTDetailComponent id={id} />
+      case AssetType.MOVIE:
+        return <EVTDetailComponent id={id} />
+      case AssetType.COLLECTION:
+        return <CollectionComponent id={id} />
+      default:
+        return <></>
+    }
   }
+
+  function content() {
+    return (
+      <div id="asset" className="container">
+        {getContentByType()}
+      </div>
+    )
+  }
+
+  return NormalLayout(content(), pageModel)
 }
