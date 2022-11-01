@@ -15,4 +15,68 @@
     @apply mt-2 mb-2;
     @apply w-full;
   }
+
+  .blind-box {
+    h1 {
+      @apply mt-4 ml-2 text-2xl;
+    }
+    .list {
+      @apply mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:grid-cols-3;
+      .item {
+        @apply col-span-1 flex flex-col rounded-xl text-center shadow-lg;
+        @apply border border-white bg-white hover:border-gray-100;
+        @apply dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700;
+        @apply sm:hover:scale-105 sm:hover:transform;
+        .cover {
+          @apply relative h-full rounded-lg p-2;
+          .perfect_square {
+            @apply relative h-full rounded-lg;
+            padding-bottom: 100%;
+            .status {
+              @apply absolute bottom-2 left-2 rounded-md;
+              @apply bg-gray-500 text-white opacity-75;
+              @apply px-2 py-1;
+            }
+            img {
+              @apply absolute h-full w-full rounded-lg object-cover;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+          }
+        }
+        .profile {
+          @apply mt-1 flex flex-1 flex-col px-3 pb-1 text-left;
+
+          h3 {
+            @apply truncate text-xl font-medium text-gray-800 sm:font-normal;
+            @apply dark:text-gray-300;
+          }
+          .footer {
+            @apply flex justify-between;
+            .num-wrap {
+              @apply mt-2 mb-2 flex items-center rounded-[4px] border-[1px] border-graye8;
+              .num-name {
+                @apply relative bg-graye8 py-1 pl-2 pr-[6px] text-sm text-grayText;
+              }
+              .num-name::after {
+                @apply absolute right-[-6px] top-0 h-0 w-0;
+                border-color: #e8e8e8 transparent transparent #e8e8e8;
+                border-width: 14px 3px;
+              }
+              .num {
+                @apply px-4 text-lg text-blackText;
+              }
+            }
+            .price {
+              @apply text-greenText;
+            }
+          }
+        }
+      }
+      .item:hover .cover .perfect_square img {
+        @apply h-auto max-h-full w-auto max-w-full;
+      }
+    }
+  }
 }
