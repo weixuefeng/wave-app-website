@@ -3,10 +3,10 @@ export interface Banner {
   image: string
 }
 
-export interface Mystery{
+export interface Mystery {
   blind_box_reveals_time: number | null
   blind_box_sell_start_time: number | null
-  blind_box_sell_status: number 
+  blind_box_sell_status: number
   blind_box_total: number
   collection_id: number
   episodes: number
@@ -25,7 +25,7 @@ export interface Mystery{
   type: number
 }
 
-export interface Recommend{
+export interface Recommend {
   blind_box_reveals_time: number | null
   blind_box_sell_start_time: number | null
   blind_box_sell_status: number | null

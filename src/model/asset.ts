@@ -22,22 +22,28 @@ export interface Asset {
 
 export function getAssetNameByType(type: number): string {
   switch (type) {
-    case 0: return "nft";
-    case 1: return "movie";
-    case 2: return "serios";
-    case 4: return "collections";
-    case 5: return "blind_box";
-    default: break;
+    case 0:
+      return 'nft'
+    case 1:
+      return 'movie'
+    case 2:
+      return 'serios'
+    case 4:
+      return 'collections'
+    case 5:
+      return 'blind_box'
+    default:
+      break
   }
-  return "";
+  return ''
 }
 
 export enum AssetType {
   NFT = 0,
-  MOVIE = 1, 
+  MOVIE = 1,
   SERIOS = 2,
   COLLECTION = 4,
-  BLIND_BOX = 5
+  BLIND_BOX = 5,
 }
 
 export interface HomeList {

@@ -9,7 +9,7 @@ interface UserState {
 
 const initialState = {
   currentUser: undefined,
-  status: 'idle'
+  status: 'idle',
 } as UserState
 
 export const userSlice = createSlice({
@@ -21,25 +21,23 @@ export const userSlice = createSlice({
       state
     },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchUser.pending, (state) => {
-        state.status = 'loading';
+      .addCase(fetchUser.pending, state => {
+        state.status = 'loading'
       })
       .addCase(fetchUser.fulfilled, (state, action) => {
-        state.status = 'idle';
+        state.status = 'idle'
         state.currentUser = action.payload
-      });
+      })
   },
 })
 
-export const fetchUser = createAsyncThunk('user/login', 
-  async (params: LoginParams) => {
-    const response = await Http.getInstance().login(params.email, params.code)
-    return response.result
-  }
-)
+export const fetchUser = createAsyncThunk('user/login', async (params: LoginParams) => {
+  const response = await Http.getInstance().login(params.email, params.code)
+  return response.result
+})
 
-export const selectUser = (state) => state.user.currentUser
+export const selectUser = state => state.user.currentUser
 
 export default userSlice.reducer

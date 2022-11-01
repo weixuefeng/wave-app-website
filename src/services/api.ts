@@ -9,7 +9,6 @@
 import { API_VERSION } from 'constants/constant'
 import { API_PREFIX, WAVE_BASE_URL } from '../constants/setting'
 
-
 export const Api = {
   baseUrl: `${WAVE_BASE_URL}/${API_PREFIX}/v${API_VERSION}/`,
   // common
@@ -27,5 +26,5 @@ export const Api = {
   bannerList: 'banner/list/',
 
   // assets
-  nftInfo: 'nft/info/'
+  nftInfo: 'nft/info/',
 }

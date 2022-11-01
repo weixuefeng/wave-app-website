@@ -8,13 +8,12 @@ function HeadImg(props) {
   const { t } = useTranslation()
 
   let { collectionInfo, width, height } = props
-  console.log('headImg',collectionInfo)
 
   const [remainSecond, setRemainSecond] = useState(0)
   let timer
 
   useEffect(() => {
-    if(collectionInfo) {
+    if (collectionInfo) {
       const remainTime = parseInt(collectionInfo.sell_start_time) - parseInt(collectionInfo.system_time)
       setRemainSecond(remainTime)
       if (collectionInfo.sell_status == 0 && remainTime <= 86400) {
@@ -32,8 +31,8 @@ function HeadImg(props) {
   function countDown(startTime) {
     let countDownTime = startTime
     timer = setInterval(() => {
-      if(countDownTime > 1){
-        setRemainSecond(-- countDownTime)
+      if (countDownTime > 1) {
+        setRemainSecond(--countDownTime)
       } else {
         clearInterval(timer)
       }
@@ -72,7 +71,7 @@ function HeadImg(props) {
         return <></>
       }
     } else {
-      if(collectionInfo.reveals_time > 0) {
+      if (collectionInfo.reveals_time > 0) {
         return <div className="time-onimg">{t('REVEALSAT') + ' ' + getTimeStr(collectionInfo.reveals_time)}</div>
       } else {
         return <></>

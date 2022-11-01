@@ -9,13 +9,13 @@
 import Image from 'next/image'
 import React from 'react'
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination, Autoplay, Scrollbar, A11y } from 'swiper';
-import 'swiper/swiper.min.css';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import SwiperCore, { Navigation, Pagination, Autoplay, Scrollbar, A11y } from 'swiper'
+import 'swiper/swiper.min.css'
 
 export default function BannerComponent(props) {
   const { banners } = props
-  SwiperCore.use([Autoplay, Pagination, Navigation]);
+  SwiperCore.use([Autoplay, Pagination, Navigation])
 
   if (banners && banners.length > 0) {
     return (
@@ -23,17 +23,21 @@ export default function BannerComponent(props) {
         spaceBetween={10}
         // initialSlide={1} // 初始化显示哪一个
         autoplay
-        slidesPerView='auto'
+        slidesPerView="auto"
         loop
         pagination={{
-          "clickable": true
+          clickable: true,
         }}
         onSlideChange={() => {}}
-        onSwiper={(swiper) => {}}
+        onSwiper={swiper => {}}
         threshold={40}
       >
         {banners.map((item, index) => {
-          return <SwiperSlide key={index}><img alt="" src={item.image} className='swiper-img' /></SwiperSlide>
+          return (
+            <SwiperSlide key={index}>
+              <img alt="" src={item.image} className="swiper-img" />
+            </SwiperSlide>
+          )
         })}
       </Swiper>
     )

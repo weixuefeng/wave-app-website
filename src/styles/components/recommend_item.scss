@@ -1,39 +1,39 @@
-.recommend-item{
-  .recommend-img{
+.recommend-item {
+  .recommend-img {
     @apply relative;
-    .head-img{
-      @apply w-full h-full rounded-lg;
+    .head-img {
+      @apply h-full w-full rounded-lg;
       object-fit: cover;
     }
-    .img-icon{
-      @apply w-[60px] h-[60px] rounded-full border-2 border-white absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-1/2;
+    .img-icon {
+      @apply absolute left-1/2 bottom-0 h-[60px] w-[60px] -translate-x-1/2 translate-y-1/2 rounded-full border-2 border-white;
     }
-    .evt-icon{
-      @apply absolute left-1 top-2 px-2 py-1 rounded-full bg-white text-xs text-gray333;
+    .evt-icon {
+      @apply absolute left-1 top-2 rounded-full bg-white px-2 py-1 text-xs text-gray333;
     }
   }
-  .info-box{
-    @apply relative top-[-8px] px-2 py-6 bg-white -z-10 h-20 box-content;
-    .title{
-      @apply flex justify-between items-center font-bold;
-      .name{
+  .info-box {
+    @apply relative top-[-8px] -z-10 box-content h-20 bg-white px-2 py-6;
+    .title {
+      @apply flex items-center justify-between font-bold;
+      .name {
         @apply flex-1 truncate text-lg text-blackText;
       }
-      .time{
+      .time {
         @apply ml-4 text-xs text-grayText;
       }
     }
-    .title-collection{
-      @apply text-center mt-3 justify-center;
+    .title-collection {
+      @apply mt-3 justify-center text-center;
     }
-    .price-title{
-      @apply text-grayText text-xs mt-4;
+    .price-title {
+      @apply mt-4 text-xs text-grayText;
     }
-    .price-num{
-      @apply text-greenText text-sm;
+    .price-num {
+      @apply text-sm text-greenText;
     }
-    & > img{
-      @apply w-[21px] h-[19px] absolute right-2 bottom-6;
+    & > img {
+      @apply absolute right-2 bottom-6 h-[19px] w-[21px];
     }
   }
 }

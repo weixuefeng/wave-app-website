@@ -1,8 +1,8 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
- * @LastEditors: zxt0805 zhuxiaotong@diynova.com
- * @LastEditTime: 2022-10-31 18:09:22
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-01 11:29:59
  * @FilePath: /wave-app-webiste/src/pages/index.tsx
  */
 
@@ -14,8 +14,8 @@ import Http from 'services/http'
 import BannerComponent from 'components/home/BannerComponent'
 import { Banner, Mystery, Recommend } from 'model/banner'
 import HomeDataComonent from 'components/home/HomeDataComonent'
-import MysteryItem from 'components/mystery/mystery_item'
-import RecommendItem from 'components/recommend/recommend_item'
+import MysteryItem from 'components/home/mystery/mystery_item'
+import RecommendItem from 'components/home/recommend/recommend_item'
 import { HomeData } from 'model/asset'
 import { useSelector } from 'react-redux'
 import { selectUser } from 'reducer/userReducer'
@@ -32,7 +32,7 @@ function Main() {
   const [homeData, setHomeData] = useState<any>()
   const [mysteryData, setMysteryData] = useState<Array<Mystery>>([])
   const [recommendData, setRecommendData] = useState<Array<Recommend>>([])
-  
+
   useEffect(() => {
     getHomeData()
     getHomeBanner()
@@ -55,7 +55,6 @@ function Main() {
       .then(response => {
         let res: any = response.result
         setHomeData(response.result)
-        // console.log('homeData',response.result)
         setMysteryData(res.mystery_boxes)
         setRecommendData(res.recommend)
       })
@@ -67,23 +66,8 @@ function Main() {
   return (
     <div className={'container'}>
       <div className={'home'}>
-        <UserComponent/>
         <BannerComponent banners={banners} />
-        <div className="flex flex-wrap justify-between">
-        {
-          mysteryData && mysteryData.map((item, index) => {
-            return <div className='index-mystery-wrap' key={index}><MysteryItem collectionInfo={item} key={index} width="w-[343px]" height="h-[343px]" /></div>
-          })
-        }
-        </div>
 
-        <div className="flex flex-wrap justify-between">
-        {
-          recommendData && recommendData.map((item, index) => {
-            return <div className='index-mystery-wrap' key={index}><RecommendItem collectionInfo={item} key={index} width="w-[343px]" height="h-[193px]" /></div>
-          })
-        }
-        </div>
         <HomeDataComonent homeData={homeData} />
       </div>
     </div>

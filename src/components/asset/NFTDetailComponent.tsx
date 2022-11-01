@@ -8,21 +8,19 @@ export default function NFTDetailComponent(props) {
   const [nftDetail, setNFTDetail] = useState<NFTDetail>(null)
 
   useEffect(() => {
-    Http.getInstance().getNFTInfo(parseInt(id))
-    .then(response => {
-      setNFTDetail(response.result)
-    })
-    .catch(error => {
-      console.log(error);
-      
-    })
+    Http.getInstance()
+      .getNFTInfo(parseInt(id))
+      .then(response => {
+        setNFTDetail(response.result)
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }, [id])
 
-  if(!nftDetail || !id) {
+  if (!nftDetail || !id) {
     return <>loading...</>
   }
 
-  return (
-    <div>NFTDetailComponent</div>
-  )
+  return <div>NFTDetailComponent</div>
 }

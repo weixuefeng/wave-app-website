@@ -21,9 +21,7 @@ function refreshClient(): Axios {
 }
 
 // check token
-function checkToken() {
-  
-}
+function checkToken() {}
 
 function _post(url: string, param: any, config: any = null) {
   return new Promise(function (resolve, reject) {
@@ -107,8 +105,8 @@ class Http {
   }
 
   // asset detail
-  getNFTInfo(nftId: number): Promise<BaseResponse<NFTDetail>>{
-    let params = {'nft_id': nftId}
+  getNFTInfo(nftId: number): Promise<BaseResponse<NFTDetail>> {
+    let params = { nft_id: nftId }
     return _post(Api.nftInfo, params) as Promise<BaseResponse<NFTDetail>>
   }
 }

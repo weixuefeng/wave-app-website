@@ -1,7 +1,7 @@
-.swiper{
-  @apply w-full h-[300px];
+.swiper {
+  @apply h-[300px] w-full;
 }
-.swiper-img{
-  @apply w-full h-full;
+.swiper-img {
+  @apply h-full w-full;
   object-fit: cover;
 }

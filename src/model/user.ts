@@ -10,8 +10,7 @@ export interface UserInfo {
   is_kyc: number
 }
 
-
 export interface LoginParams {
-  email: string,
+  email: string
   code: string
 }

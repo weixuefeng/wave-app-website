@@ -22,8 +22,8 @@ export default function Login() {
       })
   }
 
-  if(currentUser) {
-    router.push("/")
+  if (currentUser) {
+    router.push('/')
     return <></>
   } else {
     return (
@@ -60,9 +60,9 @@ export default function Login() {
                 onChange={e => setVerifyCode(e.target.value)}
               />
             </div>
-  
+
             <button
-              onClick={() => dispatch(fetchUser({email: email, code: verifyCode}))}
+              onClick={() => dispatch(fetchUser({ email: email, code: verifyCode }))}
               className="inline-flex w-full justify-center rounded-lg bg-slate-900 py-2.5 px-4 text-sm font-semibold text-white hover:bg-slate-700"
             >
               <span>Sign in to account</span>
@@ -72,5 +72,4 @@ export default function Login() {
       </main>
     )
   }
-  
 }

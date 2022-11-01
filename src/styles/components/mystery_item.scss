@@ -1,28 +1,27 @@
-.mystery-item{
-  .info-box{
-    @apply py-4 px-2 bg-white text-lg;
-    .title{
+.mystery-item {
+  .info-box {
+    @apply bg-white py-4 px-2 text-lg;
+    .title {
       @apply truncate;
     }
-    .info{
-      @apply flex justify-between items-center mt-[9px];
-      .num-wrap{
-        @apply border-[1px] border-graye8 rounded-[4px] flex items-center;
-        .num-name{
-          @apply text-grayText text-sm bg-graye8 pl-2 pr-[6px] py-1 relative;
-          
+    .info {
+      @apply mt-[9px] flex items-center justify-between;
+      .num-wrap {
+        @apply flex items-center rounded-[4px] border-[1px] border-graye8;
+        .num-name {
+          @apply relative bg-graye8 py-1 pl-2 pr-[6px] text-sm text-grayText;
         }
-        .num-name::after{
-          @apply w-0 h-0 absolute right-[-6px] top-0;
+        .num-name::after {
+          @apply absolute right-[-6px] top-0 h-0 w-0;
           border-color: #e8e8e8 transparent transparent #e8e8e8;
           border-width: 14px 3px;
           content: '';
         }
-        .num{
-          @apply text-blackText text-lg px-4;
+        .num {
+          @apply px-4 text-lg text-blackText;
         }
       }
-      .price{
+      .price {
         @apply text-greenText;
       }
     }
