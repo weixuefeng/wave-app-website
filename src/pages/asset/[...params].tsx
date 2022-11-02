@@ -34,7 +34,7 @@ export default function AssetDetail() {
 
   function content() {
     return (
-      <div id="asset" className="container mx-auto">
+      <div id="asset" className="container mx-auto pb-20">
         {getContentByType()}
       </div>
     )
