@@ -103,7 +103,7 @@ export function BlindBox(props) {
         </div>
         <div className="profile">
           <h3>{item.name}</h3>
-          <div className="footer">
+          <div className="blindbox-footer">
             <div className="num-wrap">
               <div className="num-name">{t('CURRENT_RELEASE')}</div>
               <div className="num">{item.blind_box_total}</div>
