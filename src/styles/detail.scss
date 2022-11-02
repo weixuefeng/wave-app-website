@@ -31,3 +31,83 @@
     }
   }
 }
+
+.nft-detail {
+  @apply mt-16 flex flex-col justify-between;
+  .info {
+    @apply flex flex-col md:flex-row;
+    img {
+      @apply w-full md:w-1/2;
+    }
+    .detail {
+      @apply ml-2 mt-4 flex w-full flex-col justify-start md:ml-8 md:mt-0 md:w-1/2;
+      h2 {
+        @apply text-3xl font-medium;
+      }
+      .owner {
+        @apply mt-8 flex flex-row items-center justify-start pb-8;
+        .tl {
+          @apply flex flex-row items-center justify-start;
+          img {
+            @apply h-16 w-16 rounded-full;
+          }
+        }
+        .tr {
+          @apply ml-8 flex flex-row justify-start;
+          > p {
+            @apply text-gray-500;
+          }
+          .name {
+            @apply ml-4 text-gray-900;
+          }
+        }
+      }
+      .price {
+        @apply mt-6 flex flex-row items-center justify-between p-2;
+        > div {
+          @apply flex flex-row items-center justify-between;
+          .label {
+            @apply font-medium text-black;
+          }
+          .value {
+            @apply ml-2 font-medium text-green-600;
+          }
+        }
+      }
+      .action {
+        @apply mt-8 flex flex-row items-center justify-between;
+      }
+    }
+  }
+
+  .chain-info {
+    @apply flex w-full flex-wrap items-start;
+    h2 {
+      @apply pt-4 pb-4 text-2xl font-medium;
+    }
+    .detail {
+      @apply flex w-full flex-col md:w-1/2;
+      .item {
+        @apply flex flex-row items-center justify-between pl-4 pr-4;
+      }
+    }
+    .intro {
+      @apply flex w-full flex-col md:w-1/2;
+      p {
+        @apply whitespace-pre-line;
+      }
+    }
+  }
+}
+.countdown {
+  @apply flex flex-col items-center justify-start rounded-md bg-gray-200 p-4;
+  .time-info {
+    @apply mt-4 flex w-full flex-row justify-around;
+    .item {
+      @apply flex flex-col items-center justify-start;
+      .green {
+        @apply text-green-700;
+      }
+    }
+  }
+}
