@@ -64,8 +64,22 @@
   }
 
   .password-box {
-    .ant-form-item-control {
-      @apply w-full;
+    .email,
+    .code-box {
+      @apply relative;
+      img {
+        @apply absolute top-1/2 left-4 -mt-3 h-6 w-6;
+      }
+
+      input {
+        @apply pl-11;
+      }
+    }
+    .email {
+      @apply mb-7;
+    }
+    .code-box {
+      @apply mb-9;
     }
 
     input {
@@ -94,24 +108,15 @@
       @apply border-gray8c;
     }
 
-    .ant-form-item-control-input-content {
-      @apply relative;
-
-      img {
-        @apply absolute top-1/2 left-4 -mt-3 h-6 w-6;
-      }
-
-      .ant-input {
-        @apply pl-11;
-      }
-    }
-
-    .ant-form-item-explain-error {
-      @apply mt-1 text-xs text-redb6;
-    }
+    // .ant-form-item-explain-error {
+    //   @apply mt-1 text-xs text-redb6;
+    // }
 
     .send-code {
-      @apply absolute top-[13px] right-5 h-8 cursor-pointer border-l-[1px] border-grayed pl-5 text-sm leading-8 text-gray333;
+      @apply absolute top-0 right-5 h-14 cursor-pointer text-sm leading-8 text-gray333;
+      span {
+        @apply border-l-[1px] border-grayed pl-5;
+      }
     }
 
     .log-code {
@@ -138,7 +143,6 @@
         @apply bg-bg-checked-hover;
       }
     }
-
     .agree {
       @apply ml-5 text-xs text-grayc7;
 
@@ -146,7 +150,6 @@
         @apply text-black;
       }
     }
-
     .login-form-button {
       @apply mt-8 h-12 w-full rounded-xl bg-grayea text-center text-grayc7;
     }

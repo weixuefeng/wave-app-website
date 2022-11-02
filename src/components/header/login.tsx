@@ -1,7 +1,11 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
 import { Form, Input, Button, Row, Col, Checkbox } from 'antd'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import React, { useState, Fragment } from 'react'
+import Http from 'services/http'
+import { useAppDispatch, useAppSelector } from 'store/store'
+import { fetchUser, selectUser, updateUserInfo } from '../../reducer/userReducer'
 
 export default function Login() {
   let [isOpen, setIsOpen] = useState(false)
@@ -12,6 +16,39 @@ export default function Login() {
 
   function openModal() {
     setIsOpen(true)
+  }
+
+  const [email, setEmail] = useState<string>()
+  const [verifyCode, setVerifyCode] = useState<string>()
+  const dispatch = useAppDispatch()
+  const currentUser = useAppSelector(selectUser)
+  const router = useRouter()
+
+  function requestVerifyCode() {
+    Http.getInstance()
+      .requestVerifyCode(email)
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  function requestLogin() {
+    Http.getInstance()
+      .login(email, verifyCode)
+      .then(response => {
+        if (response.error_code == 1) {
+          dispatch(updateUserInfo(response.result))
+          closeModal()
+        } else {
+          console.log('login error' + response.error_message)
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   return (
@@ -52,52 +89,33 @@ export default function Login() {
                     </div>
                   </div>
                   <div className={'password-box'}>
-                    <Form name="normal_login" className="login-form" initialValues={{ remember: true }}>
-                      <Form.Item
-                        name={['user', 'email']}
-                        // label="Email"
-                        rules={[
-                          { required: true, message: 'Please enter your email address!' },
-                          {
-                            pattern: /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/,
-                            message: '邮箱格式不正确',
-                          },
-                        ]}
-                      >
-                        <Input placeholder="Email Address" />
-                        <img src="assets/image/icon_email.png" alt="email" />
-                      </Form.Item>
-                      <Form.Item rules={[{ type: 'number' }]} className={'log-code'}>
-                        <Row gutter={12} className={'code-box'}>
-                          <Col span={12}>
-                            <Form.Item
-                              name="captcha"
-                              noStyle
-                              rules={[{ required: true, message: 'Please enter the verification code!' }]}
-                            >
-                              <Input placeholder="Verification Code" />
-                              <img src="assets/image/icon_code.png" alt="code" />
-                              <span className="send-code">Send code</span>
-                            </Form.Item>
-                          </Col>
-                        </Row>
-                      </Form.Item>
-                      <Form.Item>
-                        <Button type="primary" htmlType="submit" className="login-form-button">
-                          Log in
-                        </Button>
-                        {/* {errTit ? <p style={{ marginTop: '16px', color: 'red' }}>邮箱或者验证码不正确,请重新输入</p> : null} */}
-                      </Form.Item>
-                      <Form.Item>
-                        <div className="agree-box">
-                          <Checkbox className="checkbox"></Checkbox>
-                          <p className="agree">
-                            I agree to WAVE&apos;s <Link href="/b">Terms of Service</Link> and{' '}
-                            <Link href="/a">Privacy Policy</Link>
-                          </p>
-                        </div>
-                      </Form.Item>
-                    </Form>
+                    <div className="email">
+                      <input placeholder="Email Address" onChange={e => setEmail(e.target.value)} />
+                      <img src="assets/image/icon_email.png" alt="email" />
+                    </div>
+
+                    <div className="code-box">
+                      <input placeholder="Verification Code" onChange={e => setVerifyCode(e.target.value)} />
+                      <img src="assets/image/icon_code.png" alt="code" />
+                      <button onClick={() => requestVerifyCode()} className="send-code">
+                        <span>Send code</span>
+                      </button>
+                    </div>
+
+                    <button
+                      onClick={() => requestLogin()}
+                      className="inline-flex w-full justify-center rounded-lg bg-slate-900 py-2.5 px-4 text-sm font-semibold text-white hover:bg-slate-700"
+                    >
+                      <span>Log in</span>
+                    </button>
+
+                    <div className="agree-box">
+                      <Checkbox className="checkbox"></Checkbox>
+                      <p className="agree">
+                        I agree to WAVE&apos;s <Link href="/b">Terms of Service</Link> and{' '}
+                        <Link href="/a">Privacy Policy</Link>
+                      </p>
+                    </div>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
