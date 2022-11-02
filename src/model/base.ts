@@ -7,5 +7,6 @@ export interface BaseResponse<T> {
 export interface Pagination<T> {
   page_id: number | undefined
   total_page: number | undefined
+  total_count: number | undefined
   data: Array<T> | undefined
 }

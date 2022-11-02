@@ -55,7 +55,7 @@ export default function Header(props) {
       </div>
       <ul>
         <li className="massage">
-          <Link href="/" passHref>
+          <Link href="/trade" passHref>
             Trade
           </Link>
           <Link href="/" passHref>

@@ -8,6 +8,7 @@ import { HomeData } from 'model/asset'
 import { Banner } from 'model/banner'
 import { NFTDetail } from 'model/nft_asset'
 import { EVTDetail } from 'model/evt_asset'
+import { TradeItem } from 'model/trade'
 
 let client = refreshClient()
 
@@ -114,6 +115,14 @@ class Http {
   getEvtDetail(collectionId: number): Promise<BaseResponse<EVTDetail>> {
     let params = { collection_id: collectionId.toString() }
     return _post(Api.evtDetail, params) as Promise<BaseResponse<EVTDetail>>
+  }
+
+  getNFTTradeList(pageId: number = 1, keyword: string | null): Promise<BaseResponse<Pagination<TradeItem>>> {
+    let params = {
+      keyword: keyword,
+      page_id: pageId,
+    }
+    return _post(Api.nftTradeList, params) as Promise<BaseResponse<Pagination<TradeItem>>>
   }
 }
 

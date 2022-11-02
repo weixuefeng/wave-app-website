@@ -88,64 +88,66 @@
     }
   }
 
-
-.recommend {
-  h1 {
-    @apply mt-4 ml-2 text-2xl;
-  }
-  .list {
-    @apply mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-4 lg:grid-cols-4;
-    .item {
-      @apply col-span-1 flex flex-col rounded-xl text-center shadow-lg;
-      @apply border border-white bg-white hover:border-gray-100;
-      @apply dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700;
-      @apply sm:hover:scale-105 sm:hover:transform;
-      @apply cursor-pointer;
-      .cover {
-        @apply relative h-full rounded-lg p-2;
-        .perfect_square {
-          @apply relative rounded-lg;
-          .status {
-            @apply absolute bottom-2 left-2 rounded-md;
-            @apply bg-gray-500 text-white opacity-75;
-            @apply px-2 py-1;
-          }
-          .evt-icon {
-            @apply absolute top-2 left-2 z-10 bg-white rounded-md px-2;
-          }
-          .collection {
-            @apply absolute -bottom-6 w-full flex justify-center items-center;
-            img {
-              @apply w-12 h-12 bg-opacity-0 rounded-full;
+  .recommend {
+    h1 {
+      @apply mt-4 ml-2 text-2xl;
+    }
+    .list {
+      @apply mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-4 lg:grid-cols-4;
+      .item {
+        @apply col-span-1 flex flex-col rounded-xl text-center shadow-lg;
+        @apply border border-white bg-white hover:border-gray-100;
+        @apply dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700;
+        @apply sm:hover:scale-105 sm:hover:transform;
+        @apply cursor-pointer;
+        .cover {
+          @apply relative h-full rounded-lg p-2;
+          .perfect_square {
+            @apply relative rounded-lg;
+            .status {
+              @apply absolute bottom-2 left-2 rounded-md;
+              @apply bg-gray-500 text-white opacity-75;
+              @apply px-2 py-1;
+            }
+            .evt-icon {
+              @apply absolute top-2 left-2 z-10 rounded-md bg-white px-2;
+            }
+            .collection {
+              @apply absolute -bottom-6 flex w-full items-center justify-center;
+              img {
+                @apply h-12 w-12 rounded-full bg-opacity-0;
+              }
             }
           }
         }
         .info-box {
-          @apply relative top-[-8px] z-10 box-content h-20 bg-white px-2 py-6;
-          .title {
-            @apply flex items-center justify-between font-bold;
-            .name {
-              @apply flex-1 truncate text-lg text-blackText;
+          @apply flex flex-col bg-white p-4;
+          .name {
+            @apply text-left text-xl;
+          }
+          .price {
+            @apply flex flex-row items-center justify-start;
+            .label {
+              @apply text-base text-grayText;
             }
-            .title-collection {
-              @apply mt-3 justify-center text-center;
-            }
-            .price-title {
-              @apply mt-4 text-xs text-grayText;
-            }
-            .price-num {
-              @apply text-sm text-greenText;
-            }
-            & > img {
-              @apply absolute right-2 bottom-6 h-[19px] w-[21px];
+            .number {
+              @apply ml-4 text-base text-greenText;
             }
           }
-        }
-        .item:hover .cover .perfect_square img {
-          @apply h-auto max-h-full w-auto max-w-full;
+          .evt-flag {
+            @apply flex flex-row items-center justify-start;
+            img {
+              @apply h-8 w-8;
+            }
+            span {
+              @apply ml-2 text-gray-500;
+            }
+          }
+          .title-collection {
+            @apply mt-3 justify-center text-center;
+          }
         }
       }
     }
   }
-}
 }
