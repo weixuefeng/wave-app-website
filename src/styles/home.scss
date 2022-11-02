@@ -1,4 +1,5 @@
 #home {
+  @apply pb-32;
   .blind {
     .title {
       @apply mt-2 text-2xl text-gray-800;
@@ -103,12 +104,20 @@
       .cover {
         @apply relative h-full rounded-lg p-2;
         .perfect_square {
-          @apply relative h-full rounded-lg;
-          padding-bottom: 50%;
+          @apply relative rounded-lg;
           .status {
             @apply absolute bottom-2 left-2 rounded-md;
             @apply bg-gray-500 text-white opacity-75;
             @apply px-2 py-1;
+          }
+          .evt-icon {
+            @apply absolute top-2 left-2 z-10 bg-white rounded-md px-2;
+          }
+          .collection {
+            @apply absolute -bottom-6 w-full flex justify-center items-center;
+            img {
+              @apply w-12 h-12 bg-opacity-0 rounded-full;
+            }
           }
         }
         .info-box {
