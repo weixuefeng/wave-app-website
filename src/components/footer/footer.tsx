@@ -1,19 +1,47 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-13 11:26:10
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-10-23 16:03:19
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-02 13:36:29
  * @FilePath: /wave-app-webiste/src/components/footer/footer.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-import React, { Fragment, useState } from 'react'
+import Link from 'next/link'
+import React from 'react'
 
 export default function Footer() {
   return (
-    <>
-      <div className="footer">
-        <p className="ml-5">footer</p>
+    <div className='footer'>
+      <div className='footer-top'>
+        <div className='container footer-logo'>
+          <div className='logo'>
+            <img src='/assets/image/footer_logo.png' alt='footer-logo' />
+          </div>
+          <dl>
+            <dt>Join the community</dt>
+            <dd>
+              <Link href="https://app.waveuniverse.org/">
+                <a target="_blank"><img src='/assets/image/footer_telegram.png' alt='footer-telegram' /></a>
+              </Link>
+              <Link href="https://app.waveuniverse.org/">
+                <a target="_blank">
+                  <img src='/assets/image/footer_twier.png' alt='footer-twier' /></a>
+              </Link>
+              <Link href="https://app.waveuniverse.org/">
+                <a target="_blank">
+                  <img src='/assets/image/footer_discord.png' alt='footer-discord' /></a>
+              </Link>
+            </dd>
+          </dl>
+        </div>
       </div>
-    </>
+      <div className='container footer-content'>
+        <p>WAVE©2022</p>
+        <div>
+          <Link href='/a'>Privacy Policy</Link>
+          <Link href='/b'>Terms of Use</Link>
+        </div>
+      </div>
+    </div>
   )
 }

@@ -1,8 +1,8 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-01 17:31:22
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-02 13:56:40
  * @FilePath: /wave-app-webiste/src/pages/index.tsx
  */
 
@@ -57,7 +57,7 @@ function Main() {
   }
 
   return (
-    <div className={'container'}>
+    <div className={'container mx-auto'}>
       <div className={'home'}>
         <BannerComponent banners={banners} />
         <HomeDataComonent homeData={homeData} />

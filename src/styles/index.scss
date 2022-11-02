@@ -1,9 +1,16 @@
-.index-wrap {
-  @apply mx-auto md:max-w-[1200px];
-  .index-mystery-wrap {
-    @apply mb-4 w-[343px] overflow-hidden rounded-lg;
-  }
+.container {
+  // @apply mx-auto md:w-[1200px];
+  // .index-mystery-wrap {
+  //   @apply mb-4 w-[343px] overflow-hidden rounded-lg;
+  // }
 }
+
+// .index-wrap {
+//   @apply mx-auto md:max-w-[1200px];
+//   .index-mystery-wrap {
+//     @apply mb-4 w-[343px] overflow-hidden rounded-lg;
+//   }
+// }
 
 // @media (min-width: 1200px) {
 //   .index-wrap{

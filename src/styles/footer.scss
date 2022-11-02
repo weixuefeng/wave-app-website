@@ -1,3 +1,43 @@
 .footer {
-  @apply flex w-full items-center justify-center text-center;
+  @apply bg-gray333;
+}
+.footer-top {
+  @apply  border-b-[1px] border-gray3e;
+}
+.footer-logo,
+.footer-content {
+  @apply mx-auto;
+}
+.footer-logo {
+  @apply flex justify-between items-center h-[4.5rem];
+  .logo {
+    @apply w-[6.8rem];
+  }
+  dl {
+    @apply flex items-center;
+  }
+  dt {
+    @apply text-white text-base;
+  }
+  dd {
+    @apply flex;
+    a {
+      @apply ml-6;
+    }
+    img {
+      @apply w-8 h-8;
+    }
+  }
+}
+.footer-content {
+  @apply flex justify-between items-center h-[3.65rem];
+  p, a {
+    @apply text-sm;
+  }
+  p {
+    @apply text-gray66;
+  }
+  a {
+    @apply text-gray99 ml-9;
+  }
 }
