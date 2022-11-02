@@ -114,10 +114,10 @@
               }
             }
             .nft-info {
-              @apply absolute bottom-0 px-2 py-4 w-full flex flex-col;
+              @apply absolute bottom-0 flex w-full flex-col px-2 py-4;
               @apply bg-gradient-to-t from-current to-transparent;
               .name {
-                @apply text-white text-xl text-left;
+                @apply text-left text-xl text-white;
               }
               .price {
                 @apply flex flex-row text-white;
