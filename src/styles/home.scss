@@ -61,7 +61,7 @@
             @apply dark:text-gray-300;
           }
           .blindbox-footer {
-            @apply flex justify-between;
+            @apply flex justify-between items-center;
             .num-wrap {
               @apply mt-2 mb-2 flex items-center rounded-[4px] border-[1px] border-graye8;
               .num-name {
@@ -104,11 +104,6 @@
           @apply relative h-full rounded-lg p-2;
           .perfect_square {
             @apply relative rounded-lg;
-            .status {
-              @apply absolute bottom-2 left-2 rounded-md;
-              @apply bg-gray-500 text-white opacity-75;
-              @apply px-2 py-1;
-            }
             .evt-icon {
               @apply absolute top-2 left-2 z-10 rounded-md bg-white px-2;
             }
@@ -116,6 +111,19 @@
               @apply absolute -bottom-6 flex w-full items-center justify-center;
               img {
                 @apply h-12 w-12 rounded-full bg-opacity-0;
+              }
+            }
+            .nft-info {
+              @apply absolute bottom-0 flex w-full flex-col px-2 py-4;
+              @apply bg-gradient-to-t from-current to-transparent;
+              .name {
+                @apply text-left text-xl text-white;
+              }
+              .price {
+                @apply flex flex-row text-white;
+                .number {
+                  @apply ml-2;
+                }
               }
             }
           }
@@ -144,7 +152,7 @@
             }
           }
           .title-collection {
-            @apply mt-3 justify-center text-center;
+            @apply mt-3 justify-center text-center text-xl;
           }
         }
       }

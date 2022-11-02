@@ -17,26 +17,28 @@ export function EVTAsset(props) {
   }
 
   return (
-    <div className="item">
-      <div className="cover">
-        <div className="perfect_square">
-          <img alt={item.name} src={item.image} />
-          <div className="evt-icon">EVT</div>
+    <Link href={getAssetDetailPath(item)}>
+      <div className="item">
+        <div className="cover">
+          <div className="perfect_square">
+            <img alt={item.name} src={item.image} />
+            <div className="evt-icon">EVT</div>
+          </div>
         </div>
-      </div>
 
-      <div className="info-box">
-        <p className="name">{item.name}</p>
-        <div className="price">
-          <div className="label">{t('FLOOR_PRICE')}: </div>
-          <div className="number">{Number(item.highest_bid_price)} NEW</div>
-        </div>
-        <div className="evt-flag">
-          <img src="/assets/image/play_icon.png" alt="" />
-          <span>{calculateRuningTime(item.running_time)}</span>
+        <div className="info-box">
+          <p className="name">{item.name}</p>
+          <div className="price">
+            <div className="label">{t('FLOOR_PRICE')}: </div>
+            <div className="number">{Number(item.highest_bid_price)} NEW</div>
+          </div>
+          <div className="evt-flag">
+            <img src="/assets/image/play_icon.png" alt="" />
+            <span>{calculateRuningTime(item.running_time)}</span>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
@@ -45,48 +47,22 @@ export function NFTAsset(props) {
   const { t } = useTranslation()
 
   return (
-    <div className="item">
-      <div className="cover">
-        <div className="perfect_square">
-          <img alt={item.name} src={item.image} />
-          {(item.type === AssetType.MOVIE || item.type === AssetType.SERIOS) && <div className="evt-icon">EVT</div>}
-
-          {item.type === AssetType.COLLECTION && (
-            <div className="collection">
-              <img alt={item.name} src={item.icon} className="img-icon" />
+    <Link href={getAssetDetailPath(item)}>
+      <div className="item">
+        <div className="cover">
+          <div className="perfect_square">
+            <img alt={item.name} src={item.image} />
+            <div className="nft-info">
+              <div className="name">{item.name}</div>
+              <div className="price">
+                <p>{t('FLOOR_PRICE')}:</p>
+                <p className="number">{Number(item.highest_bid_price)} NEW</p>
+              </div>
             </div>
-          )}
+          </div>
         </div>
       </div>
-
-      <div className="info-box">
-        {item.type !== AssetType.COLLECTION ? (
-          <div className="title">
-            <p className="name">{item.name}</p>
-            {item.running_time !== 0 && <p className="time">{item.running_time}</p>}
-          </div>
-        ) : (
-          <div className="title title-collection">{item.name}</div>
-        )}
-        {(item.lowest_sell_price || item.highest_bid_price) && (
-          <div className="price-info">
-            {item.lowest_sell_price && (
-              <>
-                <div className="price-title">{t('FLOOR_PRICE')}</div>
-                <div className="price-num">{Number(item.lowest_sell_price)} NEW</div>
-              </>
-            )}
-            {!item.lowest_sell_price && item.highest_bid_price && (
-              <>
-                <div className="price-title">{t('FLOOR_PRICE')}</div>
-                <div className="price-num">{Number(item.highest_bid_price)} NEW</div>
-              </>
-            )}
-          </div>
-        )}
-        {item.type === AssetType.MOVIE && <img src="/assets/image/play_icon.png" alt="" />}
-      </div>
-    </div>
+    </Link>
   )
 }
 
@@ -95,48 +71,21 @@ export function CollectionAsset(props) {
   const { t } = useTranslation()
 
   return (
-    <div className="item">
-      <div className="cover">
-        <div className="perfect_square">
-          <img alt={item.name} src={item.image} />
-          {(item.type === AssetType.MOVIE || item.type === AssetType.SERIOS) && <div className="evt-icon">EVT</div>}
-
-          {item.type === AssetType.COLLECTION && (
+    <Link href={getAssetDetailPath(item)}>
+      <div className="item">
+        <div className="cover">
+          <div className="perfect_square">
+            <img alt={item.name} src={item.image} />
             <div className="collection">
               <img alt={item.name} src={item.icon} className="img-icon" />
             </div>
-          )}
+          </div>
+        </div>
+        <div className="info-box">
+          <div className="title-collection">{item.name}</div>
         </div>
       </div>
-
-      <div className="info-box">
-        {item.type !== AssetType.COLLECTION ? (
-          <div className="title">
-            <p className="name">{item.name}</p>
-            {item.running_time !== 0 && <p className="time">{item.running_time}</p>}
-          </div>
-        ) : (
-          <div className="title title-collection">{item.name}</div>
-        )}
-        {(item.lowest_sell_price || item.highest_bid_price) && (
-          <div className="price-info">
-            {item.lowest_sell_price && (
-              <>
-                <div className="price-title">{t('FLOOR_PRICE')}</div>
-                <div className="price-num">{Number(item.lowest_sell_price)} NEW</div>
-              </>
-            )}
-            {!item.lowest_sell_price && item.highest_bid_price && (
-              <>
-                <div className="price-title">{t('FLOOR_PRICE')}</div>
-                <div className="price-num">{Number(item.highest_bid_price)} NEW</div>
-              </>
-            )}
-          </div>
-        )}
-        {item.type === AssetType.MOVIE && <img src="/assets/image/play_icon.png" alt="" />}
-      </div>
-    </div>
+    </Link>
   )
 }
 
@@ -157,19 +106,24 @@ export function Recommend(props) {
         return <></>
     }
   }
+  if (!item) {
+    return <></>
+  }
 
-  return <Link href={getAssetDetailPath(item)}>{getAssetByType()}</Link>
+  return getAssetByType()
 }
 
 export default function RecommendComponent(props) {
-  const { blindBox } = props
-
+  const { recommend } = props
+  if(!recommend){
+    return <></>
+  }
   return (
     <div className="recommend">
       <h1>Recommended Box</h1>
 
       <div className="list">
-        {blindBox.map((item, index) => {
+        {recommend.map((item, index) => {
           return <Recommend item={item} key={index} />
         })}
       </div>
