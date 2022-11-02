@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import React, { useEffect, useState } from 'react'
 import { getAssetDetailPath } from 'utils/route'
 import Link from 'next/link'
+import { AssetType } from 'model/asset'
 
 export function Recommend(props) {
   const { item } = props
@@ -14,13 +15,17 @@ export function Recommend(props) {
         <div className="cover">
           <div className="perfect_square">
             <img alt={item.name} src={item.image} />
-            {item.type === 0 && <div className="evt-icon">EVT</div>}
-            {item.type === 4 && <img alt={item.name} src={item.icon} className="img-icon" />}
+            {(item.type === AssetType.MOVIE || item.type === AssetType.SERIOS) && <div className="evt-icon">EVT</div>}
+            
+            {item.type === AssetType.COLLECTION && 
+            <div className="collection">
+              <img alt={item.name} src={item.icon} className="img-icon" />
+            </div>}
           </div>
         </div>
 
         <div className="info-box">
-          {item.type !== 4 ? (
+          {item.type !== AssetType.COLLECTION ? (
             <div className="title">
               <p className="name">{item.name}</p>
               {item.running_time !== 0 && <p className="time">{item.running_time}</p>}
@@ -44,7 +49,7 @@ export function Recommend(props) {
               )}
             </div>
           )}
-          {item.type === 1 && <img src="/assets/image/play_icon.png" alt="" />}
+          {item.type === AssetType.MOVIE && <img src="/assets/image/play_icon.png" alt="" />}
         </div>
       </div>
     </Link>

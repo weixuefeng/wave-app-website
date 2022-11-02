@@ -1,4 +1,5 @@
 #home {
+  @apply pb-32;
   .blind {
     .title {
       @apply mt-2 text-2xl text-gray-800;
@@ -87,39 +88,44 @@
     }
   }
 
-  .recommend {
-    h1 {
-      @apply mt-4 ml-2 text-2xl;
-    }
-    .list {
-      @apply mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-4 lg:grid-cols-4;
-      .item {
-        @apply col-span-1 flex flex-col rounded-xl text-center shadow-lg;
-        @apply border border-white bg-white hover:border-gray-100;
-        @apply dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700;
-        @apply sm:hover:scale-105 sm:hover:transform;
-        @apply cursor-pointer;
-        .cover {
-          @apply relative h-full rounded-lg p-2;
-          .perfect_square {
-            @apply relative h-full rounded-lg;
-            padding-bottom: 50%;
-            .status {
-              @apply absolute bottom-2 left-2 rounded-md;
-              @apply bg-gray-500 text-white opacity-75;
-              @apply px-2 py-1;
+
+.recommend {
+  h1 {
+    @apply mt-4 ml-2 text-2xl;
+  }
+  .list {
+    @apply mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-4 lg:grid-cols-4;
+    .item {
+      @apply col-span-1 flex flex-col rounded-xl text-center shadow-lg;
+      @apply border border-white bg-white hover:border-gray-100;
+      @apply dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700;
+      @apply sm:hover:scale-105 sm:hover:transform;
+      @apply cursor-pointer;
+      .cover {
+        @apply relative h-full rounded-lg p-2;
+        .perfect_square {
+          @apply relative rounded-lg;
+          .status {
+            @apply absolute bottom-2 left-2 rounded-md;
+            @apply bg-gray-500 text-white opacity-75;
+            @apply px-2 py-1;
+          }
+          .evt-icon {
+            @apply absolute top-2 left-2 z-10 bg-white rounded-md px-2;
+          }
+          .collection {
+            @apply absolute -bottom-6 w-full flex justify-center items-center;
+            img {
+              @apply w-12 h-12 bg-opacity-0 rounded-full;
             }
           }
-          .info-box {
-            @apply relative top-[-8px] z-10 box-content h-20 bg-white px-2 py-6;
-            .title {
-              @apply flex items-center justify-between font-bold;
-              .name {
-                @apply flex-1 truncate text-lg text-blackText;
-              }
-              .time {
-                @apply ml-4 text-xs text-grayText;
-              }
+        }
+        .info-box {
+          @apply relative top-[-8px] z-10 box-content h-20 bg-white px-2 py-6;
+          .title {
+            @apply flex items-center justify-between font-bold;
+            .name {
+              @apply flex-1 truncate text-lg text-blackText;
             }
             .title-collection {
               @apply mt-3 justify-center text-center;
