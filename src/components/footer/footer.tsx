@@ -11,35 +11,39 @@ import React from 'react'
 
 export default function Footer() {
   return (
-    <div className='footer'>
-      <div className='footer-top'>
-        <div className='container footer-logo'>
-          <div className='logo'>
-            <img src='/assets/image/footer_logo.png' alt='footer-logo' />
+    <div className="footer">
+      <div className="footer-top">
+        <div className="footer-logo container">
+          <div className="logo">
+            <img src="/assets/image/footer_logo.png" alt="footer-logo" />
           </div>
           <dl>
             <dt>Join the community</dt>
             <dd>
               <Link href="https://app.waveuniverse.org/">
-                <a target="_blank"><img src='/assets/image/footer_telegram.png' alt='footer-telegram' /></a>
+                <a target="_blank">
+                  <img src="/assets/image/footer_telegram.png" alt="footer-telegram" />
+                </a>
               </Link>
               <Link href="https://app.waveuniverse.org/">
                 <a target="_blank">
-                  <img src='/assets/image/footer_twier.png' alt='footer-twier' /></a>
+                  <img src="/assets/image/footer_twier.png" alt="footer-twier" />
+                </a>
               </Link>
               <Link href="https://app.waveuniverse.org/">
                 <a target="_blank">
-                  <img src='/assets/image/footer_discord.png' alt='footer-discord' /></a>
+                  <img src="/assets/image/footer_discord.png" alt="footer-discord" />
+                </a>
               </Link>
             </dd>
           </dl>
         </div>
       </div>
-      <div className='container footer-content'>
+      <div className="footer-content container">
         <p>WAVE©2022</p>
         <div>
-          <Link href='/a'>Privacy Policy</Link>
-          <Link href='/b'>Terms of Use</Link>
+          <Link href="/a">Privacy Policy</Link>
+          <Link href="/b">Terms of Use</Link>
         </div>
       </div>
     </div>

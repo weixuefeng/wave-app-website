@@ -19,6 +19,7 @@
     "@reduxjs/toolkit": "^1.8.6",
     "@sentry/nextjs": "^7.14.2",
     "@tailwindcss/typography": "^0.5.7",
+    "antd": "^4.24.0",
     "autoprefixer": "^10.4.12",
     "axios": "^1.1.2",
     "i18next": "^21.8.0",
