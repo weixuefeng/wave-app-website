@@ -4,7 +4,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { useTranslation } from 'react-i18next'
 import { putLocalData } from 'localstorage/localstorage'
 import { LocalKey } from 'constants/key'
-import Login from './login'
+import Login from '../dialog/login'
 
 export default function Header(props) {
   const languageTitle = [

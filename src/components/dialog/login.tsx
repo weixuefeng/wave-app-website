@@ -1,11 +1,11 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { Form, Input, Button, Row, Col, Checkbox } from 'antd'
+import { Checkbox } from 'antd'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState, Fragment } from 'react'
 import Http from 'services/http'
 import { useAppDispatch, useAppSelector } from 'store/store'
-import { fetchUser, selectUser, updateUserInfo } from '../../reducer/userReducer'
+import { selectUser, updateUserInfo } from '../../reducer/userReducer'
 
 export default function Login() {
   let [isOpen, setIsOpen] = useState(false)
@@ -51,11 +51,18 @@ export default function Login() {
       })
   }
 
+
+
   return (
     <>
-      <li className="login" onClick={openModal}>
-        <span>Log In/Sign Up</span>
+      {currentUser == undefined ?<li className="login" onClick={openModal}>
+        <span>Log In / Sign Up</span>
+      </li>:<li className="flex flex-row cursor-pointer">
+        <img className="w-10 h-10 rounded-full" src={currentUser.avatar} alt="avatar"/>
       </li>
+      
+    }
+      
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" open={isOpen} onClose={closeModal}>
           <Transition.Child
