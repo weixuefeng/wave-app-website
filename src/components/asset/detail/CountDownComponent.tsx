@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 export default function CountDownComponent(props) {
   const { endTime, serverTime } = props
-  // const deltaTime = endTime - serverTime
-  const deltaTime = 86400
+  const deltaTime = endTime - serverTime
 
   const [timer, setTimer] = useState<any>()
 
