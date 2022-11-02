@@ -22,7 +22,7 @@ export default function HomeDataComonent(props) {
   return (
     <div id="home" className="container">
       <BlindBoxComponent blindBox={blindBox} />
-      <RecommendComponent blindBox={recommend} />
+      <RecommendComponent recommend={recommend} />
 
       {/* <div className="recommend">
         <p className="title">Recommend</p>

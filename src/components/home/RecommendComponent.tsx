@@ -114,14 +114,16 @@ export function Recommend(props) {
 }
 
 export default function RecommendComponent(props) {
-  const { blindBox } = props
-
+  const { recommend } = props
+  if(!recommend){
+    return <></>
+  }
   return (
     <div className="recommend">
       <h1>Recommended Box</h1>
 
       <div className="list">
-        {blindBox.map((item, index) => {
+        {recommend.map((item, index) => {
           return <Recommend item={item} key={index} />
         })}
       </div>

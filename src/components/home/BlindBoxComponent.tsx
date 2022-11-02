@@ -119,6 +119,9 @@ export function BlindBox(props) {
 export default function BlindBoxComponent(props) {
   const { blindBox } = props
 
+  if(!blindBox) {
+    return <></>
+  }
   return (
     <div className="blind-box">
       <h1>MyStery Box</h1>
