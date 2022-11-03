@@ -114,7 +114,7 @@
 
 .chain-content {
   @apply flex flex-col bg-gray-100 rounded-md p-4;
-  .item {
+  .chain-item {
     @apply flex flex-row items-center justify-between;
     .label {
       @apply text-gray-500 text-base;
