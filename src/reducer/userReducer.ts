@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-01 15:43:16
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-03 19:15:03
+ * @LastEditTime: 2022-11-03 20:28:26
  * @FilePath: /wave-app-webiste/src/reducer/userReducer.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -17,14 +17,9 @@ interface UserState {
   status: string
 }
 
-const userInfo = getLocalData(LocalKey.USER, '')
-let user
-if (userInfo && userInfo) {
-  user = JSON.parse(userInfo) as UserInfo
-}
 
 const initialState = {
-  currentUser: user,
+  currentUser: undefined,
   status: 'idle',
 } as UserState
 
