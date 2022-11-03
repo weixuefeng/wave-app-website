@@ -34,20 +34,29 @@ export default function TradePage() {
                   <a href="" className="cover">
                     <div className="perfect-square">
                       <img src={item.image} alt="img" />
-                      <span className="type">{getAssetNameByType(item.type)}</span>
+                      <span className={getAssetNameByType(item.type) == 'nft' ? 'type' : ''}>
+                        {getAssetNameByType(item.type)}
+                      </span>
                     </div>
                     <div className="collection-name">
                       <h3>{item.name}</h3>
-                      <h4>{item.price}NEW</h4>
+                      <h4>{Math.floor(parseInt(item.price))}NEW</h4>
                       <p className="price">
                         <span>List Price</span>
                         <span>Floor Difference</span>
                       </p>
                       <p className="gains">
-                        <span className="left">
-                          {item.list_price_direction == 1 ? '+' : item.list_price_direction == 0 ? '-' : null}{' '}
-                          {Math.floor(parseInt(item.list_price_percent))} %<i></i>
-                        </span>
+                        {
+                          item.list_price_direction == 1 ?
+                            (<span className='left'>
+                              + {Math.floor(parseInt(item.list_price_percent))} % ↑
+                              <i></i>
+                            </span>) : item.list_price_direction == 0 ?
+                              (<span className='left reduction'>
+                                - {Math.floor(parseInt(item.list_price_percent))} % ↓
+                                <i></i>
+                              </span>) : null
+                        }
                         <span className="right">{Math.floor(parseInt(item.list_price_percent))} above</span>
                       </p>
                     </div>

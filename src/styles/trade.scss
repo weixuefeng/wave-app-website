@@ -24,6 +24,9 @@
       span {
         @apply absolute top-3 left-3 rounded-lg bg-green57 p-2 text-sm font-bold text-white;
       }
+      .type {
+        @apply bg-blue1d;
+      }
     }
   }
   .collection-name {
@@ -48,6 +51,9 @@
       @apply mt-2 text-lg text-gray333;
       .left {
         @apply text-green57;
+      }
+      .reduction {
+        @apply text-reddd;
       }
     }
   }
