@@ -1,13 +1,24 @@
 export function splitAddress(address: string): string {
   if (!address) {
-    return ''
+    return address
   }
   if (address.length < 12) {
-    return ''
+    return address
   }
   const start = address.substring(0, 6)
   const end = address.substring(address.length - 6)
   return `${start}...${end}`
+}
+
+export function trimStr(str: string): string {
+  if (!str) {
+    return str
+  }
+  if (str.length < 24) {
+    return str
+  }
+
+  return str.substring(0, 20) + '...'
 }
 
 export default async function copyContent(content: string) {

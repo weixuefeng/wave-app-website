@@ -63,3 +63,50 @@
     }
   }
 }
+
+// collection activity
+.collection-activity {
+  @apply pt-8;
+  .item {
+    @apply grid grid-cols-12 items-center border-b-2 border-graye7 pb-4 pt-5;
+    .event {
+      @apply col-span-1;
+    }
+    .info {
+      @apply col-span-4 flex items-center;
+      img {
+        @apply mr-4 h-[5.5rem] w-[5.5rem] rounded-xl;
+      }
+      h3 {
+        @apply text-xl text-gray333;
+      }
+    }
+    .price {
+      @apply col-span-2 text-xl text-green57;
+    }
+    .trading {
+      @apply col-span-3 flex;
+      img {
+        @apply h-5 w-5 rounded-[50%];
+      }
+      h4 {
+        @apply ml-1 text-lg text-gray99;
+      }
+      .to {
+        @apply ml-1 flex items-center;
+      }
+      .form {
+        @apply flex items-center;
+      }
+      .arrow {
+        @apply flex items-center;
+        img {
+          @apply ml-1 h-4 w-4;
+        }
+      }
+    }
+    .date {
+      @apply col-span-2 text-right text-lg text-gray99;
+    }
+  }
+}
