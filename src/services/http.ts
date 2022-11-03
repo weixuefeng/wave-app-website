@@ -10,6 +10,7 @@ import { NFTDetail } from 'model/nft_asset'
 import { EVTDetail } from 'model/evt_asset'
 import { TradeItem } from 'model/trade'
 import { CollectionInfo } from 'model/collection'
+import { PAGE_SIZE } from 'constants/constant'
 
 let client = refreshClient()
 
@@ -127,7 +128,7 @@ class Http {
     let params = {
       keyword: keyword,
       page_id: pageId,
-      page_size: 20,
+      page_size: PAGE_SIZE
     }
     return _post(Api.nftTradeList, params) as Promise<Pagination<TradeItem>>
   }
@@ -137,6 +138,24 @@ class Http {
       collection_id: collectionId,
     }
     return _post(Api.nftCollection, params) as Promise<CollectionInfo>
+  }
+
+  getNFTList(collectionId:number, pageId: number) {
+    let params = {
+      page_id: pageId,
+      page_size: PAGE_SIZE,
+      collection_id: collectionId
+    };
+    return _post(Api.nftList, params) as Promise<Pagination<any>>
+  }
+
+  getNFTActivity(collectionId: number, pageId: number) {
+    let params = {
+      collection_id: collectionId,
+      page_id: pageId,
+      page_size: PAGE_SIZE
+    }
+    return _post(Api.nftActivity, params) as Promise<Pagination<any>>
   }
 }
 

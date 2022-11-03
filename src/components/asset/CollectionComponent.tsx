@@ -1,7 +1,10 @@
+import { Tab } from '@headlessui/react'
 import { CollectionInfo } from 'model/collection'
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import Http from 'services/http'
+import AllItemsComponent from './AllItemsComponent'
 import ChainInfoComponent from './ChainInfoComponent'
+import CollectionActivity from './CollectionActivityComponent'
 
 export default function CollectionComponent(props) {
   const { id } = props
@@ -50,15 +53,32 @@ export default function CollectionComponent(props) {
               <p className="label">Volume Traded</p>
             </div>
           </div>
-
-          <div className="chain-info">
-            <ChainInfoComponent address={''} tokenStandard={''} blockChain={''} creatorEariningPercent={''} />
+          <div className="mt-4 p-4">
+            <ChainInfoComponent
+              address={""}
+              tokenStandard={""}
+              blockChain={""}
+              creatorEariningPercent={""}
+            />
           </div>
         </div>
       </div>
 
       <div className="related-info">
-        <div className="tab"></div>
+        <Tab.Group>
+          <Tab.List>
+            <Tab className="tab-item">All Items</Tab>
+            <Tab className="tab-item ml-4">Activities</Tab>
+          </Tab.List>
+          <Tab.Panels>
+            <Tab.Panel>
+              <AllItemsComponent collectionId={collection.id}/>
+            </Tab.Panel>
+            <Tab.Panel>
+              <CollectionActivity collectionId={collection.id}/>
+            </Tab.Panel>
+          </Tab.Panels>
+        </Tab.Group>
       </div>
     </div>
   )

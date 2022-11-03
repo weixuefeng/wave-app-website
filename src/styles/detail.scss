@@ -70,7 +70,7 @@
   }
 }
 .countdown {
-  @apply flex flex-col items-center justify-start rounded-md bg-gray-200 p-4;
+  @apply flex flex-col items-center justify-start rounded-md bg-gray-100 p-4;
   .time-info {
     @apply mt-4 flex w-full flex-row justify-around;
     .item {
@@ -97,17 +97,25 @@
         @apply overflow-hidden text-ellipsis whitespace-nowrap text-2xl text-gray-900;
       }
       .status {
-        @apply flex flex-row items-center justify-around;
-        @apply mt-4 rounded-md bg-gray-100 p-4;
+        @apply flex flex-row justify-around items-center;
+        @apply p-4 rounded-md mt-4;
         .item {
           .value {
             @apply text-lg text-black;
           }
           .label {
-            @apply text-lg text-gray-500;
+            @apply text-gray-500 text-base;
           }
         }
       }
+    }
+  }
+  .related-info {
+    @apply flex flex-col;
+    .tab-item {
+      @apply text-2xl p-2;
+      @apply ui-selected:text-black ui-selected:border-b-4 ui-selected:border-black;
+      @apply ui-not-selected:text-gray-500;
     }
   }
 }
@@ -115,12 +123,12 @@
 .chain-content {
   @apply flex flex-col rounded-md bg-gray-100 p-4;
   .chain-item {
-    @apply flex flex-row items-center justify-between;
+    @apply flex flex-row items-center justify-between m-1;
     .label {
-      @apply text-base text-gray-500;
+      @apply text-gray-500 text-lg;
     }
     .value {
-      @apply flex flex-row items-center justify-start text-base text-gray-900;
+      @apply text-gray-900 text-lg flex flex-row justify-start items-center;
       svg {
         @apply h-4 w-4;
         @apply cursor-pointer;
