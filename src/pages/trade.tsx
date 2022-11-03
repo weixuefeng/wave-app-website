@@ -24,7 +24,7 @@ export default function TradePage() {
 
   function content() {
     return (
-      <div className="asset">
+      <div className="asset trade">
         <div className="container mx-auto">
           <h2>Trade</h2>
           <ul>

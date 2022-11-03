@@ -18,3 +18,7 @@ export default async function copyContent(content: string) {
     console.log('failed to copy to clipboard. error=' + error)
   }
 }
+
+export function floorNum(num) {
+  return Math.floor(num * 100) / 100
+}

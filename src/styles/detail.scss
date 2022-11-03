@@ -97,14 +97,14 @@
         @apply overflow-hidden text-ellipsis whitespace-nowrap text-2xl text-gray-900;
       }
       .status {
-        @apply flex flex-row justify-around items-center;
-        @apply p-4 rounded-md mt-4;
+        @apply flex flex-row items-center justify-around;
+        @apply mt-4 rounded-md p-4;
         .item {
           .value {
             @apply text-lg text-black;
           }
           .label {
-            @apply text-gray-500 text-base;
+            @apply text-base text-gray-500;
           }
         }
       }
@@ -113,8 +113,8 @@
   .related-info {
     @apply flex flex-col;
     .tab-item {
-      @apply text-2xl p-2;
-      @apply ui-selected:text-black ui-selected:border-b-4 ui-selected:border-black;
+      @apply p-2 text-2xl;
+      @apply ui-selected:border-b-4 ui-selected:border-black ui-selected:text-black;
       @apply ui-not-selected:text-gray-500;
     }
   }
@@ -123,12 +123,12 @@
 .chain-content {
   @apply flex flex-col rounded-md bg-gray-100 p-4;
   .chain-item {
-    @apply flex flex-row items-center justify-between m-1;
+    @apply m-1 flex flex-row items-center justify-between;
     .label {
-      @apply text-gray-500 text-lg;
+      @apply text-lg text-gray-500;
     }
     .value {
-      @apply text-gray-900 text-lg flex flex-row justify-start items-center;
+      @apply flex flex-row items-center justify-start text-lg text-gray-900;
       svg {
         @apply h-4 w-4;
         @apply cursor-pointer;
@@ -140,7 +140,7 @@
 .properties {
   @apply grid grid-cols-2;
   .property {
-    @apply relative flex flex-col bg-gray-100 p-4 m-2 rounded-md;
+    @apply relative m-2 flex flex-col rounded-md bg-gray-100 p-4;
     .type {
       @apply text-sm text-gray-700;
     }
@@ -152,7 +152,7 @@
     }
 
     img {
-      @apply w-8 h-8 absolute top-0 right-0 rounded-md;
+      @apply absolute top-0 right-0 h-8 w-8 rounded-md;
     }
   }
 }

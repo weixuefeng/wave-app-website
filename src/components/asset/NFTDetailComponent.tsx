@@ -73,11 +73,12 @@ export default function NFTDetailComponent(props) {
             blockChain={nftDetail.chain_info.block_chain}
             creatorEariningPercent={nftDetail.creator_earnings_percent}
           />
-          {nftDetail.properties.length > 0 && <>
-            <h2>Properties</h2>
-            <PropertiesComponents properties={nftDetail.properties}/>
-          </>}
-          
+          {nftDetail.properties.length > 0 && (
+            <>
+              <h2>Properties</h2>
+              <PropertiesComponents properties={nftDetail.properties} />
+            </>
+          )}
         </div>
         <div className="intro">
           <h2>Introduction</h2>

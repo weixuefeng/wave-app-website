@@ -5,10 +5,10 @@ export function Property(props) {
 
   function getTypeIcon(type: string) {
     switch (type) {
-      case "ENCRYPTION":
-        return <img src="/assets/image/icon_lock.png" alt="img_lock"/>
-      case "VARIABLE":
-          return <img src="/assets/image/icon_var.png" alt="img_var"/>
+      case 'ENCRYPTION':
+        return <img src="/assets/image/icon_lock.png" alt="img_lock" />
+      case 'VARIABLE':
+        return <img src="/assets/image/icon_var.png" alt="img_var" />
       default:
         return <></>
     }
@@ -25,12 +25,12 @@ export function Property(props) {
 }
 
 export default function PropertiesComponents(props) {
-  const {properties} = props
+  const { properties } = props
 
   return (
     <div className="properties">
       {properties.map((element, index) => {
-        return <Property key={index} property={element}/>
+        return <Property key={index} property={element} />
       })}
     </div>
   )

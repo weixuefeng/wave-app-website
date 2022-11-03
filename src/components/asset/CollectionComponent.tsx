@@ -54,12 +54,7 @@ export default function CollectionComponent(props) {
             </div>
           </div>
           <div className="mt-4 p-4">
-            <ChainInfoComponent
-              address={""}
-              tokenStandard={""}
-              blockChain={""}
-              creatorEariningPercent={""}
-            />
+            <ChainInfoComponent address={''} tokenStandard={''} blockChain={''} creatorEariningPercent={''} />
           </div>
         </div>
       </div>
@@ -72,10 +67,10 @@ export default function CollectionComponent(props) {
           </Tab.List>
           <Tab.Panels>
             <Tab.Panel>
-              <AllItemsComponent collectionId={collection.id}/>
+              <AllItemsComponent collectionId={collection.id} />
             </Tab.Panel>
             <Tab.Panel>
-              <CollectionActivity collectionId={collection.id}/>
+              <CollectionActivity collectionId={collection.id} />
             </Tab.Panel>
           </Tab.Panels>
         </Tab.Group>

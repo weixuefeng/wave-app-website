@@ -128,7 +128,7 @@ class Http {
     let params = {
       keyword: keyword,
       page_id: pageId,
-      page_size: PAGE_SIZE
+      page_size: PAGE_SIZE,
     }
     return _post(Api.nftTradeList, params) as Promise<Pagination<TradeItem>>
   }
@@ -140,12 +140,12 @@ class Http {
     return _post(Api.nftCollection, params) as Promise<CollectionInfo>
   }
 
-  getNFTList(collectionId:number, pageId: number) {
+  getNFTList(collectionId: number, pageId: number) {
     let params = {
       page_id: pageId,
       page_size: PAGE_SIZE,
-      collection_id: collectionId
-    };
+      collection_id: collectionId,
+    }
     return _post(Api.nftList, params) as Promise<Pagination<any>>
   }
 
@@ -153,7 +153,7 @@ class Http {
     let params = {
       collection_id: collectionId,
       page_id: pageId,
-      page_size: PAGE_SIZE
+      page_size: PAGE_SIZE,
     }
     return _post(Api.nftActivity, params) as Promise<Pagination<any>>
   }

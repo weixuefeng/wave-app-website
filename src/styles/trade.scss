@@ -1,7 +1,12 @@
-.asset {
+.trade {
   @apply bg-grayf8 pb-16;
+}
+.asset {
   h2 {
     @apply py-12 text-[2.125rem] font-bold text-blackText;
+  }
+  .all-item {
+    @apply mt-[3.25rem];
   }
   ul {
     @apply grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:grid-cols-4;

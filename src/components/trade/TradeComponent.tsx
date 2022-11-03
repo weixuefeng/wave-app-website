@@ -1,14 +1,19 @@
+/*
+ * @Author: liukeke liukeke@diynova.com
+ * @Date: 2022-11-03 15:33:51
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-03 16:44:40
+ * @FilePath: /wave-app-webiste/src/components/trade/TradeComponent.tsx
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import { floorNum } from 'utils/functions'
 import { getAssetDetailPathByTradeItem } from 'utils/route'
 import { getAssetNameByType } from '../../model/asset'
 
 export default function TradeComponent(props) {
   const { itemDate } = props
-
-  function floorNum(num) {
-    return Math.floor(num * 100) / 100
-  }
 
   return (
     <li className="item">
