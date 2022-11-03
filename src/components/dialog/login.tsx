@@ -65,9 +65,9 @@ export default function Login() {
         <Menu.Button>
           <img className="h-10 w-10 rounded-full" src={currentUser.avatar} alt="avatar" />
         </Menu.Button>
-        <Menu.Items as={"div"} className="user-menu">
+        <Menu.Items as={'div'} className="user-menu">
           <div>
-            <img src={currentUser.avatar} alt="avatar"/>
+            <img src={currentUser.avatar} alt="avatar" />
             <p className="name">{currentUser.name}</p>
             <p className="address">{splitAddress(currentUser.wallet_address)}</p>
             <div className="list">
@@ -75,7 +75,9 @@ export default function Login() {
               <a href="/wallet">Wallet</a>
               <a href="/assets">Assets</a>
               <a href="/cinema">Cinema</a>
-              <a href="/settings" className="mt-4">Settings</a>
+              <a href="/settings" className="mt-4">
+                Settings
+              </a>
               <a className="text-red-500">Log Out</a>
             </div>
           </div>
@@ -85,7 +87,7 @@ export default function Login() {
   }
 
   function userComponent() {
-    return <li className='relative'>{userMenu()}</li>
+    return <li className="relative">{userMenu()}</li>
   }
 
   function getUserComponent() {

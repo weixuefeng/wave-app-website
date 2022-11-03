@@ -7,5 +7,5 @@ interface LocalKeyInterface {
 export const LocalKey: LocalKeyInterface = {
   LANGUAGE: 'language',
   TOKEN: 'token',
-  USER: 'user'
+  USER: 'user',
 }

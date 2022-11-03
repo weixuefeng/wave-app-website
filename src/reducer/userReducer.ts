@@ -17,9 +17,9 @@ interface UserState {
   status: string
 }
 
-const userInfo = getLocalData(LocalKey.USER, '') 
-let user;
-if(userInfo && userInfo) {
+const userInfo = getLocalData(LocalKey.USER, '')
+let user
+if (userInfo && userInfo) {
   user = JSON.parse(userInfo) as UserInfo
 }
 
