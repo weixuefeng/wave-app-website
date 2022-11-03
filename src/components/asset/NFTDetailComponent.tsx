@@ -1,7 +1,9 @@
 import { NFTDetail } from 'model/nft_asset'
 import React, { useEffect, useState } from 'react'
 import Http from 'services/http'
+import copyContent, { splitAddress } from 'utils/functions'
 import CountDownComponent from './detail/CountDownComponent'
+import { ClipboardDocumentIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
 
 export default function NFTDetailComponent(props) {
   const { id } = props
@@ -12,7 +14,7 @@ export default function NFTDetailComponent(props) {
     Http.getInstance()
       .getNFTInfo(parseInt(id))
       .then(response => {
-        setNFTDetail(response.result)
+        setNFTDetail(response)
       })
       .catch(error => {
         console.log(error)
@@ -46,11 +48,11 @@ export default function NFTDetailComponent(props) {
           <div className="price">
             <div>
               <p className="label">Hightest Bid:</p>
-              <p className="value">1000,000 NEW</p>
+              <p className="value">{nftDetail.highest_bid_price} NEW</p>
             </div>
             <div>
               <p className="label">Floor Price:</p>
-              <p className="value">1000,000 NEW</p>
+              <p className="value">{nftDetail.lowest_bid_price} NEW</p>
             </div>
           </div>
           {/** action */}
@@ -64,26 +66,30 @@ export default function NFTDetailComponent(props) {
       <div className="chain-info">
         <div className="detail">
           <h2>Details</h2>
-          <div className="item">
-            <p>Contract address</p>
-            <p>{nftDetail.chain_info.contract_address}</p>
-          </div>
-          <div className="item">
-            <p>Token Standard</p>
-            <p>{nftDetail.chain_info.token_standard}</p>
-          </div>
-          <div className="item">
-            <p>Blockchain</p>
-            <p>{nftDetail.chain_info.block_chain}</p>
-          </div>
-          <div className="item">
-            <p>Creator Earnings</p>
-            <p>{nftDetail.creator_earnings_percent}</p>
+          <div className="content">
+            <div className="item">
+              <p className="label">Contract address</p>
+              <p className="value">{splitAddress(nftDetail.chain_info.contract_address)}<ClipboardDocumentIcon onClick={() => copyContent(nftDetail.chain_info.contract_address)}/></p>
+            </div>
+            <div className="item">
+              <p className="label">Token Standard</p>
+              <p className="value">{nftDetail.chain_info.token_standard}</p>
+            </div>
+            <div className="item">
+              <p className="label">Blockchain</p>
+              <p className="value">{nftDetail.chain_info.block_chain}</p>
+            </div>
+            <div className="item">
+              <p className="label">Creator Earnings</p>
+              <p className="value">{nftDetail.creator_earnings_percent}<InformationCircleIcon/></p>
+            </div>
           </div>
         </div>
         <div className="intro">
           <h2>Introduction</h2>
-          <p>{nftDetail.description}</p>
+          <div className="content">
+            <p>{nftDetail.description}</p>
+          </div>
         </div>
       </div>
     </div>

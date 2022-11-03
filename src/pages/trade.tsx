@@ -13,7 +13,7 @@ export default function TradePage() {
     Http.getInstance()
       .getNFTTradeList(1, null)
       .then(response => {
-        setTradeItems(response.result.data)
+        setTradeItems(response.data)
       })
       .catch(error => {
         console.log(error)

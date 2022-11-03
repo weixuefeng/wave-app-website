@@ -1,29 +1,10 @@
-<<<<<<< HEAD
-<!--
- * @Author: zxt0805 zhuxiaotong@diynova.com
- * @Date: 2022-10-24 11:54:01
- * @LastEditors: zxt0805 zhuxiaotong@diynova.com
- * @LastEditTime: 2022-10-28 10:18:23
- * @FilePath: /wave-app-website/README.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-# Next.JS Starter Boilerplate
-
-A Next.js starter kit template with Next.js 12 + React 18 + Typescript + Tailwind CSS 3 + Heroicons + Headless UI.
-
-Other tools included: Autoprefixer, Sass, PostCSS, ESLint, Prettier.
-
-Live preview for this repo: https://nextjs-starter.aris.ac
-=======
 # Wave-app-website
->>>>>>> 1f223d5a8e47431e05318d959c1d9d86453c178f
 
 ## Getting Started
 
 ### 项目基础框架
 nextjs + tailwindcss + redux + react-i18n + sentry
 
-<<<<<<< HEAD
 ```bash
 # Build
 yarn build
@@ -31,9 +12,6 @@ SENTRY_AUTH_TOKEN=d604cf7148fa48fd8cb93b7dec6867896593a02a34e544218b3bb8bf28d45d
 
 # Start server with build files
 yarn start
-=======
-### 目录结构说明
->>>>>>> 1f223d5a8e47431e05318d959c1d9d86453c178f
 ```
 ├── package.json
 ├── postcss.config.js

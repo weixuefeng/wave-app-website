@@ -1,46 +1,12 @@
-.evt-detail {
-  @apply flex flex-row items-center justify-start;
+.evt-detail,.nft-detail {
+  @apply mt-16 flex flex-col justify-between p-4;
   .info {
-    @apply flex flex-col md:flex-row;
+    @apply grid grid-cols-1 md:grid-cols-3;
     img {
-      @apply w-full md:w-1/2;
+      @apply col-span-1;
     }
     .detail {
-      @apply ml-2 flex w-full flex-col justify-start md:w-1/2;
-
-      .evt-tag {
-        @apply bg-green-500 p-1 text-sm text-white;
-      }
-
-      .statics {
-        @apply flex flex-row justify-around;
-        .item {
-          @apply flex flex-col;
-        }
-      }
-      .chain-info {
-        @apply mt-4 flex flex-col;
-        .item {
-          @apply flex items-center justify-between;
-        }
-      }
-      .license {
-        @apply flex items-center justify-between;
-        @apply mt-4;
-      }
-    }
-  }
-}
-
-.nft-detail {
-  @apply mt-16 flex flex-col justify-between;
-  .info {
-    @apply flex flex-col md:flex-row;
-    img {
-      @apply w-full md:w-1/2;
-    }
-    .detail {
-      @apply ml-2 mt-4 flex w-full flex-col justify-start md:ml-8 md:mt-0 md:w-1/2;
+      @apply col-span-2 ml-2 mt-4 flex flex-col justify-start md:ml-8 md:mt-0;
       h2 {
         @apply text-3xl font-medium;
       }
@@ -81,20 +47,39 @@
   }
 
   .chain-info {
-    @apply flex w-full flex-wrap items-start;
-    h2 {
-      @apply pt-4 pb-4 text-2xl font-medium;
-    }
+    @apply grid grid-cols-1 md:grid-cols-3;
     .detail {
-      @apply flex w-full flex-col md:w-1/2;
-      .item {
-        @apply flex flex-row items-center justify-between pl-4 pr-4;
+      @apply col-span-1;
+      h2 {
+        @apply pt-4 pb-4 text-2xl font-medium;
+      }
+      .content {
+        @apply flex flex-col bg-gray-100 rounded-md p-4;
+        .item {
+          @apply flex flex-row items-center justify-between;
+          .label {
+            @apply text-gray-500 text-base;
+          }
+          .value {
+            @apply text-gray-900 text-base flex flex-row justify-start items-center;
+            svg {
+              @apply h-4 w-4;
+              @apply cursor-pointer;
+            }
+          }
+        }
       }
     }
     .intro {
-      @apply flex w-full flex-col md:w-1/2;
-      p {
-        @apply whitespace-pre-line;
+      @apply flex flex-col col-span-2 md:ml-8;
+      h2 {
+        @apply pt-4 pb-4 text-2xl font-medium;
+      }
+      .content {
+        @apply flex flex-col bg-gray-100 rounded-md p-4;
+        p {
+          @apply whitespace-pre-line text-gray-500;
+        }
       }
     }
   }
@@ -107,6 +92,30 @@
       @apply flex flex-col items-center justify-start;
       .green {
         @apply text-green-700;
+      }
+    }
+  }
+}
+
+
+.nft-collection {
+  @apply flex flex-col p-2;
+
+  .base-info {
+    @apply grid grid-cols-3 gap-x-3;
+    img{
+      @apply col-span-1;
+    }
+    .content {
+      @apply col-span-1 flex flex-col;
+
+      h2 {
+        @apply text-2xl text-gray-900 whitespace-nowrap text-ellipsis overflow-hidden;
+      }
+      .status {
+        @apply flex flex-row justify-around items-center;
+        @apply p-2 rounded-md bg-gray-200 mt-4;
+        
       }
     }
   }

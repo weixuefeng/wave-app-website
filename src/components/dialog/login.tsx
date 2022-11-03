@@ -39,12 +39,8 @@ export default function Login() {
     Http.getInstance()
       .login(email, verifyCode)
       .then(response => {
-        if (response.error_code == 1) {
-          dispatch(updateUserInfo(response.result))
+          dispatch(updateUserInfo(response))
           closeModal()
-        } else {
-          console.log('login error' + response.error_message)
-        }
       })
       .catch(error => {
         console.log(error)

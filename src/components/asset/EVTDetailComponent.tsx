@@ -1,6 +1,9 @@
+import { ClipboardDocumentIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
 import { EVTDetail } from 'model/evt_asset'
 import React, { useEffect, useState } from 'react'
 import Http from 'services/http'
+import copyContent, { splitAddress } from 'utils/functions'
+import CountDownComponent from './detail/CountDownComponent'
 
 export default function EVTDetailComponent(props) {
   const { id } = props
@@ -14,7 +17,7 @@ export default function EVTDetailComponent(props) {
     await Http.getInstance()
       .getEvtDetail(id)
       .then(response => {
-        setEvtDetail(response.result)
+        setEvtDetail(response)
       })
       .catch(error => {
         console.log(error)
@@ -28,54 +31,57 @@ export default function EVTDetailComponent(props) {
     <div className="evt-detail">
       <div className="info">
         <img src={evtDetail.image} alt={evtDetail.name} />
-
         <div className="detail">
           <h2>{evtDetail.name}</h2>
-          <div className="evt-tag">EVT</div>
-          <div className="statics">
-            <div className="item">
-              <p>85</p>
-              <p>items</p>
+          
+          {/** price info */}
+          <div className="price">
+            <div>
+              <p className="label">Hightest Bid:</p>
+              <p className="value">{evtDetail.highest_bid_price} NEW</p>
             </div>
-            <div className="item">
-              <p>213</p>
-              <p>Owners</p>
-            </div>
-            <div className="item">
-              <p>4200</p>
-              <p>Floor Price</p>
-            </div>
-            <div className="item">
-              <p>8400</p>
-              <p>Volume Traded</p>
+            <div>
+              <p className="label">Floor Price:</p>
+              <p className="value">{evtDetail.lowest_sell_price} NEW</p>
             </div>
           </div>
-          <div className="chain-info">
-            <div className="item">
-              <p>Contract Address</p>
-              <p>1231232</p>
-            </div>
-            <div className="item">
-              <p>Token Standard</p>
-              <p>1231232</p>
-            </div>
-            <div className="item">
-              <p>Block chain</p>
-              <p>1231232</p>
-            </div>
-            <div className="item">
-              <p>Creator Earnings</p>
-              <p>1231232</p>
-            </div>
-          </div>
-          <div className="license">
-            <p>License</p>
-            <p>{'>'}</p>
+          {/** action */}
+          <div className="action">
+            <button className="primary">Buy</button>
+            <button className="primary ml-4 outline">Make Offer </button>
           </div>
         </div>
       </div>
 
-      <div></div>
+      <div className="chain-info">
+        <div className="detail">
+          <h2>Details</h2>
+          <div className="content">
+            <div className="item">
+              <p className="label">Contract address</p>
+              <p className="value">{splitAddress(evtDetail.detail.contract_address)}<ClipboardDocumentIcon onClick={() => copyContent(evtDetail.detail.contract_address)}/></p>
+            </div>
+            <div className="item">
+              <p className="label">Token Standard</p>
+              <p className="value">{evtDetail.detail.token_standard}</p>
+            </div>
+            <div className="item">
+              <p className="label">Blockchain</p>
+              <p className="value">{evtDetail.detail.block_chain}</p>
+            </div>
+            <div className="item">
+              <p className="label">Creator Earnings</p>
+              <p className="value">{evtDetail.creator_earnings_percent}<InformationCircleIcon/></p>
+            </div>
+          </div>
+        </div>
+        <div className="intro">
+          <h2>Introduction</h2>
+          <div className="content">
+            <p>{evtDetail.introduction}</p>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
