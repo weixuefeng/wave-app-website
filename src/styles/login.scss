@@ -1,0 +1,23 @@
+.user-menu {
+  @apply flex flex-col bg-green-600 rounded-md;
+  @apply absolute top-12 right-8;
+  @apply w-60;
+  div {
+    @apply flex flex-col justify-start items-center ;
+    img {
+      @apply w-12 h-12 rounded-full mt-2;
+    }
+    .name {
+      @apply text-white text-base font-medium mt-1;
+    }
+    .address {
+      @apply text-white bg-green-800 bg-opacity-25 px-2 py-1 rounded-md text-xs mt-2 mb-2;
+    }
+    .list {
+      @apply flex flex-col divide-y bg-white w-full text-left items-start p-2;
+      a {
+        @apply text-left p-2 w-full cursor-pointer;
+      }
+    }
+  }
+}

@@ -1,10 +1,13 @@
-import { Dialog, Transition } from '@headlessui/react'
+import { Dialog, Menu, Transition } from '@headlessui/react'
 import { Checkbox } from 'antd'
+import { LocalKey } from 'constants/key'
+import { putLocalData } from 'localstorage/localstorage'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState, Fragment } from 'react'
 import Http from 'services/http'
 import { useAppDispatch, useAppSelector } from 'store/store'
+import { splitAddress } from 'utils/functions'
 import { selectUser, updateUserInfo } from '../../reducer/userReducer'
 
 export default function Login() {
@@ -39,6 +42,7 @@ export default function Login() {
     Http.getInstance()
       .login(email, verifyCode)
       .then(response => {
+        putLocalData(LocalKey.USER, JSON.stringify(response))
         dispatch(updateUserInfo(response))
         closeModal()
       })
@@ -47,18 +51,54 @@ export default function Login() {
       })
   }
 
+  function noUserComponent() {
+    return (
+      <li className="login" onClick={openModal}>
+        <span>Log In / Sign Up</span>
+      </li>
+    )
+  }
+
+  function userMenu() {
+    return (
+      <Menu>
+        <Menu.Button>
+          <img className="h-10 w-10 rounded-full" src={currentUser.avatar} alt="avatar" />
+        </Menu.Button>
+        <Menu.Items as={"div"} className="user-menu">
+          <div>
+            <img src={currentUser.avatar} alt="avatar"/>
+            <p className="name">{currentUser.name}</p>
+            <p className="address">{splitAddress(currentUser.wallet_address)}</p>
+            <div className="list">
+              <a href="/tickets">Tickets</a>
+              <a href="/wallet">Wallet</a>
+              <a href="/assets">Assets</a>
+              <a href="/cinema">Cinema</a>
+              <a href="/settings" className="mt-4">Settings</a>
+              <a className="text-red-500">Log Out</a>
+            </div>
+          </div>
+        </Menu.Items>
+      </Menu>
+    )
+  }
+
+  function userComponent() {
+    return <li className='relative'>{userMenu()}</li>
+  }
+
+  function getUserComponent() {
+    if (!currentUser) {
+      return noUserComponent()
+    } else {
+      return userComponent()
+    }
+  }
+
   return (
     <>
-      {currentUser == undefined ? (
-        <li className="login" onClick={openModal}>
-          <span>Log In / Sign Up</span>
-        </li>
-      ) : (
-        <li className="flex cursor-pointer flex-row">
-          <img className="h-10 w-10 rounded-full" src={currentUser.avatar} alt="avatar" />
-        </li>
-      )}
-
+      {getUserComponent()}
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" open={isOpen} onClose={closeModal}>
           <Transition.Child
