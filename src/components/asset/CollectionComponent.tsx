@@ -52,12 +52,7 @@ export default function CollectionComponent(props) {
           </div>
 
           <div className="chain-info">
-          <ChainInfoComponent
-            address={""}
-            tokenStandard={""}
-            blockChain={""}
-            creatorEariningPercent={""}
-          />
+            <ChainInfoComponent address={''} tokenStandard={''} blockChain={''} creatorEariningPercent={''} />
           </div>
         </div>
       </div>
