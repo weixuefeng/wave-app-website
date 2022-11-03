@@ -14,7 +14,7 @@ export default function NFTDetailComponent(props) {
     Http.getInstance()
       .getNFTInfo(parseInt(id))
       .then(response => {
-        setNFTDetail(response.result)
+        setNFTDetail(response)
       })
       .catch(error => {
         console.log(error)

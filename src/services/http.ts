@@ -9,6 +9,7 @@ import { Banner } from 'model/banner'
 import { NFTDetail } from 'model/nft_asset'
 import { EVTDetail } from 'model/evt_asset'
 import { TradeItem } from 'model/trade'
+import { CollectionInfo } from 'model/collection'
 
 let client = refreshClient()
 
@@ -35,7 +36,12 @@ function _post(url: string, param: any, config: any = null) {
       .post('/api/proxy/', data, config)
       .then(response => {
         if (response.status === 200) {
-          resolve(response.data)
+          const info = response.data as BaseResponse<any>
+          if(info.error_code == 1) {
+            resolve(info.result)
+          } else {
+            reject(info.error_message)
+          }
         } else {
           reject(response.statusText)
         }
@@ -87,43 +93,50 @@ class Http {
   }
 
   // login
-  login(email: string, code: string): Promise<BaseResponse<UserInfo>> {
+  login(email: string, code: string): Promise<UserInfo> {
     let params = {
       email: email,
       code: code,
     }
-    return _post(Api.login, params) as Promise<BaseResponse<UserInfo>>
+    return _post(Api.login, params) as Promise<UserInfo>
   }
 
   // home
   getHomeBanner() {
     let params = {}
-    return _post(Api.bannerList, params) as Promise<BaseResponse<Pagination<Banner>>>
+    return _post(Api.bannerList, params) as Promise<Pagination<Banner>>
   }
 
   getHomeList() {
     let params = {}
-    return _post(Api.nftIndex, params) as Promise<BaseResponse<HomeData>>
+    return _post(Api.nftIndex, params) as Promise<HomeData>
   }
 
   // asset detail
-  getNFTInfo(nftId: number): Promise<BaseResponse<NFTDetail>> {
+  getNFTInfo(nftId: number): Promise<NFTDetail> {
     let params = { nft_id: nftId }
-    return _post(Api.nftInfo, params) as Promise<BaseResponse<NFTDetail>>
+    return _post(Api.nftInfo, params) as Promise<NFTDetail>
   }
 
-  getEvtDetail(collectionId: number): Promise<BaseResponse<EVTDetail>> {
+  getEvtDetail(collectionId: number): Promise<EVTDetail> {
     let params = { collection_id: collectionId.toString() }
-    return _post(Api.evtDetail, params) as Promise<BaseResponse<EVTDetail>>
+    return _post(Api.evtDetail, params) as Promise<EVTDetail>
   }
 
-  getNFTTradeList(pageId: number = 1, keyword: string | null): Promise<BaseResponse<Pagination<TradeItem>>> {
+  getNFTTradeList(pageId: number = 1, keyword: string | null): Promise<Pagination<TradeItem>> {
     let params = {
       keyword: keyword,
       page_id: pageId,
     }
-    return _post(Api.nftTradeList, params) as Promise<BaseResponse<Pagination<TradeItem>>>
+    return _post(Api.nftTradeList, params) as Promise<Pagination<TradeItem>>
   }
-}
+
+  getNFTCollection(collectionId: number):Promise<CollectionInfo> {
+    let params = {
+      collection_id: collectionId
+    }
+    return _post(Api.nftCollection, params) as Promise<CollectionInfo>
+  }
+} 
 
 export default Http

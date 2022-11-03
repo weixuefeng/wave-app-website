@@ -18,3 +18,4 @@ export default async function copyContent(content: string) {
       console.log('failed to copy to clipboard. error=' + error);
   }
 }
+

@@ -96,3 +96,27 @@
     }
   }
 }
+
+
+.nft-collection {
+  @apply flex flex-col p-2;
+
+  .base-info {
+    @apply grid grid-cols-3 gap-x-3;
+    img{
+      @apply col-span-1;
+    }
+    .content {
+      @apply col-span-1 flex flex-col;
+
+      h2 {
+        @apply text-2xl text-gray-900 whitespace-nowrap text-ellipsis overflow-hidden;
+      }
+      .status {
+        @apply flex flex-row justify-around items-center;
+        @apply p-2 rounded-md bg-gray-200 mt-4;
+        
+      }
+    }
+  }
+}

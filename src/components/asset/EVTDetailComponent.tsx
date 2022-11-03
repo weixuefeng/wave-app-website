@@ -17,7 +17,7 @@ export default function EVTDetailComponent(props) {
     await Http.getInstance()
       .getEvtDetail(id)
       .then(response => {
-        setEvtDetail(response.result)
+        setEvtDetail(response)
       })
       .catch(error => {
         console.log(error)
