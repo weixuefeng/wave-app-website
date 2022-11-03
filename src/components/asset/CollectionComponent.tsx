@@ -1,6 +1,7 @@
 import { CollectionInfo } from 'model/collection'
 import React, { useEffect, useState } from 'react'
 import Http from 'services/http'
+import ChainInfoComponent from './ChainInfoComponent'
 
 export default function CollectionComponent(props) {
   const { id } = props
@@ -33,21 +34,30 @@ export default function CollectionComponent(props) {
           <h2>{collection.name}</h2>
           <div className="status">
             <div className="item">
-              <p>{collection.stats.item_number}</p>
-              <p>Items</p>
+              <p className="value">{collection.stats.item_number}</p>
+              <p className="label">Items</p>
             </div>
             <div className="item">
-              <p>{collection.stats.owner_number}</p>
-              <p>Owners</p>
+              <p className="value">{collection.stats.owner_number}</p>
+              <p className="label">Owners</p>
             </div>
             <div className="item">
-              <p>{collection.stats.floor_price}</p>
-              <p>Floor Price</p>
+              <p className="value">{collection.stats.floor_price}</p>
+              <p className="label">Floor Price</p>
             </div>
             <div className="item">
-              <p>{collection.stats.volume_all}</p>
-              <p>Volume Traded</p>
+              <p className="value">{collection.stats.volume_all}</p>
+              <p className="label">Volume Traded</p>
             </div>
+          </div>
+
+          <div className="chain-info">
+          <ChainInfoComponent
+            address={""}
+            tokenStandard={""}
+            blockChain={""}
+            creatorEariningPercent={""}
+          />
           </div>
         </div>
       </div>
