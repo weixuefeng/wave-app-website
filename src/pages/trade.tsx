@@ -1,8 +1,10 @@
 import NormalLayout from 'components/layout/normalLayout'
 import { PageModel } from 'model/navModel'
 import { TradeItem } from 'model/trade'
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Http from 'services/http'
+import { getAssetDetailPathByTradeItem } from 'utils/route'
 import { getAssetNameByType } from '../model/asset'
 
 export default function TradePage() {
@@ -13,14 +15,15 @@ export default function TradePage() {
     Http.getInstance()
       .getNFTTradeList(1, null)
       .then(response => {
+        console.log(response);
+        
         setTradeItems(response.data)
       })
       .catch(error => {
         console.log(error)
       })
-  })
+  },[])
 
-  console.log('nndnnnd', tradeItems)
 
   function content() {
     return (
@@ -31,6 +34,7 @@ export default function TradePage() {
             {tradeItems?.map((item, index) => {
               return (
                 <li className="item" key={index}>
+                  <Link href={getAssetDetailPathByTradeItem(item)}>
                   <a href="" className="cover">
                     <div className="perfect-square">
                       <img src={item.image} alt="img" />
@@ -61,6 +65,7 @@ export default function TradePage() {
                       </p>
                     </div>
                   </a>
+                  </Link>
                 </li>
               )
             })}
