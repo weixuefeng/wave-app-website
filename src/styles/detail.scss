@@ -128,3 +128,23 @@
     }
   }
 }
+
+.properties {
+  @apply grid grid-cols-2;
+  .property {
+    @apply relative flex flex-col bg-gray-100 p-4 m-2 rounded-md;
+    .type {
+      @apply text-sm text-gray-700;
+    }
+    .value {
+      @apply text-base text-gray-900;
+    }
+    .proportion {
+      @apply text-sm text-gray-600;
+    }
+
+    img {
+      @apply w-8 h-8 absolute top-0 right-0 rounded-md;
+    }
+  }
+}

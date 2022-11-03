@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Http from 'services/http'
 import CountDownComponent from './detail/CountDownComponent'
 import ChainInfoComponent from './ChainInfoComponent'
+import PropertiesComponents from './PropertiesComponents'
 
 export default function NFTDetailComponent(props) {
   const { id } = props
@@ -72,6 +73,11 @@ export default function NFTDetailComponent(props) {
             blockChain={nftDetail.chain_info.block_chain}
             creatorEariningPercent={nftDetail.creator_earnings_percent}
           />
+          {nftDetail.properties.length > 0 && <>
+            <h2>Properties</h2>
+            <PropertiesComponents properties={nftDetail.properties}/>
+          </>}
+          
         </div>
         <div className="intro">
           <h2>Introduction</h2>
