@@ -46,6 +46,12 @@ export interface RelatedNft {
   sell_status: number
 }
 
+export interface Property {
+  trait_type: string
+  value: string
+  proportion: string
+  icon_types: string[]
+}
 export interface NFTDetail {
   id: number
   name: string
@@ -62,13 +68,13 @@ export interface NFTDetail {
   direction_address: string
   is_sell: number
   is_owner: number
-  price?: any
+  price: any
   sell_start_time: number
   sell_end_time: number
   server_time: number
   created_at: number
   share_link: string
-  properties: any[]
+  properties: Property[]
   collection: Collection
   user: User
   stats: Stats
@@ -78,8 +84,8 @@ export interface NFTDetail {
   wave_count: number
   wave_list: any[]
   related_nfts: RelatedNft[]
-  highest_bid_price: number
-  lowest_bid_price: number
+  highest_bid_price: any
+  lowest_bid_price: any
   creator_earnings_percent: string
   license_url: string
   is_official_sale: number
