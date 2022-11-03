@@ -1,38 +1,4 @@
-.evt-detail {
-  @apply flex flex-row items-center justify-start;
-  .info {
-    @apply flex flex-col md:flex-row;
-    img {
-      @apply w-full md:w-1/2;
-    }
-    .detail {
-      @apply ml-2 flex w-full flex-col justify-start md:w-1/2;
-
-      .evt-tag {
-        @apply bg-green-500 p-1 text-sm text-white;
-      }
-
-      .statics {
-        @apply flex flex-row justify-around;
-        .item {
-          @apply flex flex-col;
-        }
-      }
-      .chain-info {
-        @apply mt-4 flex flex-col;
-        .item {
-          @apply flex items-center justify-between;
-        }
-      }
-      .license {
-        @apply flex items-center justify-between;
-        @apply mt-4;
-      }
-    }
-  }
-}
-
-.nft-detail {
+.evt-detail,.nft-detail {
   @apply mt-16 flex flex-col justify-between p-4;
   .info {
     @apply grid grid-cols-1 md:grid-cols-3;

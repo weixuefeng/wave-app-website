@@ -48,11 +48,11 @@ export default function NFTDetailComponent(props) {
           <div className="price">
             <div>
               <p className="label">Hightest Bid:</p>
-              <p className="value">1000,000 NEW</p>
+              <p className="value">{nftDetail.highest_bid_price} NEW</p>
             </div>
             <div>
               <p className="label">Floor Price:</p>
-              <p className="value">1000,000 NEW</p>
+              <p className="value">{nftDetail.lowest_bid_price} NEW</p>
             </div>
           </div>
           {/** action */}
