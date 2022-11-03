@@ -115,7 +115,7 @@ export function Recommend(props) {
 
 export default function RecommendComponent(props) {
   const { recommend } = props
-  if(!recommend){
+  if (!recommend) {
     return <></>
   }
   return (

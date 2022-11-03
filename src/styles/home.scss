@@ -61,7 +61,7 @@
             @apply dark:text-gray-300;
           }
           .blindbox-footer {
-            @apply flex justify-between items-center;
+            @apply flex items-center justify-between;
             .num-wrap {
               @apply mt-2 mb-2 flex items-center rounded-[4px] border-[1px] border-graye8;
               .num-name {

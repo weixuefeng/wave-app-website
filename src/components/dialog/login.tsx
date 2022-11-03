@@ -51,18 +51,18 @@ export default function Login() {
       })
   }
 
-
-
   return (
     <>
-      {currentUser == undefined ?<li className="login" onClick={openModal}>
-        <span>Log In / Sign Up</span>
-      </li>:<li className="flex flex-row cursor-pointer">
-        <img className="w-10 h-10 rounded-full" src={currentUser.avatar} alt="avatar"/>
-      </li>
-      
-    }
-      
+      {currentUser == undefined ? (
+        <li className="login" onClick={openModal}>
+          <span>Log In / Sign Up</span>
+        </li>
+      ) : (
+        <li className="flex cursor-pointer flex-row">
+          <img className="h-10 w-10 rounded-full" src={currentUser.avatar} alt="avatar" />
+        </li>
+      )}
+
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" open={isOpen} onClose={closeModal}>
           <Transition.Child

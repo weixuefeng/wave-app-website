@@ -119,7 +119,7 @@ export function BlindBox(props) {
 export default function BlindBoxComponent(props) {
   const { blindBox } = props
 
-  if(!blindBox) {
+  if (!blindBox) {
     return <></>
   }
   return (
