@@ -33,7 +33,7 @@ export default function EVTDetailComponent(props) {
         <img src={evtDetail.image} alt={evtDetail.name} />
         <div className="detail">
           <h2>{evtDetail.name}</h2>
-          
+
           {/** price info */}
           <div className="price">
             <div>
@@ -59,7 +59,10 @@ export default function EVTDetailComponent(props) {
           <div className="content">
             <div className="item">
               <p className="label">Contract address</p>
-              <p className="value">{splitAddress(evtDetail.detail.contract_address)}<ClipboardDocumentIcon onClick={() => copyContent(evtDetail.detail.contract_address)}/></p>
+              <p className="value">
+                {splitAddress(evtDetail.detail.contract_address)}
+                <ClipboardDocumentIcon onClick={() => copyContent(evtDetail.detail.contract_address)} />
+              </p>
             </div>
             <div className="item">
               <p className="label">Token Standard</p>
@@ -71,7 +74,10 @@ export default function EVTDetailComponent(props) {
             </div>
             <div className="item">
               <p className="label">Creator Earnings</p>
-              <p className="value">{evtDetail.creator_earnings_percent}<InformationCircleIcon/></p>
+              <p className="value">
+                {evtDetail.creator_earnings_percent}
+                <InformationCircleIcon />
+              </p>
             </div>
           </div>
         </div>

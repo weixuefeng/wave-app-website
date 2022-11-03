@@ -1,4 +1,5 @@
-.evt-detail,.nft-detail {
+.evt-detail,
+.nft-detail {
   @apply mt-16 flex flex-col justify-between p-4;
   .info {
     @apply grid grid-cols-1 md:grid-cols-3;
@@ -54,14 +55,14 @@
         @apply pt-4 pb-4 text-2xl font-medium;
       }
       .content {
-        @apply flex flex-col bg-gray-100 rounded-md p-4;
+        @apply flex flex-col rounded-md bg-gray-100 p-4;
         .item {
           @apply flex flex-row items-center justify-between;
           .label {
-            @apply text-gray-500 text-base;
+            @apply text-base text-gray-500;
           }
           .value {
-            @apply text-gray-900 text-base flex flex-row justify-start items-center;
+            @apply flex flex-row items-center justify-start text-base text-gray-900;
             svg {
               @apply h-4 w-4;
               @apply cursor-pointer;
@@ -71,12 +72,12 @@
       }
     }
     .intro {
-      @apply flex flex-col col-span-2 md:ml-8;
+      @apply col-span-2 flex flex-col md:ml-8;
       h2 {
         @apply pt-4 pb-4 text-2xl font-medium;
       }
       .content {
-        @apply flex flex-col bg-gray-100 rounded-md p-4;
+        @apply flex flex-col rounded-md bg-gray-100 p-4;
         p {
           @apply whitespace-pre-line text-gray-500;
         }
@@ -97,25 +98,23 @@
   }
 }
 
-
 .nft-collection {
   @apply flex flex-col p-2;
 
   .base-info {
     @apply grid grid-cols-3 gap-x-3;
-    img{
+    img {
       @apply col-span-1;
     }
     .content {
       @apply col-span-1 flex flex-col;
 
       h2 {
-        @apply text-2xl text-gray-900 whitespace-nowrap text-ellipsis overflow-hidden;
+        @apply overflow-hidden text-ellipsis whitespace-nowrap text-2xl text-gray-900;
       }
       .status {
-        @apply flex flex-row justify-around items-center;
-        @apply p-2 rounded-md bg-gray-200 mt-4;
-        
+        @apply flex flex-row items-center justify-around;
+        @apply mt-4 rounded-md bg-gray-200 p-2;
       }
     }
   }

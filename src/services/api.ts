@@ -31,5 +31,5 @@ export const Api = {
   nftTradeList: 'nft/trade/list',
 
   // collections
-  nftCollection: 'nft/collection/info/'
+  nftCollection: 'nft/collection/info/',
 }

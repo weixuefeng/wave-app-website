@@ -4,7 +4,7 @@ import { encode } from 'js-base64'
 import { sign } from 'utils/sign_utils'
 import { BaseResponse, Pagination } from 'model/base'
 import { UserInfo } from 'model/user'
-import { HomeData } from 'model/asset'
+import { HomeData, HomeList } from 'model/asset'
 import { Banner } from 'model/banner'
 import { NFTDetail } from 'model/nft_asset'
 import { EVTDetail } from 'model/evt_asset'
@@ -37,7 +37,7 @@ function _post(url: string, param: any, config: any = null) {
       .then(response => {
         if (response.status === 200) {
           const info = response.data as BaseResponse<any>
-          if(info.error_code == 1) {
+          if (info.error_code == 1) {
             resolve(info.result)
           } else {
             reject(info.error_message)
@@ -109,7 +109,7 @@ class Http {
 
   getHomeList() {
     let params = {}
-    return _post(Api.nftIndex, params) as Promise<HomeData>
+    return _post(Api.nftIndex, params) as Promise<HomeList>
   }
 
   // asset detail
@@ -131,12 +131,12 @@ class Http {
     return _post(Api.nftTradeList, params) as Promise<Pagination<TradeItem>>
   }
 
-  getNFTCollection(collectionId: number):Promise<CollectionInfo> {
+  getNFTCollection(collectionId: number): Promise<CollectionInfo> {
     let params = {
-      collection_id: collectionId
+      collection_id: collectionId,
     }
     return _post(Api.nftCollection, params) as Promise<CollectionInfo>
   }
-} 
+}
 
 export default Http

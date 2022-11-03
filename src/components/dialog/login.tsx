@@ -39,8 +39,8 @@ export default function Login() {
     Http.getInstance()
       .login(email, verifyCode)
       .then(response => {
-          dispatch(updateUserInfo(response))
-          closeModal()
+        dispatch(updateUserInfo(response))
+        closeModal()
       })
       .catch(error => {
         console.log(error)

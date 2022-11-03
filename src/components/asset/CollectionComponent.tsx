@@ -10,26 +10,25 @@ export default function CollectionComponent(props) {
   }, [id])
 
   function getNFTCollection() {
-    Http.getInstance().getNFTCollection(id)
-    .then((response) => {
-      console.log(response);
-      setCollection(response)
-      
-    }).catch((error) => {
-      console.log(error);
-      
-    })
+    Http.getInstance()
+      .getNFTCollection(id)
+      .then(response => {
+        console.log(response)
+        setCollection(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
-  if(!id || !collection) {
+  if (!id || !collection) {
     return <></>
   }
 
   return (
     <div className="nft-collection">
-
       <div className="base-info">
-        <img src={collection.image} alt={collection.name}/>
+        <img src={collection.image} alt={collection.name} />
         <div className="content">
           <h2>{collection.name}</h2>
           <div className="status">
@@ -53,11 +52,8 @@ export default function CollectionComponent(props) {
         </div>
       </div>
 
-
       <div className="related-info">
-        <div className="tab">
-
-        </div>
+        <div className="tab"></div>
       </div>
     </div>
   )

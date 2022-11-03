@@ -1,8 +1,8 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-03 12:11:02
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-03 13:34:01
  * @FilePath: /wave-app-webiste/src/pages/index.tsx
  */
 
@@ -46,10 +46,9 @@ function Main() {
     Http.getInstance()
       .getHomeList()
       .then(response => {
-        let res: any = response.result
-        setHomeData(response.result)
-        setMysteryData(res.mystery_boxes)
-        setRecommendData(res.recommend)
+        setHomeData(response)
+        setMysteryData(response.mystery_boxes)
+        setRecommendData(response.recommend)
       })
       .catch(error => {
         console.log(error)

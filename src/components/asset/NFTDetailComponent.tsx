@@ -69,7 +69,10 @@ export default function NFTDetailComponent(props) {
           <div className="content">
             <div className="item">
               <p className="label">Contract address</p>
-              <p className="value">{splitAddress(nftDetail.chain_info.contract_address)}<ClipboardDocumentIcon onClick={() => copyContent(nftDetail.chain_info.contract_address)}/></p>
+              <p className="value">
+                {splitAddress(nftDetail.chain_info.contract_address)}
+                <ClipboardDocumentIcon onClick={() => copyContent(nftDetail.chain_info.contract_address)} />
+              </p>
             </div>
             <div className="item">
               <p className="label">Token Standard</p>
@@ -81,7 +84,10 @@ export default function NFTDetailComponent(props) {
             </div>
             <div className="item">
               <p className="label">Creator Earnings</p>
-              <p className="value">{nftDetail.creator_earnings_percent}<InformationCircleIcon/></p>
+              <p className="value">
+                {nftDetail.creator_earnings_percent}
+                <InformationCircleIcon />
+              </p>
             </div>
           </div>
         </div>
