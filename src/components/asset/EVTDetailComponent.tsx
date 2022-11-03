@@ -1,9 +1,7 @@
-import { ClipboardDocumentIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
 import { EVTDetail } from 'model/evt_asset'
 import React, { useEffect, useState } from 'react'
 import Http from 'services/http'
-import copyContent, { splitAddress } from 'utils/functions'
-import CountDownComponent from './detail/CountDownComponent'
+import ChainInfoComponent from './ChainInfoComponent'
 
 export default function EVTDetailComponent(props) {
   const { id } = props
@@ -56,30 +54,12 @@ export default function EVTDetailComponent(props) {
       <div className="chain-info">
         <div className="detail">
           <h2>Details</h2>
-          <div className="content">
-            <div className="item">
-              <p className="label">Contract address</p>
-              <p className="value">
-                {splitAddress(evtDetail.detail.contract_address)}
-                <ClipboardDocumentIcon onClick={() => copyContent(evtDetail.detail.contract_address)} />
-              </p>
-            </div>
-            <div className="item">
-              <p className="label">Token Standard</p>
-              <p className="value">{evtDetail.detail.token_standard}</p>
-            </div>
-            <div className="item">
-              <p className="label">Blockchain</p>
-              <p className="value">{evtDetail.detail.block_chain}</p>
-            </div>
-            <div className="item">
-              <p className="label">Creator Earnings</p>
-              <p className="value">
-                {evtDetail.creator_earnings_percent}
-                <InformationCircleIcon />
-              </p>
-            </div>
-          </div>
+          <ChainInfoComponent
+            address={evtDetail.detail.contract_address}
+            tokenStandard={evtDetail.detail.token_standard}
+            blockChain={evtDetail.detail.block_chain}
+            creatorEariningPercent={evtDetail.creator_earnings_percent}
+          />
         </div>
         <div className="intro">
           <h2>Introduction</h2>
