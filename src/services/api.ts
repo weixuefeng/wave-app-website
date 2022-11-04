@@ -41,5 +41,4 @@ export const Api = {
   // wallet
   walletInfo: 'wallet/info/',
   walletTransaction: 'wallet/transfers/',
-  
 }

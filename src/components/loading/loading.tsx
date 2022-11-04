@@ -11,21 +11,18 @@ import React from 'react'
 import { Skeleton } from 'antd'
 
 export default function Loading() {
+  let arrLoading = [1, 2, 3, 4, 5, 6, 7, 8]
 
-    let arrLoading = [1, 2, 3, 4, 5, 6, 7, 8]
-
-    return (
-        <div className='loading container mx-auto'>
-            {
-                arrLoading.map((item, index) => {
-                    return (
-                        <div className='item' key={index}>
-                            <Skeleton.Image active />
-                            <Skeleton active paragraph={{ rows: 4 }} />
-                        </div>
-                    )
-                })
-            }
-        </div>
-    )
+  return (
+    <div className="loading container mx-auto">
+      {arrLoading.map((item, index) => {
+        return (
+          <div className="item" key={index}>
+            <Skeleton.Image active />
+            <Skeleton active paragraph={{ rows: 4 }} />
+          </div>
+        )
+      })}
+    </div>
+  )
 }

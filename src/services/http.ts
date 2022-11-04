@@ -169,7 +169,7 @@ class Http {
     return _post(Api.nftActivity, params) as Promise<Pagination<any>>
   }
 
-  getEvtTickets( pageId: number) {
+  getEvtTickets(pageId: number) {
     let params = {
       page_id: pageId,
       page_size: PAGE_SIZE,

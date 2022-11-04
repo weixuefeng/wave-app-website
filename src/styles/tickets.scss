@@ -1,51 +1,50 @@
 .tickets {
-    @apply bg-grayf8;
-    .title {
-        @apply text-gray333 text-4xl font-bold leading-6 pt-12 pb-8 z-20;
+  @apply bg-grayf8;
+  .title {
+    @apply z-20 pt-12 pb-8 text-4xl font-bold leading-6 text-gray333;
+  }
+  .tickets-item {
+    @apply grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:grid-cols-4;
+  }
+  .item {
+    @apply relative mb-9 pt-[49%];
+    .img {
+      @apply absolute top-[50%] left-[50%] h-full w-full rounded-t-lg object-cover;
+      transform: translate(-50%, -50%);
     }
-    .tickets-item {
-        @apply grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:grid-cols-4;
+  }
+  .info {
+    @apply absolute top-0 left-0 mx-4 w-full pb-4;
+    h2 {
+      @apply mt-2 text-lg font-bold text-gray333;
     }
-    .item {
-        @apply relative pt-[49%] mb-10;
-        .img {
-            @apply absolute top-[50%] left-[50%] h-full w-full rounded-t-lg object-cover;
-            transform: translate(-50%, -50%);
+    .content {
+      @apply my-4 flex;
+      .content-img {
+        @apply mr-2 w-1/2 rounded-md;
+        img {
+          @apply rounded-md;
         }
-    }
-    .info {
-        @apply absolute top-0 left-0 mx-4 pb-4;
-        h2 {
-            @apply text-lg text-gray333 font-bold mt-2;
+      }
+      .img-box {
+        @apply relative pb-[50%];
+        img {
+          @apply absolute top-1/2 left-1/2 h-full w-full rounded-t-lg object-cover;
+          transform: translate(-50%, -50%);
         }
-        .content {
-            @apply flex my-4;
-            .content-img {
-                @apply rounded-md mr-2 w-1/2;
-                img {
-                    @apply rounded-md;
-                }
-            }
-            .img-box {
-                @apply relative pb-[50%];
-                .img {
-                    @apply absolute top-1/2 left-1/2 h-full w-full rounded-t-lg object-cover;
-                    transform: translate(-50%, -50%);
-                }
-            }
-            h3 {
-                @apply text-gray9c text-xs mb-1;
-            }
-            p {
-                @apply text-gray333 text-xs;
-            }
-            .time {
-                @apply w-[39%];
-            }
-            .time-check {
-                @apply mt-4;
-            }
-        }
+      }
+      h3 {
+        @apply mb-1 text-xs text-gray9c;
+      }
+      p {
+        @apply text-xs text-gray333;
+      }
+      .time {
+        @apply w-[39%];
+      }
+      .time-check {
+        @apply mt-4;
+      }
     }
-   
+  }
 }

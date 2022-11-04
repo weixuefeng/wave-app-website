@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 18:48:14
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-03 19:55:26
+ * @LastEditTime: 2022-11-04 19:32:01
  * @FilePath: /wave-app-webiste/src/utils/time.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -40,4 +40,15 @@ export function formatDate(value) {
     mm = 'December'
   }
   return mm + ' ' + d + ',' + y
+}
+
+export function formatDateTime(timestamp) {
+  let date = new Date(timestamp * 1000)
+  let Y = date.getFullYear() + '-'
+  let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-'
+  let D = (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + ' '
+  let h = date.getHours() + ':'
+  let m = date.getMinutes() + ':'
+  let s = date.getSeconds()
+  return Y + M + D + h + m + s
 }
