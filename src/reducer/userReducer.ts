@@ -17,7 +17,6 @@ interface UserState {
   status: string
 }
 
-
 const initialState = {
   currentUser: undefined,
   status: 'idle',
