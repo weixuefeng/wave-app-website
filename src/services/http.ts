@@ -4,7 +4,7 @@ import { encode } from 'js-base64'
 import { sign } from 'utils/sign_utils'
 import { BaseResponse, Pagination } from 'model/base'
 import { UserInfo } from 'model/user'
-import { HomeData, HomeList } from 'model/asset'
+import { HomeData, HomeList, MyAsset } from 'model/asset'
 import { Banner } from 'model/banner'
 import { NFTDetail } from 'model/nft_asset'
 import { EVTDetail } from 'model/evt_asset'
@@ -14,6 +14,7 @@ import { PAGE_SIZE } from 'constants/constant'
 import { LocalKey } from 'constants/key'
 import { updateUserInfo } from 'reducer/userReducer'
 import { WalletInfo, WalletTransaction } from 'model/wallet'
+import { OfferType } from 'model/offer'
 
 let client = refreshClient()
 
@@ -189,6 +190,35 @@ class Http {
       trade_type: tradeType,
     }
     return _post(Api.walletTransaction, params) as Promise<Pagination<WalletTransaction>>
+  }
+
+  // order
+  getOrderOnSale(userId: number, pageId: number): Promise<Pagination<any>> {
+    let params = {
+      user_id: userId,
+      page_id: pageId,
+      page_size: PAGE_SIZE,
+    }
+    return _post(Api.orderOnSale, params) as Promise<any>
+  }
+
+  getOrderOffer(userId: number, pageId: number, offerType: OfferType): Promise<Pagination<any>> {
+    let params = {
+      user_id: userId,
+      page_id: pageId,
+      page_size: PAGE_SIZE,
+      offer_type: offerType,
+    }
+    return _post(Api.orderOffers, params) as Promise<any>
+  }
+
+  getMyAssetList(userId: number, pageId: number): Promise<Pagination<MyAsset>> {
+    let params = {
+      user_id: userId,
+      page_id: pageId,
+      page_size: PAGE_SIZE,
+    }
+    return _post(Api.nftAssetList, params) as Promise<Pagination<MyAsset>>
   }
 }
 
