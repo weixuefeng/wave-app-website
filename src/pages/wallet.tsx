@@ -2,6 +2,7 @@ import NormalLayout from 'components/layout/normalLayout'
 import { TransactionList } from 'components/wallet/TransactionList'
 import { PageModel } from 'model/navModel'
 import { WalletInfo } from 'model/wallet'
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { selectUser } from 'reducer/userReducer'
 import Http from 'services/http'
@@ -46,8 +47,8 @@ export default function Wallet() {
               <h2>My Wallet</h2>
             </div>
             <div className="balance">
-              <p>Total Balance</p>
-              <p>{walletInfo.balance} NEW</p>
+              <p className="label">Total Balance</p>
+              <p className="value">{walletInfo.balance} NEW</p>
             </div>
             <div className="balance-info">
               <p className="label">Available</p>
@@ -55,6 +56,20 @@ export default function Wallet() {
 
               <p className="label mt-2">Frozen</p>
               <p className="value">{walletInfo.lock_balance} NEW</p>
+            </div>
+            <div className="action">
+              <Link href="/deposit">
+                <div>
+                  <img src="/assets/image/icon_deposit.png" alt="deposit" />
+                  <p>Deposit</p>
+                </div>
+              </Link>
+              <Link href="/withdraw">
+                <div>
+                  <img src="/assets/image/icon_withdraw.png" alt="deposit" />
+                  <p>Withdraw</p>
+                </div>
+              </Link>
             </div>
           </div>
 
