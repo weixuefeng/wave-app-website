@@ -1,0 +1,51 @@
+.tickets {
+    @apply bg-grayf8;
+    .title {
+        @apply text-gray333 text-4xl font-bold leading-6 pt-12 pb-8 z-20;
+    }
+    .tickets-item {
+        @apply grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:grid-cols-4;
+    }
+    .item {
+        @apply relative pt-[49%] mb-10;
+        .img {
+            @apply absolute top-[50%] left-[50%] h-full w-full rounded-t-lg object-cover;
+            transform: translate(-50%, -50%);
+        }
+    }
+    .info {
+        @apply absolute top-0 left-0 mx-4 pb-4;
+        h2 {
+            @apply text-lg text-gray333 font-bold mt-2;
+        }
+        .content {
+            @apply flex my-4;
+            .content-img {
+                @apply rounded-md mr-2 w-1/2;
+                img {
+                    @apply rounded-md;
+                }
+            }
+            .img-box {
+                @apply relative pb-[50%];
+                .img {
+                    @apply absolute top-1/2 left-1/2 h-full w-full rounded-t-lg object-cover;
+                    transform: translate(-50%, -50%);
+                }
+            }
+            h3 {
+                @apply text-gray9c text-xs mb-1;
+            }
+            p {
+                @apply text-gray333 text-xs;
+            }
+            .time {
+                @apply w-[39%];
+            }
+            .time-check {
+                @apply mt-4;
+            }
+        }
+    }
+   
+}

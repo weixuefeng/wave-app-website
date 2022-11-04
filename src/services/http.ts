@@ -76,6 +76,9 @@ function _get(url) {
 let httpInstance: Http = null
 
 class Http {
+  static getEvtTickets() {
+    throw new Error('Method not implemented.')
+  }
   static getInstance(): Http {
     if (httpInstance === undefined || httpInstance == null) {
       httpInstance = new Http()
@@ -156,6 +159,14 @@ class Http {
       page_size: PAGE_SIZE,
     }
     return _post(Api.nftActivity, params) as Promise<Pagination<any>>
+  }
+
+  getEvtTickets( pageId: number) {
+    let params = {
+      page_id: pageId,
+      page_size: PAGE_SIZE,
+    }
+    return _post(Api.evtTickets, params) as Promise<Pagination<any>>
   }
 }
 
