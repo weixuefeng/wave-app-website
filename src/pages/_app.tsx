@@ -35,7 +35,7 @@ function InitComponent() {
   useEffect(() => {
     initUser()
   }, [])
-  return (<></>)
+  return <></>
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider defaultTheme="system" attribute="class">
       <HeadGlobal />
       <Provider store={store}>
-        <InitComponent/>
+        <InitComponent />
         <Component key={router.asPath} {...pageProps} />
       </Provider>
     </ThemeProvider>

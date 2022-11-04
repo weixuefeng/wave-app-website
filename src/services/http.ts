@@ -128,7 +128,7 @@ class Http {
     let params = {
       keyword: keyword,
       page_id: pageId,
-      page_size: PAGE_SIZE,
+      page_size: 50,
     }
     return _post(Api.nftTradeList, params) as Promise<Pagination<TradeItem>>
   }

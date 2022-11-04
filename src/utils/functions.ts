@@ -33,3 +33,11 @@ export default async function copyContent(content: string) {
 export function floorNum(num) {
   return Math.floor(num * 100) / 100
 }
+
+export function isInViewPort(el) {
+  const viewPortHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+  const offsetTop = el.offsetTop
+  const scrollTop = document.documentElement.scrollTop
+  const top = offsetTop - scrollTop
+  return top <= viewPortHeight + 100
+}

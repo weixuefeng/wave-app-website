@@ -1,5 +1,5 @@
 .user-menu {
-  @apply flex flex-col rounded-md bg-green-600 z-50;
+  @apply z-50 flex flex-col rounded-md bg-green-600;
   @apply absolute top-12 right-8;
   @apply w-60;
   div {
