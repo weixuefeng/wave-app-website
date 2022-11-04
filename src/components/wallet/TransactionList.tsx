@@ -1,14 +1,32 @@
-import NormalLayout from 'components/layout/normalLayout'
-import { PageModel } from 'model/navModel'
-import { TradeItem } from 'model/trade'
+import { WalletTransaction } from 'model/wallet'
 import React, { useEffect, useRef, useState } from 'react'
 import Http from 'services/http'
 import { isInViewPort } from 'utils/functions'
-import TradeComponent from '../components/trade/TradeComponent'
 
-export default function TradePage() {
-  let pageModel = new PageModel('Trade', 'WAVE', '')
-  const [tradeItems, setTradeItems] = useState<Array<TradeItem>>()
+export function TransactionComponent(props) {
+  const { item } = props
+  const info = item as WalletTransaction
+  return (
+    <div className="history-item">
+      <h3>{info.trade_label}</h3>
+      <div className="mt-4">
+        <p className="label">Amount</p>
+        <p>{info.amount} NEW</p>
+      </div>
+      <div>
+        <p className="label">Wallet Balance</p>
+        <p>{info.wallet_balance} NEW</p>
+      </div>
+      <div>
+        <p className="label">Time</p>
+        <p>{new Date(info.created_at * 1000).toLocaleString()}</p>
+      </div>
+    </div>
+  )
+}
+
+export function TransactionList() {
+  const [transaction, setTransaction] = useState<Array<WalletTransaction>>()
   const [currentPage, setCurrentPage] = useState(1)
   const [hasMore, setHasMore] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -21,11 +39,11 @@ export default function TradePage() {
   function fetchData() {
     setIsLoading(true)
     Http.getInstance()
-      .getNFTTradeList(currentPage, null)
+      .getWalletTransaction(currentPage, 1)
       .then(response => {
         if (currentPage == 1) {
           // first page
-          setTradeItems(response.data)
+          setTransaction(response.data)
           // check has more
           if (response.page_id < response.total_page) {
             setHasMore(true)
@@ -36,7 +54,7 @@ export default function TradePage() {
           }
         } else {
           // more page
-          setTradeItems(tradeItems.concat(response.data))
+          setTransaction(transaction.concat(response.data))
           // check has more
           if (response.page_id < response.total_page) {
             setHasMore(true)
@@ -70,23 +88,16 @@ export default function TradePage() {
     }
   }
 
-  function content() {
-    return (
-      <div className="asset trade">
-        <div className="container mx-auto">
-          <h2>Trade</h2>
-          <ul>
-            {tradeItems?.map((item, index) => {
-              return <TradeComponent key={index} itemDate={item} />
-            })}
-          </ul>
-          <button ref={ref} className="primary black" onClick={() => fetchData()}>
-            {isLoading ? 'loading...' : hasMore ? 'load more' : 'no more'}
-          </button>
-        </div>
-      </div>
-    )
-  }
-
-  return NormalLayout(content(), pageModel)
+  return (
+    <div className="list">
+      <ul>
+        {transaction?.map((item, index) => {
+          return <TransactionComponent key={index} item={item} />
+        })}
+      </ul>
+      <button ref={ref} className="primary black" onClick={() => fetchData()}>
+        {isLoading ? 'loading...' : hasMore ? 'load more' : 'no more'}
+      </button>
+    </div>
+  )
 }

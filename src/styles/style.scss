@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'antd/dist/antd.css';
 @import 'base';
 @import 'utils';
 @import 'header';
@@ -22,3 +21,4 @@
 @import 'loading';
 @import 'allItem';
 @import 'tickets';
+@import 'wallet';

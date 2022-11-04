@@ -11,6 +11,9 @@ import { EVTDetail } from 'model/evt_asset'
 import { TradeItem } from 'model/trade'
 import { CollectionInfo } from 'model/collection'
 import { PAGE_SIZE } from 'constants/constant'
+import { LocalKey } from 'constants/key'
+import { updateUserInfo } from 'reducer/userReducer'
+import { WalletInfo, WalletTransaction } from 'model/wallet'
 
 let client = refreshClient()
 
@@ -40,6 +43,11 @@ function _post(url: string, param: any, config: any = null) {
           const info = response.data as BaseResponse<any>
           if (info.error_code == 1) {
             resolve(info.result)
+          } else if (info.error_code == 2) {
+            localStorage.removeItem(LocalKey.USER)
+            localStorage.removeItem(LocalKey.TOKEN)
+            updateUserInfo(null)
+            reject(info.error_message)
           } else {
             reject(info.error_message)
           }
@@ -167,6 +175,20 @@ class Http {
       page_size: PAGE_SIZE,
     }
     return _post(Api.evtTickets, params) as Promise<Pagination<any>>
+  }
+  // wallet info
+  getWalletInfo(): Promise<WalletInfo> {
+    let params = {}
+    return _post(Api.walletInfo, params) as Promise<WalletInfo>
+  }
+
+  getWalletTransaction(pageId: number, tradeType: number): Promise<Pagination<WalletTransaction>> {
+    let params = {
+      page_id: pageId,
+      page_size: PAGE_SIZE,
+      trade_type: tradeType,
+    }
+    return _post(Api.walletTransaction, params) as Promise<Pagination<WalletTransaction>>
   }
 }
 

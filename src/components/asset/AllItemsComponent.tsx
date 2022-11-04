@@ -1,8 +1,8 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:46:58
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-04 15:12:41
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-03 20:18:33
  * @FilePath: /wave-app-webiste/src/components/asset/AllItemsComponent.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -28,7 +28,7 @@ export default function AllItemsComponent(props) {
   }, [])
 
   return (
-    <div className="all-item-box">
+    <div className="asset">
       <div className="container mx-auto">
         <ul className="all-item">
           {allItems?.map((item, index) => {
