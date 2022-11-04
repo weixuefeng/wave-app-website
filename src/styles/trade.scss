@@ -8,7 +8,7 @@
   .all-item {
     @apply mt-[3.25rem];
   }
-  ul {
+  .trade-item {
     @apply grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:grid-cols-4;
   }
   .item {
