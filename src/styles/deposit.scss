@@ -1,0 +1,24 @@
+.deposit {
+  @apply flex flex-col;
+  .title {
+    @apply mt-14;
+    @apply text-4xl font-medium text-gray-900;
+  }
+  .token {
+    @apply flex flex-row items-center justify-start;
+  }
+
+  .qrcode {
+    @apply flex flex-row items-center;
+    .content {
+      @apply flex flex-col p-8;
+
+      .address {
+        @apply cursor-pointer rounded-md bg-gray-100 p-2;
+      }
+    }
+  }
+  .tip {
+    @apply mt-14;
+  }
+}

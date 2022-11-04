@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 20:26:47
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-04 20:14:08
- * @FilePath: /wave-app-webiste/src/pages/tickets.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-04 20:23:52
+ * @FilePath: /wave-app-website/src/pages/tickets.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import NormalLayout from 'components/layout/normalLayout'

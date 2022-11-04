@@ -2,23 +2,23 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-01 15:43:16
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-03 20:28:26
- * @FilePath: /wave-app-webiste/src/reducer/userReducer.ts
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @LastEditTime: 2022-11-04 19:25:00
+ * @FilePath: /wave-app-website/src/reducer/userReducer.ts
  */
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { LocalKey } from 'constants/key'
-import { getLocalData } from 'localstorage/localstorage'
 import { LoginParams, UserInfo } from 'model/user'
+import { WalletInfo } from 'model/wallet'
 import Http from 'services/http'
 
 interface UserState {
   currentUser: UserInfo | undefined
+  currentWallet: WalletInfo | undefined
   status: string
 }
 
 const initialState = {
   currentUser: undefined,
+  currentWallet: undefined,
   status: 'idle',
 } as UserState
 
@@ -28,6 +28,9 @@ export const userSlice = createSlice({
   reducers: {
     updateUserInfo: (state, action: PayloadAction<UserInfo>) => {
       state.currentUser = action.payload
+    },
+    updateWalletInfo: (state, action: PayloadAction<WalletInfo>) => {
+      state.currentWallet = action.payload
     },
   },
   extraReducers: builder => {
@@ -48,7 +51,8 @@ export const fetchUser = createAsyncThunk('user/login', async (params: LoginPara
 })
 
 export const selectUser = state => state.user.currentUser
+export const selectWallet = state => state.user.currentWallet
 
-export const { updateUserInfo } = userSlice.actions
+export const { updateUserInfo, updateWalletInfo } = userSlice.actions
 
 export default userSlice.reducer
