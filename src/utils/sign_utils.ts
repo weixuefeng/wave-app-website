@@ -3,6 +3,7 @@ import { APP_KEY, APP_SECRET, APP_VERSION } from 'constants/setting'
 import { getLocalData } from 'localstorage/localstorage'
 import { getI18n } from 'react-i18next'
 import { createHash } from 'crypto'
+import { UserInfo } from 'model/user'
 
 function fetchCommonPrams() {
   const time = Date.now()
@@ -30,9 +31,9 @@ export function sign(data) {
     ...data,
     ...params,
   }
-  const token = getLocalData(LocalKey.TOKEN, null)
-  if (token) {
-    content['access_token'] = token
+  const user = getLocalData(LocalKey.USER, null)
+  if (user) {
+    content['access_token'] = (JSON.parse(user) as UserInfo).access_token
   }
   let signContent = ''
   Object.keys(content)

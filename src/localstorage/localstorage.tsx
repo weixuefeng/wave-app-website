@@ -16,3 +16,15 @@ export function getLocalData(key: string, defaultValue: any) {
     return defaultValue
   }
 }
+
+export function removeLocalData(key: string) {
+  if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+    window.localStorage.removeItem(key)
+  }
+}
+
+export function clear() {
+  if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+    window.localStorage.clear()
+  }
+}
