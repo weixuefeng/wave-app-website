@@ -1,34 +1,44 @@
+import useWallet from 'hooks/userWallet'
+import { NFTDetail } from 'model/nft_asset'
 import React from 'react'
+import { splitAddress } from 'utils/functions'
 
-export default function BuyDialog() {
+export default function BuyDialog(props) {
+  const { nftDetail } = props
+  const wallet = useWallet()
+  const info = nftDetail as NFTDetail
+  if (!info || !wallet) {
+    return <></>
+  }
+
   return (
     <div className="dialog-buy">
       <p className="title">Buy</p>
       {/** asset info */}
       <div className="asset-info">
-        <img src="" alt="" />
-        <p>Remeeafaef</p>
+        <img src={info.image} alt={info.name} />
+        <p>{info.name}</p>
       </div>
       {/** sell info */}
       <div className="sell-info">
         <div className="item">
           <p>Price</p>
-          <p>100,000 NEW</p>
+          <p>{info.lowest_bid_price} NEW</p>
         </div>
         <div className="item">
           <p>From</p>
-          <p>NEW182xxxqwfa</p>
+          <p>{splitAddress(wallet.wallet_address)}</p>
         </div>
         <div className="item">
           <p>To</p>
-          <p>NEW182XXXsfa</p>
+          <p>{splitAddress(info.user.wallet_address)}</p>
         </div>
       </div>
 
       {/** price & seller info */}
       <div className="price-info">
         <p>Total</p>
-        <p>100,0000 NEW</p>
+        <p>{info.highest_bid_price} NEW</p>
       </div>
 
       {/** receiver info */}
@@ -50,7 +60,7 @@ export default function BuyDialog() {
       {/** balance info */}
       <div className="balance-info">
         <p>Account Balance</p>
-        <p>50,000 NEW</p>
+        <p>{wallet.available_balance} NEW</p>
       </div>
 
       <button className="primary black">Next</button>

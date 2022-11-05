@@ -103,7 +103,7 @@ export default function NFTDetailComponent(props) {
       </div>
 
       <DialogComponent isOpen={isBuyOpen} closeModal={closeBuyModal}>
-        <BuyDialog />
+        <BuyDialog nftDetail={nftDetail} />
       </DialogComponent>
     </div>
   )

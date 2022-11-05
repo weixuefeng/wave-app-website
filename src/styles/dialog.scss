@@ -11,6 +11,9 @@
   }
   .asset-info {
     @apply flex flex-row;
+    img {
+      @apply absolute w-1/3 rounded-lg object-cover;
+    }
   }
   .sell-info {
     @apply flex flex-col;
