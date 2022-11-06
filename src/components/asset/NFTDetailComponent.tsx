@@ -6,15 +6,21 @@ import ChainInfoComponent from './ChainInfoComponent'
 import PropertiesComponents from './PropertiesComponents'
 import DialogComponent from 'components/common/DialogComponent'
 import BuyDialog from 'components/dialog/BuyDialog'
+import MakeOfferDialog from 'components/dialog/MakeOfferDialog'
 
 export default function NFTDetailComponent(props) {
   const { id } = props
 
   const [nftDetail, setNFTDetail] = useState<NFTDetail>(null)
   const [isBuyOpen, setIsBuyOpen] = useState(false)
+  const [isMakeOfferOpen, setIsMakeOfferOpen] = useState(false)
 
   function closeBuyModal() {
     setIsBuyOpen(false)
+  }
+
+  function closeMakeOfferModal() {
+    setIsMakeOfferOpen(false)
   }
 
   useEffect(() => {
@@ -73,7 +79,11 @@ export default function NFTDetailComponent(props) {
             >
               Buy
             </button>
-            <button className="primary ml-4 outline">Make Offer </button>
+            <button className="primary ml-4 outline"
+             onClick={() => {
+              setIsMakeOfferOpen(true)
+            }}
+            >Make Offer </button>
           </div>
         </div>
       </div>
@@ -104,6 +114,9 @@ export default function NFTDetailComponent(props) {
 
       <DialogComponent isOpen={isBuyOpen} closeModal={closeBuyModal}>
         <BuyDialog nftDetail={nftDetail} />
+      </DialogComponent>
+      <DialogComponent isOpen={isMakeOfferOpen} closeModal={closeMakeOfferModal}>
+        <MakeOfferDialog nftDetail={nftDetail} />
       </DialogComponent>
     </div>
   )

@@ -10,9 +10,12 @@
     @apply text-2xl font-bold text-gray-900;
   }
   .asset-info {
-    @apply flex flex-row;
+    @apply flex flex-row items-center;
     img {
-      @apply absolute w-1/3 rounded-lg object-cover;
+      @apply w-1/3 rounded-lg object-cover;
+    }
+    p {
+      @apply text-xl font-bold text-gray-900 ml-4;
     }
   }
   .sell-info {
@@ -27,6 +30,55 @@
     @apply flex flex-row items-center justify-between;
     p {
       @apply text-2xl font-bold text-gray-900;
+    }
+  }
+  .receiver-info {
+    @apply mt-2;
+    .item {
+      @apply flex flex-row items-center justify-between;
+      p {
+        @apply text-xs font-bold text-gray-600;
+      }
+    }
+  }
+  .balance-info {
+    @apply flex flex-row items-center justify-between;
+  }
+}
+
+.dialog-make-offer {
+  @apply flex flex-col;
+  .title {
+    @apply text-2xl font-bold text-gray-900;
+  }
+  .asset-info {
+    @apply flex flex-row items-center;
+    img {
+      @apply w-1/3 rounded-lg object-cover;
+    }
+    p {
+      @apply text-xl font-bold text-gray-900 ml-4;
+    }
+  }
+  .bid-info {
+    @apply flex flex-row;
+    .item {
+      @apply flex flex-row items-center justify-between;
+      .lable {
+        @apply text-gray-900;
+      }
+      .value {
+        @apply text-green-600;
+      }
+    }
+  }
+  .offer-info {
+    @apply flex flex-row items-center justify-between;
+    .item {
+      @apply flex flex-col;
+      .title {
+        @apply text-base text-gray-900 font-bold;
+      }
     }
   }
   .receiver-info {
