@@ -124,3 +124,22 @@ export interface ToUser {
   id: number
   name: string
 }
+
+export interface MyAsset {
+  sell_id: number
+  nft_id: number
+  collection_id: number
+  name: string
+  image: string
+  ask_price: number
+  price: number
+  status: number
+  type: number
+  ticket_number: number
+  create_ticket_number: number
+  max_create_ticket_number: number
+  token_id: number
+  owner_address: string
+  copyright_expire_time?: number
+  is_copyright_expire: boolean
+}

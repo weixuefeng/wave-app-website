@@ -125,4 +125,5 @@ pm2 start npm --name "wave-app-website" -- start
 
 - MyListing:
   - getOrderOnSale
-- My
+- My Offer
+  - getOrderOffer

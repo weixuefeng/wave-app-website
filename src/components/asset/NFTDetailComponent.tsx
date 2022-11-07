@@ -4,11 +4,18 @@ import Http from 'services/http'
 import CountDownComponent from './detail/CountDownComponent'
 import ChainInfoComponent from './ChainInfoComponent'
 import PropertiesComponents from './PropertiesComponents'
+import DialogComponent from 'components/common/DialogComponent'
+import BuyDialog from 'components/dialog/BuyDialog'
 
 export default function NFTDetailComponent(props) {
   const { id } = props
 
   const [nftDetail, setNFTDetail] = useState<NFTDetail>(null)
+  const [isBuyOpen, setIsBuyOpen] = useState(false)
+
+  function closeBuyModal() {
+    setIsBuyOpen(false)
+  }
 
   useEffect(() => {
     Http.getInstance()
@@ -58,7 +65,14 @@ export default function NFTDetailComponent(props) {
           </div>
           {/** action */}
           <div className="action">
-            <button className="primary">Buy</button>
+            <button
+              className="primary"
+              onClick={() => {
+                setIsBuyOpen(true)
+              }}
+            >
+              Buy
+            </button>
             <button className="primary ml-4 outline">Make Offer </button>
           </div>
         </div>
@@ -87,6 +101,10 @@ export default function NFTDetailComponent(props) {
           </div>
         </div>
       </div>
+
+      <DialogComponent isOpen={isBuyOpen} closeModal={closeBuyModal}>
+        <BuyDialog />
+      </DialogComponent>
     </div>
   )
 }

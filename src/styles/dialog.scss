@@ -1,0 +1,41 @@
+.dialog-base {
+  @apply relative w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-12 text-left align-middle shadow-xl transition-all;
+  .close {
+    @apply absolute top-0 right-0 m-4 h-5 w-5 cursor-pointer;
+  }
+}
+.dialog-buy {
+  @apply flex flex-col;
+  .title {
+    @apply text-2xl font-bold text-gray-900;
+  }
+  .asset-info {
+    @apply flex flex-row;
+  }
+  .sell-info {
+    @apply flex flex-col;
+    .item {
+      @apply flex flex-row items-center justify-between;
+      p {
+      }
+    }
+  }
+  .price-info {
+    @apply flex flex-row items-center justify-between;
+    p {
+      @apply text-2xl font-bold text-gray-900;
+    }
+  }
+  .receiver-info {
+    @apply mt-2;
+    .item {
+      @apply flex flex-row items-center justify-between;
+      p {
+        @apply text-xs font-bold text-gray-600;
+      }
+    }
+  }
+  .balance-info {
+    @apply flex flex-row items-center justify-between;
+  }
+}
