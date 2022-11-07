@@ -79,11 +79,14 @@ export default function NFTDetailComponent(props) {
             >
               Buy
             </button>
-            <button className="primary ml-4 outline"
-             onClick={() => {
-              setIsMakeOfferOpen(true)
-            }}
-            >Make Offer </button>
+            <button
+              className="primary ml-4 outline"
+              onClick={() => {
+                setIsMakeOfferOpen(true)
+              }}
+            >
+              Make Offer{' '}
+            </button>
           </div>
         </div>
       </div>

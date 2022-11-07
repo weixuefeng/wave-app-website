@@ -62,29 +62,29 @@ export default function Assets() {
 
   return (
     <div className="assets-page">
-    <div className="container mx-auto">
-      <h2 className="title">Assets</h2>
-      <div>
-        <Tab.Group>
-          <Tab.List>
-            <Tab className="tab-item">My Own</Tab>
-            <Tab className="tab-item mx-24">My Listings</Tab>
-            <Tab className="tab-item">My Offers</Tab>
-          </Tab.List>
-          <Tab.Panels>
-            <Tab.Panel>
-              <Myown />
-            </Tab.Panel>
-            <Tab.Panel>
-              <Mylistings />
-            </Tab.Panel>
-            <Tab.Panel>
-              <Myoffers />
-            </Tab.Panel>
-          </Tab.Panels>
-        </Tab.Group>
+      <div className="container mx-auto">
+        <h2 className="title">Assets</h2>
+        <div>
+          <Tab.Group>
+            <Tab.List>
+              <Tab className="tab-item">My Own</Tab>
+              <Tab className="tab-item mx-24">My Listings</Tab>
+              <Tab className="tab-item">My Offers</Tab>
+            </Tab.List>
+            <Tab.Panels>
+              <Tab.Panel>
+                <Myown />
+              </Tab.Panel>
+              <Tab.Panel>
+                <Mylistings />
+              </Tab.Panel>
+              <Tab.Panel>
+                <Myoffers />
+              </Tab.Panel>
+            </Tab.Panels>
+          </Tab.Group>
+        </div>
       </div>
     </div>
-  </div>
   )
 }

@@ -13,8 +13,8 @@ export default function MakeOfferDialog(props) {
   }
 
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
-    console.log(date, dateString);
-  };
+    console.log(date, dateString)
+  }
 
   return (
     <div className="dialog-make-offer">
@@ -40,10 +40,7 @@ export default function MakeOfferDialog(props) {
       <div className="offer-info">
         <div className="item">
           <p className="title">Offer valid thru</p>
-          <DatePicker 
-          placement={'bottomRight'}
-          onChange={onChange} />
-
+          <DatePicker placement={'bottomRight'} onChange={onChange} />
         </div>
         <div className="item">
           <p className="title">Price</p>
