@@ -2,30 +2,36 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:46:58
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-03 20:18:33
- * @FilePath: /wave-app-webiste/src/components/asset/AllItemsComponent.tsx
+ * @LastEditTime: 2022-11-07 14:01:52
+ * @FilePath: /wave-app-website/src/components/asset/AllItemsComponent.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-import { AssetAllItemsComponent } from 'model/asset'
+import { CollectionItem } from 'model/asset'
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import Http from 'services/http'
 import { floorNum } from 'utils/functions'
+import { getAssetDetailPathByInfo } from 'utils/route'
 
 export default function AllItemsComponent(props) {
-  const { collectionId } = props
-  const [allItems, setAllItems] = useState<Array<AssetAllItemsComponent>>([])
+  const { collectionId, type } = props
+  const [allItems, setAllItems] = useState<Array<CollectionItem>>([])
 
   useEffect(() => {
     Http.getInstance()
       .getNFTList(collectionId, 1)
       .then(response => {
         setAllItems(response.data)
+        console.log(response)
       })
       .catch(error => {
         console.log(error)
       })
   }, [])
+
+  if (!allItems) {
+    return <>...</>
+  }
 
   return (
     <div className="asset">
@@ -34,7 +40,7 @@ export default function AllItemsComponent(props) {
           {allItems?.map((item, index) => {
             return (
               <li className="item" key={index}>
-                <Link href="">
+                <Link href={getAssetDetailPathByInfo(type, item.nft_id)}>
                   <a href="" className="cover">
                     <div className="perfect-square">
                       <img src={item.image} alt="img" />

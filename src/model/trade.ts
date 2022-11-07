@@ -11,3 +11,9 @@ export interface TradeItem {
   list_price_percent: string
   floor_difference_percent: string
 }
+
+export enum TradeType {
+  NFT = 0,
+  MOVIE = 1,
+  SERIOS = 2,
+}

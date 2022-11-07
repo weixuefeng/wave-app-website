@@ -7,7 +7,7 @@ import ChainInfoComponent from './ChainInfoComponent'
 import CollectionActivity from './CollectionActivityComponent'
 
 export default function CollectionComponent(props) {
-  const { id } = props
+  const { id, type } = props
   const [collection, setCollection] = useState<CollectionInfo>()
   useEffect(() => {
     getNFTCollection()
@@ -17,7 +17,6 @@ export default function CollectionComponent(props) {
     Http.getInstance()
       .getNFTCollection(id)
       .then(response => {
-        console.log(response)
         setCollection(response)
       })
       .catch(error => {
@@ -67,7 +66,7 @@ export default function CollectionComponent(props) {
           </Tab.List>
           <Tab.Panels>
             <Tab.Panel>
-              <AllItemsComponent collectionId={collection.id} />
+              <AllItemsComponent collectionId={collection.id} type={type} />
             </Tab.Panel>
             <Tab.Panel>
               <CollectionActivity collectionId={collection.id} />

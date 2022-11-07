@@ -1,16 +1,15 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:49:32
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-04 20:51:35
- * @FilePath: /wave-app-webiste/src/pages/assets.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-07 13:37:14
+ * @FilePath: /wave-app-website/src/pages/assets.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import { Tab } from '@headlessui/react'
 import Mylistings from 'components/asset/MyListings'
 import Myoffers from 'components/asset/MyOffers'
 import Myown from 'components/asset/MyOwn'
-import useWallet from 'hooks/userWallet'
 import { OfferType } from 'model/offer'
 import { UserInfo } from 'model/user'
 import React, { useEffect } from 'react'
