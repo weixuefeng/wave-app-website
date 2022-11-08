@@ -1,11 +1,12 @@
-import { EVTDetail } from 'model/evt_asset'
+import { EVTCopyDetail } from 'model/evt_asset'
 import React, { useEffect, useState } from 'react'
 import Http from 'services/http'
 import ChainInfoComponent from './ChainInfoComponent'
+import PropertiesComponents from './PropertiesComponents'
 
 export default function EVTDetailComponent(props) {
   const { id } = props
-  const [evtDetail, setEvtDetail] = useState<EVTDetail>()
+  const [evtDetail, setEvtDetail] = useState<EVTCopyDetail>()
 
   useEffect(() => {
     getEvtDetail()
@@ -13,7 +14,7 @@ export default function EVTDetailComponent(props) {
 
   const getEvtDetail = async () => {
     await Http.getInstance()
-      .getEvtDetail(id)
+      .getEvtCopyDetail(id)
       .then(response => {
         setEvtDetail(response)
       })
@@ -40,7 +41,7 @@ export default function EVTDetailComponent(props) {
             </div>
             <div>
               <p className="label">Floor Price:</p>
-              <p className="value">{evtDetail.lowest_sell_price} NEW</p>
+              <p className="value">{evtDetail.lowest_bid_price} NEW</p>
             </div>
           </div>
           {/** action */}
@@ -55,11 +56,17 @@ export default function EVTDetailComponent(props) {
         <div className="detail">
           <h2>Details</h2>
           <ChainInfoComponent
-            address={evtDetail.detail.contract_address}
-            tokenStandard={evtDetail.detail.token_standard}
-            blockChain={evtDetail.detail.block_chain}
+            address={evtDetail.chain_info.contract_address}
+            tokenStandard={evtDetail.chain_info.token_standard}
+            blockChain={evtDetail.chain_info.block_chain}
             creatorEariningPercent={evtDetail.creator_earnings_percent}
           />
+          {evtDetail.properties.length > 0 && (
+            <>
+              <h2>Properties</h2>
+              <PropertiesComponents properties={evtDetail.properties} />
+            </>
+          )}
         </div>
         <div className="intro">
           <h2>Introduction</h2>

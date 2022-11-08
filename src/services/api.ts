@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-13 16:06:08
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-04 20:39:45
+ * @LastEditTime: 2022-11-08 17:20:04
  * @FilePath: /wave-app-website/src/services/api.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -38,6 +38,7 @@ export const Api = {
 
   //evt
   evtTickets: 'evt/ticket/folder',
+  evtCopyDetail: 'evt/copy/detail',
 
   // wallet
   walletInfo: 'wallet/info/',

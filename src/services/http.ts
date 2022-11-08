@@ -7,7 +7,7 @@ import { UserInfo } from 'model/user'
 import { HomeData, HomeList, MyAsset } from 'model/asset'
 import { Banner } from 'model/banner'
 import { NFTDetail } from 'model/nft_asset'
-import { EVTDetail } from 'model/evt_asset'
+import { EVTCopyDetail } from 'model/evt_asset'
 import { TradeItem } from 'model/trade'
 import { CollectionInfo } from 'model/collection'
 import { PAGE_SIZE } from 'constants/constant'
@@ -131,9 +131,14 @@ class Http {
     return _post(Api.nftInfo, params) as Promise<NFTDetail>
   }
 
-  getEvtDetail(collectionId: number): Promise<EVTDetail> {
-    let params = { collection_id: collectionId.toString() }
-    return _post(Api.evtDetail, params) as Promise<EVTDetail>
+  // getEvtDetail(collectionId: number): Promise<EVTDetail> {
+  //   let params = { collection_id: collectionId.toString() }
+  //   return _post(Api.evtDetail, params) as Promise<EVTDetail>
+  // }
+
+  getEvtCopyDetail(nftId: number): Promise<EVTCopyDetail> {
+    let params = { nft_id: nftId.toString() }
+    return _post(Api.evtCopyDetail, params) as Promise<EVTCopyDetail>
   }
 
   getNFTTradeList(pageId: number = 1, keyword: string | null): Promise<Pagination<TradeItem>> {
