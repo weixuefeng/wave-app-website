@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-01 15:43:16
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-08 18:54:42
+ * @LastEditTime: 2022-11-08 19:12:38
  * @FilePath: /wave-app-website/src/model/asset.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -171,6 +171,37 @@ export interface AssetsMyOwnData {
   status: number
   ticket_number: number
   token_id: number
+  type: number
+}
+
+
+export interface AssetsOrderOnSaleData {
+  collection: OrderOnSaleCollection
+  created_at: number
+  direction_address: string
+  expire_time: number
+  id: number
+  nft: OrderOnSaleNft
+  nft_id: number
+  price: string
+  status: number
+}
+
+export interface OrderOnSaleCollection {
+  id: number
+  image: string
+  name: string
+  type: number
+}
+
+export interface OrderOnSaleNft {
+  id: number
+  image: string
+  image_height: number
+  image_width: number
+  name: string
+  sell_id: number
+  token_id: string
   type: number
 }
 
