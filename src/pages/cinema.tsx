@@ -16,7 +16,7 @@ export default function Cinema() {
   function content() {
     return (
       <div className="cinema-page">
-        <h2 className='title'>My Cinema</h2>
+        <h2 className="title">My Cinema</h2>
       </div>
     )
   }

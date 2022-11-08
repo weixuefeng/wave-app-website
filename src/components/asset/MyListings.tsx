@@ -2,18 +2,40 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:43:46
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-08 19:47:25
+ * @LastEditTime: 2022-11-08 21:43:03
  * @FilePath: /wave-app-webiste/src/components/asset/MyListings.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-import { getAssetNameByType } from 'model/asset'
+import { AssetsOrderOnSaleData, getAssetNameByType } from 'model/asset'
+import { UserInfo } from 'model/user'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { selectUser } from 'reducer/userReducer'
+import Http from 'services/http'
+import { useAppSelector } from 'store/store'
 import { floorNum } from 'utils/functions'
 import { formatDateTime } from 'utils/time'
 
 export default function Mylistings(props) {
-  const { myOrderOnSaleData } = props
+  const currentUser = useAppSelector(selectUser) as UserInfo
+  const [myOrderOnSaleData, setMyOrderOnSaleData] = useState<Array<AssetsOrderOnSaleData>>()
+
+  useEffect(() => {
+    if (currentUser) {
+      getOrderOnSale()
+    }
+  }, [currentUser])
+
+  function getOrderOnSale() {
+    Http.getInstance()
+      .getOrderOnSale(currentUser.id, 1)
+      .then(response => {
+        setMyOrderOnSaleData(response.data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
 
   return (
     <div className="my-listings">
