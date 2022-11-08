@@ -109,7 +109,7 @@ export default function Login() {
 
   function dialogContent() {
     return (
-      <>
+      <div className="login">
         <div className="title">
           <h3> Log In / Sign Up</h3>
         </div>
@@ -141,7 +141,7 @@ export default function Login() {
             </p>
           </div>
         </div>
-      </>
+      </div>
     )
   }
 
