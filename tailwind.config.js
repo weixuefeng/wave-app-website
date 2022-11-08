@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-04 16:29:26
+ * @LastEditTime: 2022-11-08 14:52:37
  * @FilePath: /wave-app-webiste/tailwind.config.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -30,6 +30,8 @@ module.exports = {
         grayf8: '#F8F8F8',
         graye7: '#E7E7E7',
         gray9c: '#9C9C9C',
+        grayf5: '#F5F5F5',
+        grayf3: '#F3F3F3',
         blackText: '#0B140E',
         black08:'#08140E',
         grayText: '#969797',

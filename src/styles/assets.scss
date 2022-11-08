@@ -1,5 +1,5 @@
 .assets-page {
-  @apply h-screen bg-grayf8;
+  @apply min-h-screen bg-grayf8;
   .title {
     @apply pt-12 pb-8 text-4xl font-bold text-gray333;
   }
@@ -8,5 +8,134 @@
     @apply ui-selected:border-b-4 ui-selected:border-black ui-selected:text-black;
     @apply ui-not-selected:text-gray99;
   }
-  // My Own
+}
+// My Own
+.my-own {
+  @apply mt-10 grid grid-cols-1 gap-4 pb-14 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:grid-cols-4;
+  .item {
+    @apply col-span-1 mb-8 flex flex-col rounded-xl text-center shadow-lg;
+    @apply border border-white bg-white hover:border-gray-100;
+    @apply dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700;
+    @apply sm:hover:scale-105 sm:hover:transform;
+  }
+  .cover {
+    @apply relative rounded-lg;
+    .perfect-square {
+      @apply relative w-full pb-[100%];
+      @apply relative rounded-lg;
+      img {
+        @apply absolute top-[50%] left-[50%] h-full w-full rounded-t-lg object-cover;
+        transform: translate(-50%, -50%);
+      }
+      span {
+        @apply absolute top-3 left-3 rounded-lg bg-green57 p-2 text-sm font-bold text-white;
+      }
+      .type {
+        @apply bg-blue1d;
+      }
+    }
+  }
+  .own-name {
+    @apply mx-3 mt-3 mb-5 text-left text-xl font-bold text-black08;
+  }
+}
+
+// my listings
+.my-listings {
+  @apply mt-10 grid grid-cols-1 gap-4 pb-14 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:grid-cols-4;
+  .item {
+    @apply col-span-1 mb-8 flex flex-col rounded-xl text-center shadow-lg;
+    @apply border border-white bg-white hover:border-gray-100;
+    @apply dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700;
+    @apply sm:hover:scale-105 sm:hover:transform;
+  }
+  .cover {
+    @apply relative rounded-lg;
+    .perfect-square {
+      @apply relative w-full pb-[100%];
+      @apply relative rounded-lg;
+      img {
+        @apply absolute top-[50%] left-[50%] h-full w-full rounded-t-lg object-cover;
+        transform: translate(-50%, -50%);
+      }
+      span {
+        @apply absolute top-3 left-3 rounded-lg bg-green57 p-2 text-sm font-bold text-white;
+      }
+      .type {
+        @apply bg-blue1d;
+      }
+    }
+  }
+  .name {
+    @apply mx-3 mt-3;
+    h3 {
+      @apply mb-3 text-left text-xl font-bold text-black08;
+    }
+    p {
+      @apply flex items-center justify-between;
+    }
+    .list-price {
+      @apply mb-1 text-xs text-grayc7;
+    }
+    .price {
+      @apply mb-3 text-xs text-gray333;
+    }
+    .cancel {
+      @apply mb-2 text-center text-sm leading-4 text-green57;
+    }
+  }
+}
+
+// my-offers
+.my-offers {
+  .offers-title {
+    @apply pt-14 pb-6 text-base font-normal text-gray99;
+  }
+  .offers-item {
+    @apply grid grid-cols-1 gap-2 pb-14 sm:grid-cols-1 md:grid-cols-2 md:gap-9 lg:grid-cols-3;
+  }
+  .item {
+    @apply rounded-2xl bg-white px-2 pt-4 pb-3;
+  }
+  .received-img {
+    @apply grid grid-cols-3 pb-3;
+    .img-box {
+      @apply col-span-1 mr-2 rounded-xl bg-grayf3;
+      img {
+        @apply rounded-xl;
+      }
+    }
+    .name {
+      @apply col-span-2;
+      h3 {
+        @apply text-lg font-normal text-gray333;
+      }
+      p {
+        @apply text-gray99;
+      }
+    }
+  }
+  .price {
+    li {
+      @apply flex items-center justify-between border-b-[1px] border-grayf5 py-2;
+      span {
+        @apply text-sm text-gray66;
+      }
+      .right {
+        @apply text-gray333;
+      }
+      &:last-child {
+        @apply border-b-0;
+      }
+    }
+  }
+  .acce {
+    @apply mt-4 mb-2 cursor-pointer rounded-lg bg-gray333 py-3 text-center text-lg text-white;
+  }
+  .see-more {
+    @apply cursor-pointer py-2 text-center text-lg text-gray333;
+  }
+  .cancel {
+    @apply cursor-pointer py-3 text-center text-lg font-normal text-gray333;
+  }
 }

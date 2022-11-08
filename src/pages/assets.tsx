@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:49:32
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-07 13:50:26
+ * @LastEditTime: 2022-11-08 11:37:19
  * @FilePath: /wave-app-webiste/src/pages/assets.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -21,13 +21,13 @@ import Http from 'services/http'
 import { useAppSelector } from 'store/store'
 
 export default function Assets() {
-
   let pageModel = new PageModel('Trade', 'WAVE', '')
   const currentUser = useAppSelector(selectUser) as UserInfo
 
   useEffect(() => {
     if (currentUser) {
       getMyAssetList()
+      getOrderOnSale()
     }
   }, [currentUser])
 
@@ -35,7 +35,7 @@ export default function Assets() {
     Http.getInstance()
       .getOrderOnSale(currentUser.id, 1)
       .then(response => {
-        console.log(response)
+        console.log('getOrderOnSale', response)
       })
       .catch(error => {
         console.log(error)
@@ -46,7 +46,7 @@ export default function Assets() {
     Http.getInstance()
       .getOrderOffer(currentUser.id, 1, OfferType.MADE)
       .then(response => {
-        console.log(response)
+        console.log('getOrderOffer', response)
       })
       .catch(error => {
         console.log(error)
@@ -57,7 +57,7 @@ export default function Assets() {
     Http.getInstance()
       .getMyAssetList(currentUser.id, 1)
       .then(response => {
-        console.log(response)
+        console.log('getMyAssetList', response)
       })
       .catch(error => {
         console.log(error)
@@ -65,7 +65,6 @@ export default function Assets() {
   }
 
   function content() {
-
     return (
       <div className="assets-page">
         <div className="container mx-auto">
