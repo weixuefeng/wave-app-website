@@ -1,8 +1,8 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-01 15:43:16
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-07 19:15:27
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-08 18:54:42
  * @FilePath: /wave-app-website/src/model/asset.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -153,3 +153,25 @@ export interface MyAsset {
   copyright_expire_time?: number
   is_copyright_expire: boolean
 }
+
+
+export interface AssetsMyOwnData {
+  ask_price: number
+  collection_id: number
+  copyright_expire_time?: number
+  create_ticket_number: number
+  image: string
+  is_copyright_expire: boolean
+  max_create_ticket_number: number
+  name: string
+  nft_id: number
+  owner_address: string
+  price: number
+  sell_id: number
+  status: number
+  ticket_number: number
+  token_id: number
+  type: number
+}
+
+
