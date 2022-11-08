@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:49:32
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-08 20:42:44
- * @FilePath: /wave-app-webiste/src/pages/assets.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-08 21:20:06
+ * @FilePath: /wave-app-website/src/pages/assets.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import { Tab } from '@headlessui/react'
@@ -27,12 +27,15 @@ export default function Assets() {
 
   const [myOwnData, setMyOwnData] = useState<Array<AssetsMyOwnData>>()
   const [myOrderOnSaleData, setMyOrderOnSaleData] = useState<Array<AssetsOrderOnSaleData>>()
-  const [myOffersData, setMyOffersData] = useState<Array<AssetMyOfferData>>()
+  const [myMadeOffersData, setMyMadeOffersData] = useState<Array<AssetMyOfferData>>()
+  const [myReceiveOffersData, setMyReceiveOffersData] = useState<Array<AssetMyOfferData>>()
+
   useEffect(() => {
     if (currentUser) {
       getMyAssetList()
       getOrderOnSale()
-      getOrderOffer()
+      getMadeOffer()
+      getReceivedOffer()
     }
   }, [currentUser])
 
@@ -47,12 +50,24 @@ export default function Assets() {
       })
   }
 
-  function getOrderOffer() {
+  function getMadeOffer() {
     Http.getInstance()
       .getOrderOffer(currentUser.id, 1, OfferType.MADE)
       .then(response => {
-        setMyOffersData(response.data)
-        console.log('getOrderOffer', response)
+        setMyMadeOffersData(response.data)
+        console.log('made offer', response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  function getReceivedOffer() {
+    Http.getInstance()
+      .getOrderOffer(currentUser.id, 1, OfferType.RECEIVED)
+      .then(response => {
+        setMyReceiveOffersData(response.data)
+        console.log('received offer', response)
       })
       .catch(error => {
         console.log(error)
@@ -80,7 +95,8 @@ export default function Assets() {
               <Tab.List>
                 <Tab className="tab-item">My Own</Tab>
                 <Tab className="tab-item mx-24">My Listings</Tab>
-                <Tab className="tab-item">My Offers</Tab>
+                <Tab className="tab-item mx-24">My Offers Made</Tab>
+                <Tab className="tab-item mx-24">My Offers Received</Tab>
               </Tab.List>
               <Tab.Panels>
                 <Tab.Panel>
@@ -90,7 +106,10 @@ export default function Assets() {
                   <Mylistings myOrderOnSaleData={myOrderOnSaleData} />
                 </Tab.Panel>
                 <Tab.Panel>
-                  <Myoffers myOffersData={myOffersData} />
+                  <Myoffers myOffersData={myMadeOffersData} />
+                </Tab.Panel>
+                <Tab.Panel>
+                  <Myoffers myOffersData={myReceiveOffersData} />
                 </Tab.Panel>
               </Tab.Panels>
             </Tab.Group>
