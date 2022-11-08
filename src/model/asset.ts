@@ -154,7 +154,6 @@ export interface MyAsset {
   is_copyright_expire: boolean
 }
 
-
 export interface AssetsMyOwnData {
   ask_price: number
   collection_id: number
@@ -173,7 +172,6 @@ export interface AssetsMyOwnData {
   token_id: number
   type: number
 }
-
 
 export interface AssetsOrderOnSaleData {
   collection: OrderOnSaleCollection
@@ -204,5 +202,3 @@ export interface OrderOnSaleNft {
   token_id: string
   type: number
 }
-
-

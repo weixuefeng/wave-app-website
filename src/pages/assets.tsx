@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:49:32
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-08 19:13:42
+ * @LastEditTime: 2022-11-08 19:46:02
  * @FilePath: /wave-app-webiste/src/pages/assets.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -25,8 +25,8 @@ export default function Assets() {
   let pageModel = new PageModel('Trade', 'WAVE', '')
   const currentUser = useAppSelector(selectUser) as UserInfo
 
-  const [myOwnData,setMyOwnData] = useState<Array<AssetsMyOwnData>>()
-  const [myOrderOnSaleData,setMyOrderOnSaleData] = useState<Array<AssetsOrderOnSaleData>>()
+  const [myOwnData, setMyOwnData] = useState<Array<AssetsMyOwnData>>()
+  const [myOrderOnSaleData, setMyOrderOnSaleData] = useState<Array<AssetsOrderOnSaleData>>()
 
   useEffect(() => {
     if (currentUser) {
@@ -41,7 +41,6 @@ export default function Assets() {
       .getOrderOnSale(currentUser.id, 1)
       .then(response => {
         setMyOrderOnSaleData(response.data)
-        console.log('getOrderOnSale', response)
       })
       .catch(error => {
         console.log(error)
@@ -64,7 +63,6 @@ export default function Assets() {
       .getMyAssetList(currentUser.id, 1)
       .then(response => {
         setMyOwnData(response.data)
-        console.log('getMyAssetList', response)
       })
       .catch(error => {
         console.log(error)
