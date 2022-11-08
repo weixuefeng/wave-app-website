@@ -1,11 +1,13 @@
 import { DatePicker, DatePickerProps } from 'antd'
+import DialogComponent from 'components/common/DialogComponent'
 import useWallet from 'hooks/userWallet'
 import { NFTDetail } from 'model/nft_asset'
 import React from 'react'
 import { splitAddress } from 'utils/functions'
+import PasswordDialog from './PasswordDialog'
 
 export default function MakeOfferDialog(props) {
-  const { nftDetail } = props
+  const { nftDetail, showPassword } = props
   const wallet = useWallet()
   const info = nftDetail as NFTDetail
   if (!info || !wallet) {
@@ -70,7 +72,14 @@ export default function MakeOfferDialog(props) {
         <p>{wallet.available_balance} NEW</p>
       </div>
 
-      <button className="primary black">Next</button>
+      <button
+        className="primary black"
+        onClick={() => {
+          showPassword()
+        }}
+      >
+        Next
+      </button>
     </div>
   )
 }

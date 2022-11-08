@@ -203,3 +203,13 @@
     @apply flex flex-row items-center justify-between;
   }
 }
+
+.dialog-password {
+  @apply flex flex-col items-center justify-start;
+  .title {
+    @apply p-4 text-2xl text-gray-900;
+  }
+  .action {
+    @apply flex flex-row items-center justify-between;
+  }
+}

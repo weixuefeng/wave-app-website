@@ -21,7 +21,7 @@ function fetchCommonPrams() {
   return param
 }
 
-function md5(signContent: string) {
+export function md5(signContent: string) {
   return createHash('md5').update(signContent, 'utf8').digest('hex')
 }
 

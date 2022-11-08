@@ -7,20 +7,39 @@ import PropertiesComponents from './PropertiesComponents'
 import DialogComponent from 'components/common/DialogComponent'
 import BuyDialog from 'components/dialog/BuyDialog'
 import MakeOfferDialog from 'components/dialog/MakeOfferDialog'
+import PasswordDialog from 'components/dialog/PasswordDialog'
 
 export default function NFTDetailComponent(props) {
   const { id } = props
 
   const [nftDetail, setNFTDetail] = useState<NFTDetail>(null)
   const [isBuyOpen, setIsBuyOpen] = useState(false)
+  const [isPasswordOpen, setIsPasswordOpen] = useState(false)
   const [isMakeOfferOpen, setIsMakeOfferOpen] = useState(false)
 
   function closeBuyModal() {
     setIsBuyOpen(false)
   }
 
+  function closePasswordModal() {
+    setIsPasswordOpen(false)
+  }
+
   function closeMakeOfferModal() {
     setIsMakeOfferOpen(false)
+  }
+
+  function showPassword() {
+    closeMakeOfferModal()
+    closeBuyModal()
+    setIsPasswordOpen(true)
+  }
+
+  function onConfirmPassword(value) {
+    console.log(value)
+    closePasswordModal()
+    const endTime = parseInt((Date.now() / 1000 + 86400).toString())
+    Http.getInstance().requestOrderBid(id, 10, value, endTime)
   }
 
   useEffect(() => {
@@ -119,7 +138,10 @@ export default function NFTDetailComponent(props) {
         <BuyDialog nftDetail={nftDetail} />
       </DialogComponent>
       <DialogComponent isOpen={isMakeOfferOpen} closeModal={closeMakeOfferModal}>
-        <MakeOfferDialog nftDetail={nftDetail} />
+        <MakeOfferDialog nftDetail={nftDetail} showPassword={showPassword} />
+      </DialogComponent>
+      <DialogComponent isOpen={isPasswordOpen} closeModal={closePasswordModal}>
+        <PasswordDialog onCancel={() => closePasswordModal()} onConfirm={onConfirmPassword} />
       </DialogComponent>
     </div>
   )

@@ -1,7 +1,7 @@
 import axios, { Axios } from 'axios'
 import { Api } from './api'
 import { encode } from 'js-base64'
-import { sign } from 'utils/sign_utils'
+import { md5, sign } from 'utils/sign_utils'
 import { BaseResponse, Pagination } from 'model/base'
 import { UserInfo } from 'model/user'
 import { HomeData, HomeList, MyAsset } from 'model/asset'
@@ -224,6 +224,17 @@ class Http {
       page_size: PAGE_SIZE,
     }
     return _post(Api.nftAssetList, params) as Promise<Pagination<MyAsset>>
+  }
+
+  requestOrderBid(nftId: number, price: number, password: string, endTime: number): Promise<any> {
+    let params = {
+      nft_id: nftId,
+      price: price,
+      password: md5(`wave${password}`),
+      start_time: parseInt((Date.now() / 1000).toString()).toString(),
+      end_time: endTime.toString(),
+    }
+    return _post(Api.orderBid, params) as Promise<Pagination<any>>
   }
 }
 
