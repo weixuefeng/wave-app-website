@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:49:32
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-08 19:46:02
+ * @LastEditTime: 2022-11-08 20:42:44
  * @FilePath: /wave-app-webiste/src/pages/assets.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -12,7 +12,7 @@ import Myoffers from 'components/asset/MyOffers'
 import Myown from 'components/asset/MyOwn'
 import NormalLayout from 'components/layout/normalLayout'
 import useWallet from 'hooks/userWallet'
-import { AssetsMyOwnData, AssetsOrderOnSaleData } from 'model/asset'
+import { AssetMyOfferData, AssetsMyOwnData, AssetsOrderOnSaleData } from 'model/asset'
 import { PageModel } from 'model/navModel'
 import { OfferType } from 'model/offer'
 import { UserInfo } from 'model/user'
@@ -27,7 +27,7 @@ export default function Assets() {
 
   const [myOwnData, setMyOwnData] = useState<Array<AssetsMyOwnData>>()
   const [myOrderOnSaleData, setMyOrderOnSaleData] = useState<Array<AssetsOrderOnSaleData>>()
-
+  const [myOffersData, setMyOffersData] = useState<Array<AssetMyOfferData>>()
   useEffect(() => {
     if (currentUser) {
       getMyAssetList()
@@ -51,6 +51,7 @@ export default function Assets() {
     Http.getInstance()
       .getOrderOffer(currentUser.id, 1, OfferType.MADE)
       .then(response => {
+        setMyOffersData(response.data)
         console.log('getOrderOffer', response)
       })
       .catch(error => {
@@ -89,7 +90,7 @@ export default function Assets() {
                   <Mylistings myOrderOnSaleData={myOrderOnSaleData} />
                 </Tab.Panel>
                 <Tab.Panel>
-                  <Myoffers />
+                  <Myoffers myOffersData={myOffersData} />
                 </Tab.Panel>
               </Tab.Panels>
             </Tab.Group>

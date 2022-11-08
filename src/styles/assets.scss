@@ -33,6 +33,9 @@
       .type {
         @apply bg-blue1d;
       }
+      .on-sale {
+        @apply absolute top-4 right-5 rounded-lg bg-yellowf7 p-3 text-sm font-bold text-white;
+      }
     }
   }
   .own-name {
