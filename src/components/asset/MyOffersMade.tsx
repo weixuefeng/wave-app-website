@@ -1,0 +1,107 @@
+/*
+ * @Author: liukeke liukeke@diynova.com
+ * @Date: 2022-11-04 20:44:56
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-09 12:06:03
+ * @FilePath: /wave-app-webiste/src/components/asset/MyOffers.tsx
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
+import DialogComponent from 'components/common/DialogComponent'
+import { AssetMyOfferData } from 'model/asset'
+import { OfferType } from 'model/offer'
+import { UserInfo } from 'model/user'
+import React, { useEffect, useState } from 'react'
+import { selectUser } from 'reducer/userReducer'
+import Http from 'services/http'
+import { useAppSelector } from 'store/store'
+import { floorNum } from 'utils/functions'
+import { formatDateTime } from 'utils/time'
+
+export default function MyOffersMade(props) {
+  const currentUser = useAppSelector(selectUser) as UserInfo
+  const [myMadeOffersData, setMyMadeOffersData] = useState<Array<AssetMyOfferData>>()
+
+  let [isOpen, setIsOpen] = useState(false)
+
+  function closeModal() {
+    setIsOpen(false)
+  }
+
+  function openModal() {
+    setIsOpen(true)
+  }
+
+  useEffect(() => {
+    if (currentUser) {
+      getMadeOffer()
+    }
+  }, [currentUser])
+
+  function getMadeOffer() {
+    Http.getInstance()
+      .getOrderOffer(currentUser.id, 1, OfferType.MADE)
+      .then(response => {
+        setMyMadeOffersData(response.data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  function dialogContent() {
+    return (
+      <div>
+        <h2 className="text-base text-gray333">Are you sure you want to cancle the bid？</h2>
+        <div className="mt-12 flex items-center justify-between">
+          <div className="cursor-pointer rounded-xl border-2 border-gray333 px-11 py-4" onClick={closeModal}>
+            Cancel
+          </div>
+          <div className="cursor-pointer rounded-xl bg-gray333 px-11 py-4 text-white">Confirm</div>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="my-offers">
+      {/* <h2 className="offers-title">Offer Made</h2> */}
+      <div className="offers-item">
+        {myMadeOffersData?.map((item, index) => {
+          return (
+            <div className="item" key={index}>
+              <div className="received-img">
+                <div className="img-box">
+                  <img src={item.nft.image} alt={item.nft.name} />
+                </div>
+                <div className="name">
+                  <h3>{item.nft.name}</h3>
+                  <p>{item.collection.name}</p>
+                </div>
+              </div>
+              <ul className="price">
+                <li>
+                  <span>From</span>
+                  <span className="right">{item.from.name}</span>
+                </li>
+                <li>
+                  <span>Price</span>
+                  <span className="right">{floorNum(item.price)} NEW</span>
+                </li>
+                <li>
+                  <span>Expire date</span>
+                  <span className="right">{formatDateTime(item.expire_time)}</span>
+                </li>
+              </ul>
+              <div className="cancel" onClick={openModal}>
+                Cancel
+              </div>
+              <DialogComponent isOpen={isOpen} closeModal={closeModal}>
+                {dialogContent()}
+              </DialogComponent>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}

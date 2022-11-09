@@ -91,6 +91,7 @@
 
 // my-offers
 .my-offers {
+  @apply pt-8;
   .offers-title {
     @apply pt-14 pb-6 text-base font-normal text-gray99;
   }

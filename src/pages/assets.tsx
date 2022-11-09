@@ -2,61 +2,21 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:49:32
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-08 21:44:42
+ * @LastEditTime: 2022-11-09 11:53:35
  * @FilePath: /wave-app-website/src/pages/assets.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
+import React from 'react'
 import { Tab } from '@headlessui/react'
 import Mylistings from 'components/asset/MyListings'
-import Myoffers from 'components/asset/MyOffers'
+import MyOffersMade from 'components/asset/MyOffersMade'
+import MyOffersReceived from 'components/asset/MyOffersReceived'
 import Myown from 'components/asset/MyOwn'
 import NormalLayout from 'components/layout/normalLayout'
-import { AssetMyOfferData } from 'model/asset'
 import { PageModel } from 'model/navModel'
-import { OfferType } from 'model/offer'
-import { UserInfo } from 'model/user'
-import React, { useEffect, useState } from 'react'
-import { selectUser } from 'reducer/userReducer'
-import Http from 'services/http'
-import { useAppSelector } from 'store/store'
 
 export default function Assets() {
-  let pageModel = new PageModel('Trade', 'WAVE', '')
-  const currentUser = useAppSelector(selectUser) as UserInfo
-
-  const [myMadeOffersData, setMyMadeOffersData] = useState<Array<AssetMyOfferData>>()
-  const [myReceiveOffersData, setMyReceiveOffersData] = useState<Array<AssetMyOfferData>>()
-
-  useEffect(() => {
-    if (currentUser) {
-      getMadeOffer()
-      getReceivedOffer()
-    }
-  }, [currentUser])
-
-  function getMadeOffer() {
-    Http.getInstance()
-      .getOrderOffer(currentUser.id, 1, OfferType.MADE)
-      .then(response => {
-        setMyMadeOffersData(response.data)
-        console.log('made offer', response)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
-  function getReceivedOffer() {
-    Http.getInstance()
-      .getOrderOffer(currentUser.id, 1, OfferType.RECEIVED)
-      .then(response => {
-        setMyReceiveOffersData(response.data)
-        console.log('received offer', response)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
+  let pageModel = new PageModel('Assets', 'WAVE', '')
 
   function content() {
     return (
@@ -79,10 +39,10 @@ export default function Assets() {
                   <Mylistings />
                 </Tab.Panel>
                 <Tab.Panel>
-                  <Myoffers myOffersData={myMadeOffersData} />
+                  <MyOffersMade />
                 </Tab.Panel>
                 <Tab.Panel>
-                  <Myoffers myOffersData={myReceiveOffersData} />
+                  <MyOffersReceived />
                 </Tab.Panel>
               </Tab.Panels>
             </Tab.Group>
