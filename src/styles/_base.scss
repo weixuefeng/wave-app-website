@@ -1,3 +1,9 @@
 * {
   outline: none;
 }
+
+.anticon {
+  svg {
+    @apply hidden;
+  }
+}

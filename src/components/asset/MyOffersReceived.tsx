@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:44:56
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-09 11:57:53
+ * @LastEditTime: 2022-11-10 15:51:32
  * @FilePath: /wave-app-webiste/src/components/asset/MyOffers.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -95,24 +95,23 @@ export default function MyOffersReceived(props) {
 
 function dialogContent(fromName, price, time) {
   return (
-    <div id="assets-more-modal">
-      <h3 className="text-2xl font-normal text-gray333">Wonder Woman Woman #23</h3>
-      <h4 className="mb-5 mt-4 text-lg font-normal text-gray333">More offers</h4>
-
-      <div className="mb-6 rounded-lg bg-grayf8 px-3">
-        <div className="flex items-center justify-between py-3">
+    <div className="dialog-offers-received">
+      <h3>Wonder Woman Woman #23</h3>
+      <h4>More offers</h4>
+      <div className="from-box">
+        <div className="from">
           <span>From</span>
           <span className="right">{fromName}</span>
         </div>
-        <div className="border-grayf0 flex items-center justify-between border-y-[1px]  py-3">
+        <div className="price">
           <span>Price</span>
           <span className="right">{floorNum(price)} NEW</span>
         </div>
-        <div className="flex items-center justify-between  py-3">
+        <div className="expire">
           <span>Expire date</span>
           <span className="right">{formatDateTime(time)}</span>
         </div>
-        <div className="cursor-pointer pb-4 text-center text-lg text-green57">Accept</div>
+        <div className="accept">Accept</div>
       </div>
     </div>
   )

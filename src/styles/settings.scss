@@ -1,0 +1,23 @@
+.settings-page {
+  @apply min-h-screen bg-grayf8;
+
+  .setting-list {
+    @apply px-44 pt-14;
+  }
+
+  .itme {
+    li {
+      @apply flex items-center justify-between border-b-[1px] border-grayd8 pt-7 pb-4;
+      @apply text-base text-gray3d;
+      .left {
+        @apply mr-4 text-sm text-gray99;
+      }
+      .edit {
+        @apply cursor-pointer;
+      }
+      .avata {
+        @apply h-14 w-14;
+      }
+    }
+  }
+}
