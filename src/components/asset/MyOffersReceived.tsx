@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:44:56
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-10 15:51:32
+ * @LastEditTime: 2022-11-10 20:15:28
  * @FilePath: /wave-app-webiste/src/components/asset/MyOffers.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -11,17 +11,21 @@ import MyoffersAcceDialog from 'components/dialog/MyoffersAcceDialog'
 import { AssetMyOfferData } from 'model/asset'
 import { OfferType } from 'model/offer'
 import { UserInfo } from 'model/user'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { selectUser } from 'reducer/userReducer'
 import Http from 'services/http'
 import { useAppSelector } from 'store/store'
-import { floorNum } from 'utils/functions'
+import { floorNum, isInViewPort } from 'utils/functions'
 import { formatDateTime } from 'utils/time'
 
 export default function MyOffersReceived(props) {
   const currentUser = useAppSelector(selectUser) as UserInfo
   const [myReceiveOffersData, setMyReceiveOffersData] = useState<Array<AssetMyOfferData>>()
   let [isOpen, setIsOpen] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [hasMore, setHasMore] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const ref = useRef(null)
 
   function closeModal() {
     setIsOpen(false)
@@ -38,14 +42,55 @@ export default function MyOffersReceived(props) {
   }, [currentUser])
 
   function getReceivedOffer() {
+    setIsLoading(true)
     Http.getInstance()
-      .getOrderOffer(currentUser.id, 1, OfferType.RECEIVED)
+      .getOrderOffer(currentUser.id, currentPage, OfferType.RECEIVED)
       .then(response => {
-        setMyReceiveOffersData(response.data)
+        if (currentPage == 1) {
+          // first page
+          setMyReceiveOffersData(response.data)
+          // check has more
+          if (response.page_id < response.total_page) {
+            setHasMore(true)
+            // update current page
+            setCurrentPage(currentPage + 1)
+          } else {
+            setHasMore(false)
+          }
+        } else {
+          // more page
+          setMyReceiveOffersData(myReceiveOffersData.concat(response.data))
+          // check has more
+          if (response.page_id < response.total_page) {
+            setHasMore(true)
+            setCurrentPage(currentPage + 1)
+          } else {
+            setHasMore(false)
+          }
+        }
       })
       .catch(error => {
         console.log(error)
       })
+      .finally(() => {
+        setIsLoading(false)
+      })
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  })
+
+  const handleScroll = () => {
+    if (ref) {
+      let res = isInViewPort(ref.current)
+      if (res) {
+        if (hasMore && !isLoading) {
+          getReceivedOffer()
+        }
+      }
+    }
   }
 
   return (
@@ -89,6 +134,9 @@ export default function MyOffersReceived(props) {
           )
         })}
       </div>
+      <button ref={ref} className="primary black mb-10" onClick={() => getReceivedOffer()}>
+        {isLoading ? 'loading...' : hasMore ? 'load more' : 'no more'}
+      </button>
     </div>
   )
 }
