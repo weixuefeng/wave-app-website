@@ -236,6 +236,40 @@ class Http {
     }
     return _post(Api.orderBid, params) as Promise<Pagination<any>>
   }
+
+  // my cinema request
+  getMyCinemaList(pageId: number): Promise<Pagination<any>> {
+    let params = {
+      page_id: pageId,
+      page_size: PAGE_SIZE,
+    }
+    return _post(Api.evtCinemaList, params) as Promise<Pagination<any>>
+  }
+
+  requestUpdateAvatar() {
+    let params = {}
+    return _post(Api.userAvatarUpdate, params) as Promise<any>
+  }
+
+  requestUpdateEmail(emailTicket: string, email: string, emailCode: string, gaCode: string): Promise<any>{
+    let params = {
+      email_ticket: emailTicket,
+      email: email,
+      email_code: emailCode,
+      ga_code: gaCode
+    }
+    return _post(Api.userEmailUpdate, params) as Promise<any>
+  }
+
+  requestUpdateName() {
+    let params = {}
+    return _post(Api.userNameUpdate, params) as Promise<any>
+  }
+
+  requestUpdatePassword() {
+    let params = {}
+    return _post(Api.userPaymentPasswordUpdate, params) as Promise<any>
+  }
 }
 
 export default Http
