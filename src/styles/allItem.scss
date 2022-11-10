@@ -9,7 +9,7 @@
     @apply col-span-1 mb-8 flex flex-col rounded-xl text-center shadow-lg;
     @apply border border-white bg-white hover:border-gray-100;
     @apply dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700;
-    @apply sm:hover:scale-105 sm:hover:transform;
+    @apply sm:hover:scale-105 sm:hover:transform sm:hover:duration-700;
   }
   .cover {
     @apply relative rounded-lg;
