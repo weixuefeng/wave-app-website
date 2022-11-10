@@ -80,7 +80,7 @@ export default function Login() {
                 Settings
               </Link>
               <p
-                className="cursor-pointer text-red-500"
+                className="cursor-pointer text-red-500 w-full"
                 onClick={() => {
                   dispatch(updateUserInfo(null))
                   localStorage.clear()
