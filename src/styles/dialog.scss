@@ -276,3 +276,188 @@
     @apply mt-9 cursor-pointer rounded-xl bg-grayea py-3 text-center text-base font-normal text-gray99;
   }
 }
+
+.dialog-settings-email {
+  h2 {
+    @apply mb-10 text-2xl font-bold text-gray333;
+  }
+  .password-box {
+    .email,
+    .code-box {
+      @apply relative;
+      img {
+        @apply absolute top-[70%] left-4 -mt-3 h-6 w-6;
+      }
+
+      input {
+        @apply pl-11;
+      }
+    }
+    .email {
+      @apply mb-7;
+    }
+    .code-box {
+      @apply mb-9;
+    }
+    .label {
+      @apply text-base font-normal text-black17;
+    }
+
+    input {
+      @apply mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-gragfb;
+      &::input-placeholder {
+        @apply text-grayc7;
+      }
+
+      &::-webkit-input-placeholder {
+        color: #c7c7c7 !important;
+      }
+
+      &:-moz-placeholder {
+        color: #c7c7c7 !important;
+      }
+
+      &::-moz-placeholder {
+        color: #c7c7c7 !important;
+      }
+
+      &:-ms-input-placeholder {
+        color: #c7c7c7 !important;
+      }
+    }
+    input[type='text']:focus-visible {
+      @apply border-gray8c;
+    }
+
+    .send-code {
+      @apply absolute top-9 right-5 h-14 cursor-pointer text-sm leading-8 text-gray333;
+      span {
+        @apply border-l-[1px] border-grayed pl-5;
+      }
+    }
+
+    .log-code {
+      @apply mt-6;
+    }
+
+    .agree-box {
+      @apply relative mt-6 h-4 leading-4;
+
+      input {
+        @apply h-4 cursor-pointer;
+      }
+
+      .ant-checkbox-wrapper {
+        @apply absolute top-0 left-0;
+      }
+
+      input[type='checkbox']::before {
+        @apply absolute top-0 left-0 h-4 w-4 bg-bg-checked bg-contain;
+        content: '';
+      }
+
+      input[type='checkbox']:checked::before {
+        @apply bg-bg-checked-hover;
+      }
+    }
+
+    .next {
+      @apply w-full rounded-xl bg-grayea py-4 text-center text-base font-normal text-gray99;
+    }
+  }
+}
+
+.dialog-settings-password {
+  h2 {
+    @apply mb-10 text-2xl font-bold text-gray333;
+  }
+  .password-box {
+    .email,
+    .password,
+    .code-box {
+      @apply relative;
+      img {
+        @apply absolute top-[70%] left-4 -mt-3 h-6 w-6;
+      }
+
+      input {
+        @apply pl-11;
+      }
+    }
+    .password,
+    .email {
+      @apply mb-7;
+    }
+    .emailed {
+      @apply mt-3 text-sm text-black56;
+    }
+    .code-box {
+      @apply mb-9;
+    }
+    .label {
+      @apply text-base font-normal text-black17;
+    }
+
+    input {
+      @apply mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-gragfb;
+      &::input-placeholder {
+        @apply text-grayc7;
+      }
+
+      &::-webkit-input-placeholder {
+        color: #c7c7c7 !important;
+      }
+
+      &:-moz-placeholder {
+        color: #c7c7c7 !important;
+      }
+
+      &::-moz-placeholder {
+        color: #c7c7c7 !important;
+      }
+
+      &:-ms-input-placeholder {
+        color: #c7c7c7 !important;
+      }
+    }
+    input[type='text']:focus-visible {
+      @apply border-gray8c;
+    }
+
+    .send-code {
+      @apply absolute top-9 right-5 h-14 cursor-pointer text-sm leading-8 text-gray333;
+      span {
+        @apply border-l-[1px] border-grayed pl-5;
+      }
+    }
+
+    .log-code {
+      @apply mt-6;
+    }
+
+    .agree-box {
+      @apply relative mt-6 h-4 leading-4;
+
+      input {
+        @apply h-4 cursor-pointer;
+      }
+
+      .ant-checkbox-wrapper {
+        @apply absolute top-0 left-0;
+      }
+
+      input[type='checkbox']::before {
+        @apply absolute top-0 left-0 h-4 w-4 bg-bg-checked bg-contain;
+        content: '';
+      }
+
+      input[type='checkbox']:checked::before {
+        @apply bg-bg-checked-hover;
+      }
+    }
+
+    .next {
+      @apply w-full rounded-xl bg-grayea py-4 text-center text-base font-normal text-gray99;
+    }
+  }
+}
