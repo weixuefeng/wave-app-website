@@ -1,7 +1,11 @@
 import DialogComponent from 'components/common/DialogComponent'
+import { UserInfo } from 'model/user'
 import React, { useState } from 'react'
+import { selectUser } from 'reducer/userReducer'
+import { useAppSelector } from 'store/store'
 
 export default function NameModal(props) {
+  const currentUser = useAppSelector(selectUser) as UserInfo
   let [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
@@ -28,7 +32,7 @@ export default function NameModal(props) {
     <li>
       <p>Nickname</p>
       <div>
-        <span className="left">Henry</span>
+        <span className="left">{currentUser?.name}</span>
         <span className="edit" onClick={openModal}>
           Edit
         </span>

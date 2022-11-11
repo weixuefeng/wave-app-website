@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 15:00:09
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-10 15:09:41
+ * @LastEditTime: 2022-11-11 15:04:30
  * @FilePath: /wave-app-webiste/src/components/settings/avataUpload.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -10,7 +10,10 @@ import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
 import { message, Upload } from 'antd'
 import type { UploadChangeParam } from 'antd/es/upload'
 import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface'
+import { UserInfo } from 'model/user'
 import React, { useState } from 'react'
+import { selectUser } from 'reducer/userReducer'
+import { useAppSelector } from 'store/store'
 
 const getBase64 = (img: RcFile, callback: (url: string) => void) => {
   const reader = new FileReader()
@@ -31,6 +34,7 @@ const beforeUpload = (file: RcFile) => {
 }
 
 const AvataUpload: React.FC = () => {
+  const currentUser = useAppSelector(selectUser) as UserInfo
   const [loading, setLoading] = useState(false)
   const [imageUrl, setImageUrl] = useState<string>()
 
@@ -52,7 +56,12 @@ const AvataUpload: React.FC = () => {
     <div>
       {loading ? <LoadingOutlined /> : <PlusOutlined />}
       <div className="h-14 w-14">
-        <img src="/assets/image/icon_avata.png" alt="avata icon" />
+        {/* <img src="/assets/image/icon_avata.png" alt="avata icon" /> */}
+        <img
+          src={currentUser?.avatar !== undefined ? currentUser?.avatar : '/assets/image/icon_avata.png'}
+          alt="avata icon"
+          className="rounded-[50%]"
+        />
       </div>
     </div>
   )

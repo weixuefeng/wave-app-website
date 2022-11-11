@@ -15,6 +15,7 @@ import { LocalKey } from 'constants/key'
 import { updateUserInfo } from 'reducer/userReducer'
 import { WalletInfo, WalletTransaction } from 'model/wallet'
 import { OfferType } from 'model/offer'
+import { CinemaList } from 'model/cinema'
 
 let client = refreshClient()
 
@@ -238,7 +239,7 @@ class Http {
   }
 
   // my cinema request
-  getMyCinemaList(pageId: number): Promise<Pagination<any>> {
+  getMyCinemaList(pageId: number): Promise<Pagination<CinemaList>> {
     let params = {
       page_id: pageId,
       page_size: PAGE_SIZE,
