@@ -251,12 +251,12 @@ class Http {
     return _post(Api.userAvatarUpdate, params) as Promise<any>
   }
 
-  requestUpdateEmail(emailTicket: string, email: string, emailCode: string, gaCode: string): Promise<any>{
+  requestUpdateEmail(emailTicket: string, email: string, emailCode: string, gaCode: string): Promise<any> {
     let params = {
       email_ticket: emailTicket,
       email: email,
       email_code: emailCode,
-      ga_code: gaCode
+      ga_code: gaCode,
     }
     return _post(Api.userEmailUpdate, params) as Promise<any>
   }

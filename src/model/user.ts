@@ -15,12 +15,11 @@ export interface LoginParams {
   code: string
 }
 
-
 export enum EmailAction {
   // login / check_email / reset_email/ payment_password / pay
-  LOGIN = "login",
-  CHECK_EMAIL = "check_email",
-  RESET_EMAIL = "reset_email",
-  PAYMENT_PASSWORD = "payment_password",
-  PAY = "pay"
+  LOGIN = 'login',
+  CHECK_EMAIL = 'check_email',
+  RESET_EMAIL = 'reset_email',
+  PAYMENT_PASSWORD = 'payment_password',
+  PAY = 'pay',
 }

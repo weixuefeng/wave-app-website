@@ -2,16 +2,88 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 20:26:47
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-10 13:51:25
+ * @LastEditTime: 2022-11-11 11:58:49
  * @FilePath: /wave-app-website/src/pages/tickets.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import NormalLayout from 'components/layout/normalLayout'
+import { CinemaList } from 'model/cinema'
 import { PageModel } from 'model/navModel'
-import React, { useState, useEffect } from 'react'
+import { UserInfo } from 'model/user'
+import React, { useState, useEffect, useRef } from 'react'
+import { selectUser } from 'reducer/userReducer'
+import Http from 'services/http'
+import { useAppSelector } from 'store/store'
+import { isInViewPort } from 'utils/functions'
+import { formatSeconds } from 'utils/time'
 
 export default function Cinema() {
   let pageModel = new PageModel('Cinema', 'WAVE', '')
+  const currentUser = useAppSelector(selectUser) as UserInfo
+  const [cinemaData, setCinemaData] = useState<Array<CinemaList>>()
+  const [currentPage, setCurrentPage] = useState(1)
+  const [hasMore, setHasMore] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const ref = useRef(null)
+
+  useEffect(() => {
+    if (currentUser) {
+      getCinemaData()
+    }
+  }, [currentUser])
+
+  function getCinemaData() {
+    setIsLoading(true)
+    Http.getInstance()
+      .getMyCinemaList(currentPage)
+      .then(response => {
+        console.log('ppppp', response)
+        if (currentPage == 1) {
+          // first page
+          setCinemaData(response.data)
+          // check has more
+          if (response.page_id < response.total_page) {
+            setHasMore(true)
+            // update current page
+            setCurrentPage(currentPage + 1)
+          } else {
+            setHasMore(false)
+          }
+        } else {
+          // more page
+          setCinemaData(cinemaData.concat(response.data))
+          // check has more
+          if (response.page_id < response.total_page) {
+            setHasMore(true)
+            setCurrentPage(currentPage + 1)
+          } else {
+            setHasMore(false)
+          }
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  })
+
+  const handleScroll = () => {
+    if (ref) {
+      let res = isInViewPort(ref.current)
+      if (res) {
+        if (hasMore && !isLoading) {
+          getCinemaData()
+        }
+      }
+    }
+  }
 
   function content() {
     return (
@@ -19,69 +91,31 @@ export default function Cinema() {
         <div className="container mx-auto">
           <h2 className="title">My Cinema</h2>
           <div className="cinema">
-            <div className="item">
-              <div className="img">
-                <img
-                  src="https://newnet-cache.wavemall.io/thumb/QmdERjCYsXXgSBq3tX9we4G5VeXX3Kzd671u6qzi7ehWwn"
-                  alt="img"
-                />
-              </div>
-              <div className="type">EVT</div>
-              <div className="info-bg">
-                <div className="info">
-                  <div className="name">
-                    <h5>Wonder Woman</h5>
-                    <p>1:50:55</p>
+            {cinemaData?.map((item, index) => {
+              return (
+                <div className="item" key={index}>
+                  <div className="img">
+                    <img src={item.image} alt={item.name} />
                   </div>
-                  <div className="pic">
-                    <img src="/assets/image/icon_play.png" alt="play icon" />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="item">
-              <div className="img">
-                <img
-                  src="https://newnet-cache.wavemall.io/thumb/QmdERjCYsXXgSBq3tX9we4G5VeXX3Kzd671u6qzi7ehWwn"
-                  alt="img"
-                />
-              </div>
-              <div className="type">EVT</div>
-              <div className="info-bg">
-                <div className="info">
-                  <div className="name">
-                    <h5>Wonder Woman</h5>
-                    <p>1:50:55</p>
-                  </div>
-                  <div className="pic">
-                    <img src="/assets/image/icon_play.png" alt="play icon" />
+                  <div className="type">EVT</div>
+                  <div className="info-bg">
+                    <div className="info">
+                      <div className="name">
+                        <h5>{item.name}</h5>
+                        <p>{formatSeconds(item.running_time)}</p>
+                      </div>
+                      <div className="pic">
+                        <img src="/assets/image/icon_play.png" alt="play icon" />
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            <div className="item">
-              <div className="img">
-                <img
-                  src="https://newnet-cache.wavemall.io/thumb/QmdERjCYsXXgSBq3tX9we4G5VeXX3Kzd671u6qzi7ehWwn"
-                  alt="img"
-                />
-              </div>
-              <div className="type">EVT</div>
-              <div className="info-bg">
-                <div className="info">
-                  <div className="name">
-                    <h5>Wonder Woman</h5>
-                    <p>1:50:55</p>
-                  </div>
-                  <div className="pic">
-                    <img src="/assets/image/icon_play.png" alt="play icon" />
-                  </div>
-                </div>
-              </div>
-            </div>
+              )
+            })}
           </div>
+          <button ref={ref} className="primary black mb-10" onClick={() => getCinemaData()}>
+            {isLoading ? 'loading...' : hasMore ? 'load more' : 'no more'}
+          </button>
         </div>
       </div>
     )

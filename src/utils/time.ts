@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 18:48:14
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-04 19:32:01
+ * @LastEditTime: 2022-11-11 14:24:22
  * @FilePath: /wave-app-webiste/src/utils/time.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -51,4 +51,17 @@ export function formatDateTime(timestamp) {
   let m = date.getMinutes() + ':'
   let s = date.getSeconds()
   return Y + M + D + h + m + s
+}
+
+export function formatSeconds(value) {
+  let result = parseInt(value)
+  let h = Math.floor(result / 3600) < 10 ? '0' + Math.floor(result / 3600) : Math.floor(result / 3600)
+  let m = Math.floor((result / 60) % 60) < 10 ? '0' + Math.floor((result / 60) % 60) : Math.floor((result / 60) % 60)
+  let s = Math.floor(result % 60) < 10 ? '0' + Math.floor(result % 60) : Math.floor(result % 60)
+
+  let res = ''
+  if (h !== '00') res += `${h}:`
+  if (m !== '00') res += `${m}:`
+  res += `${s}`
+  return res
 }

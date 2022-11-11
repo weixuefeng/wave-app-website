@@ -19,9 +19,9 @@ export const Api = {
   login: 'user/login/',
   logout: 'user/logout',
   userPaymentPasswordUpdate: 'user/payment-password/update',
-  userAvatarUpdate: "user/avatar/update/",
-  userNameUpdate: "user/name/update/",
-  userEmailUpdate: "user/email/update/",
+  userAvatarUpdate: 'user/avatar/update/',
+  userNameUpdate: 'user/name/update/',
+  userEmailUpdate: 'user/email/update/',
   userCollections: 'user/collections/',
 
   // home
