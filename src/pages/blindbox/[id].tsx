@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-09-21 10:43:33
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-14 11:43:07
+ * @LastEditTime: 2022-11-14 11:45:13
  * @FilePath: /wave-app-website/src/pages/blindbox/[id].tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -56,22 +56,12 @@ function Main(props) {
     }
   }, [id, refreshFlag])
 
+
   function fetchCollectionInfo(flag) {
-    if (flag) {
-      requestLanguage()
-      requestCollectionInfo(id)
-    } else {
-      //
-      let params = {
-        mystery_box_id: id,
-      }
-      const getCollectionInfo = async () => {
-        const info = await Http.getInstance().getMysteryBoxDetail(id[0])
-        setCollectionInfo(info)
-        initCalendarInfo(info)
-      }
-      getCollectionInfo()
-    }
+    Http.getInstance().getMysteryBoxDetail(id[0]).then(response => {
+      setCollectionInfo(response)
+      initCalendarInfo(response)
+    })
   }
 
   function requestUserInfo() {
