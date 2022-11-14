@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-09-21 10:43:33
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-14 11:25:06
+ * @LastEditTime: 2022-11-14 11:43:07
  * @FilePath: /wave-app-website/src/pages/blindbox/[id].tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -276,7 +276,8 @@ function Main(props) {
     if (window && window.webkit && typeof handler !== 'undefined') {
       setIsIOS(true)
     }
-    return flag
+    // todo: all is in app
+    return true
   }
 
   function postMessage(params, callback) {
