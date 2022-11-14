@@ -3,6 +3,7 @@ import { Checkbox } from 'antd'
 import DialogComponent from 'components/common/DialogComponent'
 import { LocalKey } from 'constants/key'
 import { putLocalData } from 'localstorage/localstorage'
+import { EmailAction } from 'model/user'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
@@ -30,7 +31,7 @@ export default function Login() {
 
   function requestVerifyCode() {
     Http.getInstance()
-      .requestVerifyCode(email)
+      .requestVerifyCode(email, EmailAction.LOGIN)
       .then(response => {
         console.log(response)
       })
