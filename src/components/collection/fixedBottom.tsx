@@ -2,21 +2,51 @@
  * @Author: zhuxiaotong zhuxiaotong@diynova.com
  * @Date: 2022-09-29 16:09:48
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-14 14:17:46
+ * @LastEditTime: 2022-11-14 17:02:55
  * @FilePath: /wave-app-website/src/components/collection/fixedBottom.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 
 import { t } from 'i18next'
 import { CollectionInfo, IsWhiteList, SellStatus, UserInWhiteList, WhiteListSellStatus } from 'model/collection_model'
-import { getUTCDetailTime, getUTCSummaryTime } from 'utils/functions'
+import { useEffect, useState } from 'react'
+import { calculateCountdown, getUTCDetailTime } from 'utils/functions'
 
-export default fixedBottom
-
-function fixedBottom(props) {
+export default function FixedBottom(props) {
   const { addToCalendar, payOrder, gotoTrade, gotoAssets, collectionInfo, hasAddCalendar, isInApp } = props
 
   const info = collectionInfo as CollectionInfo
+
+  const [remainSecond, setRemainSecond] = useState(0)
+  let timer
+
+  useEffect(() => {
+    if (collectionInfo) {
+      const remainTime =
+        parseInt(info.white_list_settings.preemption_start_at.toString()) - parseInt(info.system_time.toString())
+      setRemainSecond(remainTime)
+      if (collectionInfo.sell_status == 0 && remainTime <= 86400) {
+        if (timer) {
+          clearInterval(timer)
+        }
+        countDown(remainTime)
+      }
+    }
+    return () => {
+      clearInterval(timer)
+    }
+  }, [])
+
+  function countDown(startTime) {
+    let countDownTime = startTime
+    timer = setInterval(() => {
+      if (countDownTime > 1) {
+        setRemainSecond(--countDownTime)
+      } else {
+        clearInterval(timer)
+      }
+    }, 1000)
+  }
 
   function textStatus() {
     if (collectionInfo.sell_status == SellStatus.SOLD_OUT) {
@@ -76,6 +106,8 @@ function fixedBottom(props) {
     const status = checkTime()
     switch (status) {
       case WhiteListSellStatus.NOT_START_OUT_24H:
+        console.log('out 24h')
+
         return (
           <div className="button" onClick={addToCalendar}>
             <p className="whitelist-label">
@@ -90,7 +122,7 @@ function fixedBottom(props) {
             <p className="whitelist-label">
               <>{t('Whitelist Purchase')}</>
             </p>
-            <p className="whitelist-time">{getUTCSummaryTime(info.white_list_settings.preemption_start_at)}</p>
+            <p className="whitelist-time">{calculateCountdown(remainSecond)}</p>
           </div>
         )
       case WhiteListSellStatus.TIME_SELLING:

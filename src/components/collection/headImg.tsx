@@ -2,13 +2,13 @@
  * @Author: zhuxiaotong zhuxiaotong@diynova.com
  * @Date: 2022-09-29 15:46:19
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-14 11:32:59
+ * @LastEditTime: 2022-11-14 16:49:20
  * @FilePath: /wave-app-website/src/components/collection/headImg.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import React, { useEffect, useState } from 'react'
 import { t } from 'i18next'
-import { fillZero, getUTCDetailTime } from 'utils/functions'
+import { calculateCountdown, fillZero, getUTCDetailTime } from 'utils/functions'
 import { useTranslation } from 'react-i18next'
 
 export default HeadImg
@@ -45,14 +45,6 @@ function HeadImg(props) {
         clearInterval(timer)
       }
     }, 1000)
-  }
-
-  function calculateCountdown(remain) {
-    let hrs = Math.floor(remain / 3600) || 0
-    remain = remain % 3600
-    let min = Math.floor(remain / 60) || 0,
-      sec = remain % 60
-    return `${fillZero(hrs)}:${fillZero(min)}:${fillZero(sec)}`
   }
 
   function statusJudge() {
