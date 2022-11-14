@@ -1,4 +1,4 @@
-import { DatePicker, DatePickerProps } from 'antd'
+import { DatePicker, DatePickerProps, TimePicker, Input, Col, Row, Divider } from 'antd'
 import DialogComponent from 'components/common/DialogComponent'
 import useWallet from 'hooks/userWallet'
 import { NFTDetail } from 'model/nft_asset'
@@ -24,7 +24,10 @@ export default function MakeOfferDialog(props) {
       {/** asset info */}
       <div className="asset-info">
         <img src={info.image} alt={info.name} />
-        <p>{info.name}</p>
+        <div>
+          <p>{info.name.substring(0, info.name.indexOf('#'))}</p>
+          <p>{`#${info.name.lastIndexOf('#')}`}</p>
+        </div>
       </div>
       {/** bid info */}
       <div className="bid-info">
@@ -32,7 +35,7 @@ export default function MakeOfferDialog(props) {
           <p className="label">Highest Bid:</p>
           <p className="value">{info.highest_bid_price} NEW</p>
         </div>
-        <div className="item ml-2">
+        <div className="item ml-2 pl-3">
           <p className="label">Lowest Bid:</p>
           <p className="value">{info.lowest_bid_price} NEW</p>
         </div>
@@ -40,14 +43,23 @@ export default function MakeOfferDialog(props) {
 
       {/** offer info */}
       <div className="offer-info">
-        <div className="item">
-          <p className="title">Offer valid thru</p>
-          <DatePicker placement={'bottomRight'} onChange={onChange} />
-        </div>
-        <div className="item">
-          <p className="title">Price</p>
-          <p>time</p>
-        </div>
+        <Row gutter={16} className="item">
+          <Col span={16}>
+            <p className="title">Offer valid thru</p>
+            <Row gutter={12}>
+              <Col span={12}>
+                <DatePicker placeholder={'Date'} placement={'bottomRight'} onChange={onChange} />
+              </Col>
+              <Col span={12}>
+                <TimePicker placeholder={'Time'} placement={'bottomRight'} onChange={onChange} />
+              </Col>
+            </Row>
+          </Col>
+          <Col span={8}>
+            <p className="title">Price</p>
+            <Input suffix="NEW" />
+          </Col>
+        </Row>
       </div>
 
       {/** receiver info */}
@@ -65,11 +77,15 @@ export default function MakeOfferDialog(props) {
           <p>200 NEW</p>
         </div>
       </div>
-      <div className="divide"></div>
+
+      <Divider className="my-2" />
+
       {/** balance info */}
       <div className="balance-info">
-        <p>Account Balance</p>
-        <p>{wallet.available_balance} NEW</p>
+        <div className="item">
+          <p>Account Balance:</p>
+          <p>{wallet.available_balance} NEW</p>
+        </div>
       </div>
 
       <button

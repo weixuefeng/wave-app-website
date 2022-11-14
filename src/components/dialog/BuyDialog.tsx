@@ -2,6 +2,7 @@ import useWallet from 'hooks/userWallet'
 import { NFTDetail } from 'model/nft_asset'
 import React from 'react'
 import { splitAddress } from 'utils/functions'
+import { Divider, Tooltip } from 'antd'
 
 export default function BuyDialog(props) {
   const { nftDetail } = props
@@ -17,7 +18,10 @@ export default function BuyDialog(props) {
       {/** asset info */}
       <div className="asset-info">
         <img src={info.image} alt={info.name} />
-        <p>{info.name}</p>
+        <div>
+          <p>{info.name.substring(0, info.name.indexOf('#'))}</p>
+          <p>{`#${info.name.lastIndexOf('#')}`}</p>
+        </div>
       </div>
       {/** sell info */}
       <div className="sell-info">
@@ -25,7 +29,7 @@ export default function BuyDialog(props) {
           <p>Price</p>
           <p>{info.lowest_bid_price} NEW</p>
         </div>
-        <div className="item">
+        <div className="item py-4">
           <p>From</p>
           <p>{splitAddress(wallet.wallet_address)}</p>
         </div>
@@ -47,8 +51,11 @@ export default function BuyDialog(props) {
           <p>Seller Will Receive</p>
           <p>200 NEW</p>
         </div>
-        <div className="item">
-          <p>Creator Earnings</p>
+        <div className="item my-2">
+          <p>
+            <span>Creator Earnings</span>
+            <Tooltip placement="top" title="Wave platform transaction fee 2.5%."></Tooltip>
+          </p>
           <p>200 NEW</p>
         </div>
         <div className="item">
@@ -56,7 +63,9 @@ export default function BuyDialog(props) {
           <p>200 NEW</p>
         </div>
       </div>
-      <div className="divide"></div>
+
+      <Divider className="my-4" />
+
       {/** balance info */}
       <div className="balance-info">
         <p>Account Balance</p>

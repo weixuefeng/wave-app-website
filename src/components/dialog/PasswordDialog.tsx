@@ -14,11 +14,11 @@ export default function PasswordDialog(props) {
   return (
     <div className="dialog-password">
       <p className="title">Payment Password</p>
-      <div>
+      <div className="password">
         <InputGroup getValue={setValue} length={6} type={'box'} />
       </div>
       <div className="action">
-        <button className="primary black outline" onClick={onCancel}>
+        <button className="primary black mr-6 outline" onClick={onCancel}>
           cancel
         </button>
         <button className="primary short black" onClick={onComplete}>
