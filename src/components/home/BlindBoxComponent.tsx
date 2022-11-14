@@ -3,19 +3,21 @@ import { useTranslation } from 'react-i18next'
 import React, { useEffect, useState } from 'react'
 import { getAssetDetailPath } from 'utils/route'
 import Link from 'next/link'
+import { Asset } from 'model/asset'
+import { IssueType } from 'model/collection_model'
 
 export function BlindBox(props) {
   const { item } = props
   const { t } = useTranslation()
-
+  const info = item as Asset
   const [remainSecond, setRemainSecond] = useState(0)
   let timer
 
   useEffect(() => {
     if (item) {
-      const remainTime = parseInt(item.sell_start_time) - parseInt(item.system_time)
+      const remainTime = parseInt(item.blind_box_sell_start_time) - parseInt(item.server_current_time)
       setRemainSecond(remainTime)
-      if (item.sell_status == 0 && remainTime <= 86400) {
+      if (item.blind_box_sell_status == 0 && remainTime <= 86400) {
         if (timer) {
           clearInterval(timer)
         }
@@ -47,13 +49,13 @@ export function BlindBox(props) {
   }
 
   function statusJudge() {
-    if (item.sell_status == 0) {
+    if (item.blind_box_sell_status == 0) {
       if (remainSecond > 86400) {
         return <div className="status-onimg">{t('UPCOMMING_DROP')}</div>
       } else {
         return <div className="status-onimg">{t('COMING_SOON')}</div>
       }
-    } else if (item.sell_status == 1) {
+    } else if (item.blind_box_sell_status == 1) {
       return <div className="status-onimg">{t('LIVE_DROP')}</div>
     } else {
       return <div className="status-onimg disabled">{t('SOLD_OUT')}</div>
@@ -61,17 +63,17 @@ export function BlindBox(props) {
   }
 
   function timeJudge() {
-    if (item.sell_status == 0) {
+    if (item.blind_box_sell_status == 0) {
       if (remainSecond > 86400) {
-        return <div className="time-onimg">{t('STARTSAT') + ' ' + getTimeStr(item.sell_start_time)}</div>
+        return <div className="time-onimg">{t('STARTSAT') + ' ' + getTimeStr(item.blind_box_sell_start_time)}</div>
       } else if (remainSecond > 0) {
         return <div className="time-onimg">{t('STARTSIN') + ' ' + calculateCountdown(remainSecond)}</div>
       } else {
         return <></>
       }
     } else {
-      if (item.reveals_time > 0) {
-        return <div className="time-onimg">{t('REVEALSAT') + ' ' + getTimeStr(item.reveals_time)}</div>
+      if (item.blind_box_reveals_time > 0) {
+        return <div className="time-onimg">{t('REVEALSAT') + ' ' + getTimeStr(item.blind_box_reveals_time)}</div>
       } else {
         return <></>
       }
@@ -96,7 +98,6 @@ export function BlindBox(props) {
         <div className="cover">
           <div className="perfect_square">
             <img alt={item.name} src={item.image} />
-            {/* <div className="status">sold out</div> */}
             {timeJudge()}
             {statusJudge()}
           </div>
@@ -105,7 +106,9 @@ export function BlindBox(props) {
           <h3>{item.name}</h3>
           <div className="blindbox-footer">
             <div className="num-wrap">
-              <div className="num-name">{t('CURRENT_RELEASE')}</div>
+              <div className="num-name">
+                {info.issue_type == IssueType.MULTI_ISSUE ? t('CURRENT_RELEASE') : t('TOTAL_RELEASE')}
+              </div>
               <div className="num">{item.blind_box_total}</div>
             </div>
             <div className="price">{Number(item.price)} NEW</div>

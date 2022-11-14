@@ -56,12 +56,13 @@ function Main(props) {
     }
   }, [id, refreshFlag])
 
-
   function fetchCollectionInfo(flag) {
-    Http.getInstance().getMysteryBoxDetail(id[0]).then(response => {
-      setCollectionInfo(response)
-      initCalendarInfo(response)
-    })
+    Http.getInstance()
+      .getMysteryBoxDetail(id[0])
+      .then(response => {
+        setCollectionInfo(response)
+        initCalendarInfo(response)
+      })
   }
 
   function requestUserInfo() {
