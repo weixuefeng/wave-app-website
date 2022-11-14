@@ -23,7 +23,7 @@ export default function FixedBottom(props) {
   useEffect(() => {
     if (collectionInfo) {
       const remainTime =
-        parseInt(info.white_list_settings.preemption_start_at.toString()) - parseInt(info.system_time.toString())
+        parseInt(info.white_list_settings.preemption_start_at?.toString()) - parseInt(info.system_time?.toString())
       setRemainSecond(remainTime)
       if (collectionInfo.sell_status == 0 && remainTime <= 86400) {
         if (timer) {
