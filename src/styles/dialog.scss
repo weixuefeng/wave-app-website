@@ -41,9 +41,9 @@
 
       input {
         @apply h-14 w-full rounded-xl border-2 border-grayed bg-gragfb;
-        //&::input-placeholder {
-        //  @apply text-grayc7;
-        //}
+        &::input-placeholder {
+          @apply text-grayc7;
+        }
 
         &::-webkit-input-placeholder {
           color: #c7c7c7 !important;
@@ -278,9 +278,9 @@
     @apply relative mt-10;
     input {
       @apply w-full rounded-xl border-2 border-grayed bg-grayfb py-4 pl-11 pr-4;
-      //&::input-placeholder {
-      //  @apply text-grayc7;
-      //}
+      &::input-placeholder {
+        @apply text-grayc7;
+      }
       &::-webkit-input-placeholder {
         color: #c7c7c7 !important;
       }
@@ -334,9 +334,9 @@
 
     input {
       @apply mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-gragfb;
-      //&::input-placeholder {
-      //  @apply text-grayc7;
-      //}
+      &::input-placeholder {
+        @apply text-grayc7;
+      }
 
       &::-webkit-input-placeholder {
         color: #c7c7c7 !important;
@@ -429,9 +429,9 @@
 
     input {
       @apply mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-gragfb;
-      //&::input-placeholder {
-      //  @apply text-grayc7;
-      //}
+      &::input-placeholder {
+        @apply text-grayc7;
+      }
 
       &::-webkit-input-placeholder {
         color: #c7c7c7 !important;
