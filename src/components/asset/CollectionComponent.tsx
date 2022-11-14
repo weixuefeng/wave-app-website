@@ -1,5 +1,5 @@
 import { Tab } from '@headlessui/react'
-import { CollectionInfo } from 'model/collection'
+import { BaseCollectionInfo } from 'model/collection'
 import React, { Fragment, useEffect, useState } from 'react'
 import Http from 'services/http'
 import AllItemsComponent from './AllItemsComponent'
@@ -8,7 +8,7 @@ import CollectionActivity from './CollectionActivityComponent'
 
 export default function CollectionComponent(props) {
   const { id, type } = props
-  const [collection, setCollection] = useState<CollectionInfo>()
+  const [collection, setCollection] = useState<BaseCollectionInfo>()
   useEffect(() => {
     getNFTCollection()
   }, [id])

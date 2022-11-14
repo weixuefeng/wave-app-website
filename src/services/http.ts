@@ -4,18 +4,19 @@ import { encode } from 'js-base64'
 import { md5, sign } from 'utils/sign_utils'
 import { BaseResponse, Pagination } from 'model/base'
 import { UserInfo } from 'model/user'
-import { HomeData, HomeList, MyAsset } from 'model/asset'
+import { HomeList, MyAsset } from 'model/asset'
 import { Banner } from 'model/banner'
 import { NFTDetail } from 'model/nft_asset'
 import { EVTCopyDetail } from 'model/evt_asset'
 import { TradeItem } from 'model/trade'
-import { CollectionInfo } from 'model/collection'
+import { BaseCollectionInfo } from 'model/collection'
 import { PAGE_SIZE } from 'constants/constant'
 import { LocalKey } from 'constants/key'
 import { updateUserInfo } from 'reducer/userReducer'
 import { WalletInfo, WalletTransaction } from 'model/wallet'
 import { OfferType } from 'model/offer'
 import { CinemaList } from 'model/cinema'
+import { CollectionInfo } from 'model/collection_model'
 
 let client = refreshClient()
 
@@ -151,11 +152,11 @@ class Http {
     return _post(Api.nftTradeList, params) as Promise<Pagination<TradeItem>>
   }
 
-  getNFTCollection(collectionId: number): Promise<CollectionInfo> {
+  getNFTCollection(collectionId: number): Promise<BaseCollectionInfo> {
     let params = {
       collection_id: collectionId,
     }
-    return _post(Api.nftCollection, params) as Promise<CollectionInfo>
+    return _post(Api.nftCollection, params) as Promise<BaseCollectionInfo>
   }
 
   getNFTList(collectionId: number, pageId: number) {
@@ -165,6 +166,13 @@ class Http {
       collection_id: collectionId,
     }
     return _post(Api.nftList, params) as Promise<Pagination<any>>
+  }
+
+  getMysteryBoxDetail(mysteryBoxId: string): Promise<CollectionInfo> {
+    let params = {
+      mystery_box_id: mysteryBoxId,
+    }
+    return _post(Api.nftMysteryBoxDetail, params) as Promise<CollectionInfo>
   }
 
   getNFTActivity(collectionId: number, pageId: number) {

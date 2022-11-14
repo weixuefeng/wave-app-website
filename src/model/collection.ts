@@ -1,4 +1,4 @@
-export interface CollectionInfo {
+export interface BaseCollectionInfo {
   id: number
   name: string
   image: string

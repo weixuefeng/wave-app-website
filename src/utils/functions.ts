@@ -41,3 +41,19 @@ export function isInViewPort(el) {
   const top = offsetTop - scrollTop
   return top <= viewPortHeight + 100
 }
+
+export function fillZero(num) {
+  return Number(num) > 9 ? num.toString() : '0' + num.toString()
+}
+
+export function getUTCDetailTime(timestamp) {
+  const time = new Date(timestamp * 1000 + 8 * 3600 * 1000)
+  return `${fillZero(time.getUTCMonth() + 1)}.${fillZero(time.getUTCDate())} ${fillZero(time.getUTCHours())}:${fillZero(
+    time.getUTCMinutes()
+  )}:${fillZero(time.getUTCMinutes())} (UTC + 8})`
+}
+
+export function getUTCSummaryTime(timestamp) {
+  const time = new Date(timestamp * 1000 + 8 * 3600 * 1000)
+  return `${fillZero(time.getUTCHours())}:${fillZero(time.getUTCMinutes())}:${fillZero(time.getUTCSeconds())} (UTC + 8)`
+}

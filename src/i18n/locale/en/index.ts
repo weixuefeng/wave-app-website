@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
- * @LastEditors: zxt0805 zhuxiaotong@diynova.com
- * @LastEditTime: 2022-10-31 18:16:40
- * @FilePath: /nextjs-starter-boilerplate/src/i18n/locale/en/index.ts
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-14 11:29:30
+ * @FilePath: /wave-app-website/src/i18n/locale/en/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 export const enTransaction = {
@@ -26,4 +26,36 @@ export const enTransaction = {
   CURRENT_RELEASE: 'Current Release',
   FLOOR_PRICE: 'Floor Price',
   HIGHEST_BID: 'Highest Bid',
+  UPCOMMINGDROP: 'Upcoming Drop',
+  COMINGSOON: 'Coming Soon',
+  SOLDOUT: 'Sold Out',
+  LIVEDROP: 'Live Drop',
+  REVEALSAT: 'Reveals at',
+  STARTSAT: 'Starts at',
+  STARTSIN: 'Starts in',
+  TOTALSUPPLY: 'Total Supply',
+  INTRODUCTION: 'Introduction',
+  MORE: 'More',
+  COLLAPSE: 'Collapse',
+  SPECIFICATTIONS: 'Specifications',
+  CONTRACTADDRESS: 'Contract Address',
+  TOKENSTANDARD: 'Token Standard',
+  BLOCKCHAIN: 'Blockchain',
+  CREATOREARNINGS: 'Creator Earnings',
+  LICENSE: 'License',
+  ADDTOCALENDAR: 'Add to Calendar',
+  ADDEDTOCALENDAR: 'Added to Calendar',
+  CHECKMYASSETS: 'Check My Assets',
+  GOTOTRADE: 'Go to Trade',
+  BUY: 'Buy',
+  TIPS: 'EVT (Encrypted Variable Token) is a new kind of token type that we can use to replace NFT in metaverse and physical world ...',
+  BUBBLEBEFORE: 'The creator(s) of this asset will receive',
+  BUBBLEAFTER: 'for every sale',
+  COPYSUCCESS: 'Copied',
+  WAVE_PLATFORM_EVT: 'Wave Platform EVT',
+  COMMINIG_SOON: 'will be available for sale soon, grab it now!',
+  TOTAL_RELEASE: 'Total Release',
+  JOINED_WHITELIST_TIP: 'You have joined the Whitelist.',
+  Details: 'Details',
+  WHITE_LIST_PURCHASE_TIME: 'Whitelist purchase time',
 }

@@ -1,0 +1,243 @@
+.index-wrap {
+  @apply bg-white font-medium;
+  .head-img {
+    @apply relative p-4 text-white;
+    .head-img-top {
+      @apply relative pb-[90%];
+      img {
+        @apply absolute top-[50%] left-[50%] h-full w-full rounded-t-lg object-cover;
+        transform: translate(-50%, -50%);
+      }
+    }
+    .time-onimg {
+      @apply absolute left-6 top-7 rounded-[0.25rem] bg-black bg-opacity-60 p-2 text-base;
+    }
+    .status-onimg {
+      @apply absolute  left-6 bottom-7  rounded-[0.25rem] bg-black bg-opacity-30 px-2 py-1 text-xs;
+    }
+    .disabled {
+      @apply bg-whitef0 bg-opacity-80 text-gray6a;
+    }
+    .sold-out {
+      img {
+        @apply absolute top-1/2 left-1/2 w-64 md:w-1/2;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+  .baseinfo-wrap {
+    @apply mt-5 rounded-xl bg-white px-4  pb-5;
+    .title {
+      @apply relative text-[1.625rem] font-bold;
+      font-family: 'Avenir Next' !important;
+      .icon {
+        @apply absolute ml-2 h-[1.125rem] w-[2.175rem] scale-[0.83] rounded-sm bg-greenMain text-center text-xs leading-[1.2rem] text-white;
+      }
+    }
+    .nums {
+      @apply mt-6 overflow-hidden;
+      .nums-item {
+        @apply float-left mr-4 overflow-hidden rounded-sm  text-xs;
+        .tip {
+          @apply bg-graybf p-1 leading-6 text-white;
+        }
+        .number {
+          @apply bg-grayf5 p-1 font-bold leading-6 text-gray333;
+        }
+      }
+    }
+  }
+  .staticinfo-wrap {
+    @apply border-t-8 border-grayf9 px-4 py-5;
+    .title {
+      @apply mb-4 text-lg font-bold text-gray333;
+      font-family: 'Avenir Next' !important;
+    }
+    .title.introduction {
+      @apply mb-3;
+    }
+    .content-wrap {
+      @apply mb-7  text-sm leading-6 text-gray666;
+      // .content {
+      //   @apply h-10 text-gray666 line-clamp-2;
+      // }
+    }
+    .spec-info {
+      @apply text-sm;
+      .item {
+        @apply mb-3 w-[7.5rem];
+        .needTruncate {
+          // @apply truncate;
+        }
+        img {
+          @apply float-right;
+        }
+        .icon-copy {
+          @apply ml-[0.125rem] h-[1.125rem] w-[1.125rem];
+        }
+        .icon-ques {
+          @apply ml-1 h-[0.8125rem] w-[0.8125rem]; // mt-[0.125rem]
+        }
+      }
+      .info-title {
+        @apply float-left flex-none leading-4 text-gray666;
+      }
+      .info-content {
+        @apply flex flex-1 flex-col items-end text-right leading-4 text-gray333;
+        .item {
+          @apply relative flex items-center justify-end;
+        }
+        .bubble {
+          @apply absolute right-[-1rem] bottom-0;
+          img {
+            max-width: 13.375rem;
+            @apply h-[7.1875rem] w-[13.375rem];
+          }
+          .bubble-content {
+            @apply absolute left-0 top-0 h-full w-full break-words px-[1.5rem] pt-[1.75rem] text-left text-xs leading-5;
+          }
+        }
+      }
+      .spec-tip {
+        @apply relative pl-[0.625rem] text-xs leading-5 text-gray999;
+        .icon-point {
+          @apply absolute left-0 top-[0.4rem] h-[0.375rem] w-[0.375rem];
+        }
+        // p {
+        //   @apply h-8 line-clamp-2;
+        // }
+      }
+    }
+  }
+  .license {
+    @apply flex items-center justify-between text-lg font-bold;
+    .title {
+      @apply mb-0;
+    }
+    img {
+      @apply h-[1.0625rem] w-[1.0625rem];
+    }
+  }
+  .more {
+    @apply font-semibold text-gray333;
+  }
+  .toast {
+    @apply fixed top-1/2 left-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center rounded-full bg-white py-2 px-4 text-sm;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
+    .copied {
+      @apply mr-1 h-6 w-6;
+    }
+  }
+}
+
+//whitelistBottom
+.whitelistBottom {
+  transform: translateZ(0) !important;
+  @apply fixed left-4 right-4 bottom-[5.3rem];
+  .whitelist {
+    @apply h-9 w-full rounded-xl bg-grayf1 px-2 text-xs text-gray333;
+    @apply flex items-center justify-between;
+    a {
+      @apply ml-2 rounded-md bg-gray333 px-2 py-1 text-xs text-white;
+    }
+  }
+  .whitelist-selected {
+    @apply flex;
+    .selected {
+      @apply mr-2 h-3 w-3;
+    }
+  }
+}
+
+// bottom btn
+.fixBottom {
+  transform: translateZ(0) !important;
+  @apply fixed left-0 bottom-0 flex w-full items-center justify-between border-t-[1px] border-grayef  bg-white p-4 text-[1.375rem] font-bold text-greenDark;
+  .end {
+    @apply text-gray999;
+  }
+  .button {
+    min-width: 10rem;
+    @apply cursor-pointer rounded-lg bg-gray333 px-4 py-[0.65rem] text-center text-lg text-white;
+  }
+  .button-disable {
+    @apply bg-grayEA font-normal text-gray999;
+  }
+  .whitelist-label {
+    @apply text-base font-bold text-white;
+  }
+  .whitelist-time {
+    @apply text-xs font-normal text-white;
+  }
+}
+
+.license-wrap {
+  .privacy-policy {
+    @apply px-4 text-sm font-normal md:px-0 md:pt-[100px] md:text-font22xl;
+    .privacy-data {
+      @apply text-center text-sm leading-[37px] text-gray999 md:text-left;
+    }
+    .title {
+      @apply text-[32px] leading-10 md:text-[2.63rem];
+    }
+    h2 {
+      @apply mb-8 pt-4 text-font22xl leading-9 md:text-2xl;
+    }
+    p {
+      @apply mb-6 text-base text-gray666 md:mb-11 md:leading-[30px];
+    }
+    a {
+      @apply hover:text-green2d;
+    }
+    .privacy-general {
+      @apply mt-6 md:mt-[3.8rem];
+    }
+  }
+}
+
+#download {
+  .downPc {
+    @apply -mt-12 hidden md:-mt-32 md:block;
+  }
+  .downH5 {
+    @apply -mt-20 block md:hidden;
+  }
+}
+
+@font-face {
+  font-family: 'Roboto-Medium';
+  src: url('/assets/fonts/Roboto-Medium.ttf');
+}
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url('/assets/fonts/Roboto-Regular.ttf');
+}
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('/assets/fonts/Avenir Next.ttf');
+}
+body {
+  @apply bg-white;
+  font-family: 'Avenir Next' !important;
+}
+
+h2 {
+  font-family: 'Roboto-Medium' !important;
+}
+
+.container {
+  @apply mx-auto max-w-[1200px];
+}
+
+.skeleton-wap {
+  @apply p-4;
+  .ant-skeleton-element {
+    @apply w-full rounded-xl pb-[2.25rem];
+  }
+  .ant-skeleton-image {
+    @apply h-[207px] w-full leading-[207px];
+    svg {
+      @apply h-[100px] w-[100px];
+    }
+  }
+}

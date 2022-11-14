@@ -1,8 +1,8 @@
 /*
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
- * @LastEditors: zxt0805 zhuxiaotong@diynova.com
- * @LastEditTime: 2022-10-31 18:16:43
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-14 11:29:48
  * @FilePath: /wave-app-website/src/i18n/locale/zh/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -26,4 +26,36 @@ export const zhTransaction = {
   CURRENT_RELEASE: '本期发行',
   FLOOR_PRICE: 'Floor Price',
   HIGHEST_BID: 'Highest Bid',
+  UPCOMMINGDROP: '敬请期待',
+  COMINGSOON: '即将开售',
+  SOLDOUT: '已售罄',
+  LIVEDROP: '热卖中',
+  REVEALSAT: '开盒时间',
+  STARTSAT: '开售时间',
+  STARTSIN: '开售时间',
+  TOTALSUPPLY: '限量',
+  INTRODUCTION: '简介',
+  MORE: '更多',
+  COLLAPSE: '折叠',
+  SPECIFICATTIONS: '链信息',
+  CONTRACTADDRESS: '合约地址',
+  TOKENSTANDARD: '标准',
+  BLOCKCHAIN: '区块链',
+  CREATOREARNINGS: '版税比例',
+  LICENSE: '许可协议',
+  ADDTOCALENDAR: '设置购买提醒',
+  ADDEDTOCALENDAR: '已设置提醒',
+  CHECKMYASSETS: '查看我的资产',
+  GOTOTRADE: '去交易',
+  BUY: '立即购买',
+  TIPS: 'EVT(加密可变通证） 是一种新型的通证类型，我们可以用它来替代元宇宙和物理世界中的NFT。',
+  BUBBLEBEFORE: '每笔交易创作者收取',
+  BUBBLEAFTER: '的版税',
+  COPYSUCCESS: '复制成功',
+  WAVE_PLATFORM_EVT: 'Wave平台EVT',
+  COMMINIG_SOON: '即将开售，快去看看吧！',
+  TOTAL_RELEASE: '限量发行',
+  JOINED_WHITELIST_TIP: '您已加入白名单。',
+  Details: '详情',
+  WHITE_LIST_PURCHASE_TIME: '白名单优先购买时间',
 }

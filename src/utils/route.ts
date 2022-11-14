@@ -16,7 +16,7 @@ export function getAssetDetailPath(asset: Asset): string {
     return `/collection/${AssetPageType.EVT}/${asset.collection_id}`
   } else if (asset.type == AssetType.BLIND_BOX) {
     // todo: update blind box route
-    return `/asset/${asset.type}/${asset.nft_id}`
+    return `/blindbox/${asset.mystery_box_id}`
   }
 }
 
