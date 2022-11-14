@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-14 22:37:54
+ * @LastEditTime: 2022-11-14 22:44:06
  * @FilePath: /wave-app-webiste/src/components/settings/emailModal.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -32,6 +32,7 @@ export default function EmailModal(props) {
   const [emailSettingPage, setEmailSettingPage] = useState(0)
 
   const [ticket, setTicket] = useState('')
+  
   function closeModal() {
     setIsOpen(false)
   }
@@ -46,7 +47,7 @@ export default function EmailModal(props) {
   }, [currentUser])
 
 
-  function oldEmail() {
+  function ModifyEmailStep1() {
 
     function oldGetVerifyCode() {
       Http.getInstance()
@@ -102,7 +103,7 @@ export default function EmailModal(props) {
     )
   }
 
-  function newEmail() {
+  function ModifyEmailStep2() {
     console.log('old',oldVerifyCode,'new',newVerifyCode)
     function requestEmail() {
       Http.getInstance()
@@ -113,7 +114,8 @@ export default function EmailModal(props) {
                 email: email
               }
               dispatch(updateUserInfo(info))
-              closeModal()
+              setIsOpen(false)
+              setEmailSettingPage(0)
             })
             .catch(error => {
               console.log(error)
@@ -163,9 +165,9 @@ export default function EmailModal(props) {
   function dialogContent() {
     switch(emailSettingPage) {
       case EmailSettingPage.VERFIY_EMAIL_PAGE:
-        return oldEmail()
+        return ModifyEmailStep1()
       case EmailSettingPage.UPDATE_EMAIL_PAGE:
-        return newEmail()
+        return ModifyEmailStep2()
     }
   }
   
