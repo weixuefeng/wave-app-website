@@ -1,3 +1,12 @@
+/*
+ * @Author: liukeke liukeke@diynova.com
+ * @Date: 2022-11-01 15:43:16
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-14 13:47:36
+ * @FilePath: /wave-app-webiste/src/pages/login.tsx
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
+import { EmailAction } from 'model/user'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import Http from 'services/http'
@@ -13,7 +22,7 @@ export default function Login() {
 
   function requestVerifyCode() {
     Http.getInstance()
-      .requestVerifyCode(email)
+      .requestVerifyCode(email, EmailAction.LOGIN)
       .then(response => {
         console.log(response)
       })

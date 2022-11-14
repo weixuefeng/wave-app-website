@@ -3,7 +3,7 @@ import { Api } from './api'
 import { encode } from 'js-base64'
 import { md5, sign } from 'utils/sign_utils'
 import { BaseResponse, Pagination } from 'model/base'
-import { UserInfo } from 'model/user'
+import { EmailAction, UserInfo } from 'model/user'
 import { HomeList, MyAsset } from 'model/asset'
 import { Banner } from 'model/banner'
 import { NFTDetail } from 'model/nft_asset'
@@ -17,6 +17,7 @@ import { WalletInfo, WalletTransaction } from 'model/wallet'
 import { OfferType } from 'model/offer'
 import { CinemaList } from 'model/cinema'
 import { CollectionInfo } from 'model/collection_model'
+import { PreCheckEmail } from 'model/settings'
 
 let client = refreshClient()
 
@@ -98,10 +99,10 @@ class Http {
   }
 
   // get verify code
-  requestVerifyCode(email: string): Promise<any> {
+  requestVerifyCode(email: string, action: EmailAction): Promise<any> {
     let params = {
       email: email,
-      action: 'login',
+      action: action,
       captcha_service_type: 'null',
     }
     return _post(Api.commonEmailCode, params)
@@ -268,6 +269,14 @@ class Http {
       ga_code: gaCode,
     }
     return _post(Api.userEmailUpdate, params) as Promise<any>
+  }
+  
+  // emailTicket
+  requestEmailprecheck(emailCode: string): Promise<PreCheckEmail> {
+    let params = {
+      email_code: emailCode
+    }
+    return _post(Api.userPrecheck, params) as Promise<PreCheckEmail>
   }
 
   requestUpdateName() {
