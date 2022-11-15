@@ -338,6 +338,7 @@
       @apply text-base font-normal text-black17;
     }
 
+
     input {
       @apply mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-gragfb;
       &::input-placeholder {
@@ -365,10 +366,15 @@
     }
 
     .send-code {
-      @apply absolute top-9 right-5 h-14 cursor-pointer text-sm leading-8 text-gray333;
+      @apply pr-5 absolute top-9 right-0 h-14 text-sm leading-8 text-gray333;
+      border-radius: 0 12px 12px 0;
       span {
         @apply border-l-[1px] border-grayed pl-5;
       }
+    }
+    .tit-email,
+    .tit {
+      @apply absolute -bottom-6 left-0 text-xs text-red-700;
     }
 
     .log-code {

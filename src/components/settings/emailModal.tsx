@@ -2,15 +2,12 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-14 22:44:06
+ * @LastEditTime: 2022-11-15 13:02:52
  * @FilePath: /wave-app-webiste/src/components/settings/emailModal.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import DialogComponent from 'components/common/DialogComponent'
-import { LocalKey } from 'constants/key'
-import { putLocalData } from 'localstorage/localstorage'
 import { EmailAction, UserInfo } from 'model/user'
-import { resolve } from 'path'
 import React, { useEffect, useState } from 'react'
 import { selectUser, updateUserInfo } from 'reducer/userReducer'
 import Http from 'services/http'
@@ -21,20 +18,37 @@ export enum EmailSettingPage {
   UPDATE_EMAIL_PAGE = 1,
 }
 
+let timeChange
+
 export default function EmailModal(props) {
+
   const currentUser = useAppSelector(selectUser) as UserInfo
+
   const [email, setEmail] = useState<string>()
-  const [oldVerifyCode, setOldVerifyCode] = useState<string>()
-  const [newVerifyCode, setNewVerifyCode] = useState<string>()
+  const [verfiyEmailCode, setVerfiyEmailCode] = useState<string>()
+  const [updateEmailCode, setUpdateEmailCode] = useState<string>()
   const dispatch = useAppDispatch()
+
   let [isOpen, setIsOpen] = useState(false)
 
-  const [emailSettingPage, setEmailSettingPage] = useState(0)
+  const [isVerfiyEmailCode, setIsVerfiyEmailCode] = useState(false)
+  const [isEmail, setIsEmail] = useState(false)
+  const [isUpdateEmailCode, setIsUpdateEmailCode] = useState(false)
 
+  const [emailSettingPage, setEmailSettingPage] = useState(0)
   const [ticket, setTicket] = useState('')
 
+
+  const [btnContent, setBtnContent] = useState('Send code')
+  const [time, setTime] = useState(60)
+  const [btnDisabled, setBtnDisabled] = useState(false)
+
   function closeModal() {
+    setEmailSettingPage(0)
     setIsOpen(false)
+    setIsVerfiyEmailCode(false)
+    setIsEmail(false)
+    setIsUpdateEmailCode(false)
   }
 
   function openModal() {
@@ -46,8 +60,29 @@ export default function EmailModal(props) {
     }
   }, [currentUser])
 
-  function ModifyEmailStep1() {
+  useEffect(() => {
+    clearInterval(timeChange)
+    return () => clearInterval(timeChange)
+  }, [])
+
+  useEffect(() => {
+    if (time > 0 && time < 60) {
+      setBtnContent(`${time}s后重发`)
+    } else {
+      console.log('nsdifnisdfnsdi',timeChange)
+      clearInterval(timeChange)
+      setBtnDisabled(false)
+      setTime(60)
+      setBtnContent('Send code')
+    }
+  }, [time])
+
+
+  function verfiyEmail() {
     function oldGetVerifyCode() {
+      timeChange = setInterval(() => setTime(t => --t), 1000)
+      console.log('kkkk',timeChange,time)
+      setBtnDisabled(true)
       Http.getInstance()
         .requestVerifyCode(currentUser.email, EmailAction.CHECK_EMAIL)
         .then(response => {
@@ -59,18 +94,23 @@ export default function EmailModal(props) {
     }
 
     function oldRequestEmail() {
+      console.log('verfiyEmailCode', verfiyEmailCode)
+      if (verfiyEmailCode == undefined || '') {
+        setIsVerfiyEmailCode(true)
+        return
+      }
+      setIsVerfiyEmailCode(false)
       Http.getInstance()
-        .requestEmailprecheck(oldVerifyCode)
+        .requestEmailprecheck(verfiyEmailCode)
         .then(response => {
-          console.log('requestEmailprecheck', response)
           setTicket(response.email_ticket)
           setEmailSettingPage(1)
-          setOldVerifyCode('')
         })
         .catch(error => {
           console.log('pre check error')
           console.log(error)
         })
+
     }
 
     return (
@@ -87,12 +127,17 @@ export default function EmailModal(props) {
             <label htmlFor="text" className="label">
               Email Verification Code
             </label>
-            <input placeholder="Verification Code" onChange={e => setOldVerifyCode(e.target.value)} />
+            <input placeholder="Verification Code"
+              onChange={e => setVerfiyEmailCode(e.target.value)} />
             <img src="assets/image/icon_code.png" alt="code" />
-            <button className="send-code" onClick={() => oldGetVerifyCode()}>
-              <span>Send code</span>
+            <button className="send-code" disabled={btnDisabled} onClick={() => oldGetVerifyCode()}>
+              <span>{btnContent}</span>
             </button>
+            {
+              isVerfiyEmailCode == true ? <p className='tit'>请输入验证码</p> : null
+            }
           </div>
+
           <button className="next" onClick={() => oldRequestEmail()}>
             <span>Next</span>
           </button>
@@ -101,15 +146,21 @@ export default function EmailModal(props) {
     )
   }
 
-  function ModifyEmailStep2() {
-    console.log('old', oldVerifyCode, 'new', newVerifyCode)
+
+  function updateEmail() {
+
     function requestEmail() {
+      if (updateEmailCode == undefined || '') {
+        setIsUpdateEmailCode(true)
+        return
+      }
+      setIsUpdateEmailCode(false)
       Http.getInstance()
-        .requestUpdateEmail(ticket, email, newVerifyCode, null)
+        .requestUpdateEmail(ticket, email, updateEmailCode, null)
         .then(response => {
           let info = {
             ...currentUser,
-            email: email,
+            email: email
           }
           dispatch(updateUserInfo(info))
           setIsOpen(false)
@@ -121,6 +172,11 @@ export default function EmailModal(props) {
     }
 
     function requestVerifyCode() {
+      if (email == undefined || '') {
+        setIsEmail(true)
+        return
+      }
+      setIsEmail(false)
       Http.getInstance()
         .requestVerifyCode(email, EmailAction.RESET_EMAIL)
         .then(response => {
@@ -140,16 +196,25 @@ export default function EmailModal(props) {
             </label>
             <input placeholder="Email Address" onChange={e => setEmail(e.target.value)} />
             <img src="assets/image/icon_email.png" alt="email" />
+            {
+              isEmail ?
+                <p className='tit-email'>请输入邮箱</p> : null
+            }
           </div>
           <div className="code-box">
             <label htmlFor="text" className="label">
               Email Verification Code
             </label>
-            <input placeholder="Verification Code" onChange={e => setNewVerifyCode(e.target.value)} />
+            <input className=' hidden' placeholder="Verification Code" />
+            <input placeholder="Verification Code" onChange={e => setUpdateEmailCode(e.target.value)} />
             <img src="assets/image/icon_code.png" alt="code" />
-            <button className="send-code" onClick={() => requestVerifyCode()}>
-              <span>Send code</span>
+            <button className="send-code" disabled={btnDisabled} onClick={() => requestVerifyCode()}>
+              <span>{btnContent}</span>
             </button>
+            {
+              isUpdateEmailCode ?
+                <p className='tit-email'>请输入验证码</p> : null
+            }
           </div>
           <button className="next" onClick={() => requestEmail()}>
             <span>Next</span>
@@ -162,9 +227,9 @@ export default function EmailModal(props) {
   function dialogContent() {
     switch (emailSettingPage) {
       case EmailSettingPage.VERFIY_EMAIL_PAGE:
-        return ModifyEmailStep1()
+        return verfiyEmail()
       case EmailSettingPage.UPDATE_EMAIL_PAGE:
-        return ModifyEmailStep2()
+        return updateEmail()
     }
   }
 
