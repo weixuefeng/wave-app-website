@@ -1,6 +1,6 @@
 .evt-detail,
 .nft-detail {
-  @apply mt-16 flex flex-col justify-between p-4;
+  @apply mt-10 flex flex-col justify-between p-4;
   .info {
     @apply grid grid-cols-1 md:grid-cols-3;
     img {
@@ -12,7 +12,7 @@
         @apply text-3xl font-medium;
       }
       .owner {
-        @apply mt-8 flex flex-row items-center justify-start pb-8;
+        @apply my-7 flex flex-row items-center justify-start;
         .tl {
           @apply flex flex-row items-center justify-start;
           img {
@@ -43,6 +43,9 @@
       }
       .action {
         @apply mt-8 flex flex-row items-center justify-between;
+        button.primary.outline.black {
+          @apply border-black
+        }
       }
     }
   }

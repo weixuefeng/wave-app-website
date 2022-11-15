@@ -99,7 +99,7 @@ export default function NFTDetailComponent(props) {
       return (
         <div className="action">
           <button
-            className="primary"
+            className="primary black"
             onClick={() => {
               setIsBuyOpen(true)
             }}
@@ -107,7 +107,7 @@ export default function NFTDetailComponent(props) {
             Buy
           </button>
           <button
-            className="primary ml-4 outline"
+            className="primary ml-4 outline black"
             onClick={() => {
               setIsMakeOfferOpen(true)
             }}

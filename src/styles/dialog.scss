@@ -148,6 +148,9 @@
       p {
         @apply text-sm text-gray-600;
         color: #999999;
+        .img-qus {
+          @apply inline-block w-3.5 ml-1.5 mb-0.5;
+        }
       }
     }
   }
@@ -239,6 +242,9 @@
     @apply mt-5 flex flex-row items-center justify-between;
     button.primary {
       @apply py-3.5 px-9;
+    }
+    button.primary.outline.black {
+      @apply border-black
     }
   }
 }

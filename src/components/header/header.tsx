@@ -45,35 +45,37 @@ export default function Header(props) {
   const { t } = useTranslation()
 
   return (
-    <div className="header container">
-      <div className="logo">
-        <Link href="/" passHref>
-          <div>
-            <img src="/assets/image/logo.png" alt="Wave" />
-          </div>
-        </Link>
+    <div className="bg-white border-b-2 border-solid border-gray-100">
+      <div className="header container">
+        <div className="logo">
+          <Link href="/" passHref>
+            <div>
+              <img src="/assets/image/logo.png" alt="Wave" />
+            </div>
+          </Link>
+        </div>
+        <ul>
+          <li className="massage">
+            <Link href="/trade" passHref>
+              Trade
+            </Link>
+            <Link href="/" passHref>
+              <div className="massage-img">
+                <img src="/assets/image/icon_massage.png" alt="massage" />
+                <i></i>
+              </div>
+            </Link>
+          </li>
+          <li className="language">
+            <Link href="/" passHref>
+              <div className="language-img">
+                <img src="/assets/image/icon_language.png" alt="language" />
+              </div>
+            </Link>
+          </li>
+          <Login />
+        </ul>
       </div>
-      <ul>
-        <li className="massage">
-          <Link href="/trade" passHref>
-            Trade
-          </Link>
-          <Link href="/" passHref>
-            <div className="massage-img">
-              <img src="/assets/image/icon_massage.png" alt="massage" />
-              <i></i>
-            </div>
-          </Link>
-        </li>
-        <li className="language">
-          <Link href="/" passHref>
-            <div className="language-img">
-              <img src="/assets/image/icon_language.png" alt="language" />
-            </div>
-          </Link>
-        </li>
-        <Login />
-      </ul>
     </div>
   )
 }
