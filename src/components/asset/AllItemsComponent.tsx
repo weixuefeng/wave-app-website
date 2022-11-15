@@ -1,36 +1,80 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:46:58
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-07 14:01:52
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-15 20:08:33
  * @FilePath: /wave-app-website/src/components/asset/AllItemsComponent.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import { CollectionItem } from 'model/asset'
 import Link from 'next/link'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Http from 'services/http'
-import { floorNum } from 'utils/functions'
+import { floorNum, isInViewPort } from 'utils/functions'
 import { getAssetDetailPathByInfo } from 'utils/route'
 
 export default function AllItemsComponent(props) {
   const { collectionId, type } = props
   const [allItems, setAllItems] = useState<Array<CollectionItem>>([])
+  const [currentPage, setCurrentPage] = useState(1)
+  const [hasMore, setHasMore] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const ref = useRef(null)
 
   useEffect(() => {
+    fetchData()
+  }, [])
+
+  function fetchData() {
+    setIsLoading(true)
     Http.getInstance()
-      .getNFTList(collectionId, 1)
+      .getNFTList(collectionId, currentPage)
       .then(response => {
-        setAllItems(response.data)
-        console.log(response)
+        if (currentPage == 1) {
+          // first page
+          setAllItems(response.data)
+          // check has more
+          if (response.page_id < response.total_page) {
+            setHasMore(true)
+            // update current page
+            setCurrentPage(currentPage + 1)
+          } else {
+            setHasMore(false)
+          }
+        } else {
+          // more page
+          setAllItems(allItems.concat(response.data))
+          // check has more
+          if (response.page_id < response.total_page) {
+            setHasMore(true)
+            setCurrentPage(currentPage + 1)
+          } else {
+            setHasMore(false)
+          }
+        }
       })
       .catch(error => {
         console.log(error)
       })
-  }, [])
+      .finally(() => {
+        setIsLoading(false)
+      })
+  }
 
-  if (!allItems) {
-    return <>...</>
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  })
+
+  const handleScroll = () => {
+    if (ref) {
+      let res = isInViewPort(ref.current)
+      if (res) {
+        if (hasMore && !isLoading) {
+          fetchData()
+        }
+      }
+    }
   }
 
   return (
@@ -63,6 +107,9 @@ export default function AllItemsComponent(props) {
             )
           })}
         </ul>
+        <button ref={ref} className="primary black" onClick={() => fetchData()}>
+          {isLoading ? 'loading...' : hasMore ? 'load more' : 'no more'}
+        </button>
       </div>
     </div>
   )

@@ -107,9 +107,12 @@
 
 // collection activity
 .collection-activity {
-  @apply pt-8;
+  @apply py-8;
   .item {
     @apply grid grid-cols-12 items-center border-b-2 border-graye7 pb-4 pt-5;
+    &:last-child {
+      @apply border-none;
+    }
     .event {
       @apply col-span-1;
     }
