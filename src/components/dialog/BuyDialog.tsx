@@ -3,6 +3,7 @@ import { NFTDetail } from 'model/nft_asset'
 import React from 'react'
 import { splitAddress } from 'utils/functions'
 import { Divider, Tooltip } from 'antd'
+import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline'
 
 export default function BuyDialog(props) {
   const { nftDetail } = props
@@ -55,7 +56,7 @@ export default function BuyDialog(props) {
           <p>
             <span>Creator Earnings</span>
             <Tooltip placement="top" title="The creator(s) of this asset willreceive 5% for every sale.">
-              <img className="img-qus" src="/assets/image/icon-ques.png" alt="" />
+              <QuestionMarkCircleIcon className="ml-0.5 mb-0.5 inline-block w-4" />
             </Tooltip>
           </p>
           <p>200 NEW</p>
@@ -64,7 +65,7 @@ export default function BuyDialog(props) {
           <p>
             <span>Transaction Fee</span>
             <Tooltip placement="top" title="Wave platform transaction fee 2.5%.">
-              <img className="img-qus" src="/assets/image/icon-ques.png" alt="" />
+              <QuestionMarkCircleIcon className="ml-0.5 mb-0.5 inline-block w-4" />
             </Tooltip>
           </p>
           <p>200 NEW</p>
