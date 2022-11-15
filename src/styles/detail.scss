@@ -16,7 +16,7 @@
         .tl {
           @apply flex flex-row items-center justify-start;
           img {
-            @apply h-16 w-16 rounded-full;
+            @apply h-12 w-12 rounded-full;
           }
         }
         .tr {
@@ -42,7 +42,7 @@
         }
       }
       .action {
-        @apply mt-8 flex flex-row items-center justify-between;
+        @apply mt-4 flex flex-row items-center justify-between;
         button.primary.outline.black {
           @apply border-black;
         }

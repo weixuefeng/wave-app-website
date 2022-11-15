@@ -142,7 +142,7 @@ export default function NFTDetailComponent(props) {
           <div className="owner">
             <div className="tl">
               <img src={nftDetail.collection.image} alt={nftDetail.user.name} />
-              <p>{nftDetail.collection.name}</p>
+              <p className="ml-1">{nftDetail.collection.name}</p>
             </div>
             <div className="tr">
               <p>Owned by</p>
