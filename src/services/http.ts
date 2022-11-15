@@ -270,11 +270,11 @@ class Http {
     }
     return _post(Api.userEmailUpdate, params) as Promise<any>
   }
-  
+
   // emailTicket
   requestEmailprecheck(emailCode: string): Promise<PreCheckEmail> {
     let params = {
-      email_code: emailCode
+      email_code: emailCode,
     }
     return _post(Api.userPrecheck, params) as Promise<PreCheckEmail>
   }

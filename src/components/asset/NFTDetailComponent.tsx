@@ -8,6 +8,9 @@ import DialogComponent from 'components/common/DialogComponent'
 import BuyDialog from 'components/dialog/BuyDialog'
 import MakeOfferDialog from 'components/dialog/MakeOfferDialog'
 import PasswordDialog from 'components/dialog/PasswordDialog'
+import { AssetSellStatus } from 'model/asset'
+import { useAppSelector } from 'store/store'
+import { selectUser } from 'reducer/userReducer'
 
 export default function NFTDetailComponent(props) {
   const { id } = props
@@ -16,6 +19,7 @@ export default function NFTDetailComponent(props) {
   const [isBuyOpen, setIsBuyOpen] = useState(false)
   const [isPasswordOpen, setIsPasswordOpen] = useState(false)
   const [isMakeOfferOpen, setIsMakeOfferOpen] = useState(false)
+  const currentUser = useAppSelector(selectUser)
 
   function closeBuyModal() {
     setIsBuyOpen(false)
@@ -58,6 +62,76 @@ export default function NFTDetailComponent(props) {
     return <>loading...</>
   }
 
+  function OwnerActionComponent() {
+    // owner
+    if (nftDetail.is_sell == AssetSellStatus.SELLING) {
+      return (
+        <div className="action">
+          <button
+            className="primary ml-4 outline"
+            onClick={() => {
+              setIsMakeOfferOpen(true)
+            }}
+          >
+            取消出售{' '}
+          </button>
+        </div>
+      )
+    } else {
+      return (
+        <div className="action">
+          <button
+            className="primary ml-4 outline"
+            onClick={() => {
+              setIsMakeOfferOpen(true)
+            }}
+          >
+            出售{' '}
+          </button>
+        </div>
+      )
+    }
+  }
+
+  function NormalActionComponent() {
+    // not owner
+    if (nftDetail.is_sell == AssetSellStatus.SELLING) {
+      return (
+        <div className="action">
+          <button
+            className="primary"
+            onClick={() => {
+              setIsBuyOpen(true)
+            }}
+          >
+            Buy
+          </button>
+          <button
+            className="primary ml-4 outline"
+            onClick={() => {
+              setIsMakeOfferOpen(true)
+            }}
+          >
+            Make Offer{' '}
+          </button>
+        </div>
+      )
+    } else {
+      return (
+        <div className="action">
+          <button
+            className="primary ml-4 outline"
+            onClick={() => {
+              setIsMakeOfferOpen(true)
+            }}
+          >
+            Make Offer{' '}
+          </button>
+        </div>
+      )
+    }
+  }
+
   return (
     <div className="nft-detail">
       <div className="info">
@@ -81,32 +155,17 @@ export default function NFTDetailComponent(props) {
           <div className="price">
             <div>
               <p className="label">Hightest Bid:</p>
-              <p className="value">{nftDetail.highest_bid_price} NEW</p>
+              <p className="value">{nftDetail.highest_bid_price ? nftDetail.highest_bid_price : '--'} NEW</p>
             </div>
             <div>
-              <p className="label">Floor Price:</p>
-              <p className="value">{nftDetail.lowest_bid_price} NEW</p>
+              <p className="label">Price:</p>
+              <p className="value">{nftDetail.is_sell == 1 ? nftDetail.price : '--'} NEW</p>
             </div>
           </div>
           {/** action */}
-          <div className="action">
-            <button
-              className="primary"
-              onClick={() => {
-                setIsBuyOpen(true)
-              }}
-            >
-              Buy
-            </button>
-            <button
-              className="primary ml-4 outline"
-              onClick={() => {
-                setIsMakeOfferOpen(true)
-              }}
-            >
-              Make Offer{' '}
-            </button>
-          </div>
+          {currentUser && currentUser.id && currentUser.id == nftDetail.user.id
+            ? OwnerActionComponent()
+            : NormalActionComponent()}
         </div>
       </div>
 

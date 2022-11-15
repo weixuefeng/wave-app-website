@@ -18,7 +18,7 @@ import { useAppDispatch, useAppSelector } from 'store/store'
 
 export enum EmailSettingPage {
   VERFIY_EMAIL_PAGE = 0,
-  UPDATE_EMAIL_PAGE = 1
+  UPDATE_EMAIL_PAGE = 1,
 }
 
 export default function EmailModal(props) {
@@ -32,7 +32,7 @@ export default function EmailModal(props) {
   const [emailSettingPage, setEmailSettingPage] = useState(0)
 
   const [ticket, setTicket] = useState('')
-  
+
   function closeModal() {
     setIsOpen(false)
   }
@@ -46,18 +46,16 @@ export default function EmailModal(props) {
     }
   }, [currentUser])
 
-
   function ModifyEmailStep1() {
-
     function oldGetVerifyCode() {
       Http.getInstance()
-      .requestVerifyCode(currentUser.email, EmailAction.CHECK_EMAIL)
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+        .requestVerifyCode(currentUser.email, EmailAction.CHECK_EMAIL)
+        .then(response => {
+          console.log(response)
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
 
     function oldRequestEmail() {
@@ -70,11 +68,11 @@ export default function EmailModal(props) {
           setOldVerifyCode('')
         })
         .catch(error => {
-          console.log("pre check error");
+          console.log('pre check error')
           console.log(error)
         })
     }
-    
+
     return (
       <div className="dialog-settings-email">
         <h2>Modify Email</h2>
@@ -104,24 +102,24 @@ export default function EmailModal(props) {
   }
 
   function ModifyEmailStep2() {
-    console.log('old',oldVerifyCode,'new',newVerifyCode)
+    console.log('old', oldVerifyCode, 'new', newVerifyCode)
     function requestEmail() {
       Http.getInstance()
-            .requestUpdateEmail(ticket, email, newVerifyCode, null)
-            .then(response => {
-              let info = {
-                ...currentUser,
-                email: email
-              }
-              dispatch(updateUserInfo(info))
-              setIsOpen(false)
-              setEmailSettingPage(0)
-            })
-            .catch(error => {
-              console.log(error)
-            })
+        .requestUpdateEmail(ticket, email, newVerifyCode, null)
+        .then(response => {
+          let info = {
+            ...currentUser,
+            email: email,
+          }
+          dispatch(updateUserInfo(info))
+          setIsOpen(false)
+          setEmailSettingPage(0)
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
-  
+
     function requestVerifyCode() {
       Http.getInstance()
         .requestVerifyCode(email, EmailAction.RESET_EMAIL)
@@ -161,16 +159,15 @@ export default function EmailModal(props) {
     )
   }
 
-
   function dialogContent() {
-    switch(emailSettingPage) {
+    switch (emailSettingPage) {
       case EmailSettingPage.VERFIY_EMAIL_PAGE:
         return ModifyEmailStep1()
       case EmailSettingPage.UPDATE_EMAIL_PAGE:
         return ModifyEmailStep2()
     }
   }
-  
+
   return (
     <li>
       <p>Email</p>

@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:42:02
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-10 20:05:26
- * @FilePath: /wave-app-webiste/src/components/asset/MyOwn.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-15 11:44:39
+ * @FilePath: /wave-app-website/src/components/asset/MyOwn.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 
@@ -15,6 +15,7 @@ import Http from 'services/http'
 import { UserInfo } from 'model/user'
 import { useAppSelector } from 'store/store'
 import { isInViewPort } from 'utils/functions'
+import { getAssetDetailPathByInfo } from 'utils/route'
 
 export default function Myown(props) {
   const currentUser = useAppSelector(selectUser) as UserInfo
@@ -88,7 +89,7 @@ export default function Myown(props) {
         {myOwnData?.map((item, index) => {
           return (
             <div className="item" key={index}>
-              <Link href={''}>
+              <Link href={getAssetDetailPathByInfo(item.type, item.nft_id)}>
                 <a className="cover">
                   <div className="perfect-square">
                     <img src={item.image} alt={item.name} />
