@@ -45,7 +45,7 @@ export default function Header(props) {
   const { t } = useTranslation()
 
   return (
-    <div className="bg-white border-b-2 border-solid border-gray-100">
+    <div className="border-b-2 border-solid border-gray-100 bg-white">
       <div className="header container">
         <div className="logo">
           <Link href="/" passHref>

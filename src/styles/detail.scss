@@ -44,7 +44,7 @@
       .action {
         @apply mt-8 flex flex-row items-center justify-between;
         button.primary.outline.black {
-          @apply border-black
+          @apply border-black;
         }
       }
     }

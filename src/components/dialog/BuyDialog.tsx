@@ -63,9 +63,9 @@ export default function BuyDialog(props) {
         <div className="item">
           <p>
             <span>Transaction Fee</span>
-              <Tooltip placement="top" title="Wave platform transaction fee 2.5%.">
-                <img className="img-qus" src="/assets/image/icon-ques.png" alt="" />
-              </Tooltip>
+            <Tooltip placement="top" title="Wave platform transaction fee 2.5%.">
+              <img className="img-qus" src="/assets/image/icon-ques.png" alt="" />
+            </Tooltip>
           </p>
           <p>200 NEW</p>
         </div>

@@ -149,7 +149,7 @@
         @apply text-sm text-gray-600;
         color: #999999;
         .img-qus {
-          @apply inline-block w-3.5 ml-1.5 mb-0.5;
+          @apply ml-1.5 mb-0.5 inline-block w-3.5;
         }
       }
     }
@@ -244,7 +244,7 @@
       @apply py-3.5 px-9;
     }
     button.primary.outline.black {
-      @apply border-black
+      @apply border-black;
     }
   }
 }
@@ -338,7 +338,6 @@
       @apply text-base font-normal text-black17;
     }
 
-
     input {
       @apply mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-gragfb;
       &::input-placeholder {
@@ -366,7 +365,7 @@
     }
 
     .send-code {
-      @apply pr-5 absolute top-9 right-0 h-14 text-sm leading-8 text-gray333;
+      @apply absolute top-9 right-0 h-14 pr-5 text-sm leading-8 text-gray333;
       border-radius: 0 12px 12px 0;
       span {
         @apply border-l-[1px] border-grayed pl-5;
