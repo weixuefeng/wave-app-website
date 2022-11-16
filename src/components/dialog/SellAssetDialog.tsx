@@ -3,6 +3,8 @@ import useWallet from 'hooks/userWallet'
 import { NFTDetail } from 'model/nft_asset'
 import React from 'react'
 import 'antd/dist/antd.css'
+import { Disclosure } from '@headlessui/react'
+import { PlusCircleIcon } from '@heroicons/react/24/solid'
 
 export default function SellAssetDialog(props) {
   const { nftDetail, showPassword, setSellExpiredTime, setSellPrice,requestOrderSell, setDirectionAddress} = props
@@ -50,8 +52,15 @@ export default function SellAssetDialog(props) {
 
       {/** private info */}
       <div className="private-info">
-        <p>Private</p>
+        <Disclosure>
+        <Disclosure.Button className="py-2 flex flex-row text-lg items-center">
+          <PlusCircleIcon className="w-8 h-8"/>Private
+        </Disclosure.Button>
+        <Disclosure.Panel className="text-gray-500">
+        <Input onChange={setDirectionAddress} />
         <p>You can specify one address that is allowed to buy it.</p>
+        </Disclosure.Panel>
+      </Disclosure>
       </div>
 
       <div className="fee-info">
