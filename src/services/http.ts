@@ -317,7 +317,7 @@ class Http {
   }
 
   //notification
-  getNotificationList(pageId) {
+  getNotificationList(pageId:number): Promise<any> {
     let params = {
       page_id: pageId,
       page_size: PAGE_SIZE,
