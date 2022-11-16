@@ -9,9 +9,10 @@ nextjs + tailwindcss + redux + react-i18n + sentry
 # Build
 yarn build
 SENTRY_AUTH_TOKEN=d604cf7148fa48fd8cb93b7dec6867896593a02a34e544218b3bb8bf28d45dd0 yarn build
+```
 
-# Start server with build files
-yarn start
+### 目录结构说明
+
 ```
 ├── package.json
 ├── postcss.config.js
@@ -96,6 +97,7 @@ yarn start
 ├── tsconfig.json
 └── yarn.lock
 ```
+
 ### 环境配置:
 node-version: 16.10
 
