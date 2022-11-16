@@ -10,6 +10,7 @@ import { CollectionActivitiesItem } from 'model/asset'
 import React, { useEffect, useRef, useState } from 'react'
 import Http from 'services/http'
 import { floorNum, isInViewPort, trimStr } from 'utils/functions'
+import Log from 'utils/log'
 import { formatDate } from 'utils/time'
 
 export default function CollectionActivity(props) {
@@ -52,7 +53,7 @@ export default function CollectionActivity(props) {
         }
       })
       .catch(error => {
-        console.log(error)
+        Log.e(error)
       })
       .finally(() => {
         setIsLoading(false)
