@@ -2,10 +2,12 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 20:26:47
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-11 11:58:49
+ * @LastEditTime: 2022-11-16 11:07:44
  * @FilePath: /wave-app-website/src/pages/tickets.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
+import DialogComponent from 'components/common/DialogComponent'
+import DownAppDialog from 'components/dialog/DownAppDialog'
 import NormalLayout from 'components/layout/normalLayout'
 import { CinemaList } from 'model/cinema'
 import { PageModel } from 'model/navModel'
@@ -17,7 +19,7 @@ import { useAppSelector } from 'store/store'
 import { isInViewPort } from 'utils/functions'
 import { formatSeconds } from 'utils/time'
 
-export default function Cinema() {
+export default function Cinema(props) {
   let pageModel = new PageModel('Cinema', 'WAVE', '')
   const currentUser = useAppSelector(selectUser) as UserInfo
   const [cinemaData, setCinemaData] = useState<Array<CinemaList>>()
@@ -25,6 +27,16 @@ export default function Cinema() {
   const [hasMore, setHasMore] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const ref = useRef(null)
+
+  let [isOpen, setIsOpen] = useState(false)
+
+  function closeModal() {
+    setIsOpen(false)
+  }
+
+  function openModal() {
+    setIsOpen(true)
+  }
 
   useEffect(() => {
     if (currentUser) {
@@ -87,37 +99,42 @@ export default function Cinema() {
 
   function content() {
     return (
-      <div className="cinema-page">
-        <div className="container mx-auto">
-          <h2 className="title">My Cinema</h2>
-          <div className="cinema">
-            {cinemaData?.map((item, index) => {
-              return (
-                <div className="item" key={index}>
-                  <div className="img">
-                    <img src={item.image} alt={item.name} />
-                  </div>
-                  <div className="type">EVT</div>
-                  <div className="info-bg">
-                    <div className="info">
-                      <div className="name">
-                        <h5>{item.name}</h5>
-                        <p>{formatSeconds(item.running_time)}</p>
-                      </div>
-                      <div className="pic">
-                        <img src="/assets/image/icon_play.png" alt="play icon" />
+      <>
+        <div className="cinema-page">
+          <div className="container mx-auto">
+            <h2 className="title">My Cinema</h2>
+            <div className="cinema">
+              {cinemaData?.map((item, index) => {
+                return (
+                  <div className="item" key={index} onClick={openModal}>
+                    <div className="img">
+                      <img src={item.image} alt={item.name} />
+                    </div>
+                    <div className="type">EVT</div>
+                    <div className="info-bg">
+                      <div className="info">
+                        <div className="name">
+                          <h5>{item.name}</h5>
+                          <p>{formatSeconds(item.running_time)}</p>
+                        </div>
+                        <div className="pic">
+                          <img src="/assets/image/icon_play.png" alt="play icon" />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              )
-            })}
+                )
+              })}
+            </div>
+            <button ref={ref} className="primary black mb-10" onClick={() => getCinemaData()}>
+              {isLoading ? 'loading...' : hasMore ? 'load more' : 'no more'}
+            </button>
           </div>
-          <button ref={ref} className="primary black mb-10" onClick={() => getCinemaData()}>
-            {isLoading ? 'loading...' : hasMore ? 'load more' : 'no more'}
-          </button>
         </div>
-      </div>
+        <DialogComponent isOpen={isOpen} closeModal={closeModal}>
+          <DownAppDialog />
+        </DialogComponent>
+      </>
     )
   }
 

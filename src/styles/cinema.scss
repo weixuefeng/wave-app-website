@@ -6,7 +6,7 @@
   .cinema {
     @apply mt-10 grid grid-cols-1 gap-4 pb-14 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:grid-cols-4;
     .item {
-      @apply relative;
+      @apply relative cursor-pointer;
       .img {
         @apply pb-[50%];
         img {
@@ -35,7 +35,7 @@
     }
     .pic {
       img {
-        @apply h-auto w-11 cursor-pointer;
+        @apply h-auto w-11;
       }
     }
   }

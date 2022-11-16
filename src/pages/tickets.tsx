@@ -1,11 +1,13 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 20:26:47
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-04 20:23:52
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-16 12:03:28
  * @FilePath: /wave-app-website/src/pages/tickets.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
+import DialogComponent from 'components/common/DialogComponent'
+import DownAppDialog from 'components/dialog/DownAppDialog'
 import NormalLayout from 'components/layout/normalLayout'
 import { PageModel } from 'model/navModel'
 import { TicketsData } from 'model/tickets'
@@ -16,6 +18,16 @@ import { formatDateTime } from 'utils/time'
 export default function Tickets() {
   let pageModel = new PageModel('Tickets', 'WAVE', '')
   const [ticketData, setTicketData] = useState<Array<TicketsData>>()
+
+  let [isOpen, setIsOpen] = useState(false)
+
+  function closeModal() {
+    setIsOpen(false)
+  }
+
+  function openModal() {
+    setIsOpen(true)
+  }
 
   useEffect(() => {
     fetchData()
@@ -50,7 +62,7 @@ export default function Tickets() {
           <div className="tickets-item">
             {ticketData?.map((item, index) => {
               return (
-                <div className="item" key={index}>
+                <div className="item" key={index} onClick={openModal}>
                   <div className="img">
                     <img src="/assets/image/tickets_bg.png" alt="tickets background" />
                   </div>
@@ -78,6 +90,9 @@ export default function Tickets() {
             })}
           </div>
         </div>
+        <DialogComponent isOpen={isOpen} closeModal={closeModal}>
+          <DownAppDialog />
+        </DialogComponent>
       </div>
     )
   }

@@ -3,7 +3,7 @@
 }
 
 .dialog-base {
-  @apply relative w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-12 text-left align-middle shadow-xl transition-all;
+  @apply relative w-full max-w-[37rem] transform overflow-hidden rounded-2xl bg-white p-12 text-left align-middle shadow-xl transition-all;
   .close {
     @apply absolute top-0 right-0 m-4 h-5 w-5 cursor-pointer;
   }
@@ -495,6 +495,35 @@
 
     .next {
       @apply w-full rounded-xl bg-grayea py-4 text-center text-base font-normal text-gray99;
+    }
+  }
+}
+
+.down-app-dialog {
+  h2 {
+    @apply w-full text-center text-2xl font-bold text-gray333;
+  }
+  .down-app {
+    @apply mt-12 flex items-center justify-between;
+    a {
+      @apply w-44;
+    }
+    .code {
+      @apply relative w-[55px] cursor-pointer;
+      .code-img {
+        @apply h-14 w-14;
+      }
+      .code-tit {
+        @apply hidden;
+      }
+      canvas {
+        @apply mx-auto mt-2 h-[5.5rem] w-[5.5rem];
+      }
+      &:hover {
+        .code-tit {
+          @apply absolute top-[-107px] left-[-23px] block h-[6.5rem] w-[6.2rem] bg-code bg-contain bg-no-repeat;
+        }
+      }
     }
   }
 }
