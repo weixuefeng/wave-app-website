@@ -21,6 +21,7 @@ export default function NFTDetailComponent(props) {
   const [isMakeOfferOpen, setIsMakeOfferOpen] = useState(false)
   const [offerEndTime, setOfferEndTime] = useState(0)
   const [offerPrice, setOfferPrice] = useState('0')
+  const [isOfferPasswordType, setIsOfferPasswordType] = useState(true)
 
   const currentUser = useAppSelector(selectUser)
 
@@ -44,15 +45,30 @@ export default function NFTDetailComponent(props) {
 
   function onConfirmPassword(value) {
     closePasswordModal()
-    Http.getInstance()
-      .requestOrderBid(id, offerPrice, value, offerEndTime)
-      .then(response => {
-        // refresh page
-        loadData()
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    if(isOfferPasswordType) {
+      // make offer
+      Http.getInstance()
+        .requestOrderBid(id, offerPrice, value, offerEndTime)
+        .then(response => {
+          // refresh page
+          loadData()
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    } else {
+      // buy
+      Http.getInstance()
+        .requestOrderBuy(id, value)
+        .then(response => {
+          // refresh page
+          loadData()
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+    
   }
 
   useEffect(() => {
@@ -114,6 +130,7 @@ export default function NFTDetailComponent(props) {
           <button
             className="primary black"
             onClick={() => {
+              setIsOfferPasswordType(false)
               setIsBuyOpen(true)
             }}
           >
@@ -123,6 +140,7 @@ export default function NFTDetailComponent(props) {
             className="primary black ml-4 outline"
             onClick={() => {
               setIsMakeOfferOpen(true)
+              setIsOfferPasswordType(true)
             }}
           >
             Make Offer{' '}
@@ -206,9 +224,12 @@ export default function NFTDetailComponent(props) {
         </div>
       </div>
 
+      {/** buy dialog */}
       <DialogComponent isOpen={isBuyOpen} closeModal={closeBuyModal}>
-        <BuyDialog nftDetail={nftDetail} />
+        <BuyDialog nftDetail={nftDetail} showPassword={showPassword}/>
       </DialogComponent>
+
+      {/** make offer dialog */}
       <DialogComponent isOpen={isMakeOfferOpen} closeModal={closeMakeOfferModal}>
         <MakeOfferDialog
           nftDetail={nftDetail}
@@ -217,6 +238,8 @@ export default function NFTDetailComponent(props) {
           setOfferPrice={setOfferPrice}
         />
       </DialogComponent>
+
+      {/** password dialog */}
       <DialogComponent isOpen={isPasswordOpen} closeModal={closePasswordModal}>
         <PasswordDialog onCancel={() => closePasswordModal()} onConfirm={onConfirmPassword} />
       </DialogComponent>

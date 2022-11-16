@@ -247,6 +247,14 @@ class Http {
     return _post(Api.orderBid, params) as Promise<Pagination<any>>
   }
 
+  requestOrderBuy(sellId: number, password: string): Promise<any> {
+    let params = {
+      sell_id: sellId,
+      password: md5(`wave${password}`),
+    }
+    return _post(Api.orderSellDeal, params) as Promise<Pagination<any>>
+  }
+
   // my cinema request
   getMyCinemaList(pageId: number): Promise<Pagination<CinemaList>> {
     let params = {

@@ -6,7 +6,7 @@ import { Divider, Tooltip } from 'antd'
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline'
 
 export default function BuyDialog(props) {
-  const { nftDetail } = props
+  const { nftDetail, showPassword } = props
   const wallet = useWallet()
   const info = nftDetail as NFTDetail
   if (!info || !wallet) {
@@ -80,7 +80,7 @@ export default function BuyDialog(props) {
         <p>{wallet.available_balance} NEW</p>
       </div>
 
-      <button className="primary black">Next</button>
+      <button className="primary black" onClick={() => showPassword()}>Next</button>
     </div>
   )
 }
