@@ -34,11 +34,16 @@ export default function Deposit() {
         <div className="deposit">
           <p className="title">Deposit</p>
           <div className="token">
-            <p>Token:</p>
-            <p>icon: NEW {walletAccount.label}</p>
+            <p className="mr-3">Token:</p>
+            <img className="mr-1" src="/assets/image/icon_newton.png" alt="" />
+            <p>NEW</p>
+            <p className="label">{walletAccount.label}</p>
           </div>
 
-          <p>Deposit Network</p>
+          <div className="select">
+            <p>Deposit Network</p>
+            <p className="content">Select deposit network to show deposit address</p>
+          </div>
           <Listbox value={walletAccount} onChange={setWalletAccount}>
             <Listbox.Button>{walletAccount.label}</Listbox.Button>
             <Listbox.Options>
@@ -61,8 +66,8 @@ export default function Deposit() {
                 scale: 4,
                 width: 200,
                 color: {
-                  dark: '#010599FF',
-                  light: '#FFBF60FF',
+                  dark: '#000',
+                  light: '#fff',
                 },
               }}
             />
@@ -76,7 +81,7 @@ export default function Deposit() {
           </div>
 
           <div className="tip">
-            <p>Reminder</p>
+            <p className="title">Reminder</p>
             <p>* If you send any other crypto except NEW to this address, you will lose your assets.</p>
             <p>
               * Min deposit amount {walletAccount.deposit_minimum} {walletAccount.coin_type}
