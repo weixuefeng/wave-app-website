@@ -1,4 +1,4 @@
-.deposit {
+.withdraw {
   @apply flex h-screen flex-col;
   .title {
     @apply mt-14;
@@ -10,42 +10,12 @@
       @apply text-gray999 font-normal ml-2;
     }
   }
-  .select {
-    p {
-      @apply font-medium;
-    }
-    .content {
-      @apply text-gray999 font-normal mt-3 mb-4;
-    }
-  }
-
-  .qrcode {
-    @apply flex flex-row items-center;
-    .content {
-      @apply flex flex-col;
-      .content_title {
-        @apply font-semibold text-lg
-      }
-      .content_tips {
-        @apply text-gray999 my-3 text-sm;
-      }
-
-
-      .address {
-        @apply flex flex-row items-center justify-start rounded-2xl bg-gray-100 p-2;
-        svg {
-          @apply h-4 w-4 ml-2;
-          @apply cursor-pointer;
-        }
-      }
-    }
-  }
-  .tip {
+  .tips {
     p {
       @apply text-gray999 text-xs mb-2;
     }
     .tip_title {
-      @apply text-lg mt-12;
+      @apply text-lg mt-6;
     }
   }
 }
