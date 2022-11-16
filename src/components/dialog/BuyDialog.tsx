@@ -28,7 +28,7 @@ export default function BuyDialog(props) {
       <div className="sell-info">
         <div className="item">
           <p>Price</p>
-          <p>{info.lowest_bid_price} NEW</p>
+          <p>{info.price} NEW</p>
         </div>
         <div className="item py-4">
           <p>From</p>
@@ -43,7 +43,7 @@ export default function BuyDialog(props) {
       {/** price & seller info */}
       <div className="price-info">
         <p>Total</p>
-        <p>{info.highest_bid_price} NEW</p>
+        <p>{info.price} NEW</p>
       </div>
 
       {/** receiver info */}
@@ -80,7 +80,9 @@ export default function BuyDialog(props) {
         <p>{wallet.available_balance} NEW</p>
       </div>
 
-      <button className="primary black" onClick={() => showPassword()}>Next</button>
+      <button className="primary black" onClick={() => showPassword()}>
+        Next
+      </button>
     </div>
   )
 }

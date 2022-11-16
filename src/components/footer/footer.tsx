@@ -10,9 +10,8 @@ import Link from 'next/link'
 import React from 'react'
 
 export default function Footer() {
-
   let date = new Date().getFullYear()
-  
+
   return (
     <div className="footer">
       <div className="footer-top">

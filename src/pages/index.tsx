@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-08 19:02:18
+ * @LastEditTime: 2022-11-16 17:48:59
  * @FilePath: /wave-app-website/src/pages/index.tsx
  */
 
@@ -13,6 +13,7 @@ import Http from 'services/http'
 import BannerComponent from 'components/home/BannerComponent'
 import { Banner } from 'model/banner'
 import HomeDataComonent from 'components/home/HomeDataComonent'
+import Log from 'utils/log'
 export default Home
 
 function Home() {
@@ -36,7 +37,7 @@ function Main() {
         setBanners(response.data)
       })
       .catch(error => {
-        console.log(error)
+        Log.e(error)
       })
   }
 
@@ -47,7 +48,7 @@ function Main() {
         setHomeData(response)
       })
       .catch(error => {
-        console.log(error)
+        Log.e(error)
       })
   }
 

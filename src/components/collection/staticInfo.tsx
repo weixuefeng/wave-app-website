@@ -2,7 +2,7 @@
  * @Author: zhuxiaotong zhuxiaotong@diynova.com
  * @Date: 2022-09-29 15:46:19
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-14 11:36:06
+ * @LastEditTime: 2022-11-16 18:10:17
  * @FilePath: /wave-app-website/src/components/collection/staticInfo.tsx
  * @LastEditors: weixuefeng weixuefeng@diynova.com
  * @LastEditTime: 2022-10-08 20:54:29
@@ -89,7 +89,11 @@ function StaticInfo(props) {
                           <>{t('TOKENSTANDARD')}</>
                         </p>
                       )}
-                      {props.collectionInfo.specifications.block_chain && <p className="item">{t('BLOCKCHAIN')}</p>}
+                      {props.collectionInfo.specifications.block_chain && (
+                        <p className="item">
+                          <>{t('BLOCKCHAIN')}</>
+                        </p>
+                      )}
                       {props.collectionInfo.specifications.creator_earnings && (
                         <p className="item">
                           <>{t('CREATOREARNINGS')}</>
@@ -149,7 +153,7 @@ function StaticInfo(props) {
               <img src="/assets/image/icon-point.png" alt="" className="icon-point" />
               {/* className={showAllTips ? '' : 'h-8 line-clamp-2'} */}
               <p>
-                {t('TIPS')}
+                <>{t('TIPS')}</>
                 <a className="more" href="https://www.newtonproject.org/en/evt/">
                   <> {t('MORE')}</>
                 </a>
@@ -164,7 +168,7 @@ function StaticInfo(props) {
       {isShowToast && (
         <div className="toast">
           <img className="copied" src="/assets/image/copied.png" />
-          {t('COPYSUCCESS')}
+          <>{t('COPYSUCCESS')}</>
         </div>
       )}
     </>

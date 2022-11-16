@@ -1,0 +1,21 @@
+.notification {
+  @apply pb-48 pt-3;
+  .item {
+    @apply grid grid-cols-12 border-b-[1px] border-graye7 py-11;
+    .date {
+      @apply col-span-2 mr-2 w-32 text-sm text-gray99;
+    }
+    .content {
+      @apply col-span-10;
+      h2 {
+        @apply mb-7 text-2xl text-gray333;
+      }
+      p {
+        @apply text-base leading-8 text-gray66;
+      }
+    }
+    &:last-child {
+      @apply border-none;
+    }
+  }
+}

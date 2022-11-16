@@ -2,6 +2,7 @@ import { WalletTransaction } from 'model/wallet'
 import React, { useEffect, useRef, useState } from 'react'
 import Http from 'services/http'
 import { isInViewPort } from 'utils/functions'
+import Log from 'utils/log'
 
 export function TransactionComponent(props) {
   const { item } = props
@@ -65,7 +66,7 @@ export function TransactionList() {
         }
       })
       .catch(error => {
-        console.log(error)
+        Log.e(error)
       })
       .finally(() => {
         setIsLoading(false)

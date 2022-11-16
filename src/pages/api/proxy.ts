@@ -2,8 +2,8 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-13 16:03:19
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-03 12:04:11
- * @FilePath: /wave-app-webiste/src/pages/api/proxy.ts
+ * @LastEditTime: 2022-11-16 17:52:20
+ * @FilePath: /wave-app-website/src/pages/api/proxy.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import axios from 'axios'
@@ -11,6 +11,7 @@ import { API_PREFIX, WAVE_BASE_URL } from '../../constants/setting'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { decode } from 'js-base64'
 import { API_VERSION } from 'constants/constant'
+import Log from 'utils/log'
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const method = req.method
@@ -25,7 +26,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         res.status(200).json(response.data)
       })
       .catch(error => {
-        console.log(`error url is: ${url} error:${JSON.stringify(error)}`)
+        Log.e(`error url is: ${url} error:${JSON.stringify(error)}`)
         res.status(400).json(error)
       })
   } else {
@@ -36,7 +37,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         res.status(200).json(response.data)
       })
       .catch(error => {
-        console.log(`error url is: ${url} error:${JSON.stringify(error)}`)
+        Log.e(`error url is: ${url} error:${JSON.stringify(error)}`)
         res.status(400).json(error)
       })
   }

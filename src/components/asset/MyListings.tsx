@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:43:46
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-10 20:12:26
- * @FilePath: /wave-app-webiste/src/components/asset/MyListings.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-16 17:46:56
+ * @FilePath: /wave-app-website/src/components/asset/MyListings.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import { AssetsOrderOnSaleData, getAssetNameByType } from 'model/asset'
@@ -14,6 +14,7 @@ import { selectUser } from 'reducer/userReducer'
 import Http from 'services/http'
 import { useAppSelector } from 'store/store'
 import { floorNum, isInViewPort } from 'utils/functions'
+import Log from 'utils/log'
 import { formatDateTime } from 'utils/time'
 
 export default function Mylistings(props) {
@@ -59,7 +60,7 @@ export default function Mylistings(props) {
         }
       })
       .catch(error => {
-        console.log(error)
+        Log.e(error)
       })
       .finally(() => {
         setIsLoading(false)

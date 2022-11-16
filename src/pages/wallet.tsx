@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react'
 import { selectUser } from 'reducer/userReducer'
 import Http from 'services/http'
 import { useAppSelector } from 'store/store'
+import Log from 'utils/log'
 
 export default function Wallet() {
   let pageModel = new PageModel('Wallet', 'WAVE', '')
@@ -30,7 +31,7 @@ export default function Wallet() {
         setWalletInfo(response)
       })
       .catch(error => {
-        console.log(error)
+        Log.e(error)
       })
   }
 
