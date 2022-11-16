@@ -1,0 +1,21 @@
+.privacy-policy {
+  @apply px-4 text-sm font-normal md:px-0 md:pt-[100px] md:text-font22xl;
+  .privacy-data {
+    @apply text-center text-sm leading-[37px] text-gray999 md:text-left;
+  }
+  .title {
+    @apply text-[32px] leading-10 md:text-[2.63rem];
+  }
+  h2 {
+    @apply mb-8 pt-4 text-font22xl leading-9 md:text-2xl;
+  }
+  p {
+    @apply mb-6 text-base text-gray666 md:mb-11 md:leading-[30px];
+  }
+  a {
+    @apply hover:text-green2d;
+  }
+  .privacy-general {
+    @apply mt-6 md:mt-[3.8rem];
+  }
+}
