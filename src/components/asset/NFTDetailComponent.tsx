@@ -19,6 +19,9 @@ export default function NFTDetailComponent(props) {
   const [isBuyOpen, setIsBuyOpen] = useState(false)
   const [isPasswordOpen, setIsPasswordOpen] = useState(false)
   const [isMakeOfferOpen, setIsMakeOfferOpen] = useState(false)
+  const [offerEndTime, setOfferEndTime] = useState(0)
+  const [offerPrice, setOfferPrice] = useState('0')
+
   const currentUser = useAppSelector(selectUser)
 
   function closeBuyModal() {
@@ -40,13 +43,23 @@ export default function NFTDetailComponent(props) {
   }
 
   function onConfirmPassword(value) {
-    console.log(value)
     closePasswordModal()
-    const endTime = parseInt((Date.now() / 1000 + 86400).toString())
-    Http.getInstance().requestOrderBid(id, 10, value, endTime)
+    Http.getInstance()
+      .requestOrderBid(id, offerPrice, value, offerEndTime)
+      .then(response => {
+        // refresh page
+        loadData()
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   useEffect(() => {
+    loadData()
+  }, [id])
+
+  function loadData() {
     Http.getInstance()
       .getNFTInfo(parseInt(id))
       .then(response => {
@@ -56,7 +69,7 @@ export default function NFTDetailComponent(props) {
       .catch(error => {
         console.log(error)
       })
-  }, [id])
+  }
 
   if (!nftDetail || !id) {
     return <>loading...</>
@@ -197,7 +210,12 @@ export default function NFTDetailComponent(props) {
         <BuyDialog nftDetail={nftDetail} />
       </DialogComponent>
       <DialogComponent isOpen={isMakeOfferOpen} closeModal={closeMakeOfferModal}>
-        <MakeOfferDialog nftDetail={nftDetail} showPassword={showPassword} />
+        <MakeOfferDialog
+          nftDetail={nftDetail}
+          showPassword={showPassword}
+          setOfferEndTime={setOfferEndTime}
+          setOfferPrice={setOfferPrice}
+        />
       </DialogComponent>
       <DialogComponent isOpen={isPasswordOpen} closeModal={closePasswordModal}>
         <PasswordDialog onCancel={() => closePasswordModal()} onConfirm={onConfirmPassword} />

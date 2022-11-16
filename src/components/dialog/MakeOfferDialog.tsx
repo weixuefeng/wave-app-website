@@ -1,14 +1,10 @@
 import { DatePicker, DatePickerProps, TimePicker, Input, Col, Row, Divider } from 'antd'
-import DialogComponent from 'components/common/DialogComponent'
 import useWallet from 'hooks/userWallet'
 import { NFTDetail } from 'model/nft_asset'
 import React from 'react'
-import 'antd/dist/antd.css'
-import { splitAddress } from 'utils/functions'
-import PasswordDialog from './PasswordDialog'
 
 export default function MakeOfferDialog(props) {
-  const { nftDetail, showPassword } = props
+  const { nftDetail, showPassword, setOfferEndTime, setOfferPrice } = props
   const wallet = useWallet()
   const info = nftDetail as NFTDetail
   if (!info || !wallet) {
@@ -16,7 +12,11 @@ export default function MakeOfferDialog(props) {
   }
 
   const onChange: DatePickerProps['onChange'] = (date, dateString) => {
-    console.log(date, dateString)
+    setOfferEndTime(parseInt((date.toDate().getTime() / 1000).toString()))
+  }
+
+  const onPriceChange = e => {
+    setOfferPrice(e.target.value)
   }
 
   return (
@@ -58,25 +58,9 @@ export default function MakeOfferDialog(props) {
           </Col>
           <Col span={8}>
             <p className="title">Price</p>
-            <Input suffix="NEW" />
+            <Input suffix="NEW" onChange={onPriceChange} />
           </Col>
         </Row>
-      </div>
-
-      {/** receiver info */}
-      <div className="receiver-info">
-        <div className="item">
-          <p>Seller Will Receive</p>
-          <p>200 NEW</p>
-        </div>
-        <div className="item">
-          <p>Creator Earnings</p>
-          <p>200 NEW</p>
-        </div>
-        <div className="item">
-          <p>Transaction Fee</p>
-          <p>200 NEW</p>
-        </div>
       </div>
 
       <Divider className="my-2" />

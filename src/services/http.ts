@@ -236,7 +236,7 @@ class Http {
     return _post(Api.nftAssetList, params) as Promise<Pagination<MyAsset>>
   }
 
-  requestOrderBid(nftId: number, price: number, password: string, endTime: number): Promise<any> {
+  requestOrderBid(nftId: number, price: string, password: string, endTime: number): Promise<any> {
     let params = {
       nft_id: nftId,
       price: price,
