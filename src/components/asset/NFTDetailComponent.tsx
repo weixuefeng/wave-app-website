@@ -59,7 +59,7 @@ export default function NFTDetailComponent(props) {
     } else {
       // buy
       Http.getInstance()
-        .requestOrderBuy(id, value)
+        .requestOrderBuy(nftDetail.sell_id, value)
         .then(response => {
           // refresh page
           loadData()
@@ -87,6 +87,17 @@ export default function NFTDetailComponent(props) {
       })
   }
 
+  function cancelOrder() {
+    Http.getInstance().requestOrderCancel(nftDetail.sell_id)
+    .then(response => {
+      loadData()
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  }
+
   if (!nftDetail || !id) {
     return <>loading...</>
   }
@@ -99,7 +110,7 @@ export default function NFTDetailComponent(props) {
           <button
             className="primary ml-4 outline"
             onClick={() => {
-              setIsMakeOfferOpen(true)
+              cancelOrder()
             }}
           >
             取消出售{' '}

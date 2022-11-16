@@ -255,6 +255,13 @@ class Http {
     return _post(Api.orderSellDeal, params) as Promise<Pagination<any>>
   }
 
+  requestOrderCancel(sellId: number) {
+    let params = {
+      sell_id: sellId,
+    }
+    return _post(Api.orderSellCancel, params) as Promise<Pagination<any>>
+  }
+
   // my cinema request
   getMyCinemaList(pageId: number): Promise<Pagination<CinemaList>> {
     let params = {
