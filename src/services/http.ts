@@ -262,6 +262,17 @@ class Http {
     return _post(Api.orderSellCancel, params) as Promise<Pagination<any>>
   }
 
+  requestOrderSell(nftId: number, price: string, endTime: string, directionAddress: string|null): Promise<any> {
+    let params = {
+      nft_id: nftId,
+      price: price,
+      end_time: endTime,
+      direction_address: directionAddress,
+      start_time: parseInt((Date.now() / 1000).toString()).toString(),
+    }
+    return _post(Api.orderSell, params) as Promise<Pagination<any>>
+  }
+
   // my cinema request
   getMyCinemaList(pageId: number): Promise<Pagination<CinemaList>> {
     let params = {

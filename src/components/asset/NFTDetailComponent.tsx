@@ -11,6 +11,7 @@ import PasswordDialog from 'components/dialog/PasswordDialog'
 import { AssetSellStatus } from 'model/asset'
 import { useAppSelector } from 'store/store'
 import { selectUser } from 'reducer/userReducer'
+import SellAssetDialog from 'components/dialog/SellAssetDialog'
 
 export default function NFTDetailComponent(props) {
   const { id } = props
@@ -22,6 +23,12 @@ export default function NFTDetailComponent(props) {
   const [offerEndTime, setOfferEndTime] = useState(0)
   const [offerPrice, setOfferPrice] = useState('0')
   const [isOfferPasswordType, setIsOfferPasswordType] = useState(true)
+
+  // sell nft dialog config
+  const [isSellAssetOpen, setIsSellAssetOpen] = useState(false)
+  const [sellPrice, setSellPrice] = useState('')
+  const [sellExpiredTime, setSellExpiredTime] = useState('')
+  const [directionAddress, setDirectionAddress] = useState(null)
 
   const currentUser = useAppSelector(selectUser)
 
@@ -37,9 +44,14 @@ export default function NFTDetailComponent(props) {
     setIsMakeOfferOpen(false)
   }
 
+  function closeSellAssetModal() {
+    setIsSellAssetOpen(false)
+  }
+
   function showPassword() {
     closeMakeOfferModal()
     closeBuyModal()
+    closeSellAssetModal()
     setIsPasswordOpen(true)
   }
 
@@ -98,6 +110,18 @@ export default function NFTDetailComponent(props) {
     })
   }
 
+  function requestOrderSell() {
+    closeSellAssetModal()
+    Http.getInstance().requestOrderSell(nftDetail.id, sellPrice, sellExpiredTime, directionAddress)
+    .then(response => {
+      console.log(response);
+      loadData()
+    })
+    .catch(error=> {
+      console.log(error);
+    })
+  }
+
   if (!nftDetail || !id) {
     return <>loading...</>
   }
@@ -123,7 +147,7 @@ export default function NFTDetailComponent(props) {
           <button
             className="primary ml-4 outline"
             onClick={() => {
-              setIsMakeOfferOpen(true)
+              setIsSellAssetOpen(true)
             }}
           >
             出售{' '}
@@ -253,6 +277,18 @@ export default function NFTDetailComponent(props) {
       {/** password dialog */}
       <DialogComponent isOpen={isPasswordOpen} closeModal={closePasswordModal}>
         <PasswordDialog onCancel={() => closePasswordModal()} onConfirm={onConfirmPassword} />
+      </DialogComponent>
+
+      {/** sell asset dialog */}
+      <DialogComponent isOpen={isSellAssetOpen} closeModal={closeSellAssetModal}>
+        <SellAssetDialog 
+          nftDetail={nftDetail}
+          showPassword={showPassword}
+          setSellPrice={setSellPrice}
+          setSellExpiredTime={setSellExpiredTime}
+          requestOrderSell={requestOrderSell}
+          setDirectionAddress={setDirectionAddress}
+        />
       </DialogComponent>
     </div>
   )
