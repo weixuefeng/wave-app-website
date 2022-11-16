@@ -13,9 +13,13 @@ import { useAppSelector } from 'store/store'
 import { selectUser } from 'reducer/userReducer'
 import SellAssetDialog from 'components/dialog/SellAssetDialog'
 import Log from 'utils/log'
+import { loadGetInitialProps } from 'next/dist/shared/lib/utils'
+import LoginComponent from 'components/dialog/LoginComponent'
 
 export default function NFTDetailComponent(props) {
   const { id } = props
+  const currentUser = useAppSelector(selectUser)
+
 
   const [nftDetail, setNFTDetail] = useState<NFTDetail>(null)
   const [isBuyOpen, setIsBuyOpen] = useState(false)
@@ -31,7 +35,12 @@ export default function NFTDetailComponent(props) {
   const [sellExpiredTime, setSellExpiredTime] = useState('')
   const [directionAddress, setDirectionAddress] = useState(null)
 
-  const currentUser = useAppSelector(selectUser)
+  // login dialog
+  const [isLoginOpen, setIsLoginOpen] = useState(false)
+
+  function closeLoginModal() {
+    setIsLoginOpen(false)
+  }
 
   function closeBuyModal() {
     setIsBuyOpen(false)
@@ -124,6 +133,24 @@ export default function NFTDetailComponent(props) {
       })
   }
 
+  function showMakeOffer() {
+    if(currentUser) {
+      setIsMakeOfferOpen(true)
+      setIsOfferPasswordType(true)
+    } else {
+      setIsLoginOpen(true)
+    }
+  }
+
+  function showBuy() {
+    if(currentUser) {
+      setIsOfferPasswordType(false)
+      setIsBuyOpen(true)
+    } else {
+      setIsLoginOpen(true)
+    }
+  }
+
   if (!nftDetail || !id) {
     return <>loading...</>
   }
@@ -167,8 +194,7 @@ export default function NFTDetailComponent(props) {
           <button
             className="primary black"
             onClick={() => {
-              setIsOfferPasswordType(false)
-              setIsBuyOpen(true)
+              showBuy()
             }}
           >
             Buy
@@ -176,8 +202,7 @@ export default function NFTDetailComponent(props) {
           <button
             className="primary black ml-4 outline"
             onClick={() => {
-              setIsMakeOfferOpen(true)
-              setIsOfferPasswordType(true)
+              showMakeOffer()
             }}
           >
             Make Offer{' '}
@@ -190,7 +215,7 @@ export default function NFTDetailComponent(props) {
           <button
             className="primary ml-4 outline"
             onClick={() => {
-              setIsMakeOfferOpen(true)
+              showMakeOffer()
             }}
           >
             Make Offer{' '}
@@ -291,6 +316,11 @@ export default function NFTDetailComponent(props) {
           requestOrderSell={requestOrderSell}
           setDirectionAddress={setDirectionAddress}
         />
+      </DialogComponent>
+
+      {/** login dialog */}
+      <DialogComponent isOpen={isLoginOpen} closeModal={closeLoginModal}>
+        <LoginComponent closeModal={closeLoginModal}/>
       </DialogComponent>
     </div>
   )
