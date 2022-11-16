@@ -7,7 +7,7 @@ import { Disclosure } from '@headlessui/react'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 
 export default function SellAssetDialog(props) {
-  const { nftDetail, showPassword, setSellExpiredTime, setSellPrice,requestOrderSell, setDirectionAddress} = props
+  const { nftDetail, showPassword, setSellExpiredTime, setSellPrice, requestOrderSell, setDirectionAddress } = props
   const wallet = useWallet()
   const info = nftDetail as NFTDetail
   if (!info || !wallet) {
@@ -30,7 +30,7 @@ export default function SellAssetDialog(props) {
       {/** offer info */}
       <div className="offer-info">
         <Row gutter={16} className="item">
-        <Col span={8}>
+          <Col span={8}>
             <p className="title">Price</p>
             <Input suffix="NEW" onChange={onPriceChange} />
           </Col>
@@ -53,18 +53,21 @@ export default function SellAssetDialog(props) {
       {/** private info */}
       <div className="private-info">
         <Disclosure>
-        <Disclosure.Button className="py-2 flex flex-row text-lg items-center">
-          <PlusCircleIcon className="w-8 h-8"/>Private
-        </Disclosure.Button>
-        <Disclosure.Panel className="text-gray-500">
-        <Input onChange={setDirectionAddress} />
-        <p>You can specify one address that is allowed to buy it.</p>
-        </Disclosure.Panel>
-      </Disclosure>
+          <Disclosure.Button className="flex flex-row items-center py-2 text-lg">
+            <PlusCircleIcon className="h-8 w-8" />
+            Private
+          </Disclosure.Button>
+          <Disclosure.Panel className="text-gray-500">
+            <Input onChange={setDirectionAddress} />
+            <p>You can specify one address that is allowed to buy it.</p>
+          </Disclosure.Panel>
+        </Disclosure>
       </div>
 
       <div className="fee-info">
-        <p>Fees <span>(Listing is free. the following fees will be deducted at the time of the sale)</span></p>
+        <p>
+          Fees <span>(Listing is free. the following fees will be deducted at the time of the sale)</span>
+        </p>
         <p>· Service Fee: 2.5%</p>
         <p>· Creator Earnings: 5%</p>
       </div>

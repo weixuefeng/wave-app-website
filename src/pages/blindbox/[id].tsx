@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-09-21 10:43:33
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-14 17:02:14
+ * @LastEditTime: 2022-11-16 17:50:52
  * @FilePath: /wave-app-website/src/pages/blindbox/[id].tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -21,6 +21,7 @@ import { CollectionInfo, IsWhiteList, UserInWhiteList } from 'model/collection_m
 import { useTranslation } from 'react-i18next'
 import WhitelistBottom from 'components/collection/WhitelistBottom'
 import Http from 'services/http'
+import Log from 'utils/log'
 
 export default Home
 
@@ -49,8 +50,6 @@ function Main(props) {
 
   useEffect(() => {
     const flag = checkIsInApp()
-    console.log('id is :' + id)
-
     if (id != undefined) {
       setTimeout(() => {
         fetchCollectionInfo(flag)
@@ -73,7 +72,7 @@ function Main(props) {
       data: {},
     }
     postMessage(params, function (data) {
-      console.log('\r\n request user: ' + JSON.stringify(data))
+      Log.d('\r\n request user: ' + JSON.stringify(data))
       if (data != null) {
         var info = data
         if (info.error_code == 1) {
@@ -93,7 +92,7 @@ function Main(props) {
       data: calendarInfo,
     }
     postMessage(params, function (data) {
-      console.log('\r\n requestCalendar: ' + JSON.stringify(data))
+      Log.d('\r\n requestCalendar: ' + JSON.stringify(data))
       if (data != null && data.error_code == 1) {
         setHasAddCalendar(true)
       } else {
@@ -108,7 +107,7 @@ function Main(props) {
       data: info,
     }
     postMessage(params, function (data) {
-      console.log('\r\n checkCalendar: ' + JSON.stringify(data))
+      Log.d('\r\n checkCalendar: ' + JSON.stringify(data))
 
       if (data != null && data.error_code == 1) {
         if (JSON.parse(data.result)['has_add_calendar'] == 1) {
@@ -126,7 +125,7 @@ function Main(props) {
       data: {},
     }
     postMessage(params, function (data) {
-      console.log('\r\n requestLanguage: ' + JSON.stringify(data))
+      Log.d('\r\n requestLanguage: ' + JSON.stringify(data))
       if (data != null && data.error_code == 1) {
         i18n.changeLanguage(JSON.parse(data.result)['language'])
       }
@@ -181,7 +180,7 @@ function Main(props) {
       console.debug('\r\n requestPayOrder: ' + JSON.stringify(data))
       setRefreshFlag(Date.now())
       if (data != null) {
-        console.log(JSON.stringify(data))
+        Log.d(JSON.stringify(data))
       }
     })
   }
@@ -196,7 +195,7 @@ function Main(props) {
     }
     postMessage(params, function (data) {
       if (data != null) {
-        console.log(JSON.stringify(data))
+        Log.d(JSON.stringify(data))
       }
     })
   }
@@ -211,7 +210,7 @@ function Main(props) {
     }
     postMessage(params, function (data) {
       if (data != null) {
-        console.log(JSON.stringify(data))
+        Log.d(JSON.stringify(data))
       }
     })
   }
@@ -276,16 +275,16 @@ function Main(props) {
   function postMessage(params, callback) {
     // @ts-ignore
     if (window && window.flutter_inappwebview) {
-      console.log('send info android')
+      Log.d('send info android')
       // @ts-ignore
       window.flutter_inappwebview.callHandler(JSON.stringify(params), callback)
       // @ts-ignore
     } else if (window && window.webkit && typeof handler !== 'undefined' && isIOS) {
-      console.log('send info ios')
+      Log.d('send info ios')
       // @ts-ignore, add ios callback
       window.webkit.messageHandlers[handler].postMessage(params)
     } else {
-      console.log(JSON.stringify(params))
+      Log.d(JSON.stringify(params))
     }
   }
 

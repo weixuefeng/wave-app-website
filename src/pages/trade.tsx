@@ -4,6 +4,7 @@ import { TradeItem } from 'model/trade'
 import React, { useEffect, useRef, useState } from 'react'
 import Http from 'services/http'
 import { isInViewPort } from 'utils/functions'
+import Log from 'utils/log'
 import TradeComponent from '../components/trade/TradeComponent'
 
 export default function TradePage() {
@@ -47,7 +48,7 @@ export default function TradePage() {
         }
       })
       .catch(error => {
-        console.log(error)
+        Log.e(error)
       })
       .finally(() => {
         setIsLoading(false)

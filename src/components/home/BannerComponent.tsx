@@ -29,15 +29,15 @@ export default function BannerComponent(props) {
         pagination={{
           clickable: true,
         }}
-        onSlideChange={() => { }}
-        onSwiper={swiper => { }}
+        onSlideChange={() => {}}
+        onSwiper={swiper => {}}
         threshold={40}
       >
         {banners.map((item, index) => {
           return (
             <SwiperSlide key={index}>
               <Link href={item.url}>
-                <a target='_blank'>
+                <a target="_blank">
                   <img alt="" src={item.image} className="swiper-img" />
                 </a>
               </Link>

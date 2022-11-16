@@ -10,6 +10,7 @@ import React, { useState } from 'react'
 import Http from 'services/http'
 import { useAppDispatch, useAppSelector } from 'store/store'
 import { splitAddress } from 'utils/functions'
+import Log from 'utils/log'
 import { selectUser, updateUserInfo } from '../../reducer/userReducer'
 
 export default function Login() {
@@ -33,10 +34,10 @@ export default function Login() {
     Http.getInstance()
       .requestVerifyCode(email, EmailAction.LOGIN)
       .then(response => {
-        console.log(response)
+        Log.d(response)
       })
       .catch(error => {
-        console.log(error)
+        Log.e(error)
       })
   }
 
@@ -49,7 +50,7 @@ export default function Login() {
         closeModal()
       })
       .catch(error => {
-        console.log(error)
+        Log.e(error)
       })
   }
 

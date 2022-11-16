@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 20:26:47
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-16 13:51:41
- * @FilePath: /wave-app-website/src/pages/tickets.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-16 17:51:22
+ * @FilePath: /wave-app-website/src/pages/cinema.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import DialogComponent from 'components/common/DialogComponent'
@@ -17,6 +17,7 @@ import { selectUser } from 'reducer/userReducer'
 import Http from 'services/http'
 import { useAppSelector } from 'store/store'
 import { isInViewPort } from 'utils/functions'
+import Log from 'utils/log'
 import { formatSeconds } from 'utils/time'
 
 export default function Cinema(props) {
@@ -73,7 +74,7 @@ export default function Cinema(props) {
         }
       })
       .catch(error => {
-        console.log(error)
+        Log.e(error)
       })
       .finally(() => {
         setIsLoading(false)

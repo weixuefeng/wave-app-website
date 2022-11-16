@@ -12,6 +12,7 @@ import { AssetSellStatus } from 'model/asset'
 import { useAppSelector } from 'store/store'
 import { selectUser } from 'reducer/userReducer'
 import SellAssetDialog from 'components/dialog/SellAssetDialog'
+import Log from 'utils/log'
 
 export default function NFTDetailComponent(props) {
   const { id } = props
@@ -57,7 +58,7 @@ export default function NFTDetailComponent(props) {
 
   function onConfirmPassword(value) {
     closePasswordModal()
-    if(isOfferPasswordType) {
+    if (isOfferPasswordType) {
       // make offer
       Http.getInstance()
         .requestOrderBid(id, offerPrice, value, offerEndTime)
@@ -65,8 +66,8 @@ export default function NFTDetailComponent(props) {
           // refresh page
           loadData()
         })
-        .catch(err => {
-          console.log(err)
+        .catch(error => {
+          Log.e(error)
         })
     } else {
       // buy
@@ -76,11 +77,10 @@ export default function NFTDetailComponent(props) {
           // refresh page
           loadData()
         })
-        .catch(err => {
-          console.log(err)
+        .catch(error => {
+          Log.e(error)
         })
     }
-    
   }
 
   useEffect(() => {
@@ -91,35 +91,37 @@ export default function NFTDetailComponent(props) {
     Http.getInstance()
       .getNFTInfo(parseInt(id))
       .then(response => {
-        console.log(response)
+        Log.d(response)
         setNFTDetail(response)
       })
       .catch(error => {
-        console.log(error)
+        Log.e(error)
       })
   }
 
   function cancelOrder() {
-    Http.getInstance().requestOrderCancel(nftDetail.sell_id)
-    .then(response => {
-      loadData()
-      console.log(response);
-    })
-    .catch(error => {
-      console.log(error);
-    })
+    Http.getInstance()
+      .requestOrderCancel(nftDetail.sell_id)
+      .then(response => {
+        loadData()
+        Log.d(response)
+      })
+      .catch(error => {
+        Log.e(error)
+      })
   }
 
   function requestOrderSell() {
     closeSellAssetModal()
-    Http.getInstance().requestOrderSell(nftDetail.id, sellPrice, sellExpiredTime, directionAddress)
-    .then(response => {
-      console.log(response);
-      loadData()
-    })
-    .catch(error=> {
-      console.log(error);
-    })
+    Http.getInstance()
+      .requestOrderSell(nftDetail.id, sellPrice, sellExpiredTime, directionAddress)
+      .then(response => {
+        Log.d(response)
+        loadData()
+      })
+      .catch(error => {
+        Log.e(error)
+      })
   }
 
   if (!nftDetail || !id) {
@@ -261,7 +263,7 @@ export default function NFTDetailComponent(props) {
 
       {/** buy dialog */}
       <DialogComponent isOpen={isBuyOpen} closeModal={closeBuyModal}>
-        <BuyDialog nftDetail={nftDetail} showPassword={showPassword}/>
+        <BuyDialog nftDetail={nftDetail} showPassword={showPassword} />
       </DialogComponent>
 
       {/** make offer dialog */}
@@ -281,7 +283,7 @@ export default function NFTDetailComponent(props) {
 
       {/** sell asset dialog */}
       <DialogComponent isOpen={isSellAssetOpen} closeModal={closeSellAssetModal}>
-        <SellAssetDialog 
+        <SellAssetDialog
           nftDetail={nftDetail}
           showPassword={showPassword}
           setSellPrice={setSellPrice}

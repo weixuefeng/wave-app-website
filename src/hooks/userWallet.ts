@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { selectUser } from 'reducer/userReducer'
 import Http from 'services/http'
 import { useAppSelector } from 'store/store'
+import Log from 'utils/log'
 
 export default function useWallet() {
   const [walletInfo, setWalletInfo] = useState<WalletInfo>()
@@ -14,8 +15,8 @@ export default function useWallet() {
       .then(res => {
         setWalletInfo(res)
       })
-      .catch(err => {
-        console.log(err)
+      .catch(error => {
+        Log.e(error)
       })
   }, [currentUser])
 

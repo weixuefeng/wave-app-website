@@ -2,6 +2,7 @@ import { Tab } from '@headlessui/react'
 import { BaseCollectionInfo } from 'model/collection'
 import React, { Fragment, useEffect, useState } from 'react'
 import Http from 'services/http'
+import Log from 'utils/log'
 import AllItemsComponent from './AllItemsComponent'
 import ChainInfoComponent from './ChainInfoComponent'
 import CollectionActivity from './CollectionActivityComponent'
@@ -20,7 +21,7 @@ export default function CollectionComponent(props) {
         setCollection(response)
       })
       .catch(error => {
-        console.log(error)
+        Log.e(error)
       })
   }
 

@@ -18,6 +18,7 @@ import { OfferType } from 'model/offer'
 import { CinemaList } from 'model/cinema'
 import { CollectionInfo } from 'model/collection_model'
 import { PreCheckEmail } from 'model/settings'
+import Log from 'utils/log'
 
 let client = refreshClient()
 
@@ -60,7 +61,7 @@ function _post(url: string, param: any, config: any = null) {
         }
       })
       .catch(error => {
-        console.log(error)
+        Log.e(error)
         reject(error)
       })
   })
@@ -79,7 +80,7 @@ function _get(url) {
         }
       })
       .catch(error => {
-        console.log(error)
+        Log.e(error)
         reject(error)
       })
   })
@@ -262,7 +263,7 @@ class Http {
     return _post(Api.orderSellCancel, params) as Promise<Pagination<any>>
   }
 
-  requestOrderSell(nftId: number, price: string, endTime: string, directionAddress: string|null): Promise<any> {
+  requestOrderSell(nftId: number, price: string, endTime: string, directionAddress: string | null): Promise<any> {
     let params = {
       nft_id: nftId,
       price: price,

@@ -1,3 +1,5 @@
+import Log from './log'
+
 export function splitAddress(address: string): string {
   if (!address) {
     return address
@@ -24,9 +26,9 @@ export function trimStr(str: string): string {
 export default async function copyContent(content: string) {
   try {
     await navigator.clipboard.writeText(content)
-    console.log('copied to clipboard')
+    Log.d('copied to clipboard')
   } catch (error) {
-    console.log('failed to copy to clipboard. error=' + error)
+    Log.e(error)
   }
 }
 

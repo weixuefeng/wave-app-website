@@ -1,6 +1,7 @@
 import { EVTCopyDetail } from 'model/evt_asset'
 import React, { useEffect, useState } from 'react'
 import Http from 'services/http'
+import Log from 'utils/log'
 import ChainInfoComponent from './ChainInfoComponent'
 import PropertiesComponents from './PropertiesComponents'
 
@@ -19,7 +20,7 @@ export default function EVTDetailComponent(props) {
         setEvtDetail(response)
       })
       .catch(error => {
-        console.log(error)
+        Log.e(error)
       })
   }
   if (!evtDetail) {

@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-15 17:32:28
- * @FilePath: /wave-app-webiste/src/components/settings/emailModal.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-16 17:51:39
+ * @FilePath: /wave-app-website/src/components/settings/updateEmail.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 
@@ -12,6 +12,7 @@ import React, { useEffect, useState } from 'react'
 import { selectUser, updateUserInfo } from 'reducer/userReducer'
 import Http from 'services/http'
 import { useAppDispatch, useAppSelector } from 'store/store'
+import Log from 'utils/log'
 
 let timeChange
 
@@ -44,7 +45,7 @@ export default function UpdateEmail(props) {
     if (time > 0 && time < 60) {
       setBtnContent(`${time}s后重发`)
     } else {
-      console.log('nsdifnisdfnsdi', timeChange)
+      Log.d('nsdifnisdfnsdi', timeChange)
       clearInterval(timeChange)
       setBtnDisabled(false)
       setTime(60)
@@ -75,7 +76,7 @@ export default function UpdateEmail(props) {
         setEmailSettingPage(0)
       })
       .catch(error => {
-        console.log(error)
+        Log.e(error)
       })
   }
 
@@ -90,10 +91,10 @@ export default function UpdateEmail(props) {
     Http.getInstance()
       .requestVerifyCode(email, EmailAction.RESET_EMAIL)
       .then(response => {
-        console.log('response:::', response)
+        Log.d(response)
       })
       .catch(error => {
-        console.log(error)
+        Log.e(error)
       })
   }
 

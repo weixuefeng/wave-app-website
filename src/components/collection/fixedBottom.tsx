@@ -2,7 +2,7 @@
  * @Author: zhuxiaotong zhuxiaotong@diynova.com
  * @Date: 2022-09-29 16:09:48
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-14 17:02:55
+ * @LastEditTime: 2022-11-16 17:51:49
  * @FilePath: /wave-app-website/src/components/collection/fixedBottom.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -106,7 +106,7 @@ export default function FixedBottom(props) {
     const status = checkTime()
     switch (status) {
       case WhiteListSellStatus.NOT_START_OUT_24H:
-        console.log('out 24h')
+        Log.d('out 24h')
 
         return (
           <div className="button" onClick={addToCalendar}>
@@ -169,7 +169,7 @@ export default function FixedBottom(props) {
           }
         }
       case WhiteListSellStatus.TIME_END:
-        console.log('time end')
+        Log.d('time end')
         return notWhiteList()
     }
   }
