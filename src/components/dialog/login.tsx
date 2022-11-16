@@ -79,9 +79,8 @@ export default function Login() {
     <>
       {getUserComponent()}
       <DialogComponent isOpen={isOpen} closeModal={closeModal}>
-        <LoginComponent closeModal={closeModal}/>
+        <LoginComponent closeModal={closeModal} />
       </DialogComponent>
     </>
   )
 }
-

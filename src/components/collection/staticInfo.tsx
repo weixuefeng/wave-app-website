@@ -89,7 +89,11 @@ function StaticInfo(props) {
                           <>{t('TOKENSTANDARD')}</>
                         </p>
                       )}
-                      {props.collectionInfo.specifications.block_chain && <p className="item"><>{t('BLOCKCHAIN')}</></p>}
+                      {props.collectionInfo.specifications.block_chain && (
+                        <p className="item">
+                          <>{t('BLOCKCHAIN')}</>
+                        </p>
+                      )}
                       {props.collectionInfo.specifications.creator_earnings && (
                         <p className="item">
                           <>{t('CREATOREARNINGS')}</>

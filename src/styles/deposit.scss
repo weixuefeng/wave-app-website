@@ -5,9 +5,9 @@
     @apply text-4xl font-medium text-gray-900;
   }
   .token {
-    @apply flex flex-row items-center justify-start mt-8 mb-10 font-medium;
+    @apply mt-8 mb-10 flex flex-row items-center justify-start font-medium;
     .label {
-      @apply text-gray999 font-normal ml-2;
+      @apply ml-2 font-normal text-gray999;
     }
   }
   .select {
@@ -15,7 +15,7 @@
       @apply font-medium;
     }
     .content {
-      @apply text-gray999 font-normal mt-3 mb-4;
+      @apply mt-3 mb-4 font-normal text-gray999;
     }
   }
 
@@ -31,10 +31,10 @@
   }
   .tip {
     p {
-      @apply text-gray999 text-xs mb-2;
+      @apply mb-2 text-xs text-gray999;
     }
     .title {
-      @apply text-lg mt-14;
+      @apply mt-14 text-lg;
     }
   }
 }

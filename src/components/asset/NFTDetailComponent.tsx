@@ -20,7 +20,6 @@ export default function NFTDetailComponent(props) {
   const { id } = props
   const currentUser = useAppSelector(selectUser)
 
-
   const [nftDetail, setNFTDetail] = useState<NFTDetail>(null)
   const [isBuyOpen, setIsBuyOpen] = useState(false)
   const [isPasswordOpen, setIsPasswordOpen] = useState(false)
@@ -134,7 +133,7 @@ export default function NFTDetailComponent(props) {
   }
 
   function showMakeOffer() {
-    if(currentUser) {
+    if (currentUser) {
       setIsMakeOfferOpen(true)
       setIsOfferPasswordType(true)
     } else {
@@ -143,7 +142,7 @@ export default function NFTDetailComponent(props) {
   }
 
   function showBuy() {
-    if(currentUser) {
+    if (currentUser) {
       setIsOfferPasswordType(false)
       setIsBuyOpen(true)
     } else {
@@ -320,7 +319,7 @@ export default function NFTDetailComponent(props) {
 
       {/** login dialog */}
       <DialogComponent isOpen={isLoginOpen} closeModal={closeLoginModal}>
-        <LoginComponent closeModal={closeLoginModal}/>
+        <LoginComponent closeModal={closeLoginModal} />
       </DialogComponent>
     </div>
   )

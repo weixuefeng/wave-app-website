@@ -315,6 +315,15 @@ class Http {
     let params = {}
     return _post(Api.userPaymentPasswordUpdate, params) as Promise<any>
   }
+
+  //notification
+  getNotificationList(pageId) {
+    let params = {
+      page_id: pageId,
+      page_size: PAGE_SIZE,
+    }
+    return _post(Api.notification, params) as Promise<any>
+  }
 }
 
 export default Http

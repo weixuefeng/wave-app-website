@@ -11,9 +11,8 @@ import { useAppDispatch, useAppSelector } from 'store/store'
 import Log from 'utils/log'
 
 export default function LoginComponent(props) {
-  const {closeModal} = props
+  const { closeModal } = props
 
-  
   const [email, setEmail] = useState<string>()
   const [verifyCode, setVerifyCode] = useState<string>()
   const dispatch = useAppDispatch()
