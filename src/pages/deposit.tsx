@@ -11,7 +11,6 @@ import { useAppSelector } from 'store/store'
 import copyContent from 'utils/functions'
 import { ClipboardDocumentIcon } from '@heroicons/react/24/outline'
 
-
 export default function Deposit() {
   let pageModel = new PageModel('Deposit', 'WAVE', '')
 

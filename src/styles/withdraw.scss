@@ -5,17 +5,17 @@
     @apply text-4xl font-semibold text-gray-900;
   }
   .token {
-    @apply flex flex-row items-center justify-start mt-8 mb-10 font-medium;
+    @apply mt-8 mb-10 flex flex-row items-center justify-start font-medium;
     .label {
-      @apply text-gray999 font-normal ml-2;
+      @apply ml-2 font-normal text-gray999;
     }
   }
   .tips {
     p {
-      @apply text-gray999 text-xs mb-2;
+      @apply mb-2 text-xs text-gray999;
     }
     .tip_title {
-      @apply text-lg mt-6;
+      @apply mt-6 text-lg;
     }
   }
 }

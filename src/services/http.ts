@@ -19,6 +19,7 @@ import { CinemaList } from 'model/cinema'
 import { CollectionInfo } from 'model/collection_model'
 import { PreCheckEmail } from 'model/settings'
 import Log from 'utils/log'
+import { MessageList } from 'model/message'
 
 let client = refreshClient()
 
@@ -316,13 +317,14 @@ class Http {
     return _post(Api.userPaymentPasswordUpdate, params) as Promise<any>
   }
 
-  //notification
-  getNotificationList(pageId:number): Promise<any> {
+  // message
+  getMessageList(session_id: number, pageId: number): Promise<Pagination<MessageList>> {
     let params = {
+      session_id: session_id,
       page_id: pageId,
       page_size: PAGE_SIZE,
     }
-    return _post(Api.notification, params) as Promise<any>
+    return _post(Api.message, params) as Promise<any>
   }
 }
 

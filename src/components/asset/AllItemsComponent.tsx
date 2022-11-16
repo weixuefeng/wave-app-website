@@ -55,7 +55,7 @@ export default function AllItemsComponent(props) {
         }
       })
       .catch(error => {
-        Log.e (error)
+        Log.e(error)
       })
       .finally(() => {
         setIsLoading(false)

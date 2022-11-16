@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Form, Input, Row, Col } from 'antd';
+import { Form, Input, Row, Col } from 'antd'
 // import 'antd/dist/antd.css'
 import NormalLayout from 'components/layout/normalLayout'
 import useWallet from 'hooks/userWallet'
@@ -25,69 +25,76 @@ export default function Withdraw() {
 
   function content() {
     return (
-        <div className="container mx-auto">
-          <div className="withdraw">
-            <p className="title">Withdraw</p>
-            <div className="token">
-              <p className="mr-3">Token:</p>
-              <img className="mr-1" src="/assets/image/icon_newton.png" alt="" />
-              <p>NEW</p>
-              <p className="label">{walletAccount.label}</p>
-            </div>
-
-            <Form
-                name="basic"
-                layout="vertical"
-                labelCol={{ span: 8 }}
-                wrapperCol={{ span: 14 }}
-                initialValues={{ remember: true }}
-                autoComplete="off"
-            >
-              <Row>
-                <Col span={12} style={{ textAlign: 'right' }}>
-                  <Form.Item label="Withdrawal Network" name="network">
-                    <Input />
-                  </Form.Item>
-                </Col>
-
-                <Col span={12} offset={-12}>
-                  <Form.Item label="Withdrawal Address" name="address" rules={[{ required: true, message: 'This address does not match the currently selected primary network.' }]}>
-                    <Input />
-                  </Form.Item>
-                </Col>
-
-                <Col span={12}>
-                  <Form.Item label="Amount" name="Amount" rules={[{ required: true, message: 'Insufficient balance' }]}>
-                    <Input />
-                  </Form.Item>
-                </Col>
-
-                <Col span={24}>
-                  <Form.Item label="Fee">
-                    <p>21NEW</p>
-                  </Form.Item>
-                </Col>
-
-                <Col span={24}>
-                  <div className="tips">
-                    <p className="tips_title">Reminder</p>
-                    <p>* WAVE will never ask you to transfer funds to another account.</p>
-                    <p>* Beware of fraud and don't participate in illegal activities such as proxy purchases, money laundering, and illegal fundraising.</p>
-                    <p>* Internal transfer will be free.</p>
-                  </div>
-                </Col>
-
-                <Col span={24}>
-                  <Form.Item>
-                    <button className="primary black">
-                      Confirm
-                    </button>
-                  </Form.Item>
-                </Col>
-              </Row>
-            </Form>
+      <div className="container mx-auto">
+        <div className="withdraw">
+          <p className="title">Withdraw</p>
+          <div className="token">
+            <p className="mr-3">Token:</p>
+            <img className="mr-1" src="/assets/image/icon_newton.png" alt="" />
+            <p>NEW</p>
+            <p className="label">{walletAccount.label}</p>
           </div>
+
+          <Form
+            name="basic"
+            layout="vertical"
+            labelCol={{ span: 8 }}
+            wrapperCol={{ span: 14 }}
+            initialValues={{ remember: true }}
+            autoComplete="off"
+          >
+            <Row>
+              <Col span={12} style={{ textAlign: 'right' }}>
+                <Form.Item label="Withdrawal Network" name="network">
+                  <Input />
+                </Form.Item>
+              </Col>
+
+              <Col span={12} offset={-12}>
+                <Form.Item
+                  label="Withdrawal Address"
+                  name="address"
+                  rules={[
+                    { required: true, message: 'This address does not match the currently selected primary network.' },
+                  ]}
+                >
+                  <Input />
+                </Form.Item>
+              </Col>
+
+              <Col span={12}>
+                <Form.Item label="Amount" name="Amount" rules={[{ required: true, message: 'Insufficient balance' }]}>
+                  <Input />
+                </Form.Item>
+              </Col>
+
+              <Col span={24}>
+                <Form.Item label="Fee">
+                  <p>21NEW</p>
+                </Form.Item>
+              </Col>
+
+              <Col span={24}>
+                <div className="tips">
+                  <p className="tips_title">Reminder</p>
+                  <p>* WAVE will never ask you to transfer funds to another account.</p>
+                  <p>
+                    * Beware of fraud and don't participate in illegal activities such as proxy purchases, money
+                    laundering, and illegal fundraising.
+                  </p>
+                  <p>* Internal transfer will be free.</p>
+                </div>
+              </Col>
+
+              <Col span={24}>
+                <Form.Item>
+                  <button className="primary black">Confirm</button>
+                </Form.Item>
+              </Col>
+            </Row>
+          </Form>
         </div>
+      </div>
     )
   }
 

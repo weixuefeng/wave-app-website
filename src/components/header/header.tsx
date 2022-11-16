@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-15 12:51:57
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-16 18:39:08
+ * @LastEditTime: 2022-11-16 20:44:03
  * @FilePath: /wave-app-webiste/src/components/header/header.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -67,7 +67,7 @@ export default function Header(props) {
             <Link href="/trade" passHref>
               Trade
             </Link>
-            <Link href="/notification" passHref>
+            <Link href="/message" passHref>
               <div className="massage-img">
                 <img src="/assets/image/icon_massage.png" alt="massage" />
                 <i></i>
