@@ -10,6 +10,7 @@ import Link from 'next/link'
 import React from 'react'
 
 export default function Footer() {
+  // let date = new Date();
   return (
     <div className="footer">
       <div className="footer-top">
@@ -40,7 +41,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer-content container">
-        <p>WAVE©2022</p>
+        <p>WAVE©{new Date().getFullYear()}</p>
         <div>
           <Link href="/a">Privacy Policy</Link>
           <Link href="/b">Terms of Use</Link>
