@@ -2,7 +2,7 @@
   @apply flex h-screen flex-col;
   .title {
     @apply mt-14;
-    @apply text-4xl font-medium text-gray-900;
+    @apply text-4xl font-semibold text-gray-900;
   }
   .token {
     @apply mt-8 mb-10 flex flex-row items-center justify-start font-medium;
@@ -22,10 +22,20 @@
   .qrcode {
     @apply flex flex-row items-center;
     .content {
-      @apply flex flex-col p-8;
+      @apply flex flex-col;
+      .content_title {
+        @apply font-semibold text-lg
+      }
+      .content_tips {
+        @apply text-gray999 my-3 text-sm;
+      }
 
       .address {
-        @apply cursor-pointer rounded-md bg-gray-100 p-2;
+        @apply flex flex-row items-center justify-start rounded-2xl bg-gray-100 p-2;
+        svg {
+          @apply h-4 w-4 ml-2;
+          @apply cursor-pointer;
+        }
       }
     }
   }
@@ -33,7 +43,7 @@
     p {
       @apply mb-2 text-xs text-gray999;
     }
-    .title {
+    .tip_title {
       @apply mt-14 text-lg;
     }
   }
