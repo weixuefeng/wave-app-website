@@ -9,7 +9,7 @@ import { Banner } from 'model/banner'
 import { NFTDetail } from 'model/nft_asset'
 import { EVTCopyDetail } from 'model/evt_asset'
 import { TradeItem } from 'model/trade'
-import { BaseCollectionInfo } from 'model/collection'
+import { BaseCollectionInfo, CollectionAllItem } from 'model/collection'
 import { PAGE_SIZE } from 'constants/constant'
 import { LocalKey } from 'constants/key'
 import { updateUserInfo } from 'reducer/userReducer'
@@ -159,7 +159,7 @@ class Http {
     return _post(Api.nftCollection, params) as Promise<BaseCollectionInfo>
   }
 
-  getNFTList(collectionId: number, pageId: number) {
+  getNFTList(collectionId: number, pageId: number): Promise<Pagination<CollectionAllItem>> {
     let params = {
       page_id: pageId,
       page_size: PAGE_SIZE,
