@@ -1,3 +1,12 @@
+/*
+ * @Author: liukeke liukeke@diynova.com
+ * @Date: 2022-11-16 18:32:00
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-17 11:32:24
+ * @FilePath: /wave-app-webiste/src/pages/trade.tsx
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
+import Nodata from 'components/layout/noData'
 import NormalLayout from 'components/layout/normalLayout'
 import { PageModel } from 'model/navModel'
 import { TradeItem } from 'model/trade'
@@ -59,6 +68,18 @@ export default function TradePage() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   })
+
+  if (tradeItems?.length == 0) {
+    return NormalLayout(
+      <div className="asset trade">
+        <div className="container mx-auto">
+          <h2>Trade</h2>
+          <Nodata />
+        </div>
+      </div>,
+      pageModel
+    )
+  }
 
   const handleScroll = () => {
     if (ref) {

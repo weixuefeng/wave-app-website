@@ -1,12 +1,13 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:44:56
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-16 17:47:04
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-17 11:33:34
  * @FilePath: /wave-app-website/src/components/asset/MyOffersMade.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import DialogComponent from 'components/common/DialogComponent'
+import Nodata from 'components/layout/noData'
 import { AssetMyOfferData } from 'model/asset'
 import { OfferType } from 'model/offer'
 import { UserInfo } from 'model/user'
@@ -81,6 +82,10 @@ export default function MyOffersMade(props) {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   })
+
+  if (myMadeOffersData?.length == 0) {
+    return <Nodata />
+  }
 
   const handleScroll = () => {
     if (ref) {

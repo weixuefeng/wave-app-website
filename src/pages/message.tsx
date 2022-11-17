@@ -2,10 +2,11 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:35:19
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-16 21:12:52
+ * @LastEditTime: 2022-11-17 11:21:17
  * @FilePath: /wave-app-webiste/src/pages/notification.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
+import Nodata from 'components/layout/noData'
 import NormalLayout from 'components/layout/normalLayout'
 import { MessageList } from 'model/message'
 import { PageModel } from 'model/navModel'
@@ -74,6 +75,10 @@ export default function Message() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   })
+
+  if (messageData?.length == 0) {
+    return NormalLayout(<Nodata />, pageModel)
+  }
 
   const handleScroll = () => {
     if (ref) {
