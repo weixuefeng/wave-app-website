@@ -90,9 +90,6 @@ function _get(url) {
 let httpInstance: Http = null
 
 class Http {
-  static getEvtTickets() {
-    throw new Error('Method not implemented.')
-  }
   static getInstance(): Http {
     if (httpInstance === undefined || httpInstance == null) {
       httpInstance = new Http()
@@ -325,6 +322,23 @@ class Http {
       page_size: PAGE_SIZE,
     }
     return _post(Api.message, params) as Promise<any>
+  }
+
+  // user
+  getUserInfo(userId: number): Promise<UserInfo> {
+    let params = {
+      user_id: userId,
+    }
+    return _post(Api.userInfo, params) as Promise<UserInfo>
+  }
+
+  getOtherAssetList(otherUserId: number, pageId: number): Promise<Pagination<MyAsset>> {
+    let params = {
+      other_user_id: otherUserId.toString(),
+      page_id: pageId,
+      page_size: PAGE_SIZE,
+    }
+    return _post(Api.nftOtherAssetList, params) as Promise<Pagination<MyAsset>>
   }
 }
 

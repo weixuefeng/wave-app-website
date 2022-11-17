@@ -90,7 +90,7 @@ export default function Withdraw() {
                   <p className="tips_title">Reminder</p>
                   <p>* WAVE will never ask you to transfer funds to another account.</p>
                   <p>
-                    * Beware of fraud and don't participate in illegal activities such as proxy purchases, money
+                    * Beware of fraud and do not participate in illegal activities such as proxy purchases, money
                     laundering, and illegal fundraising.
                   </p>
                   <p>* Internal transfer will be free.</p>

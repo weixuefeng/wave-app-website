@@ -15,6 +15,7 @@ import SellAssetDialog from 'components/dialog/SellAssetDialog'
 import Log from 'utils/log'
 import { loadGetInitialProps } from 'next/dist/shared/lib/utils'
 import LoginComponent from 'components/dialog/LoginComponent'
+import Link from 'next/link'
 
 export default function NFTDetailComponent(props) {
   const { id } = props
@@ -232,13 +233,17 @@ export default function NFTDetailComponent(props) {
           <h2>{nftDetail.name}</h2>
           {/** owner info */}
           <div className="owner">
-            <div className="tl">
-              <img src={nftDetail.collection.image} alt={nftDetail.user.name} />
-              <p className="ml-1">{nftDetail.collection.name}</p>
-            </div>
+            <Link href={`/collection/0/${nftDetail.collection.id}`}>
+              <div className="tl cursor-pointer">
+                <img src={nftDetail.collection.image} alt={nftDetail.user.name} />
+                <p className="ml-1">{nftDetail.collection.name}</p>
+              </div>
+            </Link>
             <div className="tr">
               <p>Owned by</p>
-              <p className="name">{nftDetail.user.name}</p>
+              <Link href={`/user/${nftDetail.user.id}`}>
+                <p className="name cursor-pointer">{nftDetail.user.name}</p>
+              </Link>
             </div>
           </div>
           {/** count down */}
