@@ -2,10 +2,11 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 16:47:08
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-15 20:08:17
+ * @LastEditTime: 2022-11-17 11:41:07
  * @FilePath: /wave-app-webiste/src/components/asset/CollectionActivityComponent.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
+import Nodata from 'components/layout/noData'
 import { CollectionActivitiesItem } from 'model/asset'
 import React, { useEffect, useRef, useState } from 'react'
 import Http from 'services/http'
@@ -64,6 +65,10 @@ export default function CollectionActivity(props) {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   })
+
+  if (activity?.length == 0) {
+    return <Nodata />
+  }
 
   const handleScroll = () => {
     if (ref) {

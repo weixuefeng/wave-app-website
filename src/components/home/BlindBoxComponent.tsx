@@ -5,6 +5,7 @@ import { getAssetDetailPath } from 'utils/route'
 import Link from 'next/link'
 import { Asset } from 'model/asset'
 import { IssueType } from 'model/collection_model'
+import Nodata from 'components/layout/noData'
 
 export function BlindBox(props) {
   const { item } = props
@@ -125,6 +126,16 @@ export default function BlindBoxComponent(props) {
   if (!blindBox) {
     return <></>
   }
+
+  if (blindBox?.length == 0) {
+    return (
+      <div className="blind-box">
+        <h1>MyStery Box</h1>
+        <Nodata />
+      </div>
+    )
+  }
+
   return (
     <div className="blind-box">
       <h1>MyStery Box</h1>

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { getAssetDetailPath } from 'utils/route'
 import Link from 'next/link'
 import { AssetType } from 'model/asset'
+import Nodata from 'components/layout/noData'
 
 export function EVTAsset(props) {
   const { item } = props
@@ -117,6 +118,15 @@ export default function RecommendComponent(props) {
   const { recommend } = props
   if (!recommend) {
     return <></>
+  }
+
+  if (recommend?.length == 0) {
+    return (
+      <div className="recommend">
+        <h1>Recommended Box</h1>
+        <Nodata />
+      </div>
+    )
   }
   return (
     <div className="recommend">
