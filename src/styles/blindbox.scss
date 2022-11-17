@@ -212,10 +212,10 @@
   font-family: 'Roboto-Regular';
   src: url('/assets/fonts/Roboto-Regular.ttf');
 }
-@font-face {
-  font-family: 'Avenir Next';
-  src: url('/assets/fonts/Avenir Next.ttf');
-}
+// @font-face {
+//   font-family: 'Avenir Next';
+//   src: url('/assets/fonts/Avenir Next.ttf');
+// }
 body {
   @apply bg-gray-50;
   font-family: 'Avenir Next' !important;

@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 20:26:47
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-17 11:28:47
+ * @LastEditTime: 2022-11-17 15:57:57
  * @FilePath: /wave-app-website/src/pages/tickets.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -12,15 +12,19 @@ import Nodata from 'components/layout/noData'
 import NormalLayout from 'components/layout/normalLayout'
 import { PageModel } from 'model/navModel'
 import { TicketsData } from 'model/tickets'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Http from 'services/http'
+import { isInViewPort } from 'utils/functions'
 import Log from 'utils/log'
 import { formatDateTime } from 'utils/time'
 
 export default function Tickets() {
   let pageModel = new PageModel('Tickets', 'WAVE', '')
   const [ticketData, setTicketData] = useState<Array<TicketsData>>()
-
+  const [currentPage, setCurrentPage] = useState(1)
+  const [hasMore, setHasMore] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const ref = useRef(null)
   let [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
@@ -35,14 +39,44 @@ export default function Tickets() {
     fetchData()
   }, [])
 
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  })
+
   function fetchData() {
+    setIsLoading(true)
     Http.getInstance()
-      .getEvtTickets(1)
+      .getEvtTickets(currentPage)
       .then(response => {
-        setTicketData(response.data)
+        if (currentPage == 1) {
+          // first page
+          setTicketData(response.data)
+          // check has more
+          if (response.page_id < response.total_page) {
+            setHasMore(true)
+            // update current page
+            setCurrentPage(currentPage + 1)
+          } else {
+            setHasMore(false)
+          }
+        } else {
+          // more page
+          setTicketData(ticketData.concat(response.data))
+          // check has more
+          if (response.page_id < response.total_page) {
+            setHasMore(true)
+            setCurrentPage(currentPage + 1)
+          } else {
+            setHasMore(false)
+          }
+        }
       })
       .catch(error => {
         Log.e(error)
+      })
+      .finally(() => {
+        setIsLoading(false)
       })
   }
 
@@ -66,6 +100,41 @@ export default function Tickets() {
       </div>,
       pageModel
     )
+  }
+
+  const handleScroll = () => {
+    if (ref) {
+      let res = isInViewPort(ref.current)
+      if (res) {
+        if (hasMore && !isLoading) {
+          fetchData()
+        }
+      }
+    }
+  }
+
+  function loadMore() {
+    if (currentPage == 1) {
+      return (
+        <>
+          {isLoading ? (
+            <div ref={ref} className="mt-10 text-center text-base text-gray99">
+              <img className="mx-auto mt-10 h-auto w-44" src="/assets/image/loading.gif" alt="loading" />
+            </div>
+          ) : null}
+        </>
+      )
+    } else {
+      return (
+        <>
+          {
+            <div ref={ref} className="mt-10 text-center text-base text-gray99">
+              {hasMore ? '加载中...' : '—— 没有更多了 ——'}
+            </div>
+          }
+        </>
+      )
+    }
   }
 
   function content() {
@@ -103,6 +172,7 @@ export default function Tickets() {
               )
             })}
           </div>
+          {loadMore()}
         </div>
         <DialogComponent isOpen={isOpen} closeModal={closeModal}>
           <DownAppDialog />
