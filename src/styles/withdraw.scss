@@ -17,8 +17,11 @@
       @apply text-base font-semibold;
     }
     .ant-select:not(.ant-select-customize-input) .ant-select-selector {
-      @apply h-12 rounded-xl border-transparent bg-gray-100 leading-4;
+      @apply h-12 rounded-xl border-transparent bg-gray-100;
       background: #eeeeee;
+      .ant-select-selection-item {
+        @apply leading-10;
+      }
     }
     .withdraw-input {
       @apply h-12 rounded-xl border-transparent bg-gray-100;

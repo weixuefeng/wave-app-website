@@ -8,8 +8,6 @@ import { WalletAccount } from 'model/wallet'
 export default function Withdraw() {
   let pageModel = new PageModel('Withdraw', 'WAVE', '')
 
-  const { Option } = Select
-
   const wallet = useWallet()
 
   const [walletAccount, setWalletAccount] = useState<WalletAccount>()
@@ -48,10 +46,13 @@ export default function Withdraw() {
             <Row>
               <Col span={12}>
                 <Form.Item label="Withdrawal Network" name="network">
-                  <Select>
-                    <Option value="male">male</Option>
-                    <Option value="female">female</Option>
-                  </Select>
+                  <Select
+                      defaultValue={{label: wallet.wallet_accounts[0].label, value: wallet.wallet_accounts[0].coin_type}}
+                      options={wallet.wallet_accounts.map(account => ({
+                      label: account.label,
+                      value: account.coin_type,
+                    }))}
+                  ></Select>
                 </Form.Item>
               </Col>
 
