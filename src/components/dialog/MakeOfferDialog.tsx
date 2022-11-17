@@ -2,7 +2,6 @@ import { DatePicker, DatePickerProps, TimePicker, Input, Col, Row, Divider } fro
 import useWallet from 'hooks/userWallet'
 import { NFTDetail } from 'model/nft_asset'
 import React from 'react'
-import 'antd/dist/antd.css'
 export default function MakeOfferDialog(props) {
   const { nftDetail, showPassword, setOfferEndTime, setOfferPrice } = props
   const wallet = useWallet()

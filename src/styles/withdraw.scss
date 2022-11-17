@@ -4,12 +4,37 @@
     @apply mt-14;
     @apply text-4xl font-semibold text-gray-900;
   }
+
   .token {
     @apply mt-8 mb-10 flex flex-row items-center justify-start font-medium;
     .label {
       @apply ml-2 font-normal text-gray999;
     }
   }
+
+  .withdraw-form {
+    .ant-form-item-label > label {
+      @apply text-base font-semibold;
+    }
+    .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+      @apply bg-gray-100 rounded-xl h-12 leading-4 border-transparent;
+      background: #EEEEEE;
+    }
+    .withdraw-input {
+      @apply bg-gray-100 rounded-xl h-12 border-transparent;
+      background: #EEEEEE;
+    }
+    .ant-input-suffix {
+      @apply text-gray-300;
+    }
+    .ant-input-affix-wrapper > .ant-input {
+      background: #EEEEEE;
+    }
+    .ant-input:focus {
+      @apply border-transparent;
+    }
+  }
+
   .tips {
     p {
       @apply mb-2 text-xs text-gray999;

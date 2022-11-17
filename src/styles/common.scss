@@ -143,3 +143,8 @@ button.tertiary {
     @apply mx-2 w-auto;
   }
 }
+a,
+a:focus,
+a:hover {
+  @apply cursor-pointer text-current no-underline;
+}

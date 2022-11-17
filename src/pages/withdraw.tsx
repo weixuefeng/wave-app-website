@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Form, Input, Row, Col } from 'antd'
-// import 'antd/dist/antd.css'
+import { Form, Input, Select, Row, Col } from 'antd'
 import NormalLayout from 'components/layout/normalLayout'
 import useWallet from 'hooks/userWallet'
 import { PageModel } from 'model/navModel'
@@ -8,6 +7,8 @@ import { WalletAccount } from 'model/wallet'
 
 export default function Withdraw() {
   let pageModel = new PageModel('Withdraw', 'WAVE', '')
+
+  const { Option } = Select;
 
   const wallet = useWallet()
 
@@ -38,15 +39,19 @@ export default function Withdraw() {
           <Form
             name="basic"
             layout="vertical"
+            className="withdraw-form"
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 14 }}
             initialValues={{ remember: true }}
             autoComplete="off"
           >
             <Row>
-              <Col span={12} style={{ textAlign: 'right' }}>
+              <Col span={12}>
                 <Form.Item label="Withdrawal Network" name="network">
-                  <Input />
+                  <Select>
+                    <Option value="male">male</Option>
+                    <Option value="female">female</Option>
+                  </Select>
                 </Form.Item>
               </Col>
 
@@ -58,19 +63,24 @@ export default function Withdraw() {
                     { required: true, message: 'This address does not match the currently selected primary network.' },
                   ]}
                 >
-                  <Input />
+                  <Input className="withdraw-input" placeholder={'Enter or paste address'}/>
                 </Form.Item>
               </Col>
 
               <Col span={12}>
-                <Form.Item label="Amount" name="Amount" rules={[{ required: true, message: 'Insufficient balance' }]}>
-                  <Input />
+                <Form.Item
+                    label="Amount"
+                    name="Amount"
+                    tooltip="This is a required field"
+                    rules={[{ required: true, message: 'Insufficient balance' }]}
+                >
+                  <Input className="withdraw-input" suffix="NEW" placeholder={'Minimum0'}/>
                 </Form.Item>
               </Col>
 
               <Col span={24}>
                 <Form.Item label="Fee">
-                  <p>21NEW</p>
+                  <p className="text-gray999">21NEW</p>
                 </Form.Item>
               </Col>
 
@@ -86,7 +96,7 @@ export default function Withdraw() {
                 </div>
               </Col>
 
-              <Col span={24}>
+              <Col span={12}>
                 <Form.Item>
                   <button className="primary black">Confirm</button>
                 </Form.Item>
