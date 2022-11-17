@@ -8,7 +8,7 @@ import { WalletAccount } from 'model/wallet'
 export default function Withdraw() {
   let pageModel = new PageModel('Withdraw', 'WAVE', '')
 
-  const { Option } = Select;
+  const { Option } = Select
 
   const wallet = useWallet()
 
@@ -63,18 +63,18 @@ export default function Withdraw() {
                     { required: true, message: 'This address does not match the currently selected primary network.' },
                   ]}
                 >
-                  <Input className="withdraw-input" placeholder={'Enter or paste address'}/>
+                  <Input className="withdraw-input" placeholder={'Enter or paste address'} />
                 </Form.Item>
               </Col>
 
               <Col span={12}>
                 <Form.Item
-                    label="Amount"
-                    name="Amount"
-                    tooltip="This is a required field"
-                    rules={[{ required: true, message: 'Insufficient balance' }]}
+                  label="Amount"
+                  name="Amount"
+                  tooltip="This is a required field"
+                  rules={[{ required: true, message: 'Insufficient balance' }]}
                 >
-                  <Input className="withdraw-input" suffix="NEW" placeholder={'Minimum0'}/>
+                  <Input className="withdraw-input" suffix="NEW" placeholder={'Minimum0'} />
                 </Form.Item>
               </Col>
 

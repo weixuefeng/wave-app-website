@@ -17,18 +17,18 @@
       @apply text-base font-semibold;
     }
     .ant-select:not(.ant-select-customize-input) .ant-select-selector {
-      @apply bg-gray-100 rounded-xl h-12 leading-4 border-transparent;
-      background: #EEEEEE;
+      @apply h-12 rounded-xl border-transparent bg-gray-100 leading-4;
+      background: #eeeeee;
     }
     .withdraw-input {
-      @apply bg-gray-100 rounded-xl h-12 border-transparent;
-      background: #EEEEEE;
+      @apply h-12 rounded-xl border-transparent bg-gray-100;
+      background: #eeeeee;
     }
     .ant-input-suffix {
       @apply text-gray-300;
     }
     .ant-input-affix-wrapper > .ant-input {
-      background: #EEEEEE;
+      background: #eeeeee;
     }
     .ant-input:focus {
       @apply border-transparent;

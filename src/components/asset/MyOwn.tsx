@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:42:02
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-17 11:31:01
+ * @LastEditTime: 2022-11-17 15:45:27
  * @FilePath: /wave-app-website/src/components/asset/MyOwn.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -74,10 +74,6 @@ export default function Myown(props) {
     return () => window.removeEventListener('scroll', handleScroll)
   })
 
-  if (myOwnData?.length == 0) {
-    return <Nodata />
-  }
-
   const handleScroll = () => {
     if (ref) {
       let res = isInViewPort(ref.current)
@@ -86,6 +82,34 @@ export default function Myown(props) {
           getMyAssetList()
         }
       }
+    }
+  }
+
+  if (myOwnData?.length == 0) {
+    return <Nodata />
+  }
+
+  function loadMore() {
+    if (currentPage == 1) {
+      return (
+        <>
+          {isLoading ? (
+            <div ref={ref} className="mt-10 text-center text-base text-gray99">
+              <img className="mx-auto mt-10 h-auto w-44" src="/assets/image/loading.gif" alt="loading" />
+            </div>
+          ) : null}
+        </>
+      )
+    } else {
+      return (
+        <>
+          {
+            <div ref={ref} className="mt-10 text-center text-base text-gray99">
+              {hasMore ? '加载中...' : '—— 没有更多了 ——'}
+            </div>
+          }
+        </>
+      )
     }
   }
 
@@ -111,9 +135,7 @@ export default function Myown(props) {
           )
         })}
       </div>
-      <button ref={ref} className="primary black mb-10" onClick={() => getMyAssetList()}>
-        {isLoading ? 'loading...' : hasMore ? 'load more' : 'no more'}
-      </button>
+      {loadMore()}
     </>
   )
 }

@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:44:56
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-17 11:34:08
+ * @LastEditTime: 2022-11-17 15:46:46
  * @FilePath: /wave-app-website/src/components/asset/MyOffersReceived.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -99,6 +99,30 @@ export default function MyOffersReceived(props) {
     }
   }
 
+  function loadMore() {
+    if (currentPage == 1) {
+      return (
+        <>
+          {isLoading ? (
+            <div ref={ref} className="mt-10 text-center text-base text-gray99">
+              <img className="mx-auto mt-10 h-auto w-44" src="/assets/image/loading.gif" alt="loading" />
+            </div>
+          ) : null}
+        </>
+      )
+    } else {
+      return (
+        <>
+          {
+            <div ref={ref} className="mt-10 text-center text-base text-gray99">
+              {hasMore ? '加载中...' : '—— 没有更多了 ——'}
+            </div>
+          }
+        </>
+      )
+    }
+  }
+
   return (
     <div className="my-offers">
       {/* <h2 className="offers-title">Offer Received</h2> */}
@@ -140,9 +164,7 @@ export default function MyOffersReceived(props) {
           )
         })}
       </div>
-      <button ref={ref} className="primary black mb-10" onClick={() => getReceivedOffer()}>
-        {isLoading ? 'loading...' : hasMore ? 'load more' : 'no more'}
-      </button>
+      {loadMore()}
     </div>
   )
 }
