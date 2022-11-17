@@ -8,8 +8,8 @@
  */
 import DialogComponent from 'components/common/DialogComponent'
 import DownAppDialog from 'components/dialog/DownAppDialog'
-import Nodata from 'components/layout/noData'
-import NormalLayout from 'components/layout/normalLayout'
+import Nodata from 'components/layout/NoData'
+import NormalLayout from 'components/layout/NormalLayout'
 import { PageModel } from 'model/navModel'
 import { TicketsData } from 'model/tickets'
 import React, { useState, useEffect, useRef } from 'react'

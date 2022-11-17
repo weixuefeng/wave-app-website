@@ -1,6 +1,6 @@
 import EVTDetailComponent from 'components/asset/EVTDetailComponent'
 import NFTDetailComponent from 'components/asset/NFTDetailComponent'
-import NormalLayout from 'components/layout/normalLayout'
+import NormalLayout from 'components/layout/NormalLayout'
 import { AssetPageType } from 'model/asset'
 import { PageModel } from 'model/navModel'
 import { useRouter } from 'next/router'

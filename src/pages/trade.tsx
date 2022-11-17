@@ -6,8 +6,8 @@
  * @FilePath: /wave-app-website/src/pages/trade.tsx
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
-import Nodata from 'components/layout/noData'
-import NormalLayout from 'components/layout/normalLayout'
+import Nodata from 'components/layout/NoData'
+import NormalLayout from 'components/layout/NormalLayout'
 import usePagination from 'hooks/usePagination'
 import { PageModel } from 'model/navModel'
 import { TradeItem } from 'model/trade'
@@ -36,7 +36,7 @@ export default function TradePage(props) {
             })}
           </ul>
           <div ref={ref}>
-            <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data}/>
+            <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data} />
           </div>
         </div>
       </div>

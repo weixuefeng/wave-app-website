@@ -7,7 +7,7 @@
  */
 
 import React, { useState, useEffect } from 'react'
-import NormalLayout from 'components/layout/normalLayout'
+import NormalLayout from 'components/layout/NormalLayout'
 import { PageModel } from 'model/navModel'
 import Http from 'services/http'
 import BannerComponent from 'components/home/BannerComponent'

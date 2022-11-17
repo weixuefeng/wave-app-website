@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { PageModel } from 'model/navModel'
-import NormalLayout from 'components/layout/normalLayout'
+import NormalLayout from 'components/layout/NormalLayout'
 
 export default Privacy
 

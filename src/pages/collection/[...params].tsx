@@ -1,5 +1,5 @@
 import CollectionComponent from 'components/asset/CollectionComponent'
-import NormalLayout from 'components/layout/normalLayout'
+import NormalLayout from 'components/layout/NormalLayout'
 import { PageModel } from 'model/navModel'
 import { useRouter } from 'next/router'
 import React from 'react'

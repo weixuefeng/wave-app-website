@@ -8,7 +8,7 @@
  */
 import DialogComponent from 'components/common/DialogComponent'
 import MyoffersAcceDialog from 'components/dialog/MyoffersAcceDialog'
-import Nodata from 'components/layout/noData'
+import Nodata from 'components/layout/NoData'
 import { AssetMyOfferData } from 'model/asset'
 import { OfferType } from 'model/offer'
 import { UserInfo } from 'model/user'

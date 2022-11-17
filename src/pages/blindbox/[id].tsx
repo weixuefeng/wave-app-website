@@ -11,7 +11,7 @@ import BaseInfo from 'components/collection/baseInfo'
 import StaticInfo from 'components/collection/staticInfo'
 import FixBottom from 'components/collection/fixedBottom'
 
-import NormalLayout from 'components/layout/normalLayout'
+import NormalLayout from 'components/layout/NormalLayout'
 import { PageModel } from 'model/navModel'
 import { useEffect, useState } from 'react'
 

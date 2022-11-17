@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import Http from 'services/http'
 import { isInViewPort } from 'utils/functions'
 import Log from 'utils/log'
-import Nodata from 'components/layout/noData'
+import Nodata from 'components/layout/NoData'
 
 export function TransactionComponent(props) {
   const { item } = props

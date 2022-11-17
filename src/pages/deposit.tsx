@@ -1,5 +1,5 @@
 import { Listbox } from '@headlessui/react'
-import NormalLayout from 'components/layout/normalLayout'
+import NormalLayout from 'components/layout/NormalLayout'
 import useWallet from 'hooks/userWallet'
 import { PageModel } from 'model/navModel'
 import { WalletAccount, WalletInfo } from 'model/wallet'

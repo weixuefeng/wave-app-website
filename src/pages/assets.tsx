@@ -12,7 +12,7 @@ import Mylistings from 'components/asset/MyListings'
 import MyOffersMade from 'components/asset/MyOffersMade'
 import MyOffersReceived from 'components/asset/MyOffersReceived'
 import Myown from 'components/asset/MyOwn'
-import NormalLayout from 'components/layout/normalLayout'
+import NormalLayout from 'components/layout/NormalLayout'
 import { PageModel } from 'model/navModel'
 
 export default function Assets() {

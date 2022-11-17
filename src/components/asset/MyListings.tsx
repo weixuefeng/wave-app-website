@@ -6,7 +6,7 @@
  * @FilePath: /wave-app-website/src/components/asset/MyListings.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-import Nodata from 'components/layout/noData'
+import Nodata from 'components/layout/NoData'
 import { AssetsOrderOnSaleData, getAssetNameByType } from 'model/asset'
 import { UserInfo } from 'model/user'
 import Link from 'next/link'

@@ -1,4 +1,4 @@
-import NormalLayout from 'components/layout/normalLayout'
+import NormalLayout from 'components/layout/NormalLayout'
 import { TransactionList } from 'components/wallet/TransactionList'
 import { PageModel } from 'model/navModel'
 import { WalletInfo } from 'model/wallet'

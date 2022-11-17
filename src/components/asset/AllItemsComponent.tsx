@@ -17,14 +17,11 @@ import { getAssetDetailPathByInfo } from 'utils/route'
 export default function AllItemsComponent(props) {
   const { collectionId, type } = props
   const ref = useRef(null)
-  
+
   const { hasMore, isLoading, currentPage, data, error } = usePagination<any>(ref, fetchData)
 
-
   function fetchData() {
-    return Http.getInstance()
-      .getNFTList(collectionId, currentPage)
-      
+    return Http.getInstance().getNFTList(collectionId, currentPage)
   }
 
   return (
@@ -58,7 +55,7 @@ export default function AllItemsComponent(props) {
           })}
         </ul>
         <div ref={ref}>
-          <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data}/>
+          <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data} />
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import NormalLayout from 'components/layout/normalLayout'
+import NormalLayout from 'components/layout/NormalLayout'
 import usePagination from 'hooks/usePagination'
 import { getAssetNameByType, MyAsset } from 'model/asset'
 import { PageModel } from 'model/navModel'

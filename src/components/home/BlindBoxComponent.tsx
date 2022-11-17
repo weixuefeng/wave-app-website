@@ -5,7 +5,7 @@ import { getAssetDetailPath } from 'utils/route'
 import Link from 'next/link'
 import { Asset } from 'model/asset'
 import { IssueType } from 'model/collection_model'
-import Nodata from 'components/layout/noData'
+import Nodata from 'components/layout/NoData'
 
 export function BlindBox(props) {
   const { item } = props

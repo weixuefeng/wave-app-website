@@ -17,7 +17,7 @@ import { useAppSelector } from 'store/store'
 import { isInViewPort } from 'utils/functions'
 import { getAssetDetailPathByInfo } from 'utils/route'
 import Log from 'utils/log'
-import Nodata from 'components/layout/noData'
+import Nodata from 'components/layout/NoData'
 
 export default function Myown(props) {
   const currentUser = useAppSelector(selectUser) as UserInfo

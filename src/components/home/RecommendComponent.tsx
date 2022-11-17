@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { getAssetDetailPath } from 'utils/route'
 import Link from 'next/link'
 import { AssetType } from 'model/asset'
-import Nodata from 'components/layout/noData'
+import Nodata from 'components/layout/NoData'
 
 export function EVTAsset(props) {
   const { item } = props
