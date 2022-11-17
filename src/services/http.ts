@@ -278,7 +278,7 @@ class Http {
       page_id: pageId,
       page_size: PAGE_SIZE,
     }
-    return _post(Api.evtCinemaList, params) as Promise<Pagination<any>>
+    return _post(Api.evtCinemaList, params) as Promise<Pagination<CinemaList>>
   }
 
   requestUpdateAvatar() {

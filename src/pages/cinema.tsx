@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 20:26:47
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-17 19:54:15
+ * @LastEditTime: 2022-11-17 20:01:30
  * @FilePath: /wave-app-website/src/pages/cinema.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -11,27 +11,22 @@ import DownAppDialog from 'components/dialog/DownAppDialog'
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import Nodata from 'components/layout/noData'
 import NormalLayout from 'components/layout/normalLayout'
+import usePagination from 'hooks/usePagination'
 import { CinemaList } from 'model/cinema'
 import { PageModel } from 'model/navModel'
-import { UserInfo } from 'model/user'
-import React, { useState, useEffect, useRef } from 'react'
-import { selectUser } from 'reducer/userReducer'
+import React, { useState, useRef } from 'react'
 import Http from 'services/http'
-import { useAppSelector } from 'store/store'
-import { isInViewPort } from 'utils/functions'
-import Log from 'utils/log'
 import { formatSeconds } from 'utils/time'
 
 export default function Cinema(props) {
   let pageModel = new PageModel('Cinema', 'WAVE', '')
-  const currentUser = useAppSelector(selectUser) as UserInfo
-  const [cinemaData, setCinemaData] = useState<Array<CinemaList>>()
-  const [currentPage, setCurrentPage] = useState(1)
-  const [hasMore, setHasMore] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+
   const ref = useRef(null)
 
   let [isOpen, setIsOpen] = useState(false)
+
+  const { hasMore, isLoading, currentPage, data, error } = usePagination<CinemaList>(ref, fetchData)
+
 
   function closeModal() {
     setIsOpen(false)
@@ -41,74 +36,9 @@ export default function Cinema(props) {
     setIsOpen(true)
   }
 
-  useEffect(() => {
-    if (currentUser) {
-      getCinemaData()
-    }
-  }, [currentUser])
 
-  function getCinemaData() {
-    setIsLoading(true)
-    Http.getInstance()
-      .getMyCinemaList(currentPage)
-      .then(response => {
-        if (currentPage == 1) {
-          // first page
-          setCinemaData(response.data)
-          // check has more
-          if (response.page_id < response.total_page) {
-            setHasMore(true)
-            // update current page
-            setCurrentPage(currentPage + 1)
-          } else {
-            setHasMore(false)
-          }
-        } else {
-          // more page
-          setCinemaData(cinemaData.concat(response.data))
-          // check has more
-          if (response.page_id < response.total_page) {
-            setHasMore(true)
-            setCurrentPage(currentPage + 1)
-          } else {
-            setHasMore(false)
-          }
-        }
-      })
-      .catch(error => {
-        Log.e(error)
-      })
-      .finally(() => {
-        setIsLoading(false)
-      })
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  })
-
-  if (cinemaData?.length == 0) {
-    return NormalLayout(
-      <div className="cinema-page">
-        <div className="container mx-auto">
-          <h2 className="title">My Cinema</h2>
-          <Nodata />
-        </div>
-      </div>,
-      pageModel
-    )
-  }
-
-  const handleScroll = () => {
-    if (ref) {
-      let res = isInViewPort(ref.current)
-      if (res) {
-        if (hasMore && !isLoading) {
-          getCinemaData()
-        }
-      }
-    }
+  function fetchData() {
+    return Http.getInstance().getMyCinemaList(currentPage)
   }
 
   function content() {
@@ -118,7 +48,7 @@ export default function Cinema(props) {
           <div className="container mx-auto">
             <h2 className="title">My Cinema</h2>
             <div className="cinema">
-              {cinemaData?.map((item, index) => {
+              {data?.map((item, index) => {
                 return (
                   <div className="item" key={index} onClick={openModal}>
                     <div className="img">
@@ -141,7 +71,7 @@ export default function Cinema(props) {
               })}
             </div>
             <div ref={ref}>
-              <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} />
+              <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data}/>
             </div>
           </div>
         </div>

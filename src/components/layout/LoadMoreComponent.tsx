@@ -1,7 +1,8 @@
 import React from 'react'
+import Nodata from './noData'
 
 export default function LoadMoreComponent(props) {
-  const { currentPage, isLoading, hasMore } = props
+  const { currentPage, isLoading, hasMore, data } = props
 
   if (currentPage == 1) {
     return (
@@ -10,7 +11,7 @@ export default function LoadMoreComponent(props) {
           <div className="mt-10 text-center text-base text-gray99">
             <img className="mx-auto mt-10 h-auto w-44" src="/assets/image/loading.gif" alt="loading" />
           </div>
-        ) : null}
+        ) : data.length > 0 ? null : <Nodata/>}
       </>
     )
   } else {
