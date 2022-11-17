@@ -1,10 +1,19 @@
 import React from 'react'
 
 export default function LoadMoreComponent(props) {
-  const { ref, isLoading, hasMore, fetchData } = props
-  return (
-    <button ref={ref} className="primary black" onClick={() => fetchData()}>
-      {isLoading ? 'loading...' : hasMore ? 'load more' : 'no more'}
-    </button>
-  )
+  const { currentPage, isLoading, hasMore } = props
+
+  if (currentPage == 1) {
+    return (
+      <>
+        {isLoading ? (
+          <div className="mt-10 text-center text-base text-gray99">
+            <img className="mx-auto mt-10 h-auto w-44" src="/assets/image/loading.gif" alt="loading" />
+          </div>
+        ) : null}
+      </>
+    )
+  } else {
+    return <>{<div className="mt-10 text-center text-base text-gray99">{hasMore ? '加载中...' : '没有更多了'}</div>}</>
+  }
 }

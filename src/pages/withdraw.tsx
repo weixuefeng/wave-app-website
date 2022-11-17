@@ -47,8 +47,11 @@ export default function Withdraw() {
               <Col span={12}>
                 <Form.Item label="Withdrawal Network" name="network">
                   <Select
-                      defaultValue={{label: wallet.wallet_accounts[0].label, value: wallet.wallet_accounts[0].coin_type}}
-                      options={wallet.wallet_accounts.map(account => ({
+                    defaultValue={{
+                      label: wallet.wallet_accounts[0].label,
+                      value: wallet.wallet_accounts[0].coin_type,
+                    }}
+                    options={wallet.wallet_accounts.map(account => ({
                       label: account.label,
                       value: account.coin_type,
                     }))}
