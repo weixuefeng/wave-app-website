@@ -2,31 +2,33 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:44:56
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-17 15:46:10
+ * @LastEditTime: 2022-11-17 20:54:22
  * @FilePath: /wave-app-website/src/components/asset/MyOffersMade.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import DialogComponent from 'components/common/DialogComponent'
-import Nodata from 'components/layout/NoData'
+import LoadMoreComponent from 'components/layout/LoadMoreComponent'
+import usePagination from 'hooks/usePagination'
 import { AssetMyOfferData } from 'model/asset'
 import { OfferType } from 'model/offer'
 import { UserInfo } from 'model/user'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { selectUser } from 'reducer/userReducer'
 import Http from 'services/http'
 import { useAppSelector } from 'store/store'
-import { floorNum, isInViewPort } from 'utils/functions'
-import Log from 'utils/log'
+import { floorNum } from 'utils/functions'
 import { formatDateTime } from 'utils/time'
 
 export default function MyOffersMade(props) {
   const currentUser = useAppSelector(selectUser) as UserInfo
-  const [myMadeOffersData, setMyMadeOffersData] = useState<Array<AssetMyOfferData>>()
   let [isOpen, setIsOpen] = useState(false)
-  const [currentPage, setCurrentPage] = useState(1)
-  const [hasMore, setHasMore] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
   const ref = useRef(null)
+
+  const { hasMore, isLoading, currentPage, data, error } = usePagination<AssetMyOfferData>(ref, fetchData)
+
+  function fetchData() {
+    return Http.getInstance().getOrderOffer(currentUser.id, currentPage, OfferType.MADE)
+  }
 
   function closeModal() {
     setIsOpen(false)
@@ -34,92 +36,6 @@ export default function MyOffersMade(props) {
 
   function openModal() {
     setIsOpen(true)
-  }
-
-  useEffect(() => {
-    if (currentUser) {
-      getMadeOffer()
-    }
-  }, [currentUser])
-
-  function getMadeOffer() {
-    setIsLoading(true)
-    Http.getInstance()
-      .getOrderOffer(currentUser.id, currentPage, OfferType.MADE)
-      .then(response => {
-        if (currentPage == 1) {
-          // first page
-          setMyMadeOffersData(response.data)
-          // check has more
-          if (response.page_id < response.total_page) {
-            setHasMore(true)
-            // update current page
-            setCurrentPage(currentPage + 1)
-          } else {
-            setHasMore(false)
-          }
-        } else {
-          // more page
-          setMyMadeOffersData(myMadeOffersData.concat(response.data))
-          // check has more
-          if (response.page_id < response.total_page) {
-            setHasMore(true)
-            setCurrentPage(currentPage + 1)
-          } else {
-            setHasMore(false)
-          }
-        }
-      })
-      .catch(error => {
-        Log.e(error)
-      })
-      .finally(() => {
-        setIsLoading(false)
-      })
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  })
-
-  if (myMadeOffersData?.length == 0) {
-    return <Nodata />
-  }
-
-  const handleScroll = () => {
-    if (ref) {
-      let res = isInViewPort(ref.current)
-      if (res) {
-        if (hasMore && !isLoading) {
-          getMadeOffer()
-        }
-      }
-    }
-  }
-
-  function loadMore() {
-    if (currentPage == 1) {
-      return (
-        <>
-          {isLoading ? (
-            <div ref={ref} className="mt-10 text-center text-base text-gray99">
-              <img className="mx-auto mt-10 h-auto w-44" src="/assets/image/loading.gif" alt="loading" />
-            </div>
-          ) : null}
-        </>
-      )
-    } else {
-      return (
-        <>
-          {
-            <div ref={ref} className="mt-10 text-center text-base text-gray99">
-              {hasMore ? '加载中...' : '—— 没有更多了 ——'}
-            </div>
-          }
-        </>
-      )
-    }
   }
 
   function dialogContent() {
@@ -138,9 +54,8 @@ export default function MyOffersMade(props) {
 
   return (
     <div className="my-offers">
-      {/* <h2 className="offers-title">Offer Made</h2> */}
       <div className="offers-item">
-        {myMadeOffersData?.map((item, index) => {
+        {data?.map((item, index) => {
           return (
             <div className="item" key={index}>
               <div className="received-img">
@@ -176,7 +91,9 @@ export default function MyOffersMade(props) {
           )
         })}
       </div>
-      {loadMore()}
+      <div ref={ref}>
+        <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data} />
+      </div>
     </div>
   )
 }

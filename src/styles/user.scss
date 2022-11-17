@@ -1,5 +1,5 @@
 .user-page {
-  @apply flex flex-col mt-14;
+  @apply mt-14 flex flex-col;
 
   .user-profile {
     @apply flex flex-row items-center justify-start;
@@ -8,7 +8,7 @@
       @apply h-36 w-36 rounded-full;
     }
     .user-info {
-      @apply flex flex-col justify-around ml-7;
+      @apply ml-7 flex flex-col justify-around;
       .name {
         @apply text-4xl font-bold text-gray-900;
       }

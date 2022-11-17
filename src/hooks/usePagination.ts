@@ -1,11 +1,23 @@
+/*
+ * @Author: liukeke liukeke@diynova.com
+ * @Date: 2022-11-17 18:32:09
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-17 20:48:39
+ * @FilePath: /wave-app-webiste/src/hooks/usePagination.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import { Pagination } from 'model/base'
+import { UserInfo } from 'model/user'
 import React, { useEffect, useState } from 'react'
+import { selectUser } from 'reducer/userReducer'
+import { useAppSelector } from 'store/store'
 import { isInViewPort } from 'utils/functions'
 import Log from 'utils/log'
 
 type LoadPaginationData<M> = () => Promise<Pagination<M>>
 
 export default function usePagination<T>(ref: React.MutableRefObject<any>, loadPaginationData: LoadPaginationData<T>) {
+  const currentUser = useAppSelector(selectUser) as UserInfo
   const [hasMore, setHasMore] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
@@ -27,6 +39,12 @@ export default function usePagination<T>(ref: React.MutableRefObject<any>, loadP
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   })
+
+  useEffect(() => {
+    if (currentUser) {
+      loadData()
+    }
+  }, [currentUser])
 
   useEffect(() => {
     loadData()

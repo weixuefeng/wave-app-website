@@ -42,7 +42,6 @@ export default function UserPage() {
       })
   }
 
-
   function getUserAssetList() {
     return Http.getInstance().getOtherAssetList(userId, currentPage)
   }
@@ -84,8 +83,8 @@ export default function UserPage() {
               })}
             </div>
             <div ref={ref}>
-            <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data}/>
-          </div>
+              <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data} />
+            </div>
           </div>
         </div>
       </>

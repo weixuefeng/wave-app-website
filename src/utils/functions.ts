@@ -77,4 +77,3 @@ export function calculateCountdown(remain) {
     sec = remain % 60
   return `${fillZero(hrs)}:${fillZero(min)}:${fillZero(sec)}`
 }
-
