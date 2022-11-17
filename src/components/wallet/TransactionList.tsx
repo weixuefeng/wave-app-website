@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import Http from 'services/http'
 import { isInViewPort } from 'utils/functions'
 import Log from 'utils/log'
+import Nodata from 'components/layout/noData'
 
 export function TransactionComponent(props) {
   const { item } = props
@@ -77,6 +78,10 @@ export function TransactionList() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   })
+
+  if (!transaction?.length) {
+    return <Nodata />
+  }
 
   const handleScroll = () => {
     if (ref) {
