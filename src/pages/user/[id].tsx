@@ -1,3 +1,4 @@
+import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import NormalLayout from 'components/layout/NormalLayout'
 import usePagination from 'hooks/usePagination'
 import { getAssetNameByType, MyAsset } from 'model/asset'
@@ -41,7 +42,6 @@ export default function UserPage() {
       })
   }
 
-  console.log(data)
 
   function getUserAssetList() {
     return Http.getInstance().getOtherAssetList(userId, currentPage)
@@ -83,9 +83,9 @@ export default function UserPage() {
                 )
               })}
             </div>
-            <button ref={ref} className="primary black mb-10" onClick={() => getUserAssetList()}>
-              {isLoading ? 'loading...' : hasMore ? 'load more' : 'no more'}
-            </button>
+            <div ref={ref}>
+            <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data}/>
+          </div>
           </div>
         </div>
       </>

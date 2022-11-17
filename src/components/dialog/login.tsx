@@ -1,5 +1,7 @@
 import { Menu } from '@headlessui/react'
+import { UserCircleIcon } from '@heroicons/react/24/outline'
 import DialogComponent from 'components/common/DialogComponent'
+import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'store/store'
@@ -32,7 +34,15 @@ export default function Login() {
     return (
       <Menu>
         <Menu.Button>
-          <img className="h-10 w-10 rounded-full" src={currentUser.avatar} alt="avatar" />
+          <Image className="h-10 w-10 rounded-full" 
+            loader={currentUser.avatar}
+            src={'/assets/image/about.png'}
+            layout="fill"
+            alt="avatar"
+            onError={() => {
+              return <UserCircleIcon/>
+            }}
+            />
         </Menu.Button>
         <Menu.Items as={'div'} className="user-menu">
           <div>

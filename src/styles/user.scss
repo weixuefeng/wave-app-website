@@ -1,19 +1,19 @@
 .user-page {
-  @apply flex flex-col;
+  @apply flex flex-col mt-14;
 
   .user-profile {
     @apply flex flex-row items-center justify-start;
 
     img {
-      @apply h-36 w-36;
+      @apply h-36 w-36 rounded-full;
     }
     .user-info {
-      @apply flex flex-col justify-around;
+      @apply flex flex-col justify-around ml-7;
       .name {
         @apply text-4xl font-bold text-gray-900;
       }
       .id {
-        @apply rounded-md bg-gray-50 py-1 px-2 text-base text-gray-500;
+        @apply mt-2 rounded-full bg-gray-100 py-1 px-2 text-base text-gray-500;
       }
     }
   }
