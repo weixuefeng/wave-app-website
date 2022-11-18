@@ -3,6 +3,8 @@ import NormalLayout from 'components/layout/NormalLayout'
 import useWallet from 'hooks/userWallet'
 import { PageModel } from 'model/navModel'
 import { WalletAccount } from 'model/wallet'
+import { Listbox } from '@headlessui/react'
+import { CheckIcon } from '@heroicons/react/20/solid'
 
 export default function Withdraw() {
   let pageModel = new PageModel('Withdraw', 'WAVE', '')
@@ -34,14 +36,50 @@ export default function Withdraw() {
           </div>
 
           <div className="from-box">
-            <div className="code-box">
+            <div className="from-content">
               <label htmlFor="text" className="label">
                 Withdrawal Network
               </label>
-              <div className="select-box">{walletAccount.label}</div>
-              <img src="assets/image/icon_change.png" alt="" />
+              <div>
+                <Listbox value={walletAccount} onChange={setWalletAccount}>
+                  <div>
+                    <Listbox.Button className="mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-grayee pl-4">
+                      <span className="float-left block truncate">{walletAccount.label}</span>
+                      <span className="pointer-events-none absolute inset-y-0 right-0 flex w-6 items-center pr-2 pt-2">
+                        <img src="assets/image/icon_change.png" className="mr-2 h-5 w-5 text-gray-400" alt="" />
+                      </span>
+                    </Listbox.Button>
+                  </div>
+                  <Listbox.Options className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                    {wallet.wallet_accounts.map((account, index) => (
+                      <Listbox.Option
+                        key={index}
+                        value={account}
+                        className={({ active }) =>
+                          `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                            active ? 'bg-green-100 text-green-900' : 'text-gray-900'
+                          }`
+                        }
+                      >
+                        {({ selected }) => (
+                          <>
+                            <span className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`}>
+                              {account.label}
+                            </span>
+                            {selected ? (
+                              <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-green-600">
+                                <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                              </span>
+                            ) : null}
+                          </>
+                        )}
+                      </Listbox.Option>
+                    ))}
+                  </Listbox.Options>
+                </Listbox>
+              </div>
             </div>
-            <div className="code-box">
+            <div className="from-content">
               <label htmlFor="text" className="label">
                 Withdrawal Address
               </label>
@@ -50,7 +88,7 @@ export default function Withdraw() {
           </div>
 
           <div className="from-box">
-            <div className="code-box">
+            <div className="from-content">
               <label htmlFor="text" className="label">
                 Amount
               </label>

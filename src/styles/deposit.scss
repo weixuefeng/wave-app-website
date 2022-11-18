@@ -1,5 +1,5 @@
 .deposit {
-  @apply flex h-screen flex-col;
+  @apply flex flex-col;
   .title {
     @apply mt-14;
     @apply text-4xl font-semibold text-gray-900;
@@ -20,7 +20,7 @@
   }
 
   .qrcode {
-    @apply flex flex-row items-center;
+    @apply mt-10 flex flex-row items-center;
     .content {
       @apply flex flex-col;
       .content_title {
@@ -40,11 +40,12 @@
     }
   }
   .tip {
+    @apply my-10;
     p {
       @apply mb-2 text-xs text-gray999;
     }
     .tip_title {
-      @apply mt-14 text-lg;
+      @apply text-lg;
     }
   }
 }

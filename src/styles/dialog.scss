@@ -527,3 +527,33 @@
     }
   }
 }
+
+.dialog-network {
+  @apply flex flex-col;
+  .title {
+    @apply mb-4 text-2xl font-semibold text-gray-900;
+  }
+
+  input {
+    @apply mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-gragfb focus:border-2 focus:border-green-300;
+    &::input-placeholder {
+      @apply text-grayc7;
+    }
+
+    &::-webkit-input-placeholder {
+      color: #c7c7c7 !important;
+    }
+
+    &:-moz-placeholder {
+      color: #c7c7c7 !important;
+    }
+
+    &::-moz-placeholder {
+      color: #c7c7c7 !important;
+    }
+
+    &:-ms-input-placeholder {
+      color: #c7c7c7 !important;
+    }
+  }
+}

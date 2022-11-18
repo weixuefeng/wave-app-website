@@ -11,25 +11,20 @@
     }
   }
   .from-box {
-    @apply grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 md:gap-8 lg:grid-cols-4;
+    @apply grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 md:gap-8 lg:grid-cols-4;
 
-    .code-box {
+    .from-content {
       @apply relative mb-7;
       .label {
         @apply text-base font-semibold;
       }
       img {
-        @apply absolute top-[70%] right-4 -mt-3 h-6 w-6;
-      }
-      .select-box {
-        @apply mt-3 h-14 w-full cursor-pointer rounded-xl border-2 border-grayed bg-gragfb pl-4 pt-4;
-        background: #eeeeee;
+        @apply absolute top-[70%] right-4 -mt-3 h-6 w-6 cursor-pointer;
       }
     }
 
     input {
-      @apply mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-gragfb pl-4;
-      background: #eeeeee;
+      @apply mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-grayee pl-4;
       &::input-placeholder {
         @apply text-grayc7;
       }
