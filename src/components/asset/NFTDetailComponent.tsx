@@ -16,6 +16,7 @@ import Log from 'utils/log'
 import { loadGetInitialProps } from 'next/dist/shared/lib/utils'
 import LoginDialog from 'components/dialog/LoginDialog'
 import Link from 'next/link'
+import { t } from 'i18next'
 
 export default function NFTDetailComponent(props) {
   const { id } = props
@@ -197,7 +198,7 @@ export default function NFTDetailComponent(props) {
               showBuy()
             }}
           >
-            Buy
+            <>{t('BUY')}</>
           </button>
           <button
             className="primary black ml-4 outline"
@@ -205,7 +206,7 @@ export default function NFTDetailComponent(props) {
               showMakeOffer()
             }}
           >
-            Make Offer{' '}
+            <>{t('MAKE_OFFER')}</>
           </button>
         </div>
       )
@@ -218,7 +219,7 @@ export default function NFTDetailComponent(props) {
               showMakeOffer()
             }}
           >
-            Make Offer{' '}
+            <>{t('MAKE_OFFER')}</>
           </button>
         </div>
       )
@@ -268,7 +269,7 @@ export default function NFTDetailComponent(props) {
 
       <div className="chain-info">
         <div className="detail">
-          <h2>Details</h2>
+          <h2><>{t('Details')}</></h2>
           <ChainInfoComponent
             address={nftDetail.chain_info.contract_address}
             tokenStandard={nftDetail.chain_info.token_standard}
@@ -277,13 +278,13 @@ export default function NFTDetailComponent(props) {
           />
           {nftDetail.properties.length > 0 && (
             <>
-              <h2>Properties</h2>
+              <h2><>{t('PROPERTIES')}</></h2>
               <PropertiesComponents properties={nftDetail.properties} />
             </>
           )}
         </div>
         <div className="intro">
-          <h2>Introduction</h2>
+          <h2><>{t('INTRODUCTION')}</></h2>
           <div className="content">
             <p>{nftDetail.description}</p>
           </div>

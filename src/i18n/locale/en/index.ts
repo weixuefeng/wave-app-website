@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-18 19:44:51
+ * @LastEditTime: 2022-11-18 20:15:31
  * @FilePath: /wave-app-website/src/i18n/locale/en/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -40,8 +40,6 @@ export const enTransaction = {
   SPECIFICATTIONS: 'Specifications',
   CONTRACTADDRESS: 'Contract Address',
   TOKENSTANDARD: 'Token Standard',
-  BLOCKCHAIN: 'Blockchain',
-  CREATOREARNINGS: 'Creator Earnings',
   LICENSE: 'License',
   ADDTOCALENDAR: 'Add to Calendar',
   ADDEDTOCALENDAR: 'Added to Calendar',
@@ -67,4 +65,17 @@ export const enTransaction = {
   MY_CINEMA: 'Cinema',
   SETTINGS: 'Settings',
   LOGOUT: 'Log out',
+  CONTRACT_ADDRESS: 'Contract Address',
+  TOKEN_STANDARD: 'Token Standard',
+  BLOCKCHAIN: 'Blockchain',
+  CREATOR_EARNINGS: 'Creator Earnings',
+  COLLECTION_ALL_ITEMS: 'All Items',
+  COLLECTION_ACTIVITY: 'Activities',
+  COLLECTION_ITEMS: 'Items',
+  COLLECTION_OWNERS: 'Owners',
+  COLLECTION_VAOLUME_TRADED: 'Volume Traded',
+  LIST_PRICE: 'List Price',
+  FLOOR_DIFFERENCE: 'Floor Difference',
+  MAKE_OFFER: 'Make Offer',
+  PROPERTIES: 'Properties'
 }

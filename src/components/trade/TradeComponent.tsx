@@ -1,11 +1,12 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:33:51
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-03 19:50:24
- * @FilePath: /wave-app-webiste/src/components/trade/TradeComponent.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-18 20:10:30
+ * @FilePath: /wave-app-website/src/components/trade/TradeComponent.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
+import { t } from 'i18next'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { floorNum } from 'utils/functions'
@@ -29,8 +30,8 @@ export default function TradeComponent(props) {
             <h3>{itemDate.name}</h3>
             <h4>{floorNum(itemDate.price)}NEW</h4>
             <p className="price">
-              <span>List Price</span>
-              <span>Floor Difference</span>
+              <span><>{t('LIST_PRICE')}</></span>
+              <span><>{t('FLOOR_DIFFERENCE')}</></span>
             </p>
             <p className="gains">
               {itemDate.list_price_direction == 1 ? (

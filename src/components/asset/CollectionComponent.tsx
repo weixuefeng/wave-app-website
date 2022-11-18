@@ -39,11 +39,11 @@ export default function CollectionComponent(props) {
           <div className="status">
             <div className="item">
               <p className="value">{collection.stats.item_number}</p>
-              <p className="label">Items</p>
+              <p className="label"><>{t('COLLECTION_ITEMS')}</></p>
             </div>
             <div className="item">
               <p className="value">{collection.stats.owner_number}</p>
-              <p className="label">Owners</p>
+              <p className="label"><>{t('COLLECTION_OWNERS')}</></p>
             </div>
             <div className="item">
               <p className="value">{collection.stats.floor_price}</p>
@@ -53,7 +53,7 @@ export default function CollectionComponent(props) {
             </div>
             <div className="item">
               <p className="value">{collection.stats.volume_all}</p>
-              <p className="label">Volume Traded</p>
+              <p className="label"><>{t('COLLECTION_VAOLUME_TRADED')}</></p>
             </div>
           </div>
           <div className="mt-4 p-4">
@@ -65,8 +65,8 @@ export default function CollectionComponent(props) {
       <div className="related-info">
         <Tab.Group>
           <Tab.List>
-            <Tab className="tab-item">All Items</Tab>
-            <Tab className="tab-item ml-4">Activities</Tab>
+            <Tab className="tab-item"><>{t('COLLECTION_ALL_ITEMS')}</></Tab>
+            <Tab className="tab-item ml-4"><>{t('COLLECTION_ACTIVITY')}</></Tab>
           </Tab.List>
           <Tab.Panels>
             <Tab.Panel>

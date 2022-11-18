@@ -1,13 +1,14 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:46:58
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-18 15:40:52
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-18 20:09:32
  * @FilePath: /wave-app-website/src/components/asset/AllItemsComponent.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import usePagination from 'hooks/usePagination'
+import { t } from 'i18next'
 import { CollectionAllItem } from 'model/collection'
 import Link from 'next/link'
 import React, { useRef } from 'react'
@@ -41,8 +42,8 @@ export default function AllItemsComponent(props) {
                       <h3>{item.name}</h3>
                       <h4>{floorNum(item.highest_bid_price)} NEW</h4>
                       <p className="price">
-                        <span>List Price</span>
-                        <span>Floor Difference</span>
+                        <span><>{t('LIST_PRICE')}</>List Price</span>
+                        <span><>{t('FLOOR_DIFFERENCE')}</></span>
                       </p>
                       <p className="gains">
                         <span className="left">--</span>

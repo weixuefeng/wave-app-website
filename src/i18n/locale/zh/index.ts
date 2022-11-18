@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-18 19:55:03
+ * @LastEditTime: 2022-11-18 20:15:06
  * @FilePath: /wave-app-website/src/i18n/locale/zh/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -38,10 +38,6 @@ export const zhTransaction = {
   MORE: '更多',
   COLLAPSE: '折叠',
   SPECIFICATTIONS: '链信息',
-  CONTRACTADDRESS: '合约地址',
-  TOKENSTANDARD: '标准',
-  BLOCKCHAIN: '区块链',
-  CREATOREARNINGS: '版税比例',
   LICENSE: '许可协议',
   ADDTOCALENDAR: '设置购买提醒',
   ADDEDTOCALENDAR: '已设置提醒',
@@ -67,4 +63,17 @@ export const zhTransaction = {
   MY_CINEMA: '我的影院',
   SETTINGS: '设置',
   LOGOUT: '退出登录',
+  CONTRACT_ADDRESS: '合约地址',
+  TOKEN_STANDARD: '标准',
+  BLOCKCHAIN: '区块链',
+  CREATOR_EARNINGS: '版税比例',
+  COLLECTION_ALL_ITEMS: '所有藏品',
+  COLLECTION_ACTIVITY: '历史记录',
+  COLLECTION_ITEMS: '收藏品',
+  COLLECTION_OWNERS: '持有者',
+  COLLECTION_VAOLUME_TRADED: '总交易额',
+  LIST_PRICE: '挂单价',
+  FLOOR_DIFFERENCE: '地板价差异',
+  MAKE_OFFER: '出价',
+  PROPERTIES: '属性信息'
 }

@@ -2,7 +2,7 @@
  * @Author: zhuxiaotong zhuxiaotong@diynova.com
  * @Date: 2022-09-29 15:46:19
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-16 18:10:17
+ * @LastEditTime: 2022-11-18 19:59:21
  * @FilePath: /wave-app-website/src/components/collection/staticInfo.tsx
  * @LastEditors: weixuefeng weixuefeng@diynova.com
  * @LastEditTime: 2022-10-08 20:54:29
@@ -81,12 +81,12 @@ function StaticInfo(props) {
                     <div className="info-title">
                       {props.collectionInfo.specifications.contract_address && (
                         <p className="item">
-                          <>{t('CONTRACTADDRESS')}</>
+                          <>{t('CONTRACT_ADDRESS')}</>
                         </p>
                       )}
                       {props.collectionInfo.specifications.token_standard && (
                         <p className="item">
-                          <>{t('TOKENSTANDARD')}</>
+                          <>{t('TOKEN_STANDARD')}</>
                         </p>
                       )}
                       {props.collectionInfo.specifications.block_chain && (
@@ -96,7 +96,7 @@ function StaticInfo(props) {
                       )}
                       {props.collectionInfo.specifications.creator_earnings && (
                         <p className="item">
-                          <>{t('CREATOREARNINGS')}</>
+                          <>{t('CREATOR_EARNINGS')}</>
                         </p>
                       )}
                     </div>
