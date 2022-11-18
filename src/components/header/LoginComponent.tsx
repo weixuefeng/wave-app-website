@@ -5,9 +5,9 @@ import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'store/store'
 import { splitAddress } from 'utils/functions'
 import { selectUser, updateUserInfo } from '../../reducer/userReducer'
-import LoginComponent from './LoginComponent'
+import LoginDialog from '../dialog/LoginDialog'
 
-export default function Login() {
+export default function LoginComponent() {
   let [isOpen, setIsOpen] = useState(false)
   const currentUser = useAppSelector(selectUser)
   const dispatch = useAppDispatch()
@@ -79,7 +79,7 @@ export default function Login() {
     <>
       {getUserComponent()}
       <DialogComponent isOpen={isOpen} closeModal={closeModal}>
-        <LoginComponent closeModal={closeModal} />
+        <LoginDialog closeModal={closeModal} />
       </DialogComponent>
     </>
   )

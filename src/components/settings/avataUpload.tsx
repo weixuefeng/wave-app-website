@@ -1,19 +1,22 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 15:00:09
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-11 15:04:30
- * @FilePath: /wave-app-webiste/src/components/settings/avataUpload.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-18 14:50:38
+ * @FilePath: /wave-app-website/src/components/settings/avataUpload.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
 import { message, Upload } from 'antd'
 import type { UploadChangeParam } from 'antd/es/upload'
 import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface'
+import { IPFS_UPLOAD } from 'constants/setting'
 import { UserInfo } from 'model/user'
 import React, { useState } from 'react'
-import { selectUser } from 'reducer/userReducer'
-import { useAppSelector } from 'store/store'
+import { selectUser, updateUserInfo } from 'reducer/userReducer'
+import Http from 'services/http'
+import { useAppDispatch, useAppSelector } from 'store/store'
+import Log from 'utils/log'
 
 const getBase64 = (img: RcFile, callback: (url: string) => void) => {
   const reader = new FileReader()
@@ -37,6 +40,7 @@ const AvataUpload: React.FC = () => {
   const currentUser = useAppSelector(selectUser) as UserInfo
   const [loading, setLoading] = useState(false)
   const [imageUrl, setImageUrl] = useState<string>()
+  const dispatch = useAppDispatch()
 
   const handleChange: UploadProps['onChange'] = (info: UploadChangeParam<UploadFile>) => {
     if (info.file.status === 'uploading') {
@@ -45,10 +49,22 @@ const AvataUpload: React.FC = () => {
     }
     if (info.file.status === 'done') {
       // Get this url from response in real world.
-      getBase64(info.file.originFileObj as RcFile, url => {
-        setLoading(false)
-        setImageUrl(url)
-      })
+      setLoading(false)
+      const cid = info.file.response?.cid
+      const avatar = `ipfs://${cid}`
+      Http.getInstance()
+        .requestUpdateUserInfo(null, avatar)
+        .then(response => {
+          setImageUrl(response.avatar)
+          const info = {
+            ...currentUser,
+            avatar: response.avatar,
+          }
+          dispatch(updateUserInfo(info))
+        })
+        .catch(error => {
+          Log.e(error)
+        })
     }
   }
 
@@ -68,11 +84,11 @@ const AvataUpload: React.FC = () => {
 
   return (
     <Upload
-      name="avatar"
+      name="saveThisFileSafely"
       listType="picture-card"
       className="avatar-uploader"
       showUploadList={false}
-      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+      action={IPFS_UPLOAD}
       beforeUpload={beforeUpload}
       onChange={handleChange}
     >

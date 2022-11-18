@@ -286,6 +286,14 @@ class Http {
     return _post(Api.userAvatarUpdate, params) as Promise<any>
   }
 
+  requestUpdateUserInfo(name: string | null, avatar: string | null) {
+    let params = {
+      name: name,
+      avatar: avatar,
+    }
+    return _post(Api.userUpdateInfo, params) as Promise<any>
+  }
+
   requestUpdateEmail(emailTicket: string, email: string, emailCode: string, gaCode: string): Promise<any> {
     let params = {
       email_ticket: emailTicket,
@@ -309,8 +317,11 @@ class Http {
     return _post(Api.userNameUpdate, params) as Promise<any>
   }
 
-  requestUpdatePassword() {
-    let params = {}
+  requestUpdatePassword(emailCode: string, password: string): Promise<any> {
+    let params = {
+      email_code: emailCode,
+      password: md5(`wave${password}`),
+    }
     return _post(Api.userPaymentPasswordUpdate, params) as Promise<any>
   }
 

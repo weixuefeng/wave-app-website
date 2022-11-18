@@ -14,7 +14,7 @@ import { selectUser } from 'reducer/userReducer'
 import SellAssetDialog from 'components/dialog/SellAssetDialog'
 import Log from 'utils/log'
 import { loadGetInitialProps } from 'next/dist/shared/lib/utils'
-import LoginComponent from 'components/dialog/LoginComponent'
+import LoginDialog from 'components/dialog/LoginDialog'
 import Link from 'next/link'
 
 export default function NFTDetailComponent(props) {
@@ -324,7 +324,7 @@ export default function NFTDetailComponent(props) {
 
       {/** login dialog */}
       <DialogComponent isOpen={isLoginOpen} closeModal={closeLoginModal}>
-        <LoginComponent closeModal={closeLoginModal} />
+        <LoginDialog closeModal={closeLoginModal} />
       </DialogComponent>
     </div>
   )

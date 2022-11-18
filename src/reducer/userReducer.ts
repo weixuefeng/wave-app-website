@@ -2,10 +2,12 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-01 15:43:16
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-18 13:33:29
+ * @LastEditTime: 2022-11-18 15:00:39
  * @FilePath: /wave-app-website/src/reducer/userReducer.ts
  */
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { LocalKey } from 'constants/key'
+import { putLocalData } from 'localstorage/localstorage'
 import { LoginParams, UserInfo } from 'model/user'
 import { WalletInfo } from 'model/wallet'
 import Http from 'services/http'
@@ -27,6 +29,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     updateUserInfo: (state, action: PayloadAction<UserInfo>) => {
+      putLocalData(LocalKey.USER, JSON.stringify(action.payload))
       state.currentUser = action.payload
     },
     updateWalletInfo: (state, action: PayloadAction<WalletInfo>) => {

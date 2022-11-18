@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-16 18:11:23
+ * @LastEditTime: 2022-11-18 15:03:08
  * @FilePath: /wave-app-website/src/components/settings/verfiyEmail.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -97,7 +97,7 @@ export default function VerfiyEmail(props) {
           </button>
           {isVerfiyEmailCode == true ? <p className="tit">请输入验证码</p> : null}
         </div>
-        <button className="next" onClick={() => oldRequestEmail()}>
+        <button className="primary black" onClick={() => oldRequestEmail()}>
           <span>Next</span>
         </button>
       </div>

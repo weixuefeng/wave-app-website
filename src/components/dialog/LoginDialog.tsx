@@ -10,7 +10,7 @@ import Http from 'services/http'
 import { useAppDispatch, useAppSelector } from 'store/store'
 import Log from 'utils/log'
 
-export default function LoginComponent(props) {
+export default function LoginDialog(props) {
   const { closeModal } = props
 
   const [email, setEmail] = useState<string>()
