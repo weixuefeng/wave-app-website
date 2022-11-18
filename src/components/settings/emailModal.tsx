@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-15 17:32:53
- * @FilePath: /wave-app-webiste/src/components/settings/emailModal.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-18 15:55:51
+ * @FilePath: /wave-app-website/src/components/settings/emailModal.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import DialogComponent from 'components/common/DialogComponent'
@@ -29,11 +29,6 @@ export default function EmailModal(props) {
   function openModal() {
     setIsOpen(true)
   }
-
-  useEffect(() => {
-    if (currentUser) {
-    }
-  }, [currentUser])
 
   function dialogContent() {
     switch (emailSettingPage) {

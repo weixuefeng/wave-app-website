@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-18 15:17:37
+ * @LastEditTime: 2022-11-18 16:16:22
  * @FilePath: /wave-app-website/src/components/settings/passwordModal.tsx
  */
 import DialogComponent from 'components/common/DialogComponent'
@@ -19,7 +19,7 @@ export default function PasswordModal(props) {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [emailCode, setEmailCode] = useState('')
-
+  const [confirmLoading, setConfirmLoading] = useState(false)
   function closeModal() {
     setIsOpen(false)
   }
@@ -44,6 +44,7 @@ export default function PasswordModal(props) {
     if (password != confirmPassword) {
       alert('password not equals')
     }
+    setConfirmLoading(true)
     Http.getInstance()
       .requestUpdatePassword(emailCode, password)
       .then(response => {
@@ -52,6 +53,9 @@ export default function PasswordModal(props) {
       })
       .catch(error => {
         Log.e(error)
+      })
+      .finally(() => {
+        setConfirmLoading(false)
       })
   }
 
@@ -109,8 +113,8 @@ export default function PasswordModal(props) {
             <img src="assets/image/icon_passworded.png" alt="passworded icon" />
           </div>
 
-          <button className="primary black" onClick={requestUpdatePassword}>
-            <span>Next</span>
+          <button className="primary black" disabled={confirmLoading} onClick={requestUpdatePassword}>
+            <span>Confirm {confirmLoading && "..."}</span>
           </button>
         </div>
       </div>

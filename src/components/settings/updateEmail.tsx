@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-18 15:03:45
+ * @LastEditTime: 2022-11-18 15:59:01
  * @FilePath: /wave-app-website/src/components/settings/updateEmail.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -31,10 +31,8 @@ export default function UpdateEmail(props) {
   const [time, setTime] = useState(60)
   const [btnDisabled, setBtnDisabled] = useState(false)
 
-  useEffect(() => {
-    if (currentUser) {
-    }
-  }, [currentUser])
+  const [confirmLoading, setConfirmLoading] = useState(false)
+
 
   useEffect(() => {
     clearInterval(timeChange)
@@ -63,6 +61,7 @@ export default function UpdateEmail(props) {
     }
     setIsEmail(false)
     setIsUpdateEmailCode(false)
+    setConfirmLoading(true)
     Http.getInstance()
       .requestUpdateEmail(ticket, email, updateEmailCode, null)
       .then(response => {
@@ -76,6 +75,9 @@ export default function UpdateEmail(props) {
       })
       .catch(error => {
         Log.e(error)
+      })
+      .finally(() => {
+        setConfirmLoading(false)
       })
   }
 
@@ -120,8 +122,8 @@ export default function UpdateEmail(props) {
           </button>
           {isUpdateEmailCode ? <p className="tit-email">请输入验证码</p> : null}
         </div>
-        <button className="primary black" onClick={() => requestEmail()}>
-          <span>Next</span>
+        <button className="primary black" disabled={confirmLoading} onClick={() => requestEmail()}>
+          <span>Confirm {confirmLoading && "..."}</span>
         </button>
       </div>
     </div>
