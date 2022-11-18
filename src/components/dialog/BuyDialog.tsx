@@ -4,10 +4,12 @@ import React from 'react'
 import { splitAddress } from 'utils/functions'
 import { Divider, Tooltip } from 'antd'
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline'
+import useSettings from 'hooks/useSettings'
 
 export default function BuyDialog(props) {
   const { nftDetail, showPassword } = props
   const wallet = useWallet()
+  const settings = useSettings()
   const info = nftDetail as NFTDetail
   if (!info || !wallet) {
     return <></>
@@ -50,25 +52,36 @@ export default function BuyDialog(props) {
       <div className="receiver-info">
         <div className="item">
           <p>Seller Will Receive</p>
-          <p>200 NEW</p>
+          <p>
+            {info.price -
+              (parseFloat(info.creator_earnings_percent.replace('%', '')) / 100) * info.price -
+              info.price * parseFloat(settings?.nft_trade_fee)}{' '}
+            NEW
+          </p>
         </div>
         <div className="item my-2">
           <p>
             <span>Creator Earnings</span>
-            <Tooltip placement="top" title="The creator(s) of this asset willreceive 5% for every sale.">
+            <Tooltip
+              placement="top"
+              title={`The creator(s) of this asset will receive ${info.creator_earnings_percent} for every sale.`}
+            >
               <QuestionMarkCircleIcon className="ml-0.5 mb-0.5 inline-block w-4" />
             </Tooltip>
           </p>
-          <p>200 NEW</p>
+          <p>{(parseFloat(info.creator_earnings_percent.replace('%', '')) / 100) * info.price} NEW</p>
         </div>
         <div className="item">
           <p>
             <span>Transaction Fee</span>
-            <Tooltip placement="top" title="Wave platform transaction fee 2.5%.">
+            <Tooltip
+              placement="top"
+              title={`Wave platform transaction fee ${parseFloat(settings?.nft_trade_fee) * 100}%.`}
+            >
               <QuestionMarkCircleIcon className="ml-0.5 mb-0.5 inline-block w-4" />
             </Tooltip>
           </p>
-          <p>200 NEW</p>
+          <p>{info.price * parseFloat(settings?.nft_trade_fee)} NEW</p>
         </div>
       </div>
 

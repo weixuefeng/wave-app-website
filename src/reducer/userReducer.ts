@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-01 15:43:16
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-04 19:25:00
+ * @LastEditTime: 2022-11-18 13:33:29
  * @FilePath: /wave-app-website/src/reducer/userReducer.ts
  */
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'

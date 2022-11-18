@@ -17,7 +17,7 @@ import { WalletInfo, WalletTransaction } from 'model/wallet'
 import { OfferType } from 'model/offer'
 import { CinemaList } from 'model/cinema'
 import { CollectionInfo } from 'model/collection_model'
-import { PreCheckEmail } from 'model/settings'
+import { PreCheckEmail, SettingConfig } from 'model/settings'
 import Log from 'utils/log'
 import { MessageList } from 'model/message'
 
@@ -339,6 +339,11 @@ class Http {
       page_size: PAGE_SIZE,
     }
     return _post(Api.nftOtherAssetList, params) as Promise<Pagination<MyAsset>>
+  }
+
+  getCommonSettings(): Promise<SettingConfig> {
+    let params = {}
+    return _post(Api.commonSetting, params) as Promise<SettingConfig>
   }
 }
 

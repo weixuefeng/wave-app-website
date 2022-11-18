@@ -68,7 +68,7 @@ export interface NFTDetail {
   direction_address: string
   is_sell: number
   is_owner: number
-  price: any
+  price: number
   sell_start_time: number
   sell_end_time: number
   server_time: number
