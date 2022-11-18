@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:33:51
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-18 20:01:13
+ * @LastEditTime: 2022-11-18 20:14:02
  * @FilePath: /wave-app-webiste/src/components/blindbox/BlindboxComponent.tsx
  */
 
@@ -11,9 +11,12 @@ import { CollectionInfo } from 'model/collection_model'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Http from 'services/http'
-import { floorNum } from 'utils/functions'
 import Log from 'utils/log'
 import BaseInfo from './BaseInfo'
+import Countdown from './Countdown'
+import Description from './Description'
+import InfoImg from './InfoImg'
+import SellPriceBtn from './SellPriceBtn'
 import StaticInfo from './StaticInfo'
 
 export default function BlindboxComponent(props) {
@@ -40,23 +43,13 @@ export default function BlindboxComponent(props) {
       <div className="blindbox">
         <div className="container">
           <div className="blindbod-detail">
-            <div className="info-img">
-              <img src={collectionInfo.image} alt={collectionInfo.name} />
-            </div>
+            <InfoImg collectionInfo={collectionInfo} />
             <div className="info-detail">
-              <div className="count-down">
-                <div className="time">Starts at 08.26 10:00(UTC+8)</div>
-                <div className="drop">
-                  <img src="/assets/image/icon_tips.png" alt="upcoming up" />
-                  Upcoming Drop
-                </div>
-              </div>
+              <Countdown collectionInfo={collectionInfo} />
               <BaseInfo collectionInfo={collectionInfo} />
-              <div className="price">{floorNum(collectionInfo.sell_price)} NEW</div>
-              <div className="action">Subscribe</div>
+              <SellPriceBtn collectionInfo={collectionInfo} />
             </div>
           </div>
-
           <div className="evt-detail">
             <div className="detail-info">
               <div className="info-specifications">
@@ -70,15 +63,7 @@ export default function BlindboxComponent(props) {
               </div>
               <StaticInfo />
             </div>
-
-            <div className="detail-description">
-              <div>
-                <h3>Description</h3>
-                <div className="description">
-                  <div className="text">{collectionInfo.description}</div>
-                </div>
-              </div>
-            </div>
+            <Description collectionInfo={collectionInfo} />
           </div>
         </div>
       </div>
