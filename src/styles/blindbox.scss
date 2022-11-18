@@ -332,6 +332,9 @@ h2 {
       }
     }
     .info-evt {
+      a {
+        @apply text-gray333;
+      }
     }
   }
 
