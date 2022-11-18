@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Form, Input, Select, Row, Col } from 'antd'
 import NormalLayout from 'components/layout/NormalLayout'
 import useWallet from 'hooks/userWallet'
 import { PageModel } from 'model/navModel'
@@ -34,79 +33,50 @@ export default function Withdraw() {
             <p className="label">{walletAccount.label}</p>
           </div>
 
-          <Form
-            name="basic"
-            layout="vertical"
-            className="withdraw-form"
-            labelCol={{ span: 8 }}
-            wrapperCol={{ span: 14 }}
-            initialValues={{ remember: true }}
-            autoComplete="off"
-          >
-            <Row>
-              <Col span={12}>
-                <Form.Item label="Withdrawal Network" name="network">
-                  <Select
-                    defaultValue={{
-                      label: wallet.wallet_accounts[0].label,
-                      value: wallet.wallet_accounts[0].coin_type,
-                    }}
-                    options={wallet.wallet_accounts.map(account => ({
-                      label: account.label,
-                      value: account.coin_type,
-                    }))}
-                  ></Select>
-                </Form.Item>
-              </Col>
+          <div className="from-box">
+            <div className="code-box">
+              <label htmlFor="text" className="label">
+                Withdrawal Network
+              </label>
+              <div className="select-box">{walletAccount.label}</div>
+              <img src="assets/image/icon_change.png" alt="" />
+            </div>
+            <div className="code-box">
+              <label htmlFor="text" className="label">
+                Withdrawal Address
+              </label>
+              <input placeholder="Enter or paste address" />
+            </div>
+          </div>
 
-              <Col span={12} offset={-12}>
-                <Form.Item
-                  label="Withdrawal Address"
-                  name="address"
-                  rules={[
-                    { required: true, message: 'This address does not match the currently selected primary network.' },
-                  ]}
-                >
-                  <Input className="withdraw-input" placeholder={'Enter or paste address'} />
-                </Form.Item>
-              </Col>
+          <div className="from-box" >
+            <div className="code-box">
+              <label htmlFor="text" className="label">
+                Amount
+              </label>
+              <input placeholder="Minimum0"/>
+            </div>
+          </div>
 
-              <Col span={12}>
-                <Form.Item
-                  label="Amount"
-                  name="Amount"
-                  tooltip="This is a required field"
-                  rules={[{ required: true, message: 'Insufficient balance' }]}
-                >
-                  <Input className="withdraw-input" suffix="NEW" placeholder={'Minimum0'} />
-                </Form.Item>
-              </Col>
+          <div className="fee-box">
+            <p className="label">Fee</p>
+            <p className="value">21NEW</p>
+          </div>
 
-              <Col span={24}>
-                <Form.Item label="Fee">
-                  <p className="text-gray999">21NEW</p>
-                </Form.Item>
-              </Col>
+          <div className="tips">
+            <p className="tips_title">Reminder</p>
+            <p>* WAVE will never ask you to transfer funds to another account.</p>
+            <p>
+              * Beware of fraud and do not participate in illegal activities such as proxy purchases, money
+              laundering, and illegal fundraising.
+            </p>
+            <p>* Internal transfer will be free.</p>
+          </div>
 
-              <Col span={24}>
-                <div className="tips">
-                  <p className="tips_title">Reminder</p>
-                  <p>* WAVE will never ask you to transfer funds to another account.</p>
-                  <p>
-                    * Beware of fraud and do not participate in illegal activities such as proxy purchases, money
-                    laundering, and illegal fundraising.
-                  </p>
-                  <p>* Internal transfer will be free.</p>
-                </div>
-              </Col>
+          <div className="from-box">
+            <button className="primary black">Confirm</button>
+          </div>
 
-              <Col span={12}>
-                <Form.Item>
-                  <button className="primary black">Confirm</button>
-                </Form.Item>
-              </Col>
-            </Row>
-          </Form>
         </div>
       </div>
     )
