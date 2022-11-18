@@ -34,7 +34,6 @@ export default function LoginDialog(props) {
     Http.getInstance()
       .login(email, verifyCode)
       .then(response => {
-        putLocalData(LocalKey.USER, JSON.stringify(response))
         dispatch(updateUserInfo(response))
         closeModal()
       })

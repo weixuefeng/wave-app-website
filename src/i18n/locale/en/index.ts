@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-14 11:29:30
+ * @LastEditTime: 2022-11-18 18:52:20
  * @FilePath: /wave-app-website/src/i18n/locale/en/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -58,4 +58,6 @@ export const enTransaction = {
   JOINED_WHITELIST_TIP: 'You have joined the Whitelist.',
   Details: 'Details',
   WHITE_LIST_PURCHASE_TIME: 'Whitelist purchase time',
+  HOME_DROPS: 'Drops',
+  HOME_RECOMMAND: 'Recommand'
 }

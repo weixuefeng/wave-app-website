@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-14 11:29:48
+ * @LastEditTime: 2022-11-18 18:52:09
  * @FilePath: /wave-app-website/src/i18n/locale/zh/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -58,4 +58,6 @@ export const zhTransaction = {
   JOINED_WHITELIST_TIP: '您已加入白名单。',
   Details: '详情',
   WHITE_LIST_PURCHASE_TIME: '白名单优先购买时间',
+  HOME_DROPS: '首发',
+  HOME_RECOMMAND: '推荐'
 }

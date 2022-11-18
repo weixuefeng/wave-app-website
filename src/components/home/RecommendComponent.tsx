@@ -5,6 +5,7 @@ import { getAssetDetailPath } from 'utils/route'
 import Link from 'next/link'
 import { AssetType } from 'model/asset'
 import Nodata from 'components/layout/NoData'
+import { t } from 'i18next'
 
 export function EVTAsset(props) {
   const { item } = props
@@ -123,14 +124,14 @@ export default function RecommendComponent(props) {
   if (recommend?.length == 0) {
     return (
       <div className="recommend">
-        <h1>Recommended Box</h1>
+      <h1><>{t('HOME_RECOMMAND')}</></h1>
         <Nodata />
       </div>
     )
   }
   return (
     <div className="recommend">
-      <h1>Recommended Box</h1>
+      <h1><>{t('HOME_RECOMMAND')}</></h1>
 
       <div className="list">
         {recommend.map((item, index) => {
