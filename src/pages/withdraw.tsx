@@ -49,12 +49,12 @@ export default function Withdraw() {
             </div>
           </div>
 
-          <div className="from-box" >
+          <div className="from-box">
             <div className="code-box">
               <label htmlFor="text" className="label">
                 Amount
               </label>
-              <input placeholder="Minimum0"/>
+              <input placeholder="Minimum0" />
             </div>
           </div>
 
@@ -67,8 +67,8 @@ export default function Withdraw() {
             <p className="tips_title">Reminder</p>
             <p>* WAVE will never ask you to transfer funds to another account.</p>
             <p>
-              * Beware of fraud and do not participate in illegal activities such as proxy purchases, money
-              laundering, and illegal fundraising.
+              * Beware of fraud and do not participate in illegal activities such as proxy purchases, money laundering,
+              and illegal fundraising.
             </p>
             <p>* Internal transfer will be free.</p>
           </div>
@@ -76,7 +76,6 @@ export default function Withdraw() {
           <div className="from-box">
             <button className="primary black">Confirm</button>
           </div>
-
         </div>
       </div>
     )

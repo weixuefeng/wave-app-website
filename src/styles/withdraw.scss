@@ -1,5 +1,5 @@
 .withdraw {
-  @apply flex flex-col mt-14 mb-20;
+  @apply mt-14 mb-20 flex flex-col;
   .title {
     @apply text-4xl font-semibold text-gray-900;
   }
@@ -22,14 +22,14 @@
         @apply absolute top-[70%] right-4 -mt-3 h-6 w-6;
       }
       .select-box {
-        @apply pl-4 mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-gragfb pt-4 cursor-pointer;
-        background: #EEEEEE;
+        @apply mt-3 h-14 w-full cursor-pointer rounded-xl border-2 border-grayed bg-gragfb pl-4 pt-4;
+        background: #eeeeee;
       }
     }
 
     input {
-      @apply pl-4 mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-gragfb;
-      background: #EEEEEE;
+      @apply mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-gragfb pl-4;
+      background: #eeeeee;
       &::input-placeholder {
         @apply text-grayc7;
       }
@@ -57,7 +57,7 @@
 
   .fee-box {
     .label {
-      @apply text-base font-semibold mb-2;
+      @apply mb-2 text-base font-semibold;
     }
     .value {
       @apply text-gray999;
