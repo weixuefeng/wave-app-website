@@ -242,16 +242,14 @@ h2 {
   }
 }
 
-
-
 .blindbox {
   .blindbod-detail {
     @apply grid grid-cols-12 gap-10 pt-14;
   }
   .info-img {
-    @apply col-span-5 rounded-xl relative  pb-[100%];
+    @apply relative col-span-5 rounded-xl  pb-[100%];
     img {
-      @apply absolute top-[50%] left-[50%] h-full w-full rounded-t-lg object-cover rounded-xl;
+      @apply absolute top-[50%] left-[50%] h-full w-full rounded-xl rounded-t-lg object-cover;
       transform: translate(-50%, -50%);
     }
   }
@@ -261,43 +259,43 @@ h2 {
       @apply flex items-center;
     }
     .time {
-      @apply bg-yellowf7 rounded-lg text-sm text-white p-2;;
+      @apply rounded-lg bg-yellowf7 p-2 text-sm text-white;
     }
     .drop {
-      @apply text-gray99 text-sm flex items-center ml-5;
+      @apply ml-5 flex items-center text-sm text-gray99;
       img {
-        @apply w-[1.13rem] h-[1.13rem] mr-1;
+        @apply mr-1 h-[1.13rem] w-[1.13rem];
       }
     }
     .title {
       @apply mt-9 mb-10;
       h2 {
-        @apply text-gray333 text-4xl mb-4 font-bold;
+        @apply mb-4 text-4xl font-bold text-gray333;
       }
       span {
-        @apply bg-green57 py-1 px-3 text-white rounded;
+        @apply rounded bg-green57 py-1 px-3 text-white;
       }
     }
     .number {
       @apply flex items-center;
       p {
-        @apply text-gray333 bg-grayee py-1 rounded pr-1;
+        @apply rounded bg-grayee py-1 pr-1 text-gray333;
         span {
-          @apply text-white bg-graybf px-2 py-1 rounded mr-1;
+          @apply mr-1 rounded bg-graybf px-2 py-1 text-white;
         }
       }
     }
     .price {
-      @apply mt-10 mb-8 text-green57 text-3xl font-bold;
+      @apply mt-10 mb-8 text-3xl font-bold text-green57;
     }
     .action {
-      @apply bg-gray333 text-white w-[36%] text-center rounded-xl py-5 text-[1.38rem] cursor-pointer;
+      @apply w-[36%] cursor-pointer rounded-xl bg-gray333 py-5 text-center text-[1.38rem] text-white;
     }
   }
 
   //evt-detail
   .evt-detail {
-    @apply grid grid-cols-12 gap-10 mt-16;
+    @apply mt-16 grid grid-cols-12 gap-10;
     .detail-info {
       @apply col-span-4;
       .chain-content {
@@ -309,15 +307,15 @@ h2 {
     }
     .info-specifications {
       h3 {
-        @apply text-gray333 text-2xl mb-5 font-bold;
+        @apply mb-5 text-2xl font-bold text-gray333;
       }
       ul {
-        @apply bg-grayf1 p-4 rounded-xl;
+        @apply rounded-xl bg-grayf1 p-4;
       }
       li {
         @apply flex justify-between;
         span {
-          @apply text-gray66 text-sm leading-8;
+          @apply text-sm leading-8 text-gray66;
           &:last-child {
             @apply text-gray333;
           }
@@ -327,10 +325,10 @@ h2 {
     .info-content {
       @apply my-10;
       h3 {
-        @apply text-gray333 text-2xl mb-5 font-bold;
+        @apply mb-5 text-2xl font-bold text-gray333;
       }
       p {
-        @apply bg-grayf1 p-4 rounded-xl text-base text-gray66 leading-8;
+        @apply rounded-xl bg-grayf1 p-4 text-base leading-8 text-gray66;
       }
     }
     .info-evt {
@@ -339,14 +337,13 @@ h2 {
 
   .detail-description {
     h3 {
-      @apply text-gray333 font-bold text-2xl mb-5;
+      @apply mb-5 text-2xl font-bold text-gray333;
     }
     .description {
-      @apply bg-grayf1 rounded-xl p-4;
+      @apply rounded-xl bg-grayf1 p-4;
     }
     .text {
-      @apply bg-white rounded-xl p-4;
+      @apply rounded-xl bg-white p-4;
     }
   }
-
 }

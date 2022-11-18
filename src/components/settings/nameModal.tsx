@@ -9,6 +9,7 @@ import Log from 'utils/log'
 export default function NameModal(props) {
   const currentUser = useAppSelector(selectUser) as UserInfo
   const [isOpen, setIsOpen] = useState(false)
+  const [confirmLoading, setConfirmLoading] = useState(false)
   const [name, setName] = useState(currentUser?.name)
   const dispatch = useAppDispatch()
 
@@ -21,6 +22,7 @@ export default function NameModal(props) {
   }
 
   function updateName() {
+    setConfirmLoading(true)
     Http.getInstance()
       .requestUpdateUserInfo(name, null)
       .then(response => {
@@ -33,6 +35,9 @@ export default function NameModal(props) {
       })
       .catch(err => {
         Log.e(err)
+      })
+      .finally(() => {
+        setConfirmLoading(false)
       })
   }
 
@@ -48,8 +53,8 @@ export default function NameModal(props) {
           <input className="name" placeholder="Nickname" onChange={onNameChange} />
           <img src="assets/image/icon_username.png" alt="username" />
         </div>
-        <button className="primary black confirm" onClick={() => updateName()}>
-          Confirm
+        <button className="primary black confirm" disabled={confirmLoading} onClick={() => updateName()}>
+          Confirm {confirmLoading && '...'}
         </button>
       </div>
     )

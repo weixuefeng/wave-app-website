@@ -329,8 +329,8 @@ function Main(props) {
       //   />
       // </div>
       <>
-      {/* tudo */}
-      <BlindboxComponent />
+        {/* tudo */}
+        <BlindboxComponent />
       </>
     )
   }
