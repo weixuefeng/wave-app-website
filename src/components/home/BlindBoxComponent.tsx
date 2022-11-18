@@ -129,15 +129,14 @@ export default function BlindBoxComponent(props) {
   }
 
   if (blindBox?.length == 0) {
-    return (
-      <div className="blind-box">
-      </div>
-    )
+    return <div className="blind-box"></div>
   }
 
   return (
     <div className="blind-box">
-      <h1><>{t('HOME_DROPS')}</></h1>
+      <h1>
+        <>{t('HOME_DROPS')}</>
+      </h1>
       <div className="list">
         {blindBox.map((item, index) => {
           return <BlindBox item={item} key={index} />

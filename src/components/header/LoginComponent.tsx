@@ -1,5 +1,6 @@
 import { Menu } from '@headlessui/react'
 import DialogComponent from 'components/common/DialogComponent'
+import { t } from 'i18next'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'store/store'
@@ -40,13 +41,32 @@ export default function LoginComponent() {
             <p className="name">{currentUser.name}</p>
             <p className="address">{splitAddress(currentUser.wallet_address)}</p>
             <div className="list">
-              <Link href="/tickets">Tickets</Link>
-              <Link href="/wallet">Wallet</Link>
-              <Link href="/assets">Assets</Link>
-              <Link href="/cinema">Cinema</Link>
-              <Link href="/settings" className="mt-4">
-                Settings
-              </Link>
+              <p>
+                <Link href="/tickets">
+                  <>{t('TICKETS')}</>
+                </Link>
+              </p>
+              <p>
+                <Link href="/wallet">
+                  <>{t('WALLET')}</>
+                </Link>
+              </p>
+              <p>
+                <Link href="/assets">
+                  <>{t('ASSETS')}</>
+                </Link>
+              </p>
+              <p>
+                <Link href="/cinema">
+                  <>{t('MY_CINEMA')}</>
+                </Link>
+              </p>
+              <p>
+                <Link href="/settings" className="mt-4">
+                  <>{t('SETTINGS')}</>
+                </Link>
+              </p>
+
               <p
                 className="w-full cursor-pointer text-red-500"
                 onClick={() => {
@@ -54,7 +74,7 @@ export default function LoginComponent() {
                   localStorage.clear()
                 }}
               >
-                Log Out
+                <>{t('LOGOUT')}</>
               </p>
             </div>
           </div>

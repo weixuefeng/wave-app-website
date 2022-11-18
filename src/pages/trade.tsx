@@ -2,13 +2,13 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:32:00
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-17 20:01:57
+ * @LastEditTime: 2022-11-18 19:52:22
  * @FilePath: /wave-app-website/src/pages/trade.tsx
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
-import Nodata from 'components/layout/NoData'
 import NormalLayout from 'components/layout/NormalLayout'
 import usePagination from 'hooks/usePagination'
+import { t } from 'i18next'
 import { PageModel } from 'model/navModel'
 import { TradeItem } from 'model/trade'
 import React, { useRef } from 'react'
@@ -29,7 +29,9 @@ export default function TradePage(props) {
     return (
       <div className="asset trade">
         <div className="container mx-auto">
-          <h2>Trade</h2>
+          <h2>
+            <>{t('TRADE')}</>
+          </h2>
           <ul>
             {data?.map((item, index) => {
               return <TradeComponent key={index} itemDate={item} />

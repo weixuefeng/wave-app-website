@@ -114,7 +114,7 @@ export default function PasswordModal(props) {
           </div>
 
           <button className="primary black" disabled={confirmLoading} onClick={requestUpdatePassword}>
-            <span>Confirm {confirmLoading && "..."}</span>
+            <span>Confirm {confirmLoading && '...'}</span>
           </button>
         </div>
       </div>

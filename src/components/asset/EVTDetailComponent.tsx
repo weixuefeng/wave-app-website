@@ -1,3 +1,4 @@
+import { t } from 'i18next'
 import { EVTCopyDetail } from 'model/evt_asset'
 import React, { useEffect, useState } from 'react'
 import Http from 'services/http'
@@ -41,7 +42,9 @@ export default function EVTDetailComponent(props) {
               <p className="value">{evtDetail.highest_bid_price} NEW</p>
             </div>
             <div>
-              <p className="label">Floor Price:</p>
+              <p className="label">
+                <>{t('FLOOR_PRICE')}</>:
+              </p>
               <p className="value">{evtDetail.lowest_bid_price} NEW</p>
             </div>
           </div>

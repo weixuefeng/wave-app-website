@@ -124,14 +124,18 @@ export default function RecommendComponent(props) {
   if (recommend?.length == 0) {
     return (
       <div className="recommend">
-      <h1><>{t('HOME_RECOMMAND')}</></h1>
+        <h1>
+          <>{t('HOME_RECOMMAND')}</>
+        </h1>
         <Nodata />
       </div>
     )
   }
   return (
     <div className="recommend">
-      <h1><>{t('HOME_RECOMMAND')}</></h1>
+      <h1>
+        <>{t('HOME_RECOMMAND')}</>
+      </h1>
 
       <div className="list">
         {recommend.map((item, index) => {

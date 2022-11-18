@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-18 18:52:09
+ * @LastEditTime: 2022-11-18 19:55:03
  * @FilePath: /wave-app-website/src/i18n/locale/zh/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -24,8 +24,8 @@ export const zhTransaction = {
   STARTS_IN: '开售时间',
   TOTAL_SUPPLY: '限量',
   CURRENT_RELEASE: '本期发行',
-  FLOOR_PRICE: 'Floor Price',
-  HIGHEST_BID: 'Highest Bid',
+  FLOOR_PRICE: '最低出价',
+  HIGHEST_BID: '最高出价',
   UPCOMMINGDROP: '敬请期待',
   COMINGSOON: '即将开售',
   SOLDOUT: '已售罄',
@@ -59,5 +59,12 @@ export const zhTransaction = {
   Details: '详情',
   WHITE_LIST_PURCHASE_TIME: '白名单优先购买时间',
   HOME_DROPS: '首发',
-  HOME_RECOMMAND: '推荐'
+  HOME_RECOMMAND: '推荐',
+  TRADE: '市场',
+  TICKETS: '票夹',
+  WALLET: '我的钱包',
+  ASSETS: '我的资产',
+  MY_CINEMA: '我的影院',
+  SETTINGS: '设置',
+  LOGOUT: '退出登录',
 }

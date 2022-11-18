@@ -33,7 +33,6 @@ export default function UpdateEmail(props) {
 
   const [confirmLoading, setConfirmLoading] = useState(false)
 
-
   useEffect(() => {
     clearInterval(timeChange)
     return () => clearInterval(timeChange)
@@ -123,7 +122,7 @@ export default function UpdateEmail(props) {
           {isUpdateEmailCode ? <p className="tit-email">请输入验证码</p> : null}
         </div>
         <button className="primary black" disabled={confirmLoading} onClick={() => requestEmail()}>
-          <span>Confirm {confirmLoading && "..."}</span>
+          <span>Confirm {confirmLoading && '...'}</span>
         </button>
       </div>
     </div>

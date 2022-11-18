@@ -45,9 +45,9 @@ export default function BlindboxComponent(props) {
           </div>
         </div>
 
-        <div className='evt-detail'>
-          <div className='detail-info'>
-            <div className='info-specifications'>
+        <div className="evt-detail">
+          <div className="detail-info">
+            <div className="info-specifications">
               <h3>Specifications</h3>
               <ChainInfoComponent />
             </div>

@@ -15,7 +15,7 @@
     }
     .list {
       @apply flex w-full flex-col items-start divide-y bg-white p-2 text-left;
-      a {
+      p {
         @apply w-full cursor-pointer p-2 text-left;
       }
     }

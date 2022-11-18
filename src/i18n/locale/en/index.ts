@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-18 18:52:20
+ * @LastEditTime: 2022-11-18 19:44:51
  * @FilePath: /wave-app-website/src/i18n/locale/en/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -59,5 +59,12 @@ export const enTransaction = {
   Details: 'Details',
   WHITE_LIST_PURCHASE_TIME: 'Whitelist purchase time',
   HOME_DROPS: 'Drops',
-  HOME_RECOMMAND: 'Recommand'
+  HOME_RECOMMAND: 'Recommand',
+  TRADE: 'Trade',
+  TICKETS: 'Tickets',
+  WALLET: 'Wallet',
+  ASSETS: 'Assets',
+  MY_CINEMA: 'Cinema',
+  SETTINGS: 'Settings',
+  LOGOUT: 'Log out',
 }

@@ -75,7 +75,8 @@ export default function VerfiyEmail(props) {
       })
       .catch(error => {
         Log.e(error)
-      }).finally(()=> {
+      })
+      .finally(() => {
         setNextLoading(false)
       })
   }
@@ -102,7 +103,7 @@ export default function VerfiyEmail(props) {
           {isVerfiyEmailCode == true ? <p className="tit">请输入验证码</p> : null}
         </div>
         <button className="primary black" disabled={nextLoading} onClick={() => oldRequestEmail()}>
-          <span>Next {nextLoading && "..."}</span>
+          <span>Next {nextLoading && '...'}</span>
         </button>
       </div>
     </div>

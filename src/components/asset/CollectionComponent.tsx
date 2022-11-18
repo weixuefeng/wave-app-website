@@ -1,4 +1,5 @@
 import { Tab } from '@headlessui/react'
+import { t } from 'i18next'
 import { BaseCollectionInfo } from 'model/collection'
 import React, { Fragment, useEffect, useState } from 'react'
 import Http from 'services/http'
@@ -46,7 +47,9 @@ export default function CollectionComponent(props) {
             </div>
             <div className="item">
               <p className="value">{collection.stats.floor_price}</p>
-              <p className="label">Floor Price</p>
+              <p className="label">
+                <>{t('FLOOR_PRICE')}</>
+              </p>
             </div>
             <div className="item">
               <p className="value">{collection.stats.volume_all}</p>
