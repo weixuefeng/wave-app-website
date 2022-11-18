@@ -7,6 +7,7 @@
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 
+import ChainInfoComponent from 'components/asset/ChainInfoComponent'
 import React from 'react'
 import { formatSeconds } from 'utils/time'
 
@@ -49,26 +50,11 @@ export default function BlindboxComponent(props) {
 
           <div className='detail-info'>
 
+           
+
             <div className='info-specifications'>
               <h3>Specifications</h3>
-              <ul>
-                <li>
-                  <span>Contract Address</span>
-                  <span>NEW118...saQM</span>
-                </li>
-                <li>
-                  <span>Token Standard</span>
-                  <span>EVT (NRC-53)</span>
-                </li>
-                <li>
-                  <span>Blockchain</span>
-                  <span>Newton</span>
-                </li>
-                <li>
-                  <span>Creator Earnings</span>
-                  <span>5%</span>
-                </li>
-              </ul>
+              <ChainInfoComponent />
             </div>
 
             <div className='info-content'>

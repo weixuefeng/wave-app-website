@@ -300,7 +300,7 @@ h2 {
     @apply grid grid-cols-12 gap-10 mt-16;
     .detail-info {
       @apply col-span-4;
-      dl {
+      .chain-content {
         @apply bg-grayf1;
       }
     }

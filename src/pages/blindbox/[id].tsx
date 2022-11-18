@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-09-21 10:43:33
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-18 15:08:51
+ * @LastEditTime: 2022-11-18 15:40:47
  * @FilePath: /wave-app-website/src/pages/blindbox/[id].tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -178,7 +178,7 @@ function Main(props) {
     }
 
     postMessage(params, function (data) {
-      console.debug('\r\n requestPayOrder: ' + JSON.stringify(data))
+      // console.debug('\r\n requestPayOrder: ' + JSON.stringify(data))
       setRefreshFlag(Date.now())
       if (data != null) {
         Log.d(JSON.stringify(data))
