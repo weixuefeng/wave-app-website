@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-14 13:36:09
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-21 13:57:20
- * @FilePath: /wave-app-webiste/src/components/blindbox/SellPriceBtn.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-21 17:34:18
+ * @FilePath: /wave-app-website/src/components/blindbox/SellPriceBtn.tsx
  */
 
 import { t } from 'i18next'
@@ -13,7 +13,7 @@ import { calculateCountdown, getUTCDetailTime } from 'utils/functions'
 import Log from 'utils/log'
 
 export default function SellPriceBtn(props) {
-  const { addToCalendar, payOrder, gotoTrade, gotoAssets, collectionInfo, hasAddCalendar, isInApp } = props
+  const { addToCalendar, payOrder, gotoTrade, gotoAssets, collectionInfo, hasAddCalendar } = props
 
   const info = collectionInfo as CollectionInfo
 
@@ -74,31 +74,27 @@ export default function SellPriceBtn(props) {
     // 3.1 if is not white list, check calendar status, return addCalendar or addedCalendar
     // 3.2 is is white list, check current user is white list, if user is not white list,return notWhiteList
     // 3.3 user is white list, check white list button
-    if (isInApp) {
-      if (collectionInfo.sell_status == SellStatus.NOT_START) {
-        if (info.have_white_list == IsWhiteList.YES) {
-          // is white list sell
-          if (info.current_user_in_white_list == UserInWhiteList.YES) {
-            return whiteListButton()
-          } else {
-            // user not in white list
-            return notWhiteList()
-          }
+    if (collectionInfo.sell_status == SellStatus.NOT_START) {
+      if (info.have_white_list == IsWhiteList.YES) {
+        // is white list sell
+        if (info.current_user_in_white_list == UserInWhiteList.YES) {
+          return whiteListButton()
         } else {
-          // not white list
-          if (hasAddCalendar) {
-            return addedCallendarComponent()
-          } else {
-            return addCallendarComponent()
-          }
+          // user not in white list
+          return notWhiteList()
         }
-      } else if (collectionInfo.sell_status == SellStatus.SELLING) {
-        return buyComponent()
-      } else if (collectionInfo.sell_status == SellStatus.SOLD_OUT) {
-        return soldoutComponent()
+      } else {
+        // not white list
+        if (hasAddCalendar) {
+          return addedCallendarComponent()
+        } else {
+          return addCallendarComponent()
+        }
       }
-    } else {
-      return downLoadComponent()
+    } else if (collectionInfo.sell_status == SellStatus.SELLING) {
+      return buyComponent()
+    } else if (collectionInfo.sell_status == SellStatus.SOLD_OUT) {
+      return soldoutComponent()
     }
   }
 
@@ -106,8 +102,6 @@ export default function SellPriceBtn(props) {
     const status = checkTime()
     switch (status) {
       case WhiteListSellStatus.NOT_START_OUT_24H:
-        Log.d('out 24h')
-
         return (
           <div className="button" onClick={addToCalendar}>
             <p className="whitelist-label">
@@ -169,7 +163,6 @@ export default function SellPriceBtn(props) {
           }
         }
       case WhiteListSellStatus.TIME_END:
-        Log.d('time end')
         return notWhiteList()
     }
   }
@@ -245,18 +238,6 @@ export default function SellPriceBtn(props) {
         <>{props.collectionInfo.is_boughtGo ? t('CHECKMYASSETS') : t('GOTOTRADE')}</>
       </div>
     )
-  }
-
-  function downLoadComponent() {
-    return (
-      <div className="button" onClick={gotoDownLoad}>
-        <>{t('DOWNLOAD')}</>
-      </div>
-    )
-  }
-
-  function gotoDownLoad() {
-    window.open('https://app.waveuniverse.org')
   }
 
   return (

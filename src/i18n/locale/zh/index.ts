@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-18 20:15:06
+ * @LastEditTime: 2022-11-21 17:14:39
  * @FilePath: /wave-app-website/src/i18n/locale/zh/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -76,4 +76,5 @@ export const zhTransaction = {
   FLOOR_DIFFERENCE: '地板价差异',
   MAKE_OFFER: '出价',
   PROPERTIES: '属性信息',
+  DESCRIPTION: '描述',
 }

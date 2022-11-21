@@ -1,15 +1,16 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:33:51
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-18 20:14:02
- * @FilePath: /wave-app-webiste/src/components/blindbox/BlindboxComponent.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-21 17:20:54
+ * @FilePath: /wave-app-website/src/components/blindbox/BlindboxComponent.tsx
  */
 
 import ChainInfoComponent from 'components/asset/ChainInfoComponent'
 import { CollectionInfo } from 'model/collection_model'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import Http from 'services/http'
 import Log from 'utils/log'
 import BaseInfo from './BaseInfo'
@@ -23,6 +24,7 @@ export default function BlindboxComponent(props) {
   const [collectionInfo, setCollectionInfo] = useState<CollectionInfo>()
   const router = useRouter()
   const { id } = router.query
+  const { t } = useTranslation()
 
   useEffect(() => {
     fetchCollectionInfo()
@@ -35,8 +37,6 @@ export default function BlindboxComponent(props) {
         setCollectionInfo(response)
       })
   }
-
-  Log.d(collectionInfo)
 
   if (collectionInfo !== undefined) {
     return (
@@ -53,7 +53,7 @@ export default function BlindboxComponent(props) {
           <div className="evt-detail">
             <div className="detail-info">
               <div className="info-specifications">
-                <h3>Specifications</h3>
+                <h3>{t('SPECIFICATTIONS')}</h3>
                 <ChainInfoComponent
                   address={collectionInfo.specifications.contract_address}
                   tokenStandard={collectionInfo.specifications.token_standard}

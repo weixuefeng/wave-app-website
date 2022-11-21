@@ -41,7 +41,8 @@ export default function LoginDialog(props) {
       })
       .catch(error => {
         Log.e(error)
-      }).finally(() => {
+      })
+      .finally(() => {
         setLoginLoading(false)
       })
   }
@@ -70,7 +71,7 @@ export default function LoginDialog(props) {
           disabled={loginLoading}
           className="inline-flex w-full justify-center rounded-lg bg-slate-900 py-2.5 px-4 text-sm font-semibold text-white hover:bg-slate-700"
         >
-          <span>Log in {loginLoading && "..."}</span>
+          <span>Log in {loginLoading && '...'}</span>
         </button>
 
         <div className="agree-box">
