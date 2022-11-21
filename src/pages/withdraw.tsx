@@ -157,6 +157,10 @@ export default function Withdraw() {
             </button>
           </div>
         </div>
+
+        <DialogComponent isOpen={isPasswordOpen} closeModal={closePasswordModal}>
+          <PasswordDialog onCancel={() => closePasswordModal()} onConfirm={onConfirmPassword} />
+        </DialogComponent>
       </div>
     )
   }

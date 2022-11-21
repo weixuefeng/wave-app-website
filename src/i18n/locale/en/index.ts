@@ -92,4 +92,8 @@ export const enTransaction = {
   EMAIL_VERIFY_CODE: 'Email Verify Code',
   SEND_CODE: 'Send Code',
   NEXT: 'Next',
+  TRANSACTION_PASSWORD: 'Transaction Password',
+  CONFIRM_TRANSACTION_PASSWORD: 'Confirm Transaction Password',
+  TRANSACTION_PASSWORD_PLACEHOLDER: 'Please enter the six-digit password',
+  CONFIRM_TRANSACTION_PASSWORD_PLACEHOLDER: 'Please enter the password again',
 }

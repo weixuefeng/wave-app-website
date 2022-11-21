@@ -90,4 +90,9 @@ export const zhTransaction = {
   EMAIL_VERIFY_CODE: '邮箱验证码',
   SEND_CODE: '发送验证码',
   NEXT: '下一步',
+  TRANSACTION_PASSWORD: '交易密码',
+  CONFIRM_TRANSACTION_PASSWORD: '确认交易密码',
+  TRANSACTION_PASSWORD_PLACEHOLDER: '确认交易密码',
+  CONFIRM_TRANSACTION_PASSWORD_PLACEHOLDER: '请再次输入密码',
+  TERM_OF_SERterm_of_services: '请再次输入密码',
 }
