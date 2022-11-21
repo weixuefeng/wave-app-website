@@ -2,8 +2,8 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-09-21 10:43:33
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-18 15:40:47
- * @FilePath: /wave-app-website/src/pages/blindbox/[id].tsx
+ * @LastEditTime: 2022-11-21 13:49:16
+ * @FilePath: /wave-app-webiste/src/pages/blindbox/[id].tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import HeadImg from 'components/collection/headImg'
@@ -298,37 +298,38 @@ function Main(props) {
     )
   } else {
     return (
-      // <div className="index-wrap">
-      //   <div className="hidden">
-      //     <img alt="logo" src="/assets/image/logo.png" />
-      //   </div>
-      //   <HeadImg collectionInfo={collectionInfo} />
-      //   <BaseInfo collectionInfo={collectionInfo} />
-      //   <StaticInfo collectionInfo={collectionInfo}></StaticInfo>
-      //   {collectionInfo.picture_description && (
-      //     <div className="staticinfo-wrap">
-      //       <img className="w-full rounded-xl" src={collectionInfo.picture_description} alt="" />
-      //     </div>
-      //   )}
-      //   {collectionInfo.license_url && (
-      //     <a className="staticinfo-wrap license" href={collectionInfo.license_url}>
-      //       <span className="title">{t('LICENSE')}</span>
-      //       <img src="/assets/image/icon-arrow.png" alt="" />
-      //     </a>
-      //   )}
-      //   <div className="pb-32"></div>
-      //   <WhitelistBottom collectionInfo={collectionInfo} />
-      //   <FixBottom
-      //     hasAddCalendar={hasAddCalendar}
-      //     collectionInfo={collectionInfo}
-      //     isInApp={isInApp}
-      //     addToCalendar={() => requestAddCalendar()}
-      //     payOrder={() => requestPayOrder()}
-      //     gotoTrade={() => gotoTrade()}
-      //     gotoAssets={() => gotoAssets()}
-      //   />
-      // </div>
+      
       <>
+      {/* <div className="index-wrap">
+        <div className="hidden">
+          <img alt="logo" src="/assets/image/logo.png" />
+        </div>
+        <HeadImg collectionInfo={collectionInfo} />
+        <BaseInfo collectionInfo={collectionInfo} />
+        <StaticInfo collectionInfo={collectionInfo}></StaticInfo>
+        {collectionInfo.picture_description && (
+          <div className="staticinfo-wrap">
+            <img className="w-full rounded-xl" src={collectionInfo.picture_description} alt="" />
+          </div>
+        )}
+        {collectionInfo.license_url && (
+          <a className="staticinfo-wrap license" href={collectionInfo.license_url}>
+            <span className="title">{t('LICENSE')}</span>
+            <img src="/assets/image/icon-arrow.png" alt="" />
+          </a>
+        )}
+        <div className="pb-32"></div>
+        <WhitelistBottom collectionInfo={collectionInfo} />
+        <FixBottom
+          hasAddCalendar={hasAddCalendar}
+          collectionInfo={collectionInfo}
+          isInApp={isInApp}
+          addToCalendar={() => requestAddCalendar()}
+          payOrder={() => requestPayOrder()}
+          gotoTrade={() => gotoTrade()}
+          gotoAssets={() => gotoAssets()}
+        />
+      </div> */}
         {/* tudo */}
         <BlindboxComponent />
       </>
