@@ -17,6 +17,8 @@ import { loadGetInitialProps } from 'next/dist/shared/lib/utils'
 import LoginDialog from 'components/dialog/LoginDialog'
 import Link from 'next/link'
 import { t } from 'i18next'
+import BidSucceededDialog from 'components/dialog/BidSucceededDialog'
+import BuySuccessfulDialog from 'components/dialog/BuySuccessfulDialog'
 
 export default function NFTDetailComponent(props) {
   const { id } = props
@@ -39,6 +41,9 @@ export default function NFTDetailComponent(props) {
   // login dialog
   const [isLoginOpen, setIsLoginOpen] = useState(false)
 
+  const [isBidSucceeded, setBidSucceeded] = useState(false)
+  const [isBuySucceeded, setBuySucceeded] = useState(false)
+
   function closeLoginModal() {
     setIsLoginOpen(false)
   }
@@ -59,6 +64,14 @@ export default function NFTDetailComponent(props) {
     setIsSellAssetOpen(false)
   }
 
+  function closeBidSucceededModal() {
+    setBidSucceeded(false)
+  }
+
+  function closeBuySucceededModal() {
+    setBuySucceeded(false)
+  }
+
   function showPassword() {
     closeMakeOfferModal()
     closeBuyModal()
@@ -75,6 +88,7 @@ export default function NFTDetailComponent(props) {
         .then(response => {
           // refresh page
           loadData()
+          setBidSucceeded(true)
         })
         .catch(error => {
           Log.e(error)
@@ -86,6 +100,7 @@ export default function NFTDetailComponent(props) {
         .then(response => {
           // refresh page
           loadData()
+          setBuySucceeded(true)
         })
         .catch(error => {
           Log.e(error)
@@ -315,6 +330,16 @@ export default function NFTDetailComponent(props) {
       {/** password dialog */}
       <DialogComponent isOpen={isPasswordOpen} closeModal={closePasswordModal}>
         <PasswordDialog onCancel={() => closePasswordModal()} onConfirm={onConfirmPassword} />
+      </DialogComponent>
+
+      {/* Bid Succeeded Dialog */}
+      <DialogComponent isOpen={isBidSucceeded} closeModal={closeBidSucceededModal}>
+        <BidSucceededDialog onCancel={() => closeBidSucceededModal()} />
+      </DialogComponent>
+
+      {/* buy Succeeded Dialog */}
+      <DialogComponent isOpen={isBuySucceeded} closeModal={closeBuySucceededModal}>
+        <BuySuccessfulDialog onCancel={() => closeBuySucceededModal()} />
       </DialogComponent>
 
       {/** sell asset dialog */}

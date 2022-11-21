@@ -262,6 +262,33 @@
   }
 }
 
+.dialog-bid-succeeded {
+  h2 {
+    @apply text-2xl text-gray333 text-center mt-7 mb-16;
+  }
+  .action {
+    @apply bg-gray333 py-3 px-20 text-center rounded-xl;
+    a {
+      @apply w-full h-full block text-base text-white;
+    }
+  }
+}
+
+.dialog-buy-successful {
+  h2 {
+    @apply text-2xl text-gray333 text-center mt-7 mb-5;
+  }
+  .content {
+    @apply text-gray66 text-base mb-10;
+  }
+  .action {
+    @apply bg-gray333 py-3 px-20 text-center rounded-xl;
+    a {
+      @apply w-full h-full block text-base text-white;
+    }
+  }
+}
+
 .dialog-offers-received {
   h3 {
     @apply text-2xl font-normal text-gray333;
