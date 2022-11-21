@@ -14,7 +14,6 @@ import { useAppSelector } from 'store/store'
 import Log from 'utils/log'
 
 export default function VerfiyEmail(props) {
-  
   const { setEmailSettingPage, setTicket } = props
   const currentUser = useAppSelector(selectUser) as UserInfo
   const [verfiyEmailCode, setVerfiyEmailCode] = useState<string>()
@@ -102,7 +101,9 @@ export default function VerfiyEmail(props) {
           <input placeholder="Verification Code" onChange={e => setVerfiyEmailCode(e.target.value)} />
           <img src="assets/image/icon_code.png" alt="code" />
           <button className="send-code" disabled={btnDisabled || sendCodeloading} onClick={() => oldGetVerifyCode()}>
-            <span>{btnContent} {!btnDisabled && sendCodeloading && "..."}</span>
+            <span>
+              {btnContent} {!btnDisabled && sendCodeloading && '...'}
+            </span>
           </button>
           {isVerfiyEmailCode == true ? <p className="tit">请输入验证码</p> : null}
         </div>

@@ -1,13 +1,17 @@
+/*
+ * @Author: liukeke liukeke@diynova.com
+ * @Date: 2022-11-21 15:28:55
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-21 19:46:55
+ * @FilePath: /wave-app-webiste/src/components/dialog/LoginDialog.tsx
+ */
 import { Checkbox } from 'antd'
-import { LocalKey } from 'constants/key'
-import { putLocalData } from 'localstorage/localstorage'
 import { EmailAction } from 'model/user'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import React, { useState } from 'react'
-import { selectUser, updateUserInfo } from 'reducer/userReducer'
+import React, { useEffect, useState } from 'react'
+import { updateUserInfo } from 'reducer/userReducer'
 import Http from 'services/http'
-import { useAppDispatch, useAppSelector } from 'store/store'
+import { useAppDispatch } from 'store/store'
 import Log from 'utils/log'
 
 export default function LoginDialog(props) {
@@ -16,22 +20,25 @@ export default function LoginDialog(props) {
   const [email, setEmail] = useState<string>()
   const [verifyCode, setVerifyCode] = useState<string>()
   const dispatch = useAppDispatch()
-  const currentUser = useAppSelector(selectUser)
-  const router = useRouter()
   const [loginLoading, setLoginLoading] = useState(false)
+  const [btnContent, setBtnContent] = useState('Send code')
+  const [btnDisabled, setBtnDisabled] = useState(false)
+  const [time, setTime] = useState<number>(60)
+  const [sendCodeloading, setSendCodeLoading] = useState(false)
+  const [countdownInterval, setCountdownInterval] = useState<NodeJS.Timer>()
 
-  function requestVerifyCode() {
-    Http.getInstance()
-      .requestVerifyCode(email, EmailAction.LOGIN)
-      .then(response => {
-        Log.d(response)
-      })
-      .catch(error => {
-        Log.e(error)
-      })
-  }
+  const [isEmail, setIsEmail] = useState(false)
+  const [isEmailCode, setEmailCode] = useState(false)
+  useEffect(() => {
+    clearInterval(countdownInterval)
+    return () => clearInterval(countdownInterval)
+  }, [])
 
   function requestLogin() {
+    if (verifyCode == undefined) {
+      setEmailCode(true)
+      return
+    }
     setLoginLoading(true)
     Http.getInstance()
       .login(email, verifyCode)
@@ -44,7 +51,49 @@ export default function LoginDialog(props) {
       })
       .finally(() => {
         setLoginLoading(false)
+        setEmailCode(false)
       })
+  }
+
+  function requestVerifyCode() {
+    if (email == undefined) {
+      setIsEmail(true)
+      return
+    }
+    setSendCodeLoading(true)
+    Http.getInstance()
+      .requestVerifyCode(email, EmailAction.LOGIN)
+      .then(response => {
+        setBtnDisabled(true)
+        console.log('time:', time)
+        setBtnContent(`${time} s后重发`)
+        console.log('time2:', time)
+        sendCodeCountDown(time)
+        Log.d(response)
+      })
+      .catch(error => {
+        Log.e(error)
+      })
+      .finally(() => {
+        setSendCodeLoading(false)
+        setIsEmail(false)
+      })
+  }
+
+  function sendCodeCountDown(startTime) {
+    let countdownTime = --startTime
+    let timeChange = setInterval(() => {
+      if (countdownTime < 0) {
+        clearInterval(timeChange)
+        setBtnContent('Send code')
+        setBtnDisabled(false)
+        setTime(60)
+      } else {
+        setBtnContent(`${countdownTime} s后重发`)
+        setTime(--countdownTime)
+      }
+    }, 1000)
+    setCountdownInterval(timeChange)
   }
 
   return (
@@ -56,16 +105,19 @@ export default function LoginDialog(props) {
         <div className="email">
           <input placeholder="Email Address" onChange={e => setEmail(e.target.value)} />
           <img src="assets/image/icon_email.png" alt="email" />
+          {isEmail ? <p className="tit-email">请输入邮箱</p> : null}
         </div>
 
         <div className="code-box">
           <input placeholder="Verification Code" onChange={e => setVerifyCode(e.target.value)} />
           <img src="assets/image/icon_code.png" alt="code" />
-          <button onClick={() => requestVerifyCode()} className="send-code">
-            <span>Send code</span>
+          <button disabled={btnDisabled || sendCodeloading} onClick={() => requestVerifyCode()} className="send-code">
+            <span>
+              {btnContent} {!btnDisabled && sendCodeloading && '...'}
+            </span>
           </button>
+          {isEmailCode ? <p className="tit-email">请输入验证码</p> : null}
         </div>
-
         <button
           onClick={() => requestLogin()}
           disabled={loginLoading}
@@ -73,7 +125,6 @@ export default function LoginDialog(props) {
         >
           <span>Log in {loginLoading && '...'}</span>
         </button>
-
         <div className="agree-box">
           <Checkbox className="checkbox"></Checkbox>
           <p className="agree">

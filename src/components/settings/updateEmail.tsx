@@ -14,7 +14,6 @@ import { useAppDispatch, useAppSelector } from 'store/store'
 import Log from 'utils/log'
 
 export default function UpdateEmail(props) {
-  
   const { setEmailSettingPage, setIsOpen, ticket } = props
 
   const currentUser = useAppSelector(selectUser) as UserInfo
@@ -85,7 +84,8 @@ export default function UpdateEmail(props) {
       })
       .catch(error => {
         Log.e(error)
-      }).finally(() => {
+      })
+      .finally(() => {
         setSendCodeLoading(false)
       })
   }
@@ -125,7 +125,10 @@ export default function UpdateEmail(props) {
           <input placeholder="Verification Code" onChange={e => setUpdateEmailCode(e.target.value)} />
           <img src="assets/image/icon_code.png" alt="code" />
           <button className="send-code" disabled={btnDisabled || sendCodeloading} onClick={() => requestVerifyCode()}>
-            <span>{btnContent}{!btnDisabled && sendCodeloading && "..."}</span>
+            <span>
+              {btnContent}
+              {!btnDisabled && sendCodeloading && '...'}
+            </span>
           </button>
           {isUpdateEmailCode ? <p className="tit-email">请输入验证码</p> : null}
         </div>

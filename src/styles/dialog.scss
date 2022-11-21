@@ -69,8 +69,13 @@
       //   @apply mt-1 text-xs text-redb6;
       // }
 
+      .tit-email,
+      .tit {
+        @apply absolute -bottom-6 left-0 text-xs text-red-700;
+      }
       .send-code {
-        @apply absolute top-0 right-5 h-14 cursor-pointer text-sm leading-8 text-gray333;
+        @apply absolute top-0 right-0 h-14 cursor-pointer pr-5 text-sm leading-8 text-gray333;
+        border-radius: 0 12px 12px 0;
         span {
           @apply border-l-[1px] border-grayed pl-5;
         }
