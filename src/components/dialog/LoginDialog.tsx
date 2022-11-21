@@ -18,6 +18,7 @@ export default function LoginDialog(props) {
   const dispatch = useAppDispatch()
   const currentUser = useAppSelector(selectUser)
   const router = useRouter()
+  const [loginLoading, setLoginLoading] = useState(false)
 
   function requestVerifyCode() {
     Http.getInstance()
@@ -31,6 +32,7 @@ export default function LoginDialog(props) {
   }
 
   function requestLogin() {
+    setLoginLoading(true)
     Http.getInstance()
       .login(email, verifyCode)
       .then(response => {
@@ -39,6 +41,8 @@ export default function LoginDialog(props) {
       })
       .catch(error => {
         Log.e(error)
+      }).finally(() => {
+        setLoginLoading(false)
       })
   }
 
@@ -63,9 +67,10 @@ export default function LoginDialog(props) {
 
         <button
           onClick={() => requestLogin()}
+          disabled={loginLoading}
           className="inline-flex w-full justify-center rounded-lg bg-slate-900 py-2.5 px-4 text-sm font-semibold text-white hover:bg-slate-700"
         >
-          <span>Log in</span>
+          <span>Log in {loginLoading && "..."}</span>
         </button>
 
         <div className="agree-box">
