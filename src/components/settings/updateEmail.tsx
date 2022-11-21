@@ -1,10 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-18 15:59:01
- * @FilePath: /wave-app-website/src/components/settings/updateEmail.tsx
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-21 17:21:52
+ * @FilePath: /wave-app-webiste/src/components/settings/updateEmail.tsx
  */
 
 import { EmailAction, UserInfo } from 'model/user'
@@ -14,9 +13,8 @@ import Http from 'services/http'
 import { useAppDispatch, useAppSelector } from 'store/store'
 import Log from 'utils/log'
 
-let timeChange
-
 export default function UpdateEmail(props) {
+  
   const { setEmailSettingPage, setIsOpen, ticket } = props
 
   const currentUser = useAppSelector(selectUser) as UserInfo
@@ -28,26 +26,17 @@ export default function UpdateEmail(props) {
   const [isUpdateEmailCode, setIsUpdateEmailCode] = useState(false)
 
   const [btnContent, setBtnContent] = useState('Send code')
-  const [time, setTime] = useState(60)
+  const [time, setTime] = useState<number>(60)
   const [btnDisabled, setBtnDisabled] = useState(false)
 
   const [confirmLoading, setConfirmLoading] = useState(false)
+  const [sendCodeloading, setSendCodeLoading] = useState(false)
+  const [countdownInterval, setCountdownInterval] = useState<NodeJS.Timer>()
 
   useEffect(() => {
-    clearInterval(timeChange)
-    return () => clearInterval(timeChange)
+    clearInterval(countdownInterval)
+    return () => clearInterval(countdownInterval)
   }, [])
-
-  useEffect(() => {
-    if (time > 0 && time < 60) {
-      setBtnContent(`${time}s后重发`)
-    } else {
-      clearInterval(timeChange)
-      setBtnDisabled(false)
-      setTime(60)
-      setBtnContent('Send code')
-    }
-  }, [time])
 
   function requestEmail() {
     let emailVal = undefined || ''
@@ -85,17 +74,36 @@ export default function UpdateEmail(props) {
       setIsEmail(true)
       return
     }
-    timeChange = setInterval(() => setTime(t => --t), 1000)
-    setBtnDisabled(true)
+    setSendCodeLoading(true)
     setIsEmail(false)
     Http.getInstance()
       .requestVerifyCode(email, EmailAction.RESET_EMAIL)
       .then(response => {
-        Log.d(response)
+        setBtnDisabled(true)
+        setBtnContent(`${time} s后重发`)
+        sendCodeCountDown(time)
       })
       .catch(error => {
         Log.e(error)
+      }).finally(() => {
+        setSendCodeLoading(false)
       })
+  }
+
+  function sendCodeCountDown(startTime) {
+    let countdownTime = --startTime
+    let timeChange = setInterval(() => {
+      if (countdownTime < 0) {
+        clearInterval(timeChange)
+        setBtnContent('Send code')
+        setBtnDisabled(false)
+        setTime(60)
+      } else {
+        setBtnContent(`${countdownTime} s后重发`)
+        setTime(--countdownTime)
+      }
+    }, 1000)
+    setCountdownInterval(timeChange)
   }
 
   return (
@@ -116,8 +124,8 @@ export default function UpdateEmail(props) {
           </label>
           <input placeholder="Verification Code" onChange={e => setUpdateEmailCode(e.target.value)} />
           <img src="assets/image/icon_code.png" alt="code" />
-          <button className="send-code" disabled={btnDisabled} onClick={() => requestVerifyCode()}>
-            <span>{btnContent}</span>
+          <button className="send-code" disabled={btnDisabled || sendCodeloading} onClick={() => requestVerifyCode()}>
+            <span>{btnContent}{!btnDisabled && sendCodeloading && "..."}</span>
           </button>
           {isUpdateEmailCode ? <p className="tit-email">请输入验证码</p> : null}
         </div>

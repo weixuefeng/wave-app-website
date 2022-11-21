@@ -2,9 +2,8 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-21 15:25:35
+ * @LastEditTime: 2022-11-21 17:21:44
  * @FilePath: /wave-app-webiste/src/components/settings/verfiyEmail.tsx
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 
 import { EmailAction, UserInfo } from 'model/user'
@@ -14,54 +13,55 @@ import Http from 'services/http'
 import { useAppSelector } from 'store/store'
 import Log from 'utils/log'
 
-let timeChange
-
 export default function VerfiyEmail(props) {
+  
   const { setEmailSettingPage, setTicket } = props
   const currentUser = useAppSelector(selectUser) as UserInfo
   const [verfiyEmailCode, setVerfiyEmailCode] = useState<string>()
   const [isVerfiyEmailCode, setIsVerfiyEmailCode] = useState(false)
   const [btnContent, setBtnContent] = useState('Send code')
-  const [time, setTime] = useState(60)
+  const [time, setTime] = useState<number>(60)
   const [btnDisabled, setBtnDisabled] = useState(false)
   const [nextLoading, setNextLoading] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [sendCodeloading, setSendCodeLoading] = useState(false)
+  const [countdownInterval, setCountdownInterval] = useState<NodeJS.Timer>()
 
   useEffect(() => {
-    if (currentUser) {
-    }
-  }, [currentUser])
-
-  useEffect(() => {
-    clearInterval(timeChange)
-    return () => clearInterval(timeChange)
+    clearInterval(countdownInterval)
+    return () => clearInterval(countdownInterval)
   }, [])
 
-  useEffect(() => {
-    if (time > 0 && time < 60) {
-      setBtnContent(`${time}s后重发`)
-    } else {
-      clearInterval(timeChange)
-      setBtnDisabled(false)
-      setTime(60)
-      setBtnContent('Send code')
-    }
-  }, [time])
-
   function oldGetVerifyCode() {
-    setLoading(true)
-    timeChange = setInterval(() => setTime(t => --t), 1000)
-    setBtnDisabled(true)
+    setSendCodeLoading(true)
     Http.getInstance()
       .requestVerifyCode(currentUser.email, EmailAction.CHECK_EMAIL)
       .then(response => {
-        Log.d(response)
+        setBtnDisabled(true)
+        setBtnContent(`${time} s后重发`)
+        sendCodeCountDown(time)
       })
       .catch(error => {
         Log.e(error)
-      }).finally(()=>{
-        setLoading(false)
       })
+      .finally(() => {
+        setSendCodeLoading(false)
+      })
+  }
+
+  function sendCodeCountDown(startTime) {
+    let countdownTime = --startTime
+    let timeChange = setInterval(() => {
+      if (countdownTime < 0) {
+        clearInterval(timeChange)
+        setBtnContent('Send code')
+        setBtnDisabled(false)
+        setTime(60)
+      } else {
+        setBtnContent(`${countdownTime} s后重发`)
+        setTime(--countdownTime)
+      }
+    }, 1000)
+    setCountdownInterval(timeChange)
   }
 
   function oldRequestEmail() {
@@ -101,8 +101,8 @@ export default function VerfiyEmail(props) {
           </label>
           <input placeholder="Verification Code" onChange={e => setVerfiyEmailCode(e.target.value)} />
           <img src="assets/image/icon_code.png" alt="code" />
-          <button className="send-code" disabled={btnDisabled} onClick={() => oldGetVerifyCode()}>
-            <span>{btnContent} {loading && '...'}</span>
+          <button className="send-code" disabled={btnDisabled || sendCodeloading} onClick={() => oldGetVerifyCode()}>
+            <span>{btnContent} {!btnDisabled && sendCodeloading && "..."}</span>
           </button>
           {isVerfiyEmailCode == true ? <p className="tit">请输入验证码</p> : null}
         </div>
