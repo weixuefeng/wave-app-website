@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-14 13:36:09
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-21 13:48:18
+ * @LastEditTime: 2022-11-21 14:42:10
  * @FilePath: /wave-app-webiste/src/components/blindbox/Countdown.tsx
  */
 
@@ -70,49 +70,56 @@ function Countdown(props) {
     if (collectionInfo.sell_status == 0) {
       if (remainSecond > 86400) {
         return (
-          <div className="status-onimg">
-            <>{t('UPCOMMINGDROP')}</>
+          <div className="drop">
+            <img src="/assets/image/icon_tips.png" alt="upcoming up" />
+            <div className="status-onimg">
+              <>{t('UPCOMMINGDROP')}</>
+            </div>
           </div>
         )
       } else {
         return (
-          <div className="status-onimg">
-            <>{t('COMINGSOON')}</>
+          <div className="drop">
+            <img src="/assets/image/icon_tips.png" alt="upcoming up" />
+            <div className="status-onimg">
+              <>{t('COMINGSOON')}</>
+            </div>
           </div>
         )
       }
     } else if (collectionInfo.sell_status == 1) {
       return (
-        <div className="status-onimg">
-          <>{t('LIVEDROP')}</>
+        <div className="drop">
+          <img src="/assets/image/icon_tips.png" alt="upcoming up" />
+          <div className="status-onimg">
+            <>{t('LIVEDROP')}</>
+          </div>
         </div>
       )
-    } else {
-      return (
-        <>
-          <div className="status-onimg disabled">
-            <>{t('SOLDOUT')}</>
-          </div>
-          <div className="sold-out">
-            {/* English */}
-            {i18n.language == 'en' ? (
-              <img src="/assets/image/sold_out_en.png" alt="sole out" />
-            ) : (
-              <img src="/assets/image/sold_out_zh.png" alt="sole out" />
-            )}
-          </div>
-        </>
-      )
     }
+    // else {
+    //   return (
+    //     <>
+    //       <div className="status-onimg disabled">
+    //         <>{t('SOLDOUT')}</>
+    //       </div>
+    //       <div className="sold-out">
+    //         {/* English */}
+    //         {i18n.language == 'en' ? (
+    //           <img src="/assets/image/sold_out_en.png" alt="sole out" />
+    //         ) : (
+    //           <img src="/assets/image/sold_out_zh.png" alt="sole out" />
+    //         )}
+    //       </div>
+    //     </>
+    //   )
+    // }
   }
 
   return (
     <div className="count-down">
       {timeJudge()}
-      <div className="drop">
-        <img src="/assets/image/icon_tips.png" alt="upcoming up" />
-        {statusJudge()}
-      </div>
+      {statusJudge()}
     </div>
   )
 }
