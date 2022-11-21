@@ -298,9 +298,8 @@ function Main(props) {
     )
   } else {
     return (
-      
       <>
-      {/* <div className="index-wrap">
+        {/* <div className="index-wrap">
         <div className="hidden">
           <img alt="logo" src="/assets/image/logo.png" />
         </div>

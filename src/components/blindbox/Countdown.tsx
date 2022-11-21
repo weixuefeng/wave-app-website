@@ -48,13 +48,10 @@ function Countdown(props) {
     }, 1000)
   }
 
-
   function timeJudge() {
     if (collectionInfo.sell_status == 0) {
       if (remainSecond > 86400) {
-        return (
-          <div className="time">{t('STARTSAT') + ' ' + getUTCDetailTime(collectionInfo.sell_start_time)}</div>
-        )
+        return <div className="time">{t('STARTSAT') + ' ' + getUTCDetailTime(collectionInfo.sell_start_time)}</div>
       } else if (remainSecond > 0) {
         return <div className="time">{t('STARTSIN') + ' ' + calculateCountdown(remainSecond)}</div>
       } else {
