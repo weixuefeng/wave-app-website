@@ -1,8 +1,8 @@
 import { Menu } from '@headlessui/react'
 import DialogComponent from 'components/common/DialogComponent'
-import { t } from 'i18next'
 import Link from 'next/link'
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useAppDispatch, useAppSelector } from 'store/store'
 import { splitAddress } from 'utils/functions'
 import { selectUser, updateUserInfo } from '../../reducer/userReducer'
@@ -12,6 +12,7 @@ export default function LoginComponent() {
   let [isOpen, setIsOpen] = useState(false)
   const currentUser = useAppSelector(selectUser)
   const dispatch = useAppDispatch()
+  const { t } = useTranslation()
 
   function closeModal() {
     setIsOpen(false)
@@ -41,32 +42,21 @@ export default function LoginComponent() {
             <p className="name">{currentUser.name}</p>
             <p className="address">{splitAddress(currentUser.wallet_address)}</p>
             <div className="list">
-              <p>
-                <Link href="/tickets">
-                  <>{t('TICKETS')}</>
-                </Link>
-              </p>
-              <p>
-                <Link href="/wallet">
-                  <>{t('WALLET')}</>
-                </Link>
-              </p>
-              <p>
-                <Link href="/assets">
-                  <>{t('ASSETS')}</>
-                </Link>
-              </p>
-              <p>
-                <Link href="/cinema">
-                  <>{t('MY_CINEMA')}</>
-                </Link>
-              </p>
-              <p>
-                <Link href="/settings" className="mt-4">
-                  <>{t('SETTINGS')}</>
-                </Link>
-              </p>
-
+              <Link href="/tickets">
+                <p>{t('TICKETS')}</p>
+              </Link>
+              <Link href="/wallet">
+                <p>{t('WALLET')}</p>
+              </Link>
+              <Link href="/assets">
+                <p>{t('ASSETS')}</p>
+              </Link>
+              <Link href="/cinema">
+                <p>{t('MY_CINEMA')}</p>
+              </Link>
+              <Link href="/settings" className="mt-4">
+                <p>{t('SETTINGS')}</p>
+              </Link>
               <p
                 className="w-full cursor-pointer text-red-500"
                 onClick={() => {
@@ -74,7 +64,7 @@ export default function LoginComponent() {
                   localStorage.clear()
                 }}
               >
-                <>{t('LOGOUT')}</>
+                {t('LOGOUT')}
               </p>
             </div>
           </div>
