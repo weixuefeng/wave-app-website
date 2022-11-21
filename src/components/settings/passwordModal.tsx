@@ -12,6 +12,7 @@ import { selectUser } from 'reducer/userReducer'
 import Http from 'services/http'
 import { useAppSelector } from 'store/store'
 import Log from 'utils/log'
+import {t} from "i18next";
 
 export default function PasswordModal(props) {
   let [isOpen, setIsOpen] = useState(false)
@@ -83,7 +84,9 @@ export default function PasswordModal(props) {
             />
             <img src="assets/image/icon_code.png" alt="code" />
             <button className="send-code" onClick={requestVerifyCode}>
-              <span>Send code</span>
+              <span>
+                <>{t('SEND_CODE')}</>
+              </span>
             </button>
           </div>
 

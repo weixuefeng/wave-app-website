@@ -3,7 +3,7 @@
 }
 
 .dialog-base {
-  @apply relative w-full max-w-[37rem] transform overflow-hidden rounded-2xl bg-white p-12 text-left align-middle shadow-xl transition-all;
+  @apply relative w-full max-w-[37rem] transform overflow-hidden rounded-2xl bg-white py-12 px-9 text-left align-middle shadow-xl transition-all;
   .close {
     @apply absolute top-0 right-0 m-4 h-5 w-5 cursor-pointer;
   }

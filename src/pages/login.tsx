@@ -13,6 +13,7 @@ import Http from 'services/http'
 import { useAppDispatch, useAppSelector } from 'store/store'
 import Log from 'utils/log'
 import { fetchUser, selectUser } from '../reducer/userReducer'
+import { t } from 'i18next'
 
 export default function Login() {
   const [email, setEmail] = useState<string>()
@@ -42,7 +43,7 @@ export default function Login() {
           <div className="w-full max-w-sm">
             <div className="mb-6">
               <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
-                Email address
+                <>{t('EMAIL_ADDRESS')}</>
               </label>
               <input
                 type="email"

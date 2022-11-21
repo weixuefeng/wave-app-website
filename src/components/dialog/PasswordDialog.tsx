@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import InputGroup from 'react-input-groups'
 import 'react-input-groups/lib/css/styles.css'
+import { t } from 'i18next'
 
 export default function PasswordDialog(props) {
   const { getPasswordValue, onCancel, onConfirm } = props
@@ -13,7 +14,9 @@ export default function PasswordDialog(props) {
 
   return (
     <div className="dialog-password">
-      <p className="title">Payment Password</p>
+      <p className="title">
+          <>{t('PAYMENT_PASSWORD')}</>
+      </p>
       <div className="password">
         <InputGroup getValue={setValue} length={6} type={'box'} />
       </div>

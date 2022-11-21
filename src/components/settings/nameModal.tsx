@@ -5,6 +5,7 @@ import { selectUser, updateUserInfo } from 'reducer/userReducer'
 import Http from 'services/http'
 import { useAppDispatch, useAppSelector } from 'store/store'
 import Log from 'utils/log'
+import { t } from 'i18next'
 
 export default function NameModal(props) {
   const currentUser = useAppSelector(selectUser) as UserInfo
@@ -61,7 +62,9 @@ export default function NameModal(props) {
   }
   return (
     <li>
-      <p>Nickname</p>
+      <p>
+          <>{t('NICKNAME')}</>
+      </p>
       <div>
         <span className="left">{currentUser?.name}</span>
         <span className="edit" onClick={openModal}>
