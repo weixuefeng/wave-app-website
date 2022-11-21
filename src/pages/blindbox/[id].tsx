@@ -1,28 +1,24 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-09-21 10:43:33
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-21 13:49:16
- * @FilePath: /wave-app-webiste/src/pages/blindbox/[id].tsx
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-21 20:08:05
+ * @FilePath: /wave-app-website/src/pages/blindbox/[id].tsx
  */
-import HeadImg from 'components/collection/headImg'
-import BaseInfo from 'components/collection/baseInfo'
-import StaticInfo from 'components/collection/staticInfo'
-import FixBottom from 'components/collection/fixedBottom'
-
-import NormalLayout from 'components/layout/NormalLayout'
+import NormalLayout from 'components/layout/normalLayout'
 import { PageModel } from 'model/navModel'
 import { useEffect, useState } from 'react'
 
 import { useRouter } from 'next/router'
 import { Skeleton } from 'antd'
-import { CollectionInfo, IsWhiteList, UserInWhiteList } from 'model/collection_model'
+import { CollectionInfo, UserInWhiteList } from 'model/collection_model'
 import { useTranslation } from 'react-i18next'
-import WhitelistBottom from 'components/collection/WhitelistBottom'
 import Http from 'services/http'
 import Log from 'utils/log'
 import BlindboxComponent from 'components/blindbox/BlindboxComponent'
+import DialogComponent from 'components/common/DialogComponent'
+import BuyBlindBoxDialog from 'components/dialog/BuyBlindBoxDialog'
+import PasswordDialog from 'components/dialog/PasswordDialog'
 
 export default Home
 
@@ -49,6 +45,11 @@ function Main(props) {
   const [hasAddCalendar, setHasAddCalendar] = useState(false)
   const [refreshFlag, setRefreshFlag] = useState(Date.now())
 
+  const [blindBoxProps, setBlindBoxProps] = useState({})
+  const [showPassword, setShowPassword] = useState(false)
+
+  const [isPasswordOpen, setIsPasswordOpen] = useState(false)
+
   useEffect(() => {
     const flag = checkIsInApp()
     if (id != undefined) {
@@ -57,6 +58,28 @@ function Main(props) {
       }, 500)
     }
   }, [id, refreshFlag])
+
+  const [isBuyOpen, setIsBuyOpen] = useState(false)
+
+  function closeBuyModal() {
+    setIsBuyOpen(false)
+  }
+
+  function closePasswordModal() {
+    setIsPasswordOpen(false)
+  }
+
+  function onConfirmPassword(password: string) {
+    closePasswordModal()
+    Http.getInstance()
+      .requestBuyBlindBox(id.toString(), password, 1)
+      .then(response => {
+        Log.d(response)
+      })
+      .catch(err => {
+        Log.e(err)
+      })
+  }
 
   function fetchCollectionInfo(flag) {
     Http.getInstance()
@@ -161,29 +184,22 @@ function Main(props) {
       preemptionTotalLimit = collectionInfo.white_list_settings.preemption_total_limit
     }
     let params = {
-      name: 'requestPayOrder',
-      data: {
-        collection_id: collectionInfo.id.toString(),
-        mystery_box_id: collectionInfo.mystery_box_id ? collectionInfo.mystery_box_id.toString() : '',
-        price: sellPrice,
-        to_address: to,
-        is_whitelist_order: is_whitelist_order,
-        have_white_list: collectionInfo.have_white_list,
-        preemption_buy_limit: preemptionBuyLimit,
-        preemption_buy_limit_one_time: preemptionBuyLimitOneTime,
-        preemption_total_limit: preemptionTotalLimit,
-        current_user_in_white_list: collectionInfo.current_user_in_white_list,
-        buy_quantity_limit: collectionInfo.buy_quantity_limit,
-      },
+      collection_id: collectionInfo.id.toString(),
+      mystery_box_id: collectionInfo.mystery_box_id ? collectionInfo.mystery_box_id.toString() : '',
+      price: sellPrice,
+      to_address: to,
+      is_whitelist_order: is_whitelist_order,
+      have_white_list: collectionInfo.have_white_list,
+      preemption_buy_limit: preemptionBuyLimit,
+      preemption_buy_limit_one_time: preemptionBuyLimitOneTime,
+      preemption_total_limit: preemptionTotalLimit,
+      current_user_in_white_list: collectionInfo.current_user_in_white_list,
+      buy_quantity_limit: collectionInfo.buy_quantity_limit,
+      closeBuyModal: closeBuyModal,
+      setIsPasswordOpen: setIsPasswordOpen,
     }
-
-    postMessage(params, function (data) {
-      // console.debug('\r\n requestPayOrder: ' + JSON.stringify(data))
-      setRefreshFlag(Date.now())
-      if (data != null) {
-        Log.d(JSON.stringify(data))
-      }
-    })
+    setBlindBoxProps(params)
+    setIsBuyOpen(true)
   }
 
   function gotoTrade() {
@@ -299,38 +315,22 @@ function Main(props) {
   } else {
     return (
       <>
-        {/* <div className="index-wrap">
-        <div className="hidden">
-          <img alt="logo" src="/assets/image/logo.png" />
-        </div>
-        <HeadImg collectionInfo={collectionInfo} />
-        <BaseInfo collectionInfo={collectionInfo} />
-        <StaticInfo collectionInfo={collectionInfo}></StaticInfo>
-        {collectionInfo.picture_description && (
-          <div className="staticinfo-wrap">
-            <img className="w-full rounded-xl" src={collectionInfo.picture_description} alt="" />
-          </div>
-        )}
-        {collectionInfo.license_url && (
-          <a className="staticinfo-wrap license" href={collectionInfo.license_url}>
-            <span className="title">{t('LICENSE')}</span>
-            <img src="/assets/image/icon-arrow.png" alt="" />
-          </a>
-        )}
-        <div className="pb-32"></div>
-        <WhitelistBottom collectionInfo={collectionInfo} />
-        <FixBottom
+        <BlindboxComponent
           hasAddCalendar={hasAddCalendar}
           collectionInfo={collectionInfo}
-          isInApp={isInApp}
           addToCalendar={() => requestAddCalendar()}
           payOrder={() => requestPayOrder()}
           gotoTrade={() => gotoTrade()}
           gotoAssets={() => gotoAssets()}
         />
-      </div> */}
-        {/* tudo */}
-        <BlindboxComponent />
+        <DialogComponent isOpen={isBuyOpen} closeModal={closeBuyModal}>
+          <BuyBlindBoxDialog {...blindBoxProps} />
+        </DialogComponent>
+
+        {/** password dialog */}
+        <DialogComponent isOpen={isPasswordOpen} closeModal={closePasswordModal}>
+          <PasswordDialog onCancel={() => closePasswordModal()} onConfirm={onConfirmPassword} />
+        </DialogComponent>
       </>
     )
   }

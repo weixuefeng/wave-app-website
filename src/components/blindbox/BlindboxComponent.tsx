@@ -2,17 +2,14 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:33:51
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-21 17:20:54
+ * @LastEditTime: 2022-11-21 19:14:14
  * @FilePath: /wave-app-website/src/components/blindbox/BlindboxComponent.tsx
  */
 
 import ChainInfoComponent from 'components/asset/ChainInfoComponent'
-import { CollectionInfo } from 'model/collection_model'
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
-import Http from 'services/http'
-import Log from 'utils/log'
 import BaseInfo from './BaseInfo'
 import Countdown from './Countdown'
 import Description from './Description'
@@ -21,22 +18,10 @@ import SellPriceBtn from './SellPriceBtn'
 import StaticInfo from './StaticInfo'
 
 export default function BlindboxComponent(props) {
-  const [collectionInfo, setCollectionInfo] = useState<CollectionInfo>()
+  const { addToCalendar, payOrder, gotoTrade, gotoAssets, collectionInfo, hasAddCalendar } = props
+
   const router = useRouter()
-  const { id } = router.query
   const { t } = useTranslation()
-
-  useEffect(() => {
-    fetchCollectionInfo()
-  }, [id])
-
-  function fetchCollectionInfo() {
-    Http.getInstance()
-      .getMysteryBoxDetail(id.toString())
-      .then(response => {
-        setCollectionInfo(response)
-      })
-  }
 
   if (collectionInfo !== undefined) {
     return (
@@ -47,7 +32,14 @@ export default function BlindboxComponent(props) {
             <div className="info-detail">
               <Countdown collectionInfo={collectionInfo} />
               <BaseInfo collectionInfo={collectionInfo} />
-              <SellPriceBtn collectionInfo={collectionInfo} />
+              <SellPriceBtn
+                collectionInfo={collectionInfo}
+                hasAddCalendar={hasAddCalendar}
+                addToCalendar={() => addToCalendar()}
+                payOrder={() => payOrder()}
+                gotoTrade={() => gotoTrade()}
+                gotoAssets={() => gotoAssets()}
+              />
             </div>
           </div>
           <div className="evt-detail">

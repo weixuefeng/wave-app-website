@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import NormalLayout from 'components/layout/NormalLayout'
+import NormalLayout from 'components/layout/normalLayout'
 import useWallet from 'hooks/userWallet'
 import { PageModel } from 'model/navModel'
 import { WalletAccount } from 'model/wallet'
@@ -157,10 +157,6 @@ export default function Withdraw() {
             </button>
           </div>
         </div>
-
-        <DialogComponent isOpen={isPasswordOpen} closeModal={closePasswordModal}>
-          <PasswordDialog onCancel={() => closePasswordModal()} onConfirm={onConfirmPassword} />
-        </DialogComponent>
       </div>
     )
   }

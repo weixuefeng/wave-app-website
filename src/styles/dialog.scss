@@ -573,3 +573,10 @@
     }
   }
 }
+
+.dialog-buy-blind-box {
+  @apply flex flex-col;
+  div {
+    @apply flex flex-row items-center justify-between;
+  }
+}

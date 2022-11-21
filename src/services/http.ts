@@ -365,6 +365,15 @@ class Http {
     let params = {}
     return _post(Api.commonSetting, params) as Promise<SettingConfig>
   }
+
+  requestBuyBlindBox(mysteryBoxId: number | string, password: string, num: number | string): Promise<any> {
+    let params = {
+      mystery_box_id: mysteryBoxId.toString(),
+      number: num.toString(),
+      password: md5(`wave${password}`),
+    }
+    return _post(Api.nftBuyBlindBox, params) as Promise<any>
+  }
 }
 
 export default Http
