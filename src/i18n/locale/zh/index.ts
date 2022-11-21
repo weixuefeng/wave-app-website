@@ -75,5 +75,5 @@ export const zhTransaction = {
   LIST_PRICE: '挂单价',
   FLOOR_DIFFERENCE: '地板价差异',
   MAKE_OFFER: '出价',
-  PROPERTIES: '属性信息'
+  PROPERTIES: '属性信息',
 }

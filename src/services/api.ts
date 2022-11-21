@@ -54,6 +54,7 @@ export const Api = {
   // wallet
   walletInfo: 'wallet/info/',
   walletTransaction: 'wallet/transfers/',
+  walletWithdraw: 'wallet/withdraw/',
 
   // order
   orderOnSale: 'order/onsale/',

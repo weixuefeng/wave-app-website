@@ -17,6 +17,9 @@
       @apply relative mb-7;
       .label {
         @apply text-base font-semibold;
+        .label-right {
+          @apply float-right text-xs text-gray999;
+        }
       }
       img {
         @apply absolute top-[70%] right-4 -mt-3 h-6 w-6 cursor-pointer;
@@ -24,7 +27,7 @@
     }
 
     input {
-      @apply mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-grayee pl-4;
+      @apply mt-2 h-14 w-full rounded-xl border-2 border-grayed bg-grayee px-4;
       &::input-placeholder {
         @apply text-grayc7;
       }

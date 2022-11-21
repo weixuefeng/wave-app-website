@@ -2,7 +2,7 @@ import { Col, DatePicker, DatePickerProps, Divider, Input, Row, TimePicker } fro
 import useWallet from 'hooks/userWallet'
 import { NFTDetail } from 'model/nft_asset'
 import React from 'react'
-import 'antd/dist/antd.css'
+// import 'antd/dist/antd.css'
 import { Disclosure } from '@headlessui/react'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 

@@ -1,17 +1,46 @@
 import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import NormalLayout from 'components/layout/NormalLayout'
 import useWallet from 'hooks/userWallet'
 import { PageModel } from 'model/navModel'
 import { WalletAccount } from 'model/wallet'
 import { Listbox } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/20/solid'
+import DialogComponent from 'components/common/DialogComponent'
+import PasswordDialog from 'components/dialog/PasswordDialog'
+import Http from 'services/http'
+import Log from 'utils/log'
 
 export default function Withdraw() {
   let pageModel = new PageModel('Withdraw', 'WAVE', '')
 
   const wallet = useWallet()
-
   const [walletAccount, setWalletAccount] = useState<WalletAccount>()
+  const router = useRouter()
+
+  const [isPasswordOpen, setIsPasswordOpen] = useState(false)
+  const [amount, setAmount] = useState('')
+  const [address, setAddress] = useState('')
+
+  function closePasswordModal() {
+    setIsPasswordOpen(false)
+  }
+
+  function onConfirm() {
+    setIsPasswordOpen(true)
+  }
+
+  function onConfirmPassword(value) {
+    closePasswordModal()
+    Http.getInstance()
+      .getWalletWithdraw(amount, value, address)
+      .then(response => {
+        router.push('wallet')
+      })
+      .catch(error => {
+        Log.e(error)
+      })
+  }
 
   useEffect(() => {
     if (wallet) {
@@ -83,22 +112,33 @@ export default function Withdraw() {
               <label htmlFor="text" className="label">
                 Withdrawal Address
               </label>
-              <input placeholder="Enter or paste address" />
+              <input
+                placeholder="Enter or paste address"
+                onChange={e => {
+                  setAddress(e.target.value)
+                }}
+              />
             </div>
           </div>
 
           <div className="from-box">
             <div className="from-content">
               <label htmlFor="text" className="label">
-                Amount
+                <span>Amount</span>
+                <span className="label-right">Available {wallet.available_balance}NEW</span>
               </label>
-              <input placeholder="Minimum0" />
+              <input
+                placeholder={`Minimum${walletAccount.withdraw_minimum}`}
+                onChange={e => {
+                  setAmount(e.target.value)
+                }}
+              />
             </div>
           </div>
 
           <div className="fee-box">
             <p className="label">Fee</p>
-            <p className="value">21NEW</p>
+            <p className="value">{walletAccount.withdraw_fee}NEW</p>
           </div>
 
           <div className="tips">
@@ -112,9 +152,15 @@ export default function Withdraw() {
           </div>
 
           <div className="from-box">
-            <button className="primary black">Confirm</button>
+            <button className="primary black" onClick={onConfirm}>
+              Confirm
+            </button>
           </div>
         </div>
+
+        <DialogComponent isOpen={isPasswordOpen} closeModal={closePasswordModal}>
+          <PasswordDialog onCancel={() => closePasswordModal()} onConfirm={onConfirmPassword} />
+        </DialogComponent>
       </div>
     )
   }

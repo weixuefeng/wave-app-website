@@ -30,8 +30,12 @@ export default function TradeComponent(props) {
             <h3>{itemDate.name}</h3>
             <h4>{floorNum(itemDate.price)}NEW</h4>
             <p className="price">
-              <span><>{t('LIST_PRICE')}</></span>
-              <span><>{t('FLOOR_DIFFERENCE')}</></span>
+              <span>
+                <>{t('LIST_PRICE')}</>
+              </span>
+              <span>
+                <>{t('FLOOR_DIFFERENCE')}</>
+              </span>
             </p>
             <p className="gains">
               {itemDate.list_price_direction == 1 ? (

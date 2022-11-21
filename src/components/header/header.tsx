@@ -66,7 +66,9 @@ export default function Header(props) {
         <ul>
           <li className="massage">
             <Link href="/trade" passHref>
-              <a><>{t('TRADE')}</></a>
+              <a>
+                <>{t('TRADE')}</>
+              </a>
             </Link>
             <Link href="/message" passHref>
               <div className="massage-img">

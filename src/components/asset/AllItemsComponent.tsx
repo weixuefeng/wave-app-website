@@ -42,8 +42,12 @@ export default function AllItemsComponent(props) {
                       <h3>{item.name}</h3>
                       <h4>{floorNum(item.highest_bid_price)} NEW</h4>
                       <p className="price">
-                        <span><>{t('LIST_PRICE')}</></span>
-                        <span><>{t('FLOOR_DIFFERENCE')}</></span>
+                        <span>
+                          <>{t('LIST_PRICE')}</>
+                        </span>
+                        <span>
+                          <>{t('FLOOR_DIFFERENCE')}</>
+                        </span>
                       </p>
                       <p className="gains">
                         <span className="left">--</span>

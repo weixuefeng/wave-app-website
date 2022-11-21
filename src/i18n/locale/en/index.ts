@@ -77,5 +77,5 @@ export const enTransaction = {
   LIST_PRICE: 'List Price',
   FLOOR_DIFFERENCE: 'Floor Difference',
   MAKE_OFFER: 'Make Offer',
-  PROPERTIES: 'Properties'
+  PROPERTIES: 'Properties',
 }

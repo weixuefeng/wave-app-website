@@ -206,6 +206,15 @@ class Http {
     return _post(Api.walletTransaction, params) as Promise<Pagination<WalletTransaction>>
   }
 
+  getWalletWithdraw(amount: string, password: string, address: string): Promise<any> {
+    let params = {
+      amount: amount,
+      password: md5(`wave${password}`),
+      address: address,
+    }
+    return _post(Api.walletWithdraw, params) as Promise<Pagination<any>>
+  }
+
   // order
   getOrderOnSale(userId: number, pageId: number): Promise<Pagination<any>> {
     let params = {

@@ -46,8 +46,12 @@ export default function Mylistings(props) {
                   <div className="name">
                     <h3>{item.nft.name}</h3>
                     <p className="list-price">
-                      <span><>{t('LIST_PRICE')}</></span>
-                      <span><>{t('FLOOR_DIFFERENCE')}</></span>
+                      <span>
+                        <>{t('LIST_PRICE')}</>
+                      </span>
+                      <span>
+                        <>{t('FLOOR_DIFFERENCE')}</>
+                      </span>
                     </p>
                     <p className="price">
                       <span>{floorNum(item.price)} NEW</span>
