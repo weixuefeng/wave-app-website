@@ -67,7 +67,7 @@ export default function Withdraw() {
           <div className="from-box">
             <div className="from-content">
               <label htmlFor="text" className="label">
-                Withdrawal Network
+                Withdraw Network
               </label>
               <div>
                 <Listbox value={walletAccount} onChange={setWalletAccount}>
@@ -110,7 +110,7 @@ export default function Withdraw() {
             </div>
             <div className="from-content">
               <label htmlFor="text" className="label">
-                Withdrawal Address
+                Withdraw Address
               </label>
               <input
                 placeholder="Enter or paste address"
