@@ -1,10 +1,20 @@
 import { ClipboardDocumentIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
 import { t } from 'i18next'
-import React from 'react'
+import React, { useState } from 'react'
 import copyContent, { splitAddress } from 'utils/functions'
 
 export default function ChainInfoComponent(props) {
   const { address, tokenStandard, blockChain, creatorEariningPercent } = props
+
+  const [isShowToast, setIsShowToast] = useState(false)
+  async function copyAddress(content) {
+    await copyContent(content)
+    setIsShowToast(true)
+    setTimeout(() => {
+      setIsShowToast(false)
+    }, 3000)
+  }
+
   return (
     <div className="chain-content">
       <div className="chain-item ">
@@ -13,7 +23,7 @@ export default function ChainInfoComponent(props) {
         </p>
         <p className="value">
           {splitAddress(address)}
-          <ClipboardDocumentIcon onClick={() => copyContent(address)} />
+          <ClipboardDocumentIcon onClick={() => copyAddress(address)} />
         </p>
       </div>
       <div className="chain-item ">
@@ -37,6 +47,12 @@ export default function ChainInfoComponent(props) {
           <InformationCircleIcon />
         </p>
       </div>
+      {isShowToast && (
+        <div className="toast">
+          <img className="copied" src="/assets/image/copied.png" />
+          <span>Copied</span>
+        </div>
+      )}
     </div>
   )
 }

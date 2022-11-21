@@ -19,6 +19,7 @@ export default function Deposit() {
   const { Canvas } = useQRCode()
 
   const [walletAccount, setWalletAccount] = useState<WalletAccount>()
+  const [isShowToast, setIsShowToast] = useState(false)
 
   useEffect(() => {
     if (wallet) {
@@ -28,6 +29,14 @@ export default function Deposit() {
 
   if (!walletAccount) {
     return <></>
+  }
+
+  async function copyAddress(content) {
+    await copyContent(content)
+    setIsShowToast(true)
+    setTimeout(() => {
+      setIsShowToast(false)
+    }, 3000)
   }
 
   function content() {
@@ -107,7 +116,7 @@ export default function Deposit() {
               <p className="content_tips">Scan the QR code to get the deposit address</p>
               <p className="address">
                 {walletAccount.wallet_address}
-                <ClipboardDocumentIcon onClick={() => copyContent(walletAccount.wallet_address)} />
+                <ClipboardDocumentIcon onClick={() => copyAddress(walletAccount.wallet_address)} />
               </p>
             </div>
           </div>
@@ -119,6 +128,12 @@ export default function Deposit() {
               * Min deposit amount {walletAccount.deposit_minimum} {walletAccount.coin_type}
             </p>
           </div>
+          {isShowToast && (
+            <div className="toast">
+              <img className="copied" src="/assets/image/copied.png" />
+              <span>Copied</span>
+            </div>
+          )}
         </div>
       </div>
     )
