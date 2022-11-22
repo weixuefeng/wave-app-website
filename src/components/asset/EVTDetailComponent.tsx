@@ -1,5 +1,7 @@
 import DialogComponent from 'components/common/DialogComponent'
+import BidSucceededDialog from 'components/dialog/BidSucceededDialog'
 import BuyDialog from 'components/dialog/BuyDialog'
+import BuySuccessfulDialog from 'components/dialog/BuySuccessfulDialog'
 import LoginDialog from 'components/dialog/LoginDialog'
 import MakeOfferDialog from 'components/dialog/MakeOfferDialog'
 import PasswordDialog from 'components/dialog/PasswordDialog'
@@ -38,6 +40,9 @@ export default function EVTDetailComponent(props) {
   // login dialog
   const [isLoginOpen, setIsLoginOpen] = useState(false)
 
+  const [isBidSucceeded, setBidSucceeded] = useState(false)
+  const [isBuySucceeded, setBuySucceeded] = useState(false)
+
   function closeLoginModal() {
     setIsLoginOpen(false)
   }
@@ -56,6 +61,14 @@ export default function EVTDetailComponent(props) {
 
   function closeSellAssetModal() {
     setIsSellAssetOpen(false)
+  }
+
+  function closeBidSucceededModal() {
+    setBidSucceeded(false)
+  }
+
+  function closeBuySucceededModal() {
+    setBuySucceeded(false)
   }
 
   function showPassword() {
@@ -294,6 +307,16 @@ export default function EVTDetailComponent(props) {
       {/** password dialog */}
       <DialogComponent isOpen={isPasswordOpen} closeModal={closePasswordModal}>
         <PasswordDialog onCancel={() => closePasswordModal()} onConfirm={onConfirmPassword} />
+      </DialogComponent>
+
+      {/* Bid Succeeded Dialog */}
+      <DialogComponent isOpen={isBidSucceeded} closeModal={closeBidSucceededModal}>
+        <BidSucceededDialog onCancel={() => closeBidSucceededModal()} />
+      </DialogComponent>
+
+      {/* buy Succeeded Dialog */}
+      <DialogComponent isOpen={isBuySucceeded} closeModal={closeBuySucceededModal}>
+        <BuySuccessfulDialog onCancel={() => closeBuySucceededModal()} />
       </DialogComponent>
 
       {/** sell asset dialog */}
