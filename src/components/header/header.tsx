@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-15 12:51:57
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-22 17:23:54
+ * @LastEditTime: 2022-11-22 20:15:10
  * @FilePath: /wave-app-webiste/src/components/header/header.tsx
  */
 import React, { useEffect, useState } from 'react'
@@ -12,6 +12,7 @@ import LoginComponent from './LoginComponent'
 import { languageTitle } from 'constants/key'
 
 export default function Header(props) {
+  
   let { i18n } = useTranslation()
   const { t } = useTranslation()
 
