@@ -43,7 +43,7 @@ export default function PasswordModal(props) {
         Log.d(response)
         closeModal()
         let newUser = {
-          ...currentUser
+          ...currentUser,
         }
         newUser.payment_password_set = 1
         dispatch(updateUserInfo(newUser))
@@ -78,10 +78,7 @@ export default function PasswordModal(props) {
                 setEmailCode(e.target.value)
               }}
             />
-            <SendVerifyCodeButton
-              email={currentUser?.email}
-              action={EmailAction.PAYMENT_PASSWORD}
-            />
+            <SendVerifyCodeButton email={currentUser?.email} action={EmailAction.PAYMENT_PASSWORD} />
           </div>
 
           <div className="password">

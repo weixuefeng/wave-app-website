@@ -57,10 +57,7 @@ export default function VerfiyEmail(props) {
             Email Verification Code
           </label>
           <input placeholder="Verification Code" onChange={e => setVerfiyEmailCode(e.target.value)} />
-          <SendVerifyCodeButton
-            email={currentUser?.email}
-            action={EmailAction.CHECK_EMAIL}
-            />
+          <SendVerifyCodeButton email={currentUser?.email} action={EmailAction.CHECK_EMAIL} />
           {isVerfiyEmailCode == true ? <p className="tit">请输入验证码</p> : null}
         </div>
         <button className="primary black" disabled={nextLoading} onClick={() => oldRequestEmail()}>

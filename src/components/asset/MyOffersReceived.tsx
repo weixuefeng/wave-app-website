@@ -25,7 +25,7 @@ import { formatDateTime } from 'utils/time'
 export default function MyOffersReceived(props) {
   const currentUser = useAppSelector(selectUser) as UserInfo
   let [isOpen, setIsOpen] = useState(false)
-  const {t} = useTranslation()
+  const { t } = useTranslation()
 
   const ref = useRef(null)
 
@@ -44,7 +44,8 @@ export default function MyOffersReceived(props) {
   }
 
   function requestAcceptBid(bidId: number) {
-    Http.getInstance().requestAcceptBid(bidId)
+    Http.getInstance()
+      .requestAcceptBid(bidId)
       .then(response => {
         refreshData()
       })
@@ -82,9 +83,14 @@ export default function MyOffersReceived(props) {
                   <span className="right">{formatDateTime(item.expire_time)}</span>
                 </li>
               </ul>
-              <button className="button primary black" onClick={() => {
-                requestAcceptBid(item.id)
-              }}>{t('Accept')}</button>
+              <button
+                className="button primary black"
+                onClick={() => {
+                  requestAcceptBid(item.id)
+                }}
+              >
+                {t('Accept')}
+              </button>
               <div className="see-more" onClick={openModal}>
                 See more
               </div>

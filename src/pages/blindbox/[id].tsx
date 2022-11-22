@@ -1,11 +1,11 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-09-21 10:43:33
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-22 17:20:56
- * @FilePath: /wave-app-website/src/pages/blindbox/[id].tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-22 19:54:52
+ * @FilePath: /wave-app-webiste/src/pages/blindbox/[id].tsx
  */
-import NormalLayout from 'components/layout/normalLayout'
+
 import { PageModel } from 'model/navModel'
 import { useEffect, useState } from 'react'
 
@@ -20,6 +20,7 @@ import DialogComponent from 'components/common/DialogComponent'
 import BuyBlindBoxDialog from 'components/dialog/BuyBlindBoxDialog'
 import PasswordDialog from 'components/dialog/PasswordDialog'
 import BuySuccessfulDialog from 'components/dialog/BuySuccessfulDialog'
+import NormalLayout from 'components/layout/NormalLayout'
 
 export default Home
 
@@ -85,12 +86,14 @@ function Main(props) {
   }
 
   function fetchCollectionInfo() {
-    Http.getInstance()
-      .getMysteryBoxDetail(id.toString())
-      .then(response => {
-        setCollectionInfo(response)
-        initCalendarInfo(response)
-      })
+    if (id) {
+      Http.getInstance()
+        .getMysteryBoxDetail(id.toString())
+        .then(response => {
+          setCollectionInfo(response)
+          initCalendarInfo(response)
+        })
+    }
   }
 
   function requestUserInfo() {

@@ -1,3 +1,10 @@
+/*
+ * @Author: liukeke liukeke@diynova.com
+ * @Date: 2022-11-21 11:55:31
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-22 20:11:11
+ * @FilePath: /wave-app-webiste/src/components/header/LoginComponent.tsx
+ */
 import { Menu } from '@headlessui/react'
 import DialogComponent from 'components/common/DialogComponent'
 import Link from 'next/link'
@@ -42,30 +49,34 @@ export default function LoginComponent() {
             <p className="name">{currentUser.name}</p>
             <p className="address">{splitAddress(currentUser.wallet_address)}</p>
             <div className="list">
-              <Link href="/tickets">
-                <p>{t('TICKETS')}</p>
-              </Link>
-              <Link href="/wallet">
-                <p>{t('WALLET')}</p>
-              </Link>
-              <Link href="/assets">
-                <p>{t('ASSETS')}</p>
-              </Link>
-              <Link href="/cinema">
-                <p>{t('MY_CINEMA')}</p>
-              </Link>
-              <Link href="/settings" className="mt-4">
-                <p>{t('SETTINGS')}</p>
-              </Link>
-              <p
-                className="w-full cursor-pointer text-red-500"
-                onClick={() => {
-                  dispatch(updateUserInfo(null))
-                  localStorage.clear()
-                }}
-              >
-                {t('LOGOUT')}
-              </p>
+              <div className="page">
+                <Link href="/tickets">
+                  <p>{t('TICKETS')}</p>
+                </Link>
+                <Link href="/wallet">
+                  <p>{t('WALLET')}</p>
+                </Link>
+                <Link href="/assets">
+                  <p>{t('ASSETS')}</p>
+                </Link>
+                <Link href="/cinema">
+                  <p>{t('MY_CINEMA')}</p>
+                </Link>
+              </div>
+              <div className="settings">
+                <Link href="/settings" className="mt-4">
+                  <p>{t('SETTINGS')}</p>
+                </Link>
+                <p
+                  className="login-out"
+                  onClick={() => {
+                    dispatch(updateUserInfo(null))
+                    localStorage.clear()
+                  }}
+                >
+                  {t('LOGOUT')}
+                </p>
+              </div>
             </div>
           </div>
         </Menu.Items>

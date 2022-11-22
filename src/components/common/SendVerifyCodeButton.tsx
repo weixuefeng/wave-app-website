@@ -3,7 +3,7 @@ import Http from 'services/http'
 import Log from 'utils/log'
 
 export default function SendVerifyCodeButton(props) {
-  const {email, action} = props
+  const { email, action } = props
 
   const [btnContent, setBtnContent] = useState('Send code')
   const [time, setTime] = useState<number>(60)
@@ -48,11 +48,11 @@ export default function SendVerifyCodeButton(props) {
         setSendCodeLoading(false)
       })
   }
-  
+
   return (
     <div>
       <img src="assets/image/icon_code.png" alt="code" />
-        <button className="send-code" disabled={btnDisabled || sendCodeloading} onClick={() => sendEmailCode()}>
+      <button className="send-code" disabled={btnDisabled || sendCodeloading} onClick={() => sendEmailCode()}>
         <span>
           {btnContent} {!btnDisabled && sendCodeloading && '...'}
         </span>
