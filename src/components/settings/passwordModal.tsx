@@ -2,17 +2,18 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-21 20:14:02
+ * @LastEditTime: 2022-11-22 17:18:30
  * @FilePath: /wave-app-website/src/components/settings/passwordModal.tsx
  */
 import DialogComponent from 'components/common/DialogComponent'
 import { EmailAction, UserInfo } from 'model/user'
 import React, { useState } from 'react'
-import { selectUser } from 'reducer/userReducer'
+import { selectUser, updateUserInfo } from 'reducer/userReducer'
 import Http from 'services/http'
-import { useAppSelector } from 'store/store'
+import { useAppDispatch, useAppSelector } from 'store/store'
 import Log from 'utils/log'
 import { t } from 'i18next'
+import SendVerifyCodeButton from 'components/common/SendVerifyCodeButton'
 
 export default function PasswordModal(props) {
   let [isOpen, setIsOpen] = useState(false)
@@ -21,23 +22,13 @@ export default function PasswordModal(props) {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [emailCode, setEmailCode] = useState('')
   const [confirmLoading, setConfirmLoading] = useState(false)
+  const dispatch = useAppDispatch()
   function closeModal() {
     setIsOpen(false)
   }
 
   function openModal() {
     setIsOpen(true)
-  }
-
-  function requestVerifyCode() {
-    Http.getInstance()
-      .requestVerifyCode(currentUser.email, EmailAction.PAYMENT_PASSWORD)
-      .then(response => {
-        Log.e(response)
-      })
-      .catch(error => {
-        Log.e(error)
-      })
   }
 
   function requestUpdatePassword() {
@@ -51,6 +42,11 @@ export default function PasswordModal(props) {
       .then(response => {
         Log.d(response)
         closeModal()
+        let newUser = {
+          ...currentUser
+        }
+        newUser.payment_password_set = 1
+        dispatch(updateUserInfo(newUser))
       })
       .catch(error => {
         Log.e(error)
@@ -82,12 +78,10 @@ export default function PasswordModal(props) {
                 setEmailCode(e.target.value)
               }}
             />
-            <img src="assets/image/icon_code.png" alt="code" />
-            <button className="send-code" onClick={requestVerifyCode}>
-              <span>
-                <>{t('SEND_CODE')}</>
-              </span>
-            </button>
+            <SendVerifyCodeButton
+              email={currentUser?.email}
+              action={EmailAction.PAYMENT_PASSWORD}
+            />
           </div>
 
           <div className="password">

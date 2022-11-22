@@ -1,11 +1,12 @@
 import { Col, DatePicker, DatePickerProps, Divider, Input, Row, TimePicker } from 'antd'
 import useWallet from 'hooks/userWallet'
 import { NFTDetail } from 'model/nft_asset'
-import React from 'react'
+import React, { useState } from 'react'
 // import 'antd/dist/antd.css'
 import { Disclosure } from '@headlessui/react'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import { EVTCopyDetail } from 'model/evt_asset'
+import Log from 'utils/log'
 
 export default function SellAssetDialog(props) {
   const {
@@ -18,14 +19,32 @@ export default function SellAssetDialog(props) {
     evtDetail,
   } = props
   const wallet = useWallet()
+  const [endDate, setEndDate] = useState(new Date())
+
   const info = (nftDetail as NFTDetail) || (evtDetail as EVTCopyDetail)
   if (!info || !wallet) {
     return <></>
   }
 
-  const onChange: DatePickerProps['onChange'] = (date, dateString) => {
+  const onDateChange: DatePickerProps['onChange'] = (date, dateString) => {
     // todo: check end time must > now
-    setSellExpiredTime(parseInt((date.toDate().getTime() / 1000).toString()).toString())
+    let selectedDate = date.toDate()
+    endDate.setFullYear(selectedDate.getFullYear())
+    endDate.setMonth(selectedDate.getMonth())
+    endDate.setDate(selectedDate.getDate())
+    Log.d(endDate)
+    setEndDate(endDate)
+    setSellExpiredTime(parseInt((endDate.getTime() / 1000).toString()))
+  }
+
+  const onTimeChange: DatePickerProps['onChange'] = (date, dateString) => {
+    let selectedDate = date.toDate()
+    endDate.setHours(selectedDate.getHours())
+    endDate.setMinutes(selectedDate.getMinutes())
+    endDate.setSeconds(selectedDate.getSeconds())
+    Log.d(endDate)
+    setEndDate(endDate)
+    setSellExpiredTime(parseInt((endDate.getTime() / 1000).toString()))
   }
 
   const onPriceChange = e => {
@@ -47,10 +66,10 @@ export default function SellAssetDialog(props) {
             <p className="title">Expiration date</p>
             <Row gutter={12}>
               <Col span={12}>
-                <DatePicker placeholder={'Date'} placement={'bottomRight'} onChange={onChange} />
+                <DatePicker placeholder={'Date'} placement={'bottomRight'} onChange={onDateChange} />
               </Col>
               <Col span={12}>
-                <TimePicker placeholder={'Time'} placement={'bottomRight'} onChange={onChange} />
+                <TimePicker placeholder={'Time'} placement={'bottomRight'} onChange={onTimeChange} />
               </Col>
             </Row>
           </Col>

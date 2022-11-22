@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-09-21 10:43:33
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-22 17:10:05
- * @FilePath: /wave-app-webiste/src/pages/blindbox/[id].tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-22 17:20:56
+ * @FilePath: /wave-app-website/src/pages/blindbox/[id].tsx
  */
 import NormalLayout from 'components/layout/normalLayout'
 import { PageModel } from 'model/navModel'
@@ -53,13 +53,8 @@ function Main(props) {
   const [isBuySucceeded, setBuySucceeded] = useState(false)
 
   useEffect(() => {
-    const flag = checkIsInApp()
-    if (id != undefined) {
-      setTimeout(() => {
-        fetchCollectionInfo(flag)
-      }, 500)
-    }
-  }, [id, refreshFlag])
+    fetchCollectionInfo()
+  }, [id])
 
   const [isBuyOpen, setIsBuyOpen] = useState(false)
 
@@ -82,13 +77,14 @@ function Main(props) {
       .then(response => {
         setBuySucceeded(true)
         Log.d(response)
+        fetchCollectionInfo()
       })
       .catch(err => {
         Log.e(err)
       })
   }
 
-  function fetchCollectionInfo(flag) {
+  function fetchCollectionInfo() {
     Http.getInstance()
       .getMysteryBoxDetail(id.toString())
       .then(response => {
