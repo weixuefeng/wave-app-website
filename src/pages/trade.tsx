@@ -2,11 +2,11 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:32:00
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-18 19:52:22
+ * @LastEditTime: 2022-11-22 17:27:12
  * @FilePath: /wave-app-website/src/pages/trade.tsx
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
-import NormalLayout from 'components/layout/NormalLayout'
+import NormalLayout from 'components/layout/normalLayout'
 import usePagination from 'hooks/usePagination'
 import { t } from 'i18next'
 import { PageModel } from 'model/navModel'

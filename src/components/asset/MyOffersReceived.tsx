@@ -1,8 +1,8 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:44:56
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-17 20:57:01
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-22 17:31:23
  * @FilePath: /wave-app-website/src/components/asset/MyOffersReceived.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -71,7 +71,7 @@ export default function MyOffersReceived(props) {
               </ul>
               <MyoffersAcceDialog />
               <div className="see-more" onClick={openModal}>
-                see more
+                See more
               </div>
               <DialogComponent isOpen={isOpen} closeModal={closeModal}>
                 {dialogContent(item.from.name, item.price, item.expire_time)}
