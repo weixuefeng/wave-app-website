@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { getAssetDetailPath } from 'utils/route'
 import Link from 'next/link'
 import { AssetType } from 'model/asset'
@@ -19,6 +19,7 @@ export function EVTAsset(props) {
   }
 
   return (
+    // evt集合
     <Link href={getAssetDetailPath(item)}>
       <div className="item">
         <div className="cover">
@@ -29,7 +30,7 @@ export function EVTAsset(props) {
         </div>
 
         <div className="info-box">
-          <p className="name">{item.name}</p>
+          <p className="name truncate">{item.name}</p>
           <div className="price">
             <div className="label">{t('FLOOR_PRICE')}: </div>
             <div className="number">{Number(item.highest_bid_price)} NEW</div>
@@ -49,13 +50,14 @@ export function NFTAsset(props) {
   const { t } = useTranslation()
 
   return (
+    // nft
     <Link href={getAssetDetailPath(item)}>
-      <div className="item">
+      <div className="item nftItem">
         <div className="cover">
           <div className="perfect_square">
             <img alt={item.name} src={item.image} />
             <div className="nft-info">
-              <div className="name">{item.name}</div>
+              <div className="name truncate">{item.name}</div>
               <div className="price">
                 <p>{t('FLOOR_PRICE')}:</p>
                 <p className="number">{Number(item.highest_bid_price)} NEW</p>
@@ -73,8 +75,9 @@ export function CollectionAsset(props) {
   const { t } = useTranslation()
 
   return (
+    // nft 集合
     <Link href={getAssetDetailPath(item)}>
-      <div className="item">
+      <div className="item allNftItem">
         <div className="cover">
           <div className="perfect_square">
             <img alt={item.name} src={item.image} />
@@ -84,7 +87,7 @@ export function CollectionAsset(props) {
           </div>
         </div>
         <div className="info-box">
-          <div className="title-collection">{item.name}</div>
+          <div className="title-collection truncate">{item.name}</div>
         </div>
       </div>
     </Link>

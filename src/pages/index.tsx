@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-16 17:48:59
- * @FilePath: /wave-app-website/src/pages/index.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-22 16:50:50
+ * @FilePath: /wave-app-webiste/src/pages/index.tsx
  */
 
 import React, { useState, useEffect } from 'react'
@@ -53,9 +53,9 @@ function Main() {
   }
 
   return (
-    <div className={'container mx-auto'}>
-      <div className={'home'}>
-        <BannerComponent banners={banners} />
+    <div className={'home'}>
+      <BannerComponent banners={banners} />
+      <div className={'container mx-auto'}>
         <HomeDataComonent homeData={homeData} />
       </div>
     </div>
