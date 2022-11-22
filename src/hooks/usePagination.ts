@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-17 18:32:09
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-17 20:48:39
- * @FilePath: /wave-app-webiste/src/hooks/usePagination.ts
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-22 15:49:05
+ * @FilePath: /wave-app-website/src/hooks/usePagination.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import { Pagination } from 'model/base'
@@ -41,14 +41,8 @@ export default function usePagination<T>(ref: React.MutableRefObject<any>, loadP
   })
 
   useEffect(() => {
-    if (currentUser) {
       loadData()
-    }
   }, [currentUser])
-
-  useEffect(() => {
-    loadData()
-  }, [])
 
   async function loadData() {
     try {
@@ -56,6 +50,8 @@ export default function usePagination<T>(ref: React.MutableRefObject<any>, loadP
       var response = await loadPaginationData()
       if (currentPage == 1) {
         // first page data
+        console.log("set data");
+        
         setData(response.data)
         // check has more
         if (response.page_id < response.total_page) {
@@ -83,5 +79,5 @@ export default function usePagination<T>(ref: React.MutableRefObject<any>, loadP
     }
   }
 
-  return { hasMore, isLoading, currentPage, data, error }
+  return { hasMore, isLoading, currentPage, data, error, setCurrentPage }
 }
