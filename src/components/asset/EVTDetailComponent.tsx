@@ -100,6 +100,7 @@ export default function EVTDetailComponent(props) {
         .then(response => {
           // refresh page
           loadData()
+          setBidSucceeded(true)
         })
         .catch(error => {
           Log.e(error)
@@ -111,6 +112,7 @@ export default function EVTDetailComponent(props) {
         .then(response => {
           // refresh page
           loadData()
+          setBuySucceeded(true)
         })
         .catch(error => {
           Log.e(error)
