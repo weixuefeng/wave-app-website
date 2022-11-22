@@ -264,27 +264,27 @@
 
 .dialog-bid-succeeded {
   h2 {
-    @apply text-2xl text-gray333 text-center mt-7 mb-16;
+    @apply mt-7 mb-16 text-center text-2xl text-gray333;
   }
   .action {
-    @apply bg-gray333 py-3 px-20 text-center rounded-xl;
+    @apply rounded-xl bg-gray333 py-3 px-20 text-center;
     a {
-      @apply w-full h-full block text-base text-white;
+      @apply block h-full w-full text-base text-white;
     }
   }
 }
 
 .dialog-buy-successful {
   h2 {
-    @apply text-2xl text-gray333 text-center mt-7 mb-5;
+    @apply mt-7 mb-5 text-center text-2xl text-gray333;
   }
   .content {
-    @apply text-gray66 text-base mb-10;
+    @apply mb-10 text-base text-gray66;
   }
   .action {
-    @apply bg-gray333 py-3 px-20 text-center rounded-xl;
+    @apply rounded-xl bg-gray333 py-3 px-20 text-center;
     a {
-      @apply w-full h-full block text-base text-white;
+      @apply block h-full w-full text-base text-white;
     }
   }
 }

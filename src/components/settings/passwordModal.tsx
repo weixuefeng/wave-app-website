@@ -12,7 +12,7 @@ import { selectUser } from 'reducer/userReducer'
 import Http from 'services/http'
 import { useAppSelector } from 'store/store'
 import Log from 'utils/log'
-import {t} from "i18next";
+import { t } from 'i18next'
 
 export default function PasswordModal(props) {
   let [isOpen, setIsOpen] = useState(false)

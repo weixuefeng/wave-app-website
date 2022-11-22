@@ -9,7 +9,6 @@ import Link from 'next/link'
 import React from 'react'
 
 export default function BidSucceededDialog(props) {
-
   return (
     <div className="dialog-bid-succeeded">
       <div className="flex justify-center">
@@ -17,7 +16,7 @@ export default function BidSucceededDialog(props) {
       </div>
       <h2>Bid Succeeded</h2>
       <div className="action">
-        <Link href='/assets'>View Records</Link>
+        <Link href="/assets">View Records</Link>
       </div>
     </div>
   )

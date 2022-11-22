@@ -1,18 +1,37 @@
 import { DatePicker, DatePickerProps, TimePicker, Input, Col, Row, Divider } from 'antd'
 import useWallet from 'hooks/userWallet'
 import { NFTDetail } from 'model/nft_asset'
-import React from 'react'
+import React, { useState } from 'react'
+import Log from 'utils/log'
 export default function MakeOfferDialog(props) {
   const { nftDetail, showPassword, setOfferEndTime, setOfferPrice } = props
   const wallet = useWallet()
+
+  const [endDate, setEndDate] = useState(new Date())
   const info = nftDetail as NFTDetail
   if (!info || !wallet) {
     return <></>
   }
 
-  const onChange: DatePickerProps['onChange'] = (date, dateString) => {
+  const onDateChange: DatePickerProps['onChange'] = (date, dateString) => {
     // todo: check end time must > now
-    setOfferEndTime(parseInt((date.toDate().getTime() / 1000).toString()))
+    let selectedDate = date.toDate()
+    endDate.setFullYear(selectedDate.getFullYear())
+    endDate.setMonth(selectedDate.getMonth())
+    endDate.setDate(selectedDate.getDate())
+    Log.d(endDate)
+    setEndDate(endDate)
+    setOfferEndTime(parseInt((endDate.getTime() / 1000).toString()))
+  }
+
+  const onTimeChange: DatePickerProps['onChange'] = (date, dateString) => {
+    let selectedDate = date.toDate()
+    endDate.setHours(selectedDate.getHours())
+    endDate.setMinutes(selectedDate.getMinutes())
+    endDate.setSeconds(selectedDate.getSeconds())
+    Log.d(endDate)
+    setEndDate(endDate)
+    setOfferEndTime(parseInt((endDate.getTime() / 1000).toString()))
   }
 
   const onPriceChange = e => {
@@ -49,10 +68,10 @@ export default function MakeOfferDialog(props) {
             <p className="title">Offer valid thru</p>
             <Row gutter={12}>
               <Col span={12}>
-                <DatePicker placeholder={'Date'} placement={'bottomRight'} onChange={onChange} />
+                <DatePicker placeholder={'Date'} placement={'bottomRight'} onChange={onDateChange} />
               </Col>
               <Col span={12}>
-                <TimePicker placeholder={'Time'} placement={'bottomRight'} onChange={onChange} />
+                <TimePicker placeholder={'Time'} placement={'bottomRight'} onChange={onTimeChange} />
               </Col>
             </Row>
           </Col>

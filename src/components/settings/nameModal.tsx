@@ -63,7 +63,7 @@ export default function NameModal(props) {
   return (
     <li>
       <p>
-          <>{t('NICKNAME')}</>
+        <>{t('NICKNAME')}</>
       </p>
       <div>
         <span className="left">{currentUser?.name}</span>
