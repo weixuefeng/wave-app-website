@@ -1,57 +1,33 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-15 12:51:57
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-18 20:07:36
- * @FilePath: /wave-app-website/src/components/header/header.tsx
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-22 15:43:02
+ * @FilePath: /wave-app-webiste/src/components/header/header.tsx
  */
-import React, { Fragment, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Dialog, Transition } from '@headlessui/react'
 import { useTranslation } from 'react-i18next'
-import { putLocalData } from 'localstorage/localstorage'
-import { LocalKey } from 'constants/key'
-import Login from './LoginComponent'
 import LoginComponent from './LoginComponent'
+import { languageTitle } from 'constants/key'
 
 export default function Header(props) {
-  const languageTitle = [
-    {
-      language: 'en',
-      title: 'English',
-    },
-    {
-      language: 'zh',
-      title: '中文',
-    },
-  ]
-  const navList = [
-    {
-      src: '/',
-      nav: 'WAVE',
-    },
-    {
-      src: '/',
-      nav: 'FEATURES',
-    },
-    {
-      src: '/',
-      nav: 'COMMUNITY',
-    },
-    {
-      src: '/',
-      nav: 'FAQ',
-    },
-    {
-      src: '/',
-      nav: 'DOWNLOAD',
-    },
-  ]
-
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
   let { i18n } = useTranslation()
   const { t } = useTranslation()
+
+  const [isLanguageOpen, setIsLanguageOpen] = useState(true)
+
+  useEffect(() => {
+    document.addEventListener('click', e => setIsLanguageOpen(false))
+  }, [])
+
+  const stopPropagation = e => {
+    e.nativeEvent.stopImmediatePropagation()
+  }
+  const onLanguageItem = e => {
+    stopPropagation(e)
+    setIsLanguageOpen(!isLanguageOpen)
+  }
 
   return (
     <div className="border-b-2 border-solid border-gray-100 bg-white">
@@ -78,11 +54,24 @@ export default function Header(props) {
             </Link>
           </li>
           <li className="language">
-            <Link href="/" passHref>
-              <div className="language-img">
-                <img src="/assets/image/icon_language.png" alt="language" />
+            <div className="language-img" onClick={onLanguageItem}>
+              <img src="/assets/image/icon_language.png" alt="language" />
+              <div className={`${isLanguageOpen ? 'item block' : 'item hidden'}`}>
+                {languageTitle.map((item, index) => {
+                  return (
+                    <span
+                      key={index}
+                      onClick={() => {
+                        i18n.changeLanguage(item.language)
+                      }}
+                      className={i18n.language == item.language ? 'active' : ''}
+                    >
+                      {item.title}
+                    </span>
+                  )
+                })}
               </div>
-            </Link>
+            </div>
           </li>
           <LoginComponent />
         </ul>

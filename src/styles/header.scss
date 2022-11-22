@@ -34,7 +34,16 @@
 
   .language {
     .language-img {
-      @apply w-[1.38rem];
+      @apply relative w-[1.38rem];
+    }
+    .item {
+      @apply absolute right-0 -bottom-32 z-50 rounded-xl bg-white p-4;
+      span {
+        @apply h-7 pr-10 text-base leading-7 text-gray3d;
+      }
+      .active {
+        @apply text-green57;
+      }
     }
   }
 
