@@ -2,8 +2,39 @@
   .swiper {
     @apply h-[300px] w-full md:h-[500px];
   }
+
   .swiper-img {
     @apply h-full w-full;
     object-fit: cover;
+  }
+
+  .swiper-horizontal > .swiper-pagination-bullets,
+  .swiper-pagination-bullets.swiper-pagination-horizontal,
+  .swiper-pagination-custom,
+  .swiper-pagination-fraction {
+    @apply left-[80%] bottom-6;
+  }
+
+  .swiper-pagination {
+    @apply px-4;
+  }
+
+  .swiper-horizontal > .swiper-pagination-bullets,
+  .banner .swiper-pagination-bullets.swiper-pagination-horizontal,
+  .swiper-pagination-custom,
+  .banner .swiper-pagination-fraction {
+    @apply flex h-8 w-[8.5rem] items-center justify-between bg-black53;
+    border-radius: 398px 398px 398px 398px;
+    opacity: 0.7;
+  }
+
+  .swiper-pagination-bullet {
+    @apply h-2 w-7 bg-black68;
+    opacity: 1;
+    border-radius: 450px 450px 450px 450px;
+  }
+
+  .swiper-pagination-bullet-active {
+    @apply bg-white;
   }
 }

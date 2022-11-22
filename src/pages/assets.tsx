@@ -27,7 +27,7 @@ export default function Assets() {
         <div className="container mx-auto">
           <h2 className="title">Assets</h2>
           <div>
-            <div className='hidden md:block'>
+            <div className="hidden md:block">
               <Tab.Group>
                 <Tab.List>
                   <Tab className="tab-item">My Own</Tab>
@@ -51,14 +51,10 @@ export default function Assets() {
                 </Tab.Panels>
               </Tab.Group>
             </div>
-            <div className='block md:hidden'>
+            <div className="block md:hidden">
               <Tab.Group>
-                <Tab.List className='h5-list'>
-                  <Swiper
-                    modules={[Navigation, Pagination]}
-                    spaceBetween={5}
-                    slidesPerView={2.5}
-                  >
+                <Tab.List className="h5-list">
+                  <Swiper modules={[Navigation, Pagination]} spaceBetween={5} slidesPerView={2.5}>
                     <SwiperSlide>
                       <Tab className="tab-item">My Own</Tab>
                     </SwiperSlide>

@@ -12,7 +12,6 @@ import LoginComponent from './LoginComponent'
 import { languageTitle } from 'constants/key'
 
 export default function Header(props) {
-  
   let { i18n } = useTranslation()
   const { t } = useTranslation()
 

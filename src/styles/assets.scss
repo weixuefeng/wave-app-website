@@ -10,11 +10,11 @@
   }
   .h5-list {
     .tab-item {
-      @apply text-gray99 text-base;
+      @apply text-base text-gray99;
       @apply ui-selected:border-b-4 ui-selected:border-black ui-selected:text-gray333;
     }
     button {
-      @apply text-left whitespace-nowrap;
+      @apply whitespace-nowrap text-left;
     }
   }
 }
