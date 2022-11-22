@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-15 12:51:57
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-22 15:45:27
+ * @LastEditTime: 2022-11-22 17:23:54
  * @FilePath: /wave-app-webiste/src/components/header/header.tsx
  */
 import React, { useEffect, useState } from 'react'
@@ -30,7 +30,7 @@ export default function Header(props) {
   }
 
   return (
-    <div className="border-b-2 border-solid border-gray-100 bg-white">
+    <div className="border-b-2 border-solid border-gray-100 bg-white px-4 xl:px-0">
       <div className="header container">
         <div className="logo">
           <Link href="/" passHref>
