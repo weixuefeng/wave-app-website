@@ -28,8 +28,6 @@ export function TransactionComponent(props) {
 }
 
 export function TransactionList() {
-
-
   const ref = useRef(null)
 
   const { hasMore, isLoading, currentPage, data, error } = usePagination<WalletTransaction>(ref, fetchData)

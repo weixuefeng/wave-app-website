@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-09-21 10:43:33
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-21 20:08:05
- * @FilePath: /wave-app-website/src/pages/blindbox/[id].tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-22 17:10:05
+ * @FilePath: /wave-app-webiste/src/pages/blindbox/[id].tsx
  */
 import NormalLayout from 'components/layout/normalLayout'
 import { PageModel } from 'model/navModel'
@@ -19,6 +19,7 @@ import BlindboxComponent from 'components/blindbox/BlindboxComponent'
 import DialogComponent from 'components/common/DialogComponent'
 import BuyBlindBoxDialog from 'components/dialog/BuyBlindBoxDialog'
 import PasswordDialog from 'components/dialog/PasswordDialog'
+import BuySuccessfulDialog from 'components/dialog/BuySuccessfulDialog'
 
 export default Home
 
@@ -49,6 +50,7 @@ function Main(props) {
   const [showPassword, setShowPassword] = useState(false)
 
   const [isPasswordOpen, setIsPasswordOpen] = useState(false)
+  const [isBuySucceeded, setBuySucceeded] = useState(false)
 
   useEffect(() => {
     const flag = checkIsInApp()
@@ -69,11 +71,16 @@ function Main(props) {
     setIsPasswordOpen(false)
   }
 
+  function closeBuySucceededModal() {
+    setBuySucceeded(false)
+  }
+
   function onConfirmPassword(password: string) {
     closePasswordModal()
     Http.getInstance()
       .requestBuyBlindBox(id.toString(), password, 1)
       .then(response => {
+        setBuySucceeded(true)
         Log.d(response)
       })
       .catch(err => {
@@ -330,6 +337,11 @@ function Main(props) {
         {/** password dialog */}
         <DialogComponent isOpen={isPasswordOpen} closeModal={closePasswordModal}>
           <PasswordDialog onCancel={() => closePasswordModal()} onConfirm={onConfirmPassword} />
+        </DialogComponent>
+
+        {/* buy Succeeded Dialog */}
+        <DialogComponent isOpen={isBuySucceeded} closeModal={closeBuySucceededModal}>
+          <BuySuccessfulDialog onCancel={() => closeBuySucceededModal()} />
         </DialogComponent>
       </>
     )
