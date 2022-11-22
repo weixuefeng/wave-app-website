@@ -1,9 +1,9 @@
 import { WalletTransaction } from 'model/wallet'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import Http from 'services/http'
-import { isInViewPort } from 'utils/functions'
-import Log from 'utils/log'
 import Nodata from 'components/layout/NoData'
+import usePagination from 'hooks/usePagination'
+import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 
 export function TransactionComponent(props) {
   const { item } = props
@@ -28,82 +28,30 @@ export function TransactionComponent(props) {
 }
 
 export function TransactionList() {
-  const [transaction, setTransaction] = useState<Array<WalletTransaction>>()
-  const [currentPage, setCurrentPage] = useState(1)
-  const [hasMore, setHasMore] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+
+
   const ref = useRef(null)
 
-  useEffect(() => {
-    fetchData()
-  }, [])
+  const { hasMore, isLoading, currentPage, data, error } = usePagination<WalletTransaction>(ref, fetchData)
 
   function fetchData() {
-    setIsLoading(true)
-    Http.getInstance()
-      .getWalletTransaction(currentPage, 1)
-      .then(response => {
-        if (currentPage == 1) {
-          // first page
-          setTransaction(response.data)
-          // check has more
-          if (response.page_id < response.total_page) {
-            setHasMore(true)
-            // update current page
-            setCurrentPage(currentPage + 1)
-          } else {
-            setHasMore(false)
-          }
-        } else {
-          // more page
-          setTransaction(transaction.concat(response.data))
-          // check has more
-          if (response.page_id < response.total_page) {
-            setHasMore(true)
-            setCurrentPage(currentPage + 1)
-          } else {
-            setHasMore(false)
-          }
-        }
-      })
-      .catch(error => {
-        Log.e(error)
-      })
-      .finally(() => {
-        setIsLoading(false)
-      })
+    return Http.getInstance().getWalletTransaction(currentPage, 0)
   }
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  })
-
-  if (!transaction?.length) {
+  if (!data?.length) {
     return <Nodata />
-  }
-
-  const handleScroll = () => {
-    if (ref) {
-      let res = isInViewPort(ref.current)
-      if (res) {
-        if (hasMore && !isLoading) {
-          fetchData()
-        }
-      }
-    }
   }
 
   return (
     <div className="list">
       <ul>
-        {transaction?.map((item, index) => {
+        {data?.map((item, index) => {
           return <TransactionComponent key={index} item={item} />
         })}
       </ul>
-      <button ref={ref} className="primary black" onClick={() => fetchData()}>
-        {isLoading ? 'loading...' : hasMore ? 'load more' : 'no more'}
-      </button>
+      <div ref={ref}>
+        <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data} />
+      </div>
     </div>
   )
 }
