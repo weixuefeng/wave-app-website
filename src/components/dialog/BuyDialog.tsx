@@ -5,12 +5,14 @@ import { splitAddress } from 'utils/functions'
 import { Divider, Tooltip } from 'antd'
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline'
 import useSettings from 'hooks/useSettings'
+import { EVTCopyDetail } from 'model/evt_asset'
 
 export default function BuyDialog(props) {
-  const { nftDetail, showPassword } = props
+  const { nftDetail, showPassword, evtDetail } = props
   const wallet = useWallet()
   const settings = useSettings()
-  const info = nftDetail as NFTDetail
+  const info = (nftDetail as NFTDetail) || (evtDetail as EVTCopyDetail)
+
   if (!info || !wallet) {
     return <></>
   }

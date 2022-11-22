@@ -62,9 +62,6 @@ export default function CollectionComponent(props) {
               </p>
             </div>
           </div>
-          <div className="mt-4 p-4">
-            <ChainInfoComponent address={''} tokenStandard={''} blockChain={''} creatorEariningPercent={''} />
-          </div>
         </div>
       </div>
 

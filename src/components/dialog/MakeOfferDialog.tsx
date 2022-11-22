@@ -1,14 +1,15 @@
 import { DatePicker, DatePickerProps, TimePicker, Input, Col, Row, Divider } from 'antd'
 import useWallet from 'hooks/userWallet'
+import { EVTCopyDetail } from 'model/evt_asset'
 import { NFTDetail } from 'model/nft_asset'
 import React, { useState } from 'react'
 import Log from 'utils/log'
 export default function MakeOfferDialog(props) {
-  const { nftDetail, showPassword, setOfferEndTime, setOfferPrice } = props
+  const { nftDetail, evtDetail, showPassword, setOfferEndTime, setOfferPrice } = props
   const wallet = useWallet()
 
   const [endDate, setEndDate] = useState(new Date())
-  const info = nftDetail as NFTDetail
+  const info = (nftDetail as NFTDetail) || (evtDetail as EVTCopyDetail)
   if (!info || !wallet) {
     return <></>
   }

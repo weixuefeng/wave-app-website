@@ -5,11 +5,20 @@ import React from 'react'
 // import 'antd/dist/antd.css'
 import { Disclosure } from '@headlessui/react'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
+import { EVTCopyDetail } from 'model/evt_asset'
 
 export default function SellAssetDialog(props) {
-  const { nftDetail, showPassword, setSellExpiredTime, setSellPrice, requestOrderSell, setDirectionAddress } = props
+  const {
+    nftDetail,
+    showPassword,
+    setSellExpiredTime,
+    setSellPrice,
+    requestOrderSell,
+    setDirectionAddress,
+    evtDetail,
+  } = props
   const wallet = useWallet()
-  const info = nftDetail as NFTDetail
+  const info = (nftDetail as NFTDetail) || (evtDetail as EVTCopyDetail)
   if (!info || !wallet) {
     return <></>
   }
