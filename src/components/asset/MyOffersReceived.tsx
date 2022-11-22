@@ -2,12 +2,12 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:44:56
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-22 18:30:29
+ * @LastEditTime: 2022-11-22 21:59:43
  * @FilePath: /wave-app-website/src/components/asset/MyOffersReceived.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import DialogComponent from 'components/common/DialogComponent'
-import MyoffersAcceDialog from 'components/dialog/MyoffersAcceDialog'
+import MoreOfferComponent from 'components/dialog/MoreOfferComponent'
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import usePagination from 'hooks/usePagination'
 import { AssetMyOfferData } from 'model/asset'
@@ -47,7 +47,9 @@ export default function MyOffersReceived(props) {
     Http.getInstance()
       .requestAcceptBid(bidId)
       .then(response => {
+        // todo: show accept success dialog
         refreshData()
+        closeModal()
       })
       .catch(error => {
         Log.e(error)
@@ -91,11 +93,13 @@ export default function MyOffersReceived(props) {
               >
                 {t('Accept')}
               </button>
-              <div className="see-more" onClick={openModal}>
-                See more
-              </div>
+              {item.has_more == 1 && (
+                <div className="see-more" onClick={openModal}>
+                  See more
+                </div>
+              )}
               <DialogComponent isOpen={isOpen} closeModal={closeModal}>
-                {dialogContent(item.from.name, item.price, item.expire_time)}
+                <MoreOfferComponent nftId={item.nft_id} requestAcceptBid={id => requestAcceptBid(id)} />
               </DialogComponent>
             </div>
           )
@@ -103,30 +107,6 @@ export default function MyOffersReceived(props) {
       </div>
       <div ref={ref}>
         <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data} />
-      </div>
-    </div>
-  )
-}
-
-function dialogContent(fromName, price, time) {
-  return (
-    <div className="dialog-offers-received">
-      <h3>Wonder Woman Woman #23</h3>
-      <h4>More offers</h4>
-      <div className="from-box">
-        <div className="from">
-          <span>From</span>
-          <span className="right">{fromName}</span>
-        </div>
-        <div className="price">
-          <span>Price</span>
-          <span className="right">{floorNum(price)} NEW</span>
-        </div>
-        <div className="expire">
-          <span>Expire date</span>
-          <span className="right">{formatDateTime(time)}</span>
-        </div>
-        <div className="accept">Accept</div>
       </div>
     </div>
   )

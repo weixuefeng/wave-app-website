@@ -388,6 +388,15 @@ class Http {
     }
     return _post(Api.orderBidDeal, params) as Promise<any>
   }
+
+  requestNFTOrderOffers(nftId: string, pageId: number): Promise<any> {
+    let params = {
+      nft_id: nftId,
+      page_id: pageId,
+      page_size: PAGE_SIZE,
+    }
+    return _post(Api.nftOrderOffers, params) as Promise<any>
+  }
 }
 
 export default Http
