@@ -1,5 +1,5 @@
 .assets-page {
-  @apply min-h-screen bg-grayf8;
+  @apply min-h-screen bg-grayf8 px-4 xl:px-0;
   .title {
     @apply pt-12 pb-8 text-4xl font-bold text-gray333;
   }
@@ -7,6 +7,15 @@
     @apply p-2 text-xl text-gray333;
     @apply ui-selected:border-b-4 ui-selected:border-black ui-selected:text-black;
     @apply ui-not-selected:text-gray99;
+  }
+  .h5-list {
+    .tab-item {
+      @apply text-gray99 text-base;
+      @apply ui-selected:border-b-4 ui-selected:border-black ui-selected:text-gray333;
+    }
+    button {
+      @apply text-left whitespace-nowrap;
+    }
   }
 }
 // My Own

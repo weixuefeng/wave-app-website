@@ -1,7 +1,9 @@
-.swiper {
-  @apply h-[300px] w-full md:h-[500px];
-}
-.swiper-img {
-  @apply h-full w-full;
-  object-fit: cover;
+.banner {
+  .swiper {
+    @apply h-[300px] w-full md:h-[500px];
+  }
+  .swiper-img {
+    @apply h-full w-full;
+    object-fit: cover;
+  }
 }
