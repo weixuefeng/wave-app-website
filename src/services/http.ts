@@ -381,6 +381,13 @@ class Http {
     }
     return _post(Api.orderBidCancel, params) as Promise<any>
   }
+
+  requestAcceptBid(bidId: number): Promise<any> {
+    let params = {
+      bid_id: bidId,
+    }
+    return _post(Api.orderBidDeal, params) as Promise<any>
+  }
 }
 
 export default Http

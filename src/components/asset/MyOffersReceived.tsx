@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:44:56
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-22 17:31:23
+ * @LastEditTime: 2022-11-22 18:30:29
  * @FilePath: /wave-app-website/src/components/asset/MyOffersReceived.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -14,19 +14,22 @@ import { AssetMyOfferData } from 'model/asset'
 import { OfferType } from 'model/offer'
 import { UserInfo } from 'model/user'
 import React, { useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { selectUser } from 'reducer/userReducer'
 import Http from 'services/http'
 import { useAppSelector } from 'store/store'
 import { floorNum } from 'utils/functions'
+import Log from 'utils/log'
 import { formatDateTime } from 'utils/time'
 
 export default function MyOffersReceived(props) {
   const currentUser = useAppSelector(selectUser) as UserInfo
   let [isOpen, setIsOpen] = useState(false)
+  const {t} = useTranslation()
 
   const ref = useRef(null)
 
-  const { hasMore, isLoading, currentPage, data, error } = usePagination<AssetMyOfferData>(ref, fetchData)
+  const { hasMore, isLoading, currentPage, data, error, refreshData } = usePagination<AssetMyOfferData>(ref, fetchData)
 
   function fetchData() {
     return Http.getInstance().getOrderOffer(currentUser.id, currentPage, OfferType.RECEIVED)
@@ -38,6 +41,16 @@ export default function MyOffersReceived(props) {
 
   function openModal() {
     setIsOpen(true)
+  }
+
+  function requestAcceptBid(bidId: number) {
+    Http.getInstance().requestAcceptBid(bidId)
+      .then(response => {
+        refreshData()
+      })
+      .catch(error => {
+        Log.e(error)
+      })
   }
 
   return (
@@ -69,7 +82,9 @@ export default function MyOffersReceived(props) {
                   <span className="right">{formatDateTime(item.expire_time)}</span>
                 </li>
               </ul>
-              <MyoffersAcceDialog />
+              <button className="button primary black" onClick={() => {
+                requestAcceptBid(item.id)
+              }}>{t('Accept')}</button>
               <div className="see-more" onClick={openModal}>
                 See more
               </div>
