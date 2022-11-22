@@ -1,5 +1,5 @@
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
-import NormalLayout from 'components/layout/NormalLayout'
+import NormalLayout from 'components/layout/normalLayout'
 import usePagination from 'hooks/usePagination'
 import { getAssetNameByType, MyAsset } from 'model/asset'
 import { PageModel } from 'model/navModel'

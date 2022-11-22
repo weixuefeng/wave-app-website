@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:44:56
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-22 16:01:35
+ * @LastEditTime: 2022-11-22 16:25:08
  * @FilePath: /wave-app-website/src/components/asset/MyOffersMade.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -20,13 +20,15 @@ import { floorNum } from 'utils/functions'
 import Log from 'utils/log'
 import { formatDateTime } from 'utils/time'
 
-
 export default function MyOffersMade(props) {
   const currentUser = useAppSelector(selectUser) as UserInfo
   let [isOpen, setIsOpen] = useState(false)
   const ref = useRef(null)
 
-  const { hasMore, isLoading, currentPage, data, error, setCurrentPage } = usePagination<AssetMyOfferData>(ref, fetchData)
+  const { hasMore, isLoading, currentPage, data, error, setCurrentPage, refreshData } = usePagination<AssetMyOfferData>(
+    ref,
+    fetchData
+  )
 
   function fetchData() {
     return Http.getInstance().getOrderOffer(currentUser.id, currentPage, OfferType.MADE)
@@ -41,15 +43,15 @@ export default function MyOffersMade(props) {
   }
 
   function requestCancelBid(id: number) {
-    Http.getInstance().requestCancelBid(id)
-    .then((response) => {
-      closeModal()
-      setCurrentPage(1)
-      fetchData()
-    })
-    .catch(error => {
-      Log.e(error)
-    })
+    Http.getInstance()
+      .requestCancelBid(id)
+      .then(response => {
+        closeModal()
+        refreshData()
+      })
+      .catch(error => {
+        Log.e(error)
+      })
   }
 
   function dialogContent(id: number) {
@@ -60,13 +62,16 @@ export default function MyOffersMade(props) {
           <div className="cursor-pointer rounded-xl border-2 border-gray333 px-11 py-4" onClick={closeModal}>
             Cancel
           </div>
-          <div className="cursor-pointer rounded-xl bg-gray333 px-11 py-4 text-white" onClick={() => requestCancelBid(id)}>Confirm</div>
+          <div
+            className="cursor-pointer rounded-xl bg-gray333 px-11 py-4 text-white"
+            onClick={() => requestCancelBid(id)}
+          >
+            Confirm
+          </div>
         </div>
       </div>
     )
   }
-
-  
 
   return (
     <div className="my-offers">
