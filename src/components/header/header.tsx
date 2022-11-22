@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-15 12:51:57
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-22 15:43:02
+ * @LastEditTime: 2022-11-22 15:45:27
  * @FilePath: /wave-app-webiste/src/components/header/header.tsx
  */
 import React, { useEffect, useState } from 'react'
@@ -15,7 +15,7 @@ export default function Header(props) {
   let { i18n } = useTranslation()
   const { t } = useTranslation()
 
-  const [isLanguageOpen, setIsLanguageOpen] = useState(true)
+  const [isLanguageOpen, setIsLanguageOpen] = useState(false)
 
   useEffect(() => {
     document.addEventListener('click', e => setIsLanguageOpen(false))
