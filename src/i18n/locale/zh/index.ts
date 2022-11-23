@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 17:06:06
+ * @LastEditTime: 2022-11-23 19:26:43
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -18,6 +18,7 @@ export const zhTransaction = {
   SOLD_OUT: '已售罄',
   LIVE_DROP: '热卖中',
   REMAINING: '剩余',
+  TIME: '时间',
   REVEALS_AT: '开盒时间',
   STARTS_AT: '开售时间',
   STARTS_IN: '开售时间',
@@ -59,12 +60,16 @@ export const zhTransaction = {
   TICKETS: '票夹',
   WALLET: '我的钱包',
   TOTAL_BALANCE: '余额',
+  WALLET_BALANCE: '钱包余额',
+  AMOUNT: '金额',
   AVAILABKE: '可用',
   FROZEN: '冻结',
   DEPOSIT: '充币',
   WITHDRAW: '提币',
   TRANSACTION_HISTORY: '交易历史',
   ASSETS: '我的资产',
+  ASSET_BNAME: '资产名称',
+  ASSET_SALE: '资产购买',
   MY_CINEMA: '我的影院',
   MY_OWN: '我自己的',
   MY_LISTINGS: '我在售的',
@@ -123,4 +128,5 @@ export const zhTransaction = {
   CANCEL: '取消',
   I_AGREE_TO: '我已阅读并同意',
   AND: '和',
+  ARE_YOU_SURE: '您确定要取消出售吗',
 }

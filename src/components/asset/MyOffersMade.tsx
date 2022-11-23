@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:44:56
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-22 16:25:08
- * @FilePath: /wave-app-website/src/components/asset/MyOffersMade.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-23 19:33:49
+ * @FilePath: /wave-app-webiste/src/components/asset/MyOffersMade.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import DialogComponent from 'components/common/DialogComponent'
@@ -59,16 +59,16 @@ export default function MyOffersMade(props) {
   function dialogContent(id: number) {
     return (
       <div>
-        <h2 className="text-base text-gray333">Are you sure you want to cancle the bid？</h2>
+        <h2 className="text-base text-gray333">{t('ARE_YOU_SURE')}？</h2>
         <div className="mt-12 flex items-center justify-between">
           <div className="cursor-pointer rounded-xl border-2 border-gray333 px-11 py-4" onClick={closeModal}>
-            Cancel
+            {t('CANCEL')}
           </div>
           <div
             className="cursor-pointer rounded-xl bg-gray333 px-11 py-4 text-white"
             onClick={() => requestCancelBid(id)}
           >
-            Confirm
+            {t('CONFIRM')}
           </div>
         </div>
       </div>

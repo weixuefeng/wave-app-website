@@ -1,26 +1,48 @@
+/*
+ * @Author: liukeke liukeke@diynova.com
+ * @Date: 2022-11-22 17:13:45
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-23 19:29:20
+ * @FilePath: /wave-app-webiste/src/components/wallet/TransactionList.tsx
+ */
 import { WalletTransaction } from 'model/wallet'
 import React, { useRef } from 'react'
 import Http from 'services/http'
 import Nodata from 'components/layout/NoData'
 import usePagination from 'hooks/usePagination'
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
+import { useTranslation } from 'react-i18next'
 
 export function TransactionComponent(props) {
+  const { t } = useTranslation()
   const { item } = props
   const info = item as WalletTransaction
+
   return (
     <div className="history-item">
-      <h3>{info.trade_label}</h3>
+      <h3>{t('ASSET_SALE')}</h3>
       <div className="mt-4">
-        <p className="label">Amount</p>
+        <p className="label">
+          <>{t('AMOUNT')}</>
+        </p>
         <p>{info.amount} NEW</p>
       </div>
       <div>
-        <p className="label">Wallet Balance</p>
+        <p className="label">
+          <>{t('WALLET_BALANCE')}</>
+        </p>
         <p>{info.wallet_balance} NEW</p>
       </div>
       <div>
-        <p className="label">Time</p>
+        <p className="label">
+          <>{t('ASSET_BNAME')}</>
+        </p>
+        <p>{info.asset_name}</p>
+      </div>
+      <div>
+        <p className="label">
+          <>{t('TIME')}</>
+        </p>
         <p>{new Date(info.created_at * 1000).toLocaleString()}</p>
       </div>
     </div>
