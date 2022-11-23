@@ -52,7 +52,9 @@ export default function Wallet() {
         <div className="wallet">
           <div className="base-info">
             <div className="title">
-              <h2><>{t('WALLET')}</></h2>
+              <h2>
+                <>{t('WALLET')}</>
+              </h2>
             </div>
             <div className="balance">
               <p className="label">{t('TOTAL_BALANCE')}</p>
@@ -69,20 +71,26 @@ export default function Wallet() {
               <Link href="/deposit">
                 <div>
                   <img src="/assets/image/icon_deposit.png" alt="deposit" />
-                  <p><>{t('DEPOSIT')}</></p>
+                  <p>
+                    <>{t('DEPOSIT')}</>
+                  </p>
                 </div>
               </Link>
               <Link href="/withdraw">
                 <div>
                   <img src="/assets/image/icon_withdraw.png" alt="deposit" />
-                  <p><>{t('WITHDRAW')}</></p>
+                  <p>
+                    <>{t('WITHDRAW')}</>
+                  </p>
                 </div>
               </Link>
             </div>
           </div>
 
           <div className="transaction">
-            <h2><>{t('TRANSACTION_HISTORY')}</></h2>
+            <h2>
+              <>{t('TRANSACTION_HISTORY')}</>
+            </h2>
             <TransactionList />
           </div>
         </div>

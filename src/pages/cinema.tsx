@@ -2,8 +2,8 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 20:26:47
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-17 20:37:56
- * @FilePath: /wave-app-website/src/pages/cinema.tsx
+ * @LastEditTime: 2022-11-23 13:39:26
+ * @FilePath: /wave-app-webiste/src/pages/cinema.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import CinemaComponent from 'components/cinema/CinemaComponent'
@@ -15,11 +15,12 @@ import usePagination from 'hooks/usePagination'
 import { CinemaList } from 'model/cinema'
 import { PageModel } from 'model/navModel'
 import React, { useState, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import Http from 'services/http'
 
 export default function Cinema(props) {
   let pageModel = new PageModel('Cinema', 'WAVE', '')
-
+  const { t } = useTranslation()
   const ref = useRef(null)
 
   let [isOpen, setIsOpen] = useState(false)
@@ -43,7 +44,9 @@ export default function Cinema(props) {
       <>
         <div className="cinema-page">
           <div className="container mx-auto">
-            <h2 className="title">My Cinema</h2>
+            <h2 className="title">
+              <>{t('MY_CINEMA')}</>
+            </h2>
             <div className="cinema">
               {data?.map((item, index) => {
                 return <CinemaComponent key={index} item={item} openModal={openModal()} />

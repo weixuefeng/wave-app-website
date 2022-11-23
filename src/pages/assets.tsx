@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:49:32
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-22 21:22:22
+ * @LastEditTime: 2022-11-23 13:47:50
  * @FilePath: /wave-app-webiste/src/pages/assets.tsx
  */
 import React from 'react'
@@ -17,23 +17,35 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/navigation'
+import { useTranslation } from 'react-i18next'
 
 export default function Assets() {
   let pageModel = new PageModel('Assets', 'WAVE', '')
+  const { t } = useTranslation()
 
   function content() {
     return (
       <div className="assets-page">
         <div className="container mx-auto">
-          <h2 className="title">Assets</h2>
+          <h2 className="title">
+            <>{t('ASSETS')}</>
+          </h2>
           <div>
             <div className="hidden md:block">
               <Tab.Group>
                 <Tab.List>
-                  <Tab className="tab-item">My Own</Tab>
-                  <Tab className="tab-item mx-5 xl:mx-24">My Listings</Tab>
-                  <Tab className="tab-item mx-5 xl:mx-24">My Offers Made</Tab>
-                  <Tab className="tab-item mx-5 xl:mx-24">My Offers Received</Tab>
+                  <Tab className="tab-item">
+                    <>{t('MY_OWN')}</>
+                  </Tab>
+                  <Tab className="tab-item mx-5 xl:mx-24">
+                    <>{t('MY_LISTINGS')}</>
+                  </Tab>
+                  <Tab className="tab-item mx-5 xl:mx-24">
+                    <>{t('MY_OFFER_MADE')}</>
+                  </Tab>
+                  <Tab className="tab-item mx-5 xl:mx-24">
+                    <>{t('MY_OFFER_RECEIVED')}</>
+                  </Tab>
                 </Tab.List>
                 <Tab.Panels>
                   <Tab.Panel>
@@ -56,16 +68,20 @@ export default function Assets() {
                 <Tab.List className="h5-list">
                   <Swiper modules={[Navigation, Pagination]} spaceBetween={5} slidesPerView={2.5}>
                     <SwiperSlide>
-                      <Tab className="tab-item">My Own</Tab>
+                      <Tab className="tab-item">
+                        <>{t('MY_OWN')}</>
+                      </Tab>
                     </SwiperSlide>
                     <SwiperSlide>
-                      <Tab className="tab-item">My Listings</Tab>
+                      <Tab className="tab-item">{t('MY_LISTINGS')}</Tab>
                     </SwiperSlide>
                     <SwiperSlide>
-                      <Tab className="tab-item">My Offers Made</Tab>
+                      <Tab className="tab-item">{t('MY_OFFER_MADE')}</Tab>
                     </SwiperSlide>
                     <SwiperSlide>
-                      <Tab className="tab-item">My Offers Received</Tab>
+                      <Tab className="tab-item">
+                        <>{t('MY_OFFER_RECEIVED')}</>
+                      </Tab>
                     </SwiperSlide>
                   </Swiper>
                 </Tab.List>

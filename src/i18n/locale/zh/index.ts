@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 12:46:32
+ * @LastEditTime: 2022-11-23 13:44:19
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -61,12 +61,16 @@ export const zhTransaction = {
   WALLET: '我的钱包',
   TOTAL_BALANCE: '余额',
   AVAILABKE: '可用',
-  FROZEN:'冻结',
-  DEPOSIT:'充币',
-  WITHDRAW:'提币',
-  TRANSACTION_HISTORY:'交易历史',
+  FROZEN: '冻结',
+  DEPOSIT: '充币',
+  WITHDRAW: '提币',
+  TRANSACTION_HISTORY: '交易历史',
   ASSETS: '我的资产',
   MY_CINEMA: '我的影院',
+  MY_OWN: '我自己的',
+  MY_LISTINGS: '我在售的',
+  MY_OFFER_MADE: '我的出价',
+  MY_OFFER_RECEIVED: '我收到的出价',
   SETTINGS: '设置',
   LOGOUT: '退出登录',
   CONTRACT_ADDRESS: '合约地址',
