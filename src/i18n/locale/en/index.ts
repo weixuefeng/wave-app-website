@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 13:59:00
+ * @LastEditTime: 2022-11-23 15:33:37
  * @FilePath: /wave-app-webiste/src/i18n/locale/en/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -97,11 +97,16 @@ export const enTransaction = {
   CLEAR_CACHE: 'Clear Cache',
   BLACKLIST: 'Blacklist',
   DELETE_ACCOUNT: 'Delete Account',
-  EDIT_NICKNAME: 'Edit Nickname',
+  EDIT_NICKNAME: 'Modify Nickname',
+  MODIFY_EMAIL: 'Modify Email',
+  ORIGINAL_EMAIL_ADDRESS: 'Original Email Address',
   EMAIL_ADDRESS: 'Email Address',
+  NEW_EMAIL_ADDRESS: 'New Email Address',
   EMAIL_VERIFY_CODE: 'Email Verify Code',
   SEND_CODE: 'Send Code',
+  VERIFICATION_CODE: 'Verification Code',
   NEXT: 'Next',
+  MODIFY_PAYMENT_PASSWORD: 'Modify Payment Password',
   TRANSACTION_PASSWORD: 'Transaction Password',
   CONFIRM_TRANSACTION_PASSWORD: 'Confirm Transaction Password',
   TRANSACTION_PASSWORD_PLACEHOLDER: 'Please enter the six-digit password',
@@ -109,4 +114,9 @@ export const enTransaction = {
   LOADING: 'Loading',
   NOMOREDATA: 'No more data',
   NO_DATREA: 'There is no content here yet',
+  PRIVACY_POLICY: 'Privacy Policy',
+  TERM_OF_SERVICES: 'Term Of Services',
+  JOIN_THE_COMMUNITY: 'Join the community',
+  EDIT: 'Edit',
+  CONFIRM: 'Confirm',
 }

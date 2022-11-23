@@ -1,15 +1,16 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-18 15:55:51
- * @FilePath: /wave-app-website/src/components/settings/emailModal.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-23 14:43:47
+ * @FilePath: /wave-app-webiste/src/components/settings/emailModal.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import DialogComponent from 'components/common/DialogComponent'
 import { EmailSettingPage } from 'constants/setting'
 import { UserInfo } from 'model/user'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { selectUser } from 'reducer/userReducer'
 import { useAppSelector } from 'store/store'
 
@@ -17,6 +18,7 @@ import UpdateEmail from './updateEmail'
 import VerfiyEmail from './verfiyEmail'
 
 export default function EmailModal(props) {
+  const { t } = useTranslation()
   const currentUser = useAppSelector(selectUser) as UserInfo
   const [emailSettingPage, setEmailSettingPage] = useState(0)
   let [isOpen, setIsOpen] = useState(false)
@@ -54,11 +56,13 @@ export default function EmailModal(props) {
 
   return (
     <li>
-      <p>Email</p>
+      <p>
+        <>{t('EMAIL')}</>
+      </p>
       <div>
         <span className="left">{currentUser?.email}</span>
         <span className="edit" onClick={openModal}>
-          Edit
+          {t('EDIT')}
         </span>
       </div>
       <DialogComponent isOpen={isOpen} closeModal={closeModal}>

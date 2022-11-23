@@ -1,13 +1,21 @@
+/*
+ * @Author: liukeke liukeke@diynova.com
+ * @Date: 2022-11-22 13:48:50
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-23 15:10:12
+ * @FilePath: /wave-app-webiste/src/components/settings/nameModal.tsx
+ */
 import DialogComponent from 'components/common/DialogComponent'
 import { UserInfo } from 'model/user'
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { selectUser, updateUserInfo } from 'reducer/userReducer'
 import Http from 'services/http'
 import { useAppDispatch, useAppSelector } from 'store/store'
 import Log from 'utils/log'
-import { t } from 'i18next'
 
 export default function NameModal(props) {
+  const { t } = useTranslation()
   const currentUser = useAppSelector(selectUser) as UserInfo
   const [isOpen, setIsOpen] = useState(false)
   const [confirmLoading, setConfirmLoading] = useState(false)
@@ -49,13 +57,13 @@ export default function NameModal(props) {
   function dialogContent() {
     return (
       <div className="dialog-settings-name">
-        <h2>Modify Nickname</h2>
+        <h2>{t('EDIT_NICKNAME')}</h2>
         <div className="nick-name">
-          <input className="name" placeholder="Nickname" onChange={onNameChange} />
+          <input className="name" placeholder={t('NICKNAME')} onChange={onNameChange} />
           <img src="assets/image/icon_username.png" alt="username" />
         </div>
         <button className="primary black confirm" disabled={confirmLoading} onClick={() => updateName()}>
-          Confirm {confirmLoading && '...'}
+          {t('CONFIRM')} {confirmLoading && '...'}
         </button>
       </div>
     )
@@ -68,7 +76,7 @@ export default function NameModal(props) {
       <div>
         <span className="left">{currentUser?.name}</span>
         <span className="edit" onClick={openModal}>
-          Edit
+          {t('EDIT')}
         </span>
       </div>
       <DialogComponent isOpen={isOpen} closeModal={closeModal}>

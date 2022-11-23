@@ -2,20 +2,22 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-21 17:21:52
+ * @LastEditTime: 2022-11-23 15:30:09
  * @FilePath: /wave-app-webiste/src/components/settings/updateEmail.tsx
  */
 
 import { EmailAction, UserInfo } from 'model/user'
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { selectUser, updateUserInfo } from 'reducer/userReducer'
 import Http from 'services/http'
 import { useAppDispatch, useAppSelector } from 'store/store'
 import Log from 'utils/log'
 
 export default function UpdateEmail(props) {
+  const { t } = useTranslation()
   const { setEmailSettingPage, setIsOpen, ticket } = props
-
+  const spenCode = t('SEND_CODE')
   const currentUser = useAppSelector(selectUser) as UserInfo
   const [email, setEmail] = useState<string>()
   const [updateEmailCode, setUpdateEmailCode] = useState<string>()
@@ -24,7 +26,7 @@ export default function UpdateEmail(props) {
   const [isEmail, setIsEmail] = useState(false)
   const [isUpdateEmailCode, setIsUpdateEmailCode] = useState(false)
 
-  const [btnContent, setBtnContent] = useState('Send code')
+  const [btnContent, setBtnContent] = useState(spenCode)
   const [time, setTime] = useState<number>(60)
   const [btnDisabled, setBtnDisabled] = useState(false)
 
@@ -95,7 +97,7 @@ export default function UpdateEmail(props) {
     let timeChange = setInterval(() => {
       if (countdownTime < 0) {
         clearInterval(timeChange)
-        setBtnContent('Send code')
+        setBtnContent(spenCode)
         setBtnDisabled(false)
         setTime(60)
       } else {
@@ -108,21 +110,23 @@ export default function UpdateEmail(props) {
 
   return (
     <div className="dialog-settings-email">
-      <h2>Modify Email</h2>
+      <h2>
+        <>{t('MODIFY_EMAIL')}</>
+      </h2>
       <div className={'password-box'}>
         <div className="email">
           <label htmlFor="email" className="label">
-            New Email Address
+            {t('NEW_EMAIL_ADDRESS')}
           </label>
-          <input placeholder="Email Address" onChange={e => setEmail(e.target.value)} />
+          <input placeholder={t('EMAIL_ADDRESS')} onChange={e => setEmail(e.target.value)} />
           <img src="assets/image/icon_email.png" alt="email" />
           {isEmail ? <p className="tit-email">请输入邮箱</p> : null}
         </div>
         <div className="code-box">
           <label htmlFor="text" className="label">
-            Email Verification Code
+            {t('EMAIL_VERIFY_CODE')}
           </label>
-          <input placeholder="Verification Code" onChange={e => setUpdateEmailCode(e.target.value)} />
+          <input placeholder={t('VERIFICATION_CODE')} onChange={e => setUpdateEmailCode(e.target.value)} />
           <img src="assets/image/icon_code.png" alt="code" />
           <button className="send-code" disabled={btnDisabled || sendCodeloading} onClick={() => requestVerifyCode()}>
             <span>
@@ -133,7 +137,10 @@ export default function UpdateEmail(props) {
           {isUpdateEmailCode ? <p className="tit-email">请输入验证码</p> : null}
         </div>
         <button className="primary black" disabled={confirmLoading} onClick={() => requestEmail()}>
-          <span>Confirm {confirmLoading && '...'}</span>
+          <span>
+            {' '}
+            {t('CONFIRM')} {confirmLoading && '...'}
+          </span>
         </button>
       </div>
     </div>

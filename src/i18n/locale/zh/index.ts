@@ -2,9 +2,8 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 13:58:16
+ * @LastEditTime: 2022-11-23 15:39:36
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 export const zhTransaction = {
   WAVE: '浪潮',
@@ -96,16 +95,26 @@ export const zhTransaction = {
   BLACKLIST: '黑名单',
   DELETE_ACCOUNT: '注销账户',
   EDIT_NICKNAME: '修改昵称',
-  EMAIL_ADDRESS: '邮件地址',
+  MODIFY_EMAIL: '修改邮箱',
+  EMAIL_ADDRESS: '邮箱地址',
+  NEW_EMAIL_ADDRESS: '新的邮箱地址',
+  ORIGINAL_EMAIL_ADDRESS: '原始邮箱地址',
   EMAIL_VERIFY_CODE: '邮箱验证码',
   SEND_CODE: '发送验证码',
+  VERIFICATION_CODE: '验证码',
   NEXT: '下一步',
+  MODIFY_PAYMENT_PASSWORD: '修改交易密码',
   TRANSACTION_PASSWORD: '交易密码',
   CONFIRM_TRANSACTION_PASSWORD: '确认交易密码',
-  TRANSACTION_PASSWORD_PLACEHOLDER: '确认交易密码',
+  TRANSACTION_PASSWORD_PLACEHOLDER: '请输入六位数数字密码',
   CONFIRM_TRANSACTION_PASSWORD_PLACEHOLDER: '请再次输入密码',
   TERM_OF_SERterm_of_services: '请再次输入密码',
   LOADING: '加载中',
   NOMOREDATA: '没有更多了',
   NO_DATREA: '这里还没有内容',
+  PRIVACY_POLICY: '隐私条款',
+  TERM_OF_SERVICES: '用户协议',
+  JOIN_THE_COMMUNITY: '加入社区',
+  EDIT: '修改',
+  CONFIRM: '确认',
 }

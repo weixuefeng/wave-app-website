@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-22 17:18:30
- * @FilePath: /wave-app-website/src/components/settings/passwordModal.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-23 15:38:06
+ * @FilePath: /wave-app-webiste/src/components/settings/passwordModal.tsx
  */
 import DialogComponent from 'components/common/DialogComponent'
 import { EmailAction, UserInfo } from 'model/user'
@@ -14,8 +14,10 @@ import { useAppDispatch, useAppSelector } from 'store/store'
 import Log from 'utils/log'
 import { t } from 'i18next'
 import SendVerifyCodeButton from 'components/common/SendVerifyCodeButton'
+import { useTranslation } from 'react-i18next'
 
 export default function PasswordModal(props) {
+  const { t } = useTranslation()
   let [isOpen, setIsOpen] = useState(false)
   const currentUser = useAppSelector(selectUser) as UserInfo
   const [password, setPassword] = useState('')
@@ -59,21 +61,21 @@ export default function PasswordModal(props) {
   function dialogContent() {
     return (
       <div className="dialog-settings-password">
-        <h2>Modify Payment Password</h2>
+        <h2>{t('MODIFY_PAYMENT_PASSWORD')}</h2>
         <div className={'password-box'}>
           <div className="email">
             <label htmlFor="email" className="label">
-              New Email Address
+              {t('EMAIL_ADDRESS')}
             </label>
             <p className="emailed">{currentUser?.email}</p>
           </div>
 
           <div className="code-box">
             <label htmlFor="text" className="label">
-              Email Verification Code
+              {t('EMAIL_VERIFY_CODE')}
             </label>
             <input
-              placeholder="Verification Code"
+              placeholder={t('VERIFICATION_CODE')}
               onChange={e => {
                 setEmailCode(e.target.value)
               }}
@@ -83,10 +85,10 @@ export default function PasswordModal(props) {
 
           <div className="password">
             <label htmlFor="password" className="label">
-              Please Enter the Six-digit Password
+              {t('TRANSACTION_PASSWORD')}
             </label>
             <input
-              placeholder="Please Enter the Six-digit Password"
+              placeholder={t('TRANSACTION_PASSWORD_PLACEHOLDER')}
               onChange={e => {
                 setPassword(e.target.value)
               }}
@@ -96,10 +98,10 @@ export default function PasswordModal(props) {
 
           <div className="password">
             <label htmlFor="password" className="label">
-              Enter The Transaction Password Again
+              {t('CONFIRM_TRANSACTION_PASSWORD')}
             </label>
             <input
-              placeholder="Enter The Transaction Password Again"
+              placeholder={t('CONFIRM_TRANSACTION_PASSWORD_PLACEHOLDER')}
               onChange={e => {
                 setConfirmPassword(e.target.value)
               }}
@@ -108,7 +110,9 @@ export default function PasswordModal(props) {
           </div>
 
           <button className="primary black" disabled={confirmLoading} onClick={requestUpdatePassword}>
-            <span>Confirm {confirmLoading && '...'}</span>
+            <span>
+              {t('CONFIRM')} {confirmLoading && '...'}
+            </span>
           </button>
         </div>
       </div>
@@ -116,11 +120,13 @@ export default function PasswordModal(props) {
   }
   return (
     <li>
-      <p>Modify Payment Password</p>
+      <p>
+        <>{t('PAYMENT_PASSWORD')}</>
+      </p>
       <div>
         <span className="left">{currentUser?.payment_password_set == 1 ? '******' : 'unset'}</span>
         <span className="edit" onClick={openModal}>
-          Edit
+          {t('EDIT')}
         </span>
       </div>
       <DialogComponent isOpen={isOpen} closeModal={closeModal}>

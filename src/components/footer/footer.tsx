@@ -2,14 +2,16 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-13 11:26:10
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-16 16:08:14
+ * @LastEditTime: 2022-11-23 14:35:14
  * @FilePath: /wave-app-webiste/src/components/footer/footer.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import Link from 'next/link'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function Footer() {
+  const { t } = useTranslation()
   let date = new Date().getFullYear()
 
   return (
@@ -20,7 +22,7 @@ export default function Footer() {
             <img src="/assets/image/footer_logo.png" alt="footer-logo" />
           </div>
           <dl>
-            <dt>Join the community</dt>
+            <dt>{t('JOIN_THE_COMMUNITY')}</dt>
             <dd>
               <Link href="https://app.waveuniverse.org/">
                 <a target="_blank">
@@ -44,8 +46,8 @@ export default function Footer() {
       <div className="footer-content container">
         <p>Copyright © {date} WAVE Foundation. All Rights Reserved.</p>
         <div>
-          <Link href="/privacy">Privacy Policy</Link>
-          <Link href="/terms">Terms of Use</Link>
+          <Link href="/privacy">{t('PRIVACY_POLICY')}</Link>
+          <Link href="/terms">{t('TERM_OF_SERVICES')}</Link>
         </div>
       </div>
     </div>
