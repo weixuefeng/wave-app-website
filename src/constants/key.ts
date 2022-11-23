@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-08 11:08:04
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-22 15:42:47
+ * @LastEditTime: 2022-11-23 11:55:37
  * @FilePath: /wave-app-webiste/src/constants/key.ts
  */
 interface LocalKeyInterface {
@@ -26,6 +26,6 @@ export const languageTitle = [
   },
   {
     language: 'zh',
-    title: '中文',
+    title: '简体中文',
   },
 ]
