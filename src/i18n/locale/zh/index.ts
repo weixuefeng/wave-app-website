@@ -139,4 +139,5 @@ export const zhTransaction = {
   ACCEPT: '接受',
   EXPIRE_DATE: '截止时间',
   FROM: '接收者',
+  COPIED: '复制',
 }

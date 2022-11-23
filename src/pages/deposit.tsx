@@ -2,17 +2,16 @@ import { Listbox } from '@headlessui/react'
 import NormalLayout from 'components/layout/NormalLayout'
 import useWallet from 'hooks/userWallet'
 import { PageModel } from 'model/navModel'
-import { WalletAccount, WalletInfo } from 'model/wallet'
+import { WalletAccount } from 'model/wallet'
 import { useQRCode } from 'next-qrcode'
 import React, { useEffect, useState } from 'react'
-import { selectUser } from 'reducer/userReducer'
-import Http from 'services/http'
-import { useAppSelector } from 'store/store'
 import copyContent from 'utils/functions'
 import { ClipboardDocumentIcon } from '@heroicons/react/24/outline'
 import { CheckIcon } from '@heroicons/react/20/solid'
+import { useTranslation } from 'react-i18next'
 
 export default function Deposit() {
+  const { t } = useTranslation()
   let pageModel = new PageModel('Deposit', 'WAVE', '')
 
   const wallet = useWallet()
@@ -130,8 +129,8 @@ export default function Deposit() {
           </div>
           {isShowToast && (
             <div className="toast">
-              <img className="copied" src="/assets/image/copied.png" />
-              <span>Copied</span>
+              <img className="copied" src="/assets/image/copied.png" alt="copied" />
+              <span>{t('COPIED')}</span>
             </div>
           )}
         </div>

@@ -2,15 +2,16 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-21 16:51:27
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 16:01:23
+ * @LastEditTime: 2022-11-23 21:58:40
  * @FilePath: /wave-app-webiste/src/components/asset/ChainInfoComponent.tsx
  */
 import { ClipboardDocumentIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
-import { t } from 'i18next'
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import copyContent, { splitAddress } from 'utils/functions'
 
 export default function ChainInfoComponent(props) {
+  const { t } = useTranslation()
   const { address, tokenStandard, blockChain, creatorEariningPercent } = props
 
   const [isShowToast, setIsShowToast] = useState(false)
@@ -57,7 +58,7 @@ export default function ChainInfoComponent(props) {
       {isShowToast && (
         <div className="toast">
           <img className="copied" src="/assets/image/copied.png" alt="copied" />
-          <span>Copied</span>
+          <span>{t('COPIED')}</span>
         </div>
       )}
     </div>

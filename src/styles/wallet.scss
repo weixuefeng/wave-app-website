@@ -44,7 +44,7 @@
     }
 
     .list {
-      @apply mt-4 divide-y-2;
+      @apply mt-4 divide-y-2 overflow-y-auto md:max-h-[800px];
 
       .history-item {
         @apply flex flex-col p-4;

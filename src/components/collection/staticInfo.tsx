@@ -1,9 +1,9 @@
 /*
  * @Author: zhuxiaotong zhuxiaotong@diynova.com
  * @Date: 2022-09-29 15:46:19
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-18 19:59:21
- * @FilePath: /wave-app-website/src/components/collection/staticInfo.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-23 21:59:37
+ * @FilePath: /wave-app-webiste/src/components/collection/staticInfo.tsx
  * @LastEditors: weixuefeng weixuefeng@diynova.com
  * @LastEditTime: 2022-10-08 20:54:29
  * @FilePath: /wave-chinese-website/src/components/index/staticInfo.tsx
@@ -167,7 +167,7 @@ function StaticInfo(props) {
       </div>
       {isShowToast && (
         <div className="toast">
-          <img className="copied" src="/assets/image/copied.png" />
+          <img className="copied" src="/assets/image/copied.png" alt="copied" />
           <>{t('COPYSUCCESS')}</>
         </div>
       )}
