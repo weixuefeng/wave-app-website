@@ -1,11 +1,9 @@
 import { useTranslation } from 'react-i18next'
-
 import React from 'react'
 import { getAssetDetailPath } from 'utils/route'
 import Link from 'next/link'
 import { AssetType } from 'model/asset'
 import Nodata from 'components/layout/NoData'
-import { t } from 'i18next'
 
 export function EVTAsset(props) {
   const { item } = props
@@ -120,6 +118,7 @@ export function Recommend(props) {
 
 export default function RecommendComponent(props) {
   const { recommend } = props
+  const { t } = useTranslation()
   if (!recommend) {
     return <></>
   }

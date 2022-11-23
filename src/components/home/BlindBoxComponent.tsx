@@ -1,12 +1,9 @@
 import { useTranslation } from 'react-i18next'
-
 import React, { useEffect, useState } from 'react'
 import { getAssetDetailPath } from 'utils/route'
 import Link from 'next/link'
 import { Asset } from 'model/asset'
 import { IssueType } from 'model/collection_model'
-import Nodata from 'components/layout/NoData'
-import { t } from 'i18next'
 
 export function BlindBox(props) {
   const { item } = props
@@ -123,7 +120,7 @@ export function BlindBox(props) {
 
 export default function BlindBoxComponent(props) {
   const { blindBox } = props
-
+  const { t } = useTranslation()
   if (!blindBox) {
     return <></>
   }

@@ -1,7 +1,16 @@
+/*
+ * @Author: liukeke liukeke@diynova.com
+ * @Date: 2022-11-17 20:18:09
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-23 11:49:07
+ * @FilePath: /wave-app-webiste/src/components/layout/LoadMoreComponent.tsx
+ */
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import Nodata from './NoData'
 
 export default function LoadMoreComponent(props) {
+  const { t } = useTranslation()
   const { currentPage, isLoading, hasMore, data } = props
 
   if (currentPage == 1) {
@@ -17,6 +26,14 @@ export default function LoadMoreComponent(props) {
       </>
     )
   } else {
-    return <>{<div className="mt-10 text-center text-base text-gray99">{hasMore ? '加载中...' : '没有更多了'}</div>}</>
+    return (
+      <>
+        {
+          <div className="mt-10 text-center text-base text-gray99">
+            {hasMore ? `${t('LOADING') + '...'}` : `${t('NOMOREDATA')}`}
+          </div>
+        }
+      </>
+    )
   }
 }

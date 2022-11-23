@@ -1,23 +1,24 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:32:00
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-22 17:27:12
- * @FilePath: /wave-app-website/src/pages/trade.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-23 11:35:33
+ * @FilePath: /wave-app-webiste/src/pages/trade.tsx
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
-import NormalLayout from 'components/layout/normalLayout'
+import NormalLayout from 'components/layout/NormalLayout'
 import usePagination from 'hooks/usePagination'
-import { t } from 'i18next'
 import { PageModel } from 'model/navModel'
 import { TradeItem } from 'model/trade'
 import React, { useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import Http from 'services/http'
 import TradeComponent from '../components/trade/TradeComponent'
 
 export default function TradePage(props) {
   let pageModel = new PageModel('Trade', 'WAVE', '')
   const ref = useRef(null)
+  const { t } = useTranslation()
 
   const { hasMore, isLoading, currentPage, data, error } = usePagination<TradeItem>(ref, fetchData)
 
