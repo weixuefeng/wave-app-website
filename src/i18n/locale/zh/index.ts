@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 15:39:36
+ * @LastEditTime: 2022-11-23 16:26:26
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -71,7 +71,9 @@ export const zhTransaction = {
   MY_OFFER_MADE: '我的出价',
   MY_OFFER_RECEIVED: '我收到的出价',
   SETTINGS: '设置',
+  LOGIN: '登录',
   LOGOUT: '退出登录',
+  LOGIMN_SIGN_UP: '登录 / 注册',
   CONTRACT_ADDRESS: '合约地址',
   TOKEN_STANDARD: '标准',
   BLOCKCHAIN: '区块链',
@@ -117,4 +119,7 @@ export const zhTransaction = {
   JOIN_THE_COMMUNITY: '加入社区',
   EDIT: '修改',
   CONFIRM: '确认',
+  CANCEL: '取消',
+  I_AGREE_TO: '我已阅读并同意',
+  AND: '和',
 }

@@ -13,6 +13,7 @@ import { AssetMyOfferData } from 'model/asset'
 import { OfferType } from 'model/offer'
 import { UserInfo } from 'model/user'
 import React, { useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { selectUser } from 'reducer/userReducer'
 import Http from 'services/http'
 import { useAppSelector } from 'store/store'
@@ -21,6 +22,7 @@ import Log from 'utils/log'
 import { formatDateTime } from 'utils/time'
 
 export default function MyOffersMade(props) {
+  const { t } = useTranslation()
   const currentUser = useAppSelector(selectUser) as UserInfo
   let [isOpen, setIsOpen] = useState(false)
   const ref = useRef(null)
@@ -103,7 +105,7 @@ export default function MyOffersMade(props) {
                 </li>
               </ul>
               <div className="cancel" onClick={openModal}>
-                Cancel
+                <>{t('CANCEL')}</>
               </div>
               <DialogComponent isOpen={isOpen} closeModal={closeModal}>
                 {dialogContent(item.id)}

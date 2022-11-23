@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-21 11:55:31
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-22 20:11:11
+ * @LastEditTime: 2022-11-23 16:12:13
  * @FilePath: /wave-app-webiste/src/components/header/LoginComponent.tsx
  */
 import { Menu } from '@headlessui/react'
@@ -32,7 +32,9 @@ export default function LoginComponent() {
   function noUserComponent() {
     return (
       <li className="login" onClick={openModal}>
-        <span>Log In / Sign Up</span>
+        <span>
+          <>{t('LOGIMN_SIGN_UP')}</>
+        </span>
       </li>
     )
   }

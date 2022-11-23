@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 15:33:37
+ * @LastEditTime: 2022-11-23 16:26:38
  * @FilePath: /wave-app-webiste/src/i18n/locale/en/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -74,7 +74,9 @@ export const enTransaction = {
   MY_OFFER_MADE: 'My Made',
   MY_OFFER_RECEIVED: 'My Offer Received',
   SETTINGS: 'Settings',
+  LOGIN: 'Log in',
   LOGOUT: 'Log out',
+  LOGIMN_SIGN_UP: 'Log In / Sign Up',
   CONTRACT_ADDRESS: 'Contract Address',
   TOKEN_STANDARD: 'Token Standard',
   BLOCKCHAIN: 'Blockchain',
@@ -119,4 +121,7 @@ export const enTransaction = {
   JOIN_THE_COMMUNITY: 'Join the community',
   EDIT: 'Edit',
   CONFIRM: 'Confirm',
+  CANCEL: 'Cancel',
+  I_AGREE_TO: "I agree to WAVE's",
+  AND: 'and',
 }

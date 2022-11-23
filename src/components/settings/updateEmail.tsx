@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 15:30:09
+ * @LastEditTime: 2022-11-23 16:29:13
  * @FilePath: /wave-app-webiste/src/components/settings/updateEmail.tsx
  */
 
@@ -81,7 +81,7 @@ export default function UpdateEmail(props) {
       .requestVerifyCode(email, EmailAction.RESET_EMAIL)
       .then(response => {
         setBtnDisabled(true)
-        setBtnContent(`${time} s后重发`)
+        setBtnContent(`${time} s`)
         sendCodeCountDown(time)
       })
       .catch(error => {
@@ -101,7 +101,7 @@ export default function UpdateEmail(props) {
         setBtnDisabled(false)
         setTime(60)
       } else {
-        setBtnContent(`${countdownTime} s后重发`)
+        setBtnContent(`${countdownTime} s`)
         setTime(--countdownTime)
       }
     }, 1000)

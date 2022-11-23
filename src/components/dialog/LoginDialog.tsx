@@ -2,26 +2,28 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-21 15:28:55
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-21 19:46:55
+ * @LastEditTime: 2022-11-23 16:28:42
  * @FilePath: /wave-app-webiste/src/components/dialog/LoginDialog.tsx
  */
 import { Checkbox } from 'antd'
 import { EmailAction } from 'model/user'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { updateUserInfo } from 'reducer/userReducer'
 import Http from 'services/http'
 import { useAppDispatch } from 'store/store'
 import Log from 'utils/log'
 
 export default function LoginDialog(props) {
+  const { t } = useTranslation()
   const { closeModal } = props
-
+  const spenCode = t('SEND_CODE')
   const [email, setEmail] = useState<string>()
   const [verifyCode, setVerifyCode] = useState<string>()
   const dispatch = useAppDispatch()
   const [loginLoading, setLoginLoading] = useState(false)
-  const [btnContent, setBtnContent] = useState('Send code')
+  const [btnContent, setBtnContent] = useState(spenCode)
   const [btnDisabled, setBtnDisabled] = useState(false)
   const [time, setTime] = useState<number>(60)
   const [sendCodeloading, setSendCodeLoading] = useState(false)
@@ -65,9 +67,7 @@ export default function LoginDialog(props) {
       .requestVerifyCode(email, EmailAction.LOGIN)
       .then(response => {
         setBtnDisabled(true)
-        console.log('time:', time)
-        setBtnContent(`${time} s后重发`)
-        console.log('time2:', time)
+        setBtnContent(`${time} s`)
         sendCodeCountDown(time)
         Log.d(response)
       })
@@ -85,11 +85,11 @@ export default function LoginDialog(props) {
     let timeChange = setInterval(() => {
       if (countdownTime < 0) {
         clearInterval(timeChange)
-        setBtnContent('Send code')
+        setBtnContent(spenCode)
         setBtnDisabled(false)
         setTime(60)
       } else {
-        setBtnContent(`${countdownTime} s后重发`)
+        setBtnContent(`${countdownTime} s`)
         setTime(--countdownTime)
       }
     }, 1000)
@@ -99,17 +99,19 @@ export default function LoginDialog(props) {
   return (
     <div className="login">
       <div className="title">
-        <h3> Log In / Sign Up</h3>
+        <h3>
+          <>{t('LOGIMN_SIGN_UP')}</>
+        </h3>
       </div>
       <div className={'password-box'}>
         <div className="email">
-          <input placeholder="Email Address" onChange={e => setEmail(e.target.value)} />
+          <input placeholder={t('EMAIL_ADDRESS')} onChange={e => setEmail(e.target.value)} />
           <img src="assets/image/icon_email.png" alt="email" />
           {isEmail ? <p className="tit-email">请输入邮箱</p> : null}
         </div>
 
         <div className="code-box">
-          <input placeholder="Verification Code" onChange={e => setVerifyCode(e.target.value)} />
+          <input placeholder={t('EMAIL_VERIFY_CODE')} onChange={e => setVerifyCode(e.target.value)} />
           <img src="assets/image/icon_code.png" alt="code" />
           <button disabled={btnDisabled || sendCodeloading} onClick={() => requestVerifyCode()} className="send-code">
             <span>
@@ -123,12 +125,16 @@ export default function LoginDialog(props) {
           disabled={loginLoading}
           className="inline-flex w-full justify-center rounded-lg bg-slate-900 py-2.5 px-4 text-sm font-semibold text-white hover:bg-slate-700"
         >
-          <span>Log in {loginLoading && '...'}</span>
+          <span>
+            {t('LOGIN')} {loginLoading && '...'}
+          </span>
         </button>
         <div className="agree-box">
           <Checkbox className="checkbox"></Checkbox>
           <p className="agree">
-            I agree to WAVE&apos;s <Link href="/b">Terms of Service</Link> and <Link href="/a">Privacy Policy</Link>
+            {/* I agree to WAVE&apos;s  */}
+            {t('I_AGREE_TO')} <Link href="/b">{t('TERM_OF_SERVICES')}</Link> {t('AND')}{' '}
+            <Link href="/a">{t('PRIVACY_POLICY')}</Link>
           </p>
         </div>
       </div>
