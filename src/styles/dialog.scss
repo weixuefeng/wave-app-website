@@ -505,7 +505,8 @@
     }
 
     .send-code {
-      @apply absolute top-9 right-5 h-14 cursor-pointer text-sm leading-8 text-gray333;
+      @apply absolute top-9 right-0 h-14 cursor-pointer pr-5 text-sm leading-8 text-gray333;
+      border-radius: 0 12px 12px 0;
       span {
         @apply border-l-[1px] border-grayed pl-5;
       }
