@@ -11,9 +11,8 @@ import { CheckIcon } from '@heroicons/react/20/solid'
 import { useTranslation } from 'react-i18next'
 
 export default function Deposit() {
-  const { t } = useTranslation()
   let pageModel = new PageModel('Deposit', 'WAVE', '')
-
+  const { t } = useTranslation()
   const wallet = useWallet()
   const { Canvas } = useQRCode()
 
@@ -42,17 +41,17 @@ export default function Deposit() {
     return (
       <div className="container mx-auto">
         <div className="deposit">
-          <p className="title">Deposit</p>
+          <p className="title">{t('DEPOSIT')}</p>
           <div className="token">
-            <p className="mr-3">Token:</p>
+            <p className="mr-3">{t('TOKEN')}:</p>
             <img className="mr-1" src="/assets/image/icon_newton.png" alt="" />
             <p>NEW</p>
             <p className="label">{walletAccount.label}</p>
           </div>
 
           <div className="select">
-            <p>Deposit Network</p>
-            <p className="content">Select deposit network to show deposit address</p>
+            <p>{t('DEPOSIT_NETWORK')}</p>
+            <p className="content">{t('SELECT_ADDRESS')}</p>
           </div>
 
           <div className="w-72">
@@ -111,8 +110,8 @@ export default function Deposit() {
               }}
             />
             <div className="content">
-              <p className="content_title">Deposit Address</p>
-              <p className="content_tips">Scan the QR code to get the deposit address</p>
+              <p className="content_title">{t('DEPOSIT_ADDRESS')}</p>
+              <p className="content_tips">{t('SCAN_ADDRESS')}</p>
               <p className="address">
                 {walletAccount.wallet_address}
                 <ClipboardDocumentIcon onClick={() => copyAddress(walletAccount.wallet_address)} />
@@ -121,10 +120,10 @@ export default function Deposit() {
           </div>
 
           <div className="tip">
-            <p className="tip_title">Reminder</p>
-            <p>* If you send any other crypto except NEW to this address, you will lose your assets.</p>
+            <p className="tip_title">{t('REMINDER')}</p>
+            <p>* {t('IF_YOU_SEND')}</p>
             <p>
-              * Min deposit amount {walletAccount.deposit_minimum} {walletAccount.coin_type}
+              * {t('MIN_DEPOSIT_AMOUNT')} {walletAccount.deposit_minimum} {walletAccount.coin_type}
             </p>
           </div>
           {isShowToast && (

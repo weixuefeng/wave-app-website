@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import NormalLayout from 'components/layout/normalLayout'
 import useWallet from 'hooks/userWallet'
 import { PageModel } from 'model/navModel'
 import { WalletAccount } from 'model/wallet'
@@ -10,10 +9,12 @@ import DialogComponent from 'components/common/DialogComponent'
 import PasswordDialog from 'components/dialog/PasswordDialog'
 import Http from 'services/http'
 import Log from 'utils/log'
+import NormalLayout from 'components/layout/NormalLayout'
+import { useTranslation } from 'react-i18next'
 
 export default function Withdraw() {
   let pageModel = new PageModel('Withdraw', 'WAVE', '')
-
+  const { t } = useTranslation()
   const wallet = useWallet()
   const [walletAccount, setWalletAccount] = useState<WalletAccount>()
   const router = useRouter()
@@ -56,9 +57,9 @@ export default function Withdraw() {
     return (
       <div className="container mx-auto">
         <div className="withdraw">
-          <p className="title">Withdraw</p>
+          <p className="title">{t('WITHDRAW')}</p>
           <div className="token">
-            <p className="mr-3">Token:</p>
+            <p className="mr-3">{t('TOKEN')}:</p>
             <img className="mr-1" src="/assets/image/icon_newton.png" alt="" />
             <p>NEW</p>
             <p className="label">{walletAccount.label}</p>
@@ -67,7 +68,7 @@ export default function Withdraw() {
           <div className="from-box">
             <div className="from-content">
               <label htmlFor="text" className="label">
-                Withdraw Network
+                {t('WITHDRAW_NETWORK')}
               </label>
               <div>
                 <Listbox value={walletAccount} onChange={setWalletAccount}>
@@ -110,10 +111,10 @@ export default function Withdraw() {
             </div>
             <div className="from-content">
               <label htmlFor="text" className="label">
-                Withdraw Address
+                {t('WITHDRAW_ADDRESS')}
               </label>
               <input
-                placeholder="Enter or paste address"
+                placeholder={t('ENTER_ADDRESS')}
                 onChange={e => {
                   setAddress(e.target.value)
                 }}
@@ -124,11 +125,13 @@ export default function Withdraw() {
           <div className="from-box">
             <div className="from-content">
               <label htmlFor="text" className="label">
-                <span>Amount</span>
-                <span className="label-right">Available {wallet.available_balance}NEW</span>
+                <span>{t('AMOUNT')}</span>
+                <span className="label-right">
+                  {t('AVAILABKE')} {wallet.available_balance}NEW
+                </span>
               </label>
               <input
-                placeholder={`Minimum${walletAccount.withdraw_minimum}`}
+                placeholder={`${t('MINIMUN')}${walletAccount.withdraw_minimum}`}
                 onChange={e => {
                   setAmount(e.target.value)
                 }}
@@ -137,23 +140,20 @@ export default function Withdraw() {
           </div>
 
           <div className="fee-box">
-            <p className="label">Fee</p>
+            <p className="label">{t('FEE')}</p>
             <p className="value">{walletAccount.withdraw_fee}NEW</p>
           </div>
 
           <div className="tips">
-            <p className="tips_title">Reminder</p>
-            <p>* WAVE will never ask you to transfer funds to another account.</p>
-            <p>
-              * Beware of fraud and do not participate in illegal activities such as proxy purchases, money laundering,
-              and illegal fundraising.
-            </p>
-            <p>* Internal transfer will be free.</p>
+            <p className="tips_title">{t('REMINDER')}</p>
+            <p>* {t('WAVE_ACCOUNT')}</p>
+            <p>* {t('BEWARE_OF_FRAUD')}</p>
+            <p>* {t('INTERNAL_FREE')}</p>
           </div>
 
           <div className="from-box">
             <button className="primary black" onClick={onConfirm}>
-              Confirm
+              {t('CONFIRM')}
             </button>
           </div>
         </div>

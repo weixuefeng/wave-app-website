@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 21:47:24
+ * @LastEditTime: 2022-11-23 22:42:44
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -140,4 +140,20 @@ export const zhTransaction = {
   EXPIRE_DATE: '截止时间',
   FROM: '接收者',
   COPIED: '复制',
+  DEPOSIT_NETWORK: '充币网络',
+  TOKEN: '币种',
+  SELECT_ADDRESS: '请确保您选择的充币网络和您提币时选择的网络一致,否则可能造成资产损失.',
+  DEPOSIT_ADDRESS: '充币地址',
+  SCAN_ADDRESS: '扫描二维码获取充币地址',
+  REMINDER: '温馨提示',
+  IF_YOU_SEND: '您只能向此地址充入NEW,充入其他资产将无法找回.',
+  MIN_DEPOSIT_AMOUNT: '最小充值金额',
+  WITHDRAW_NETWORK: '提币网络',
+  WITHDRAW_ADDRESS: '提币地址',
+  MINIMUN: '最少',
+  ENTER_ADDRESS: '输入或长按粘贴地址',
+  WAVE_ACCOUNT: 'WAVE在任何情况下都不会要求您向某一帐户,也不会向您索要验证码.',
+  BEWARE_OF_FRAUD: '请勿参与代购、洗钱、非法集资等非法活动,谨防网络诈骗.',
+  INTERNAL_FREE: '内部转账免手续费.',
+  FEE: '手续费',
 }
