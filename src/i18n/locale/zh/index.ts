@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 22:42:44
+ * @LastEditTime: 2022-11-23 22:51:23
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -156,4 +156,6 @@ export const zhTransaction = {
   BEWARE_OF_FRAUD: '请勿参与代购、洗钱、非法集资等非法活动,谨防网络诈骗.',
   INTERNAL_FREE: '内部转账免手续费.',
   FEE: '手续费',
+  PURCHSSE_TIME: '购买时间',
+  CHECK_IN_DEADINE: '检票截止日期',
 }

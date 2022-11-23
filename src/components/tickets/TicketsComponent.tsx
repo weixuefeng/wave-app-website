@@ -2,16 +2,18 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:33:51
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-17 21:21:47
- * @FilePath: /wave-app-webiste/src/components/trade/TradeComponent.tsx
+ * @LastEditTime: 2022-11-23 22:51:14
+ * @FilePath: /wave-app-webiste/src/components/tickets/TicketsComponent.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { TicketsTypeList } from 'utils/functions'
 import { formatDateTime } from 'utils/time'
 
 export default function CinemaComponent(props) {
+  const { t } = useTranslation()
   const { item, openModal } = props
 
   return (
@@ -28,9 +30,9 @@ export default function CinemaComponent(props) {
             </div>
           </div>
           <div className="time">
-            <h3>Purchase time</h3>
+            <h3>{t('PURCHSSE_TIME')}</h3>
             <p>{formatDateTime(item.purchase_time)}</p>
-            <h3 className="time-check">Check in deadline</h3>
+            <h3 className="time-check">{t('CHECK_IN_DEADINE')}</h3>
             <p>{formatDateTime(item.copyright_expire_time)}</p>
           </div>
         </div>
