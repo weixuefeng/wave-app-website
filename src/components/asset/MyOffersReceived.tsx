@@ -1,13 +1,14 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:44:56
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-22 21:59:43
- * @FilePath: /wave-app-website/src/components/asset/MyOffersReceived.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-23 20:31:06
+ * @FilePath: /wave-app-webiste/src/components/asset/MyOffersReceived.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import DialogComponent from 'components/common/DialogComponent'
 import MoreOfferComponent from 'components/dialog/MoreOfferComponent'
+import MyoffersAcceDialog from 'components/dialog/MyoffersAcceDialog'
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import usePagination from 'hooks/usePagination'
 import { AssetMyOfferData } from 'model/asset'
@@ -23,13 +24,13 @@ import Log from 'utils/log'
 import { formatDateTime } from 'utils/time'
 
 export default function MyOffersReceived(props) {
-  const currentUser = useAppSelector(selectUser) as UserInfo
-  let [isOpen, setIsOpen] = useState(false)
   const { t } = useTranslation()
-
+  const currentUser = useAppSelector(selectUser) as UserInfo
   const ref = useRef(null)
-
   const { hasMore, isLoading, currentPage, data, error, refreshData } = usePagination<AssetMyOfferData>(ref, fetchData)
+
+  const [isOpen, setIsOpen] = useState(false)
+  const [isAcceptOpen, setIsAcceptOpen] = useState(false)
 
   function fetchData() {
     return Http.getInstance().getOrderOffer(currentUser.id, currentPage, OfferType.RECEIVED)
@@ -43,13 +44,16 @@ export default function MyOffersReceived(props) {
     setIsOpen(true)
   }
 
+  function closeAcceptModal() {
+    setIsAcceptOpen(false)
+  }
+
   function requestAcceptBid(bidId: number) {
     Http.getInstance()
       .requestAcceptBid(bidId)
       .then(response => {
-        // todo: show accept success dialog
+        setIsAcceptOpen(true)
         refreshData()
-        closeModal()
       })
       .catch(error => {
         Log.e(error)
@@ -98,8 +102,14 @@ export default function MyOffersReceived(props) {
                   See more
                 </div>
               )}
-              <DialogComponent isOpen={isOpen} closeModal={closeModal}>
+              {/* see more */}
+              {/* <DialogComponent isOpen={isOpen} closeModal={closeModal}>
                 <MoreOfferComponent nftId={item.nft_id} requestAcceptBid={id => requestAcceptBid(id)} />
+              </DialogComponent> */}
+
+              {/* successful */}
+              <DialogComponent isOpen={isAcceptOpen} closeModal={closeAcceptModal}>
+                <MyoffersAcceDialog />
               </DialogComponent>
             </div>
           )

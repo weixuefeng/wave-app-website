@@ -16,11 +16,12 @@ import Log from 'utils/log'
 import { loadGetInitialProps } from 'next/dist/shared/lib/utils'
 import LoginDialog from 'components/dialog/LoginDialog'
 import Link from 'next/link'
-import { t } from 'i18next'
 import BidSucceededDialog from 'components/dialog/BidSucceededDialog'
 import BuySuccessfulDialog from 'components/dialog/BuySuccessfulDialog'
+import { useTranslation } from 'react-i18next'
 
 export default function NFTDetailComponent(props) {
+  const { t } = useTranslation()
   const { id } = props
   const currentUser = useAppSelector(selectUser)
 
@@ -267,11 +268,11 @@ export default function NFTDetailComponent(props) {
           {/** price info */}
           <div className="price">
             <div>
-              <p className="label">Hightest Bid:</p>
+              <p className="label">{t('HIGHEST_BID')}:</p>
               <p className="value">{nftDetail.highest_bid_price ? nftDetail.highest_bid_price : '--'} NEW</p>
             </div>
             <div>
-              <p className="label">Price:</p>
+              <p className="label">{t('PRICE')}:</p>
               <p className="value">{nftDetail.is_sell == 1 ? nftDetail.price : '--'} NEW</p>
             </div>
           </div>

@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 19:26:43
+ * @LastEditTime: 2022-11-23 20:46:50
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -26,6 +26,7 @@ export const zhTransaction = {
   CURRENT_RELEASE: '本期发行',
   FLOOR_PRICE: '最低出价',
   HIGHEST_BID: '最高出价',
+  PRICE: '价格',
   UPCOMMINGDROP: '敬请期待',
   COMINGSOON: '即将开售',
   SOLDOUT: '已售罄',
@@ -129,4 +130,10 @@ export const zhTransaction = {
   I_AGREE_TO: '我已阅读并同意',
   AND: '和',
   ARE_YOU_SURE: '您确定要取消出售吗',
+  SOLD_SUCCESSFULLY: '售卖成功',
+  THE_OBTAINED: '恭喜您成功购买该资产,您可以在“我的”-“我的资产”中查看',
+  CHECK_BLALANCE: '查看余额',
+  PAYMENT_SUCCESSFUL: '付款成功',
+  VIEW_RECORDS: '查看记录',
+  BID_SUCCEEDED: '出价成功',
 }

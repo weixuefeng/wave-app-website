@@ -6,10 +6,10 @@ import LoginDialog from 'components/dialog/LoginDialog'
 import MakeOfferDialog from 'components/dialog/MakeOfferDialog'
 import PasswordDialog from 'components/dialog/PasswordDialog'
 import SellAssetDialog from 'components/dialog/SellAssetDialog'
-import { t } from 'i18next'
 import { AssetSellStatus } from 'model/asset'
 import { EVTCopyDetail } from 'model/evt_asset'
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { selectUser } from 'reducer/userReducer'
 import Http from 'services/http'
 import { useAppSelector } from 'store/store'
@@ -18,6 +18,7 @@ import ChainInfoComponent from './ChainInfoComponent'
 import PropertiesComponents from './PropertiesComponents'
 
 export default function EVTDetailComponent(props) {
+  const { t } = useTranslation()
   const { id } = props
   const [evtDetail, setEvtDetail] = useState<EVTCopyDetail>()
 
@@ -249,7 +250,7 @@ export default function EVTDetailComponent(props) {
           {/** price info */}
           <div className="price">
             <div>
-              <p className="label">Hightest Bid:</p>
+              <p className="label">{t('HIGHEST_BID')}:</p>
               <p className="value">{evtDetail.highest_bid_price} NEW</p>
             </div>
             <div>
