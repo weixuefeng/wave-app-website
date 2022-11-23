@@ -6,8 +6,10 @@ import { Divider, Tooltip } from 'antd'
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline'
 import useSettings from 'hooks/useSettings'
 import { EVTCopyDetail } from 'model/evt_asset'
+import { useTranslation } from 'react-i18next'
 
 export default function BuyDialog(props) {
+  const { t } = useTranslation()
   const { nftDetail, showPassword, evtDetail } = props
   const wallet = useWallet()
   const settings = useSettings()
@@ -96,7 +98,7 @@ export default function BuyDialog(props) {
       </div>
 
       <button className="primary black" onClick={() => showPassword()}>
-        Next
+        <>{t('NEXT')}</>
       </button>
     </div>
   )

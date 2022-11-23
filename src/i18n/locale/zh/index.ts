@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 16:26:26
+ * @LastEditTime: 2022-11-23 17:06:06
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -68,6 +68,7 @@ export const zhTransaction = {
   MY_CINEMA: '我的影院',
   MY_OWN: '我自己的',
   MY_LISTINGS: '我在售的',
+  ON_SALE: '在售',
   MY_OFFER_MADE: '我的出价',
   MY_OFFER_RECEIVED: '我收到的出价',
   SETTINGS: '设置',

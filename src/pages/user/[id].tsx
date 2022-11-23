@@ -1,5 +1,12 @@
+/*
+ * @Author: liukeke liukeke@diynova.com
+ * @Date: 2022-11-22 16:55:35
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-23 17:08:09
+ * @FilePath: /wave-app-webiste/src/pages/user/[id].tsx
+ */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
-import NormalLayout from 'components/layout/normalLayout'
+import NormalLayout from 'components/layout/NormalLayout'
 import usePagination from 'hooks/usePagination'
 import { getAssetNameByType, MyAsset } from 'model/asset'
 import { PageModel } from 'model/navModel'
@@ -7,11 +14,13 @@ import { UserInfo } from 'model/user'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import Http from 'services/http'
 import Log from 'utils/log'
 import { getAssetDetailPathByInfo } from 'utils/route'
 
 export default function UserPage() {
+  const { t } = useTranslation()
   const router = useRouter()
   let pageModel = new PageModel('User', 'WAVE', '')
   const { id } = router.query
@@ -73,7 +82,11 @@ export default function UserPage() {
                           <span className={getAssetNameByType(item.type) == 'nft' ? 'type' : ''}>
                             {getAssetNameByType(item.type)}
                           </span>
-                          {item.status == 1 ? <p className="on-sale">On Sale</p> : null}
+                          {item.status == 1 ? (
+                            <p className="on-sale">
+                              <>{t('ON_SALE')}</>
+                            </p>
+                          ) : null}
                         </div>
                         <div className="own-name">{item.name}</div>
                       </a>

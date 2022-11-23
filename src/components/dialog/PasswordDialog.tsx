@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import InputGroup from 'react-input-groups'
 import 'react-input-groups/lib/css/styles.css'
-import { t } from 'i18next'
 
 export default function PasswordDialog(props) {
+  const { t } = useTranslation()
   const { getPasswordValue, onCancel, onConfirm } = props
 
   const [value, setValue] = useState<string>()
@@ -22,10 +23,10 @@ export default function PasswordDialog(props) {
       </div>
       <div className="action">
         <button className="primary black mr-6 outline" onClick={onCancel}>
-          cancel
+          <>{t('CANCEL')}</>
         </button>
         <button className="primary short black" onClick={onComplete}>
-          Confirm
+          <>{t('CONFIRM')}</>
         </button>
       </div>
     </div>

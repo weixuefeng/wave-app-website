@@ -2,8 +2,8 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:42:02
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-17 20:50:49
- * @FilePath: /wave-app-website/src/components/asset/MyOwn.tsx
+ * @LastEditTime: 2022-11-23 17:07:12
+ * @FilePath: /wave-app-webiste/src/components/asset/MyOwn.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 
@@ -20,8 +20,10 @@ import Log from 'utils/log'
 import Nodata from 'components/layout/NoData'
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import usePagination from 'hooks/usePagination'
+import { useTranslation } from 'react-i18next'
 
 export default function Myown(props) {
+  const { t } = useTranslation()
   const currentUser = useAppSelector(selectUser) as UserInfo
   const ref = useRef(null)
 
@@ -44,7 +46,11 @@ export default function Myown(props) {
                     <span className={getAssetNameByType(item.type) == 'nft' ? 'type' : ''}>
                       {getAssetNameByType(item.type)}
                     </span>
-                    {item.status == 1 ? <p className="on-sale">On Sale</p> : null}
+                    {item.status == 1 ? (
+                      <p className="on-sale">
+                        <>{t('ON_SALE')}</>
+                      </p>
+                    ) : null}
                   </div>
                   <div className="own-name">{item.name}</div>
                 </a>

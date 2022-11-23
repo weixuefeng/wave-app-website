@@ -3,8 +3,11 @@ import useWallet from 'hooks/userWallet'
 import { EVTCopyDetail } from 'model/evt_asset'
 import { NFTDetail } from 'model/nft_asset'
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import Log from 'utils/log'
+
 export default function MakeOfferDialog(props) {
+  const { t } = useTranslation()
   const { nftDetail, evtDetail, showPassword, setOfferEndTime, setOfferPrice } = props
   const wallet = useWallet()
 
@@ -99,7 +102,7 @@ export default function MakeOfferDialog(props) {
           showPassword()
         }}
       >
-        Next
+        <>{t('NEXT')}</>
       </button>
     </div>
   )
