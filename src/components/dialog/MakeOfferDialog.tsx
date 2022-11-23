@@ -56,11 +56,11 @@ export default function MakeOfferDialog(props) {
       {/** bid info */}
       <div className="bid-info">
         <div className="item">
-          <p className="label">Highest Bid:</p>
+          <p className="label">{t('HIGHEST_BID')}:</p>
           <p className="value">{info.highest_bid_price} NEW</p>
         </div>
         <div className="item ml-2 pl-3">
-          <p className="label">Lowest Bid:</p>
+          <p className="label">{t('FLOOR_PRICE')}:</p>
           <p className="value">{info.lowest_bid_price} NEW</p>
         </div>
       </div>

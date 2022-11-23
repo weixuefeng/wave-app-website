@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:44:56
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 20:31:06
+ * @LastEditTime: 2022-11-23 21:49:16
  * @FilePath: /wave-app-webiste/src/components/asset/MyOffersReceived.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -77,15 +77,15 @@ export default function MyOffersReceived(props) {
               </div>
               <ul className="price">
                 <li>
-                  <span>From</span>
+                  <span>{t('FROM')}</span>
                   <span className="right">{item.from.name}</span>
                 </li>
                 <li>
-                  <span>Price</span>
+                  <span>{t('PRICE')}</span>
                   <span className="right">{floorNum(item.price)} NEW</span>
                 </li>
                 <li>
-                  <span>Expire date</span>
+                  <span>{t('EXPIRE_DATE')}</span>
                   <span className="right">{formatDateTime(item.expire_time)}</span>
                 </li>
               </ul>
@@ -95,7 +95,7 @@ export default function MyOffersReceived(props) {
                   requestAcceptBid(item.id)
                 }}
               >
-                {t('Accept')}
+                {t('ACCEPT')}
               </button>
               {item.has_more == 1 && (
                 <div className="see-more" onClick={openModal}>

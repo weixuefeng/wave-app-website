@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 17:23:27
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 16:29:07
+ * @LastEditTime: 2022-11-23 21:46:06
  * @FilePath: /wave-app-webiste/src/components/common/SendVerifyCodeButton.tsx
  */
 import React, { useEffect, useState } from 'react'
@@ -36,7 +36,7 @@ export default function SendVerifyCodeButton(props) {
         setBtnDisabled(false)
         setTime(60)
       } else {
-        setBtnContent(`${countdownTime} s后`)
+        setBtnContent(`${countdownTime} s`)
         setTime(--countdownTime)
       }
     }, 1000)
@@ -49,7 +49,7 @@ export default function SendVerifyCodeButton(props) {
       .requestVerifyCode(email, action)
       .then(response => {
         setBtnDisabled(true)
-        setBtnContent(`${time} s后`)
+        setBtnContent(`${time} s`)
         sendCodeCountDown(time)
       })
       .catch(error => {

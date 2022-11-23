@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 20:46:50
+ * @LastEditTime: 2022-11-23 21:47:24
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -136,4 +136,7 @@ export const zhTransaction = {
   PAYMENT_SUCCESSFUL: '付款成功',
   VIEW_RECORDS: '查看记录',
   BID_SUCCEEDED: '出价成功',
+  ACCEPT: '接受',
+  EXPIRE_DATE: '截止时间',
+  FROM: '接收者',
 }

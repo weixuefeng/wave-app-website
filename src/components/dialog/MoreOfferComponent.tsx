@@ -2,26 +2,28 @@ import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import usePagination from 'hooks/usePagination'
 import { AssetMyOfferData } from 'model/asset'
 import React, { useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import Http from 'services/http'
 import { floorNum } from 'utils/functions'
 import { formatDateTime } from 'utils/time'
 
 export function OfferReceivedItem(props) {
+  const { t } = useTranslation()
   const { id, nftName, fromName, price, time, requestAcceptBid } = props
   return (
     <div className="dialog-offers-received">
       <h3>{nftName}</h3>
       <div className="from-box">
         <div className="from">
-          <span>From</span>
+          <span>{t('FROM')}</span>
           <span className="right">{fromName}</span>
         </div>
         <div className="price">
-          <span>Price</span>
+          <span>{t('PRICE')}</span>
           <span className="right">{floorNum(price)} NEW</span>
         </div>
         <div className="expire">
-          <span>Expire date</span>
+          <span>{t('EXPIRE_DATE')}</span>
           <span className="right">{formatDateTime(time)}</span>
         </div>
         <div
@@ -30,7 +32,7 @@ export function OfferReceivedItem(props) {
             requestAcceptBid(id)
           }}
         >
-          Accept
+          {t('ACCEPT')}
         </div>
       </div>
     </div>
