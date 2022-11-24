@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:44:56
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 21:49:16
- * @FilePath: /wave-app-webiste/src/components/asset/MyOffersReceived.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-24 16:02:53
+ * @FilePath: /wave-app-website/src/components/asset/MyOffersReceived.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import DialogComponent from 'components/common/DialogComponent'
@@ -53,7 +53,7 @@ export default function MyOffersReceived(props) {
       .requestAcceptBid(bidId)
       .then(response => {
         setIsAcceptOpen(true)
-        refreshData()
+        // refreshData()
       })
       .catch(error => {
         Log.e(error)
@@ -103,9 +103,9 @@ export default function MyOffersReceived(props) {
                 </div>
               )}
               {/* see more */}
-              {/* <DialogComponent isOpen={isOpen} closeModal={closeModal}>
+              <DialogComponent isOpen={isOpen} closeModal={closeModal}>
                 <MoreOfferComponent nftId={item.nft_id} requestAcceptBid={id => requestAcceptBid(id)} />
-              </DialogComponent> */}
+              </DialogComponent>
 
               {/* successful */}
               <DialogComponent isOpen={isAcceptOpen} closeModal={closeAcceptModal}>
