@@ -605,24 +605,33 @@
 .dialog-buy-blind-box {
   @apply flex flex-col;
   h2 {
-    @apply mb-28 text-gray333 text-2xl;
+    @apply mb-28 text-2xl text-gray333;
   }
   div {
     @apply flex flex-row items-center justify-between;
   }
   .price {
-    @apply text-gray333 text-sm mb-6;
+    @apply mb-6 text-sm text-gray333;
+  }
+  .amount {
+    @apply flex items-center;
+    span {
+      @apply h-7 w-7 cursor-pointer;
+    }
+    input {
+      @apply h-7 w-12 border-y-[1px] border-grayc8 text-center;
+    }
   }
   .total {
-    @apply text-gray333 text-base font-bold pt-11 pb-3;
+    @apply pt-11 pb-3 text-base font-bold text-gray333;
   }
   .info {
-    @apply text-gray99 text-xs pb-2;
+    @apply pb-2 text-xs text-gray99;
   }
   .fee {
     @apply border-b-[1px] border-grayf5 pb-5;
   }
   .balance {
-    @apply text-gray333 text-sm mb-8 pt-4;
+    @apply mb-8 pt-4 text-sm text-gray333;
   }
 }

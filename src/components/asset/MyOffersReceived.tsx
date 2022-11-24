@@ -99,7 +99,9 @@ export default function MyOffersReceived(props) {
                 {t('ACCEPT')}
               </button>
               {item.has_more == 1 && (
-                <div className="see-more" onClick={openModal}>{t('SEE_MORE')}</div>
+                <div className="see-more" onClick={openModal}>
+                  {t('SEE_MORE')}
+                </div>
               )}
 
               {/* see more */}

@@ -2,11 +2,11 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 19:54:29
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-24 19:52:13
+ * @LastEditTime: 2022-11-24 20:17:04
  * @FilePath: /wave-app-webiste/src/components/dialog/BuyBlindBoxDialog.tsx
  */
 import useWallet from 'hooks/userWallet'
-import React from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 export default function BuyBlindBoxDialog(props) {
@@ -27,35 +27,50 @@ export default function BuyBlindBoxDialog(props) {
     buy_quantity_limit,
   } = props
 
+  const [value, setValue] = useState(1)
+
   return (
     <div className="dialog-buy-blind-box">
       <h2>Complete checkout</h2>
-      <div className='price'>
+      <div className="price">
         <p>{t('PRICE')}</p>
         <p>{price} new</p>
       </div>
 
-      <div className='price'>
+      <div className="price">
         <p>{t('AMOUNT_NUM')}</p>
-        <p>1</p>
+        <p className="amount">
+          <span>
+            <img src="/assets/image/icon_subtraction.png" alt="subtraction" />
+          </span>
+          <input
+            type="text"
+            placeholder="1"
+            value={value}
+            // onChange={getPriceVal}
+          ></input>
+          <span>
+            <img src="/assets/image/icon_add.png" alt="add" />
+          </span>
+        </p>
       </div>
 
-      <div className='total'>
+      <div className="total">
         <p>{t('TOTAL')}</p>
         <p>{price} new</p>
       </div>
 
-      <div className='info'>
+      <div className="info">
         <p>· Creator Will Receive</p>
         <p>200 NEW</p>
       </div>
 
-      <div className='info fee'>
+      <div className="info fee">
         <p>· Transaction Fee(2.5%)</p>
         <p>200 NEW</p>
       </div>
 
-      <div className='balance'>
+      <div className="balance">
         <p>{t('ACCOUNT_BALANCE')}</p>
         <p>{wallet?.available_balance} new</p>
       </div>
