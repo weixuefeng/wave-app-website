@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-13 11:26:10
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 14:35:14
+ * @LastEditTime: 2022-11-24 14:05:54
  * @FilePath: /wave-app-webiste/src/components/footer/footer.tsx
  */
 import Link from 'next/link'
@@ -18,7 +18,14 @@ export default function Footer() {
       <div className="footer-top">
         <div className="footer-logo container">
           <div className="logo">
-            <img src="/assets/image/footer_logo.png" alt="footer-logo" />
+            <Link href="/" passHref>
+              <img className="wave-logo" src="/assets/image/footer_logo.png" alt="footer-logo" />
+            </Link>
+            <Link href="https://www.newtonproject.org/en/">
+              <a target="_blank">
+                <img className="newton-logo" src="/assets/image/footer_newton.png" alt="footer-newton" />
+              </a>
+            </Link>
           </div>
           <dl>
             <dt>{t('JOIN_THE_COMMUNITY')}</dt>
