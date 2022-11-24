@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-13 11:26:10
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-24 14:05:54
+ * @LastEditTime: 2022-11-24 14:22:33
  * @FilePath: /wave-app-webiste/src/components/footer/footer.tsx
  */
 import Link from 'next/link'
@@ -50,11 +50,12 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer-content container">
-        <p>Copyright © {date} WAVE Foundation. All Rights Reserved.</p>
+        <p className="hidden md:block">©{date} Wave Platform Pte. Ltd.</p>
         <div>
           <Link href="/privacy">{t('PRIVACY_POLICY')}</Link>
           <Link href="/terms">{t('TERM_OF_SERVICES')}</Link>
         </div>
+        <p className="block md:hidden">©{date} Wave Platform Pte. Ltd.</p>
       </div>
     </div>
   )
