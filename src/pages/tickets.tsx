@@ -2,15 +2,14 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 20:26:47
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 13:51:38
+ * @LastEditTime: 2022-11-24 16:18:27
  * @FilePath: /wave-app-webiste/src/pages/tickets.tsx
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import CinemaComponent from 'components/cinema/CinemaComponent'
 import DialogComponent from 'components/common/DialogComponent'
 import DownAppDialog from 'components/dialog/DownAppDialog'
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
-import NormalLayout from 'components/layout/NormalLayout'
+import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
 import usePagination from 'hooks/usePagination'
 import { PageModel } from 'model/navModel'
 import { TicketsData } from 'model/tickets'
@@ -61,5 +60,5 @@ export default function Tickets() {
     )
   }
 
-  return NormalLayout(content(), pageModel)
+  return NormalLayoutComponent(content(), pageModel)
 }

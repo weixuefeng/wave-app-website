@@ -1,13 +1,13 @@
 import React from 'react'
 
 import { PageModel } from 'model/navModel'
-import NormalLayout from 'components/layout/NormalLayout'
+import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
 
 export default Privacy
 
 function Privacy() {
   let pageModel = new PageModel('Privacy Policy', 'WAVE', '')
-  return <>{NormalLayout(Main(), pageModel)}</>
+  return <>{NormalLayoutComponent(Main(), pageModel)}</>
 }
 
 function Main() {

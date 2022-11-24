@@ -2,12 +2,12 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-22 16:50:50
+ * @LastEditTime: 2022-11-24 16:19:55
  * @FilePath: /wave-app-webiste/src/pages/index.tsx
  */
 
 import React, { useState, useEffect } from 'react'
-import NormalLayout from 'components/layout/NormalLayout'
+import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
 import { PageModel } from 'model/navModel'
 import Http from 'services/http'
 import BannerComponent from 'components/home/BannerComponent'
@@ -18,7 +18,7 @@ export default Home
 
 function Home() {
   let pageModel = new PageModel('HOME', 'WAVE', '')
-  return <>{NormalLayout(Main(), pageModel)}</>
+  return <>{NormalLayoutComponent(Main(), pageModel)}</>
 }
 
 function Main() {

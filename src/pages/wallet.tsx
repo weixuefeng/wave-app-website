@@ -2,10 +2,10 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:32:00
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 12:48:18
+ * @LastEditTime: 2022-11-24 16:18:14
  * @FilePath: /wave-app-webiste/src/pages/wallet.tsx
  */
-import NormalLayout from 'components/layout/NormalLayout'
+import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
 import { TransactionList } from 'components/wallet/TransactionList'
 import { PageModel } from 'model/navModel'
 import { WalletInfo } from 'model/wallet'
@@ -98,5 +98,5 @@ export default function Wallet() {
     )
   }
 
-  return NormalLayout(content(), pageModel)
+  return NormalLayoutComponent(content(), pageModel)
 }

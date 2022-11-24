@@ -2,11 +2,11 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 16:55:35
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 17:08:09
+ * @LastEditTime: 2022-11-24 16:17:05
  * @FilePath: /wave-app-webiste/src/pages/user/[id].tsx
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
-import NormalLayout from 'components/layout/NormalLayout'
+import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
 import usePagination from 'hooks/usePagination'
 import { getAssetNameByType, MyAsset } from 'model/asset'
 import { PageModel } from 'model/navModel'
@@ -103,5 +103,5 @@ export default function UserPage() {
       </>
     )
   }
-  return NormalLayout(content(), pageModel)
+  return NormalLayoutComponent(content(), pageModel)
 }

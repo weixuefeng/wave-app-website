@@ -1,12 +1,12 @@
 import React from 'react'
 import { PageModel } from 'model/navModel'
-import NormalLayout from 'components/layout/NormalLayout'
+import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
 
 export default Terms
 
 function Terms() {
   let pageModel = new PageModel('Terms of Use', 'WAVE', '')
-  return <>{NormalLayout(Main(), pageModel)}</>
+  return <>{NormalLayoutComponent(Main(), pageModel)}</>
 }
 
 function Main() {

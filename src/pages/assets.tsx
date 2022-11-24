@@ -11,7 +11,7 @@ import Mylistings from 'components/asset/MyListings'
 import MyOffersMade from 'components/asset/MyOffersMade'
 import MyOffersReceived from 'components/asset/MyOffersReceived'
 import Myown from 'components/asset/MyOwn'
-import NormalLayout from 'components/layout/NormalLayout'
+import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
 import { PageModel } from 'model/navModel'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper'
@@ -106,5 +106,5 @@ export default function Assets() {
       </div>
     )
   }
-  return NormalLayout(content(), pageModel)
+  return NormalLayoutComponent(content(), pageModel)
 }

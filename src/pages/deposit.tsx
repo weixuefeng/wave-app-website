@@ -1,5 +1,5 @@
 import { Listbox } from '@headlessui/react'
-import NormalLayout from 'components/layout/NormalLayout'
+import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
 import useWallet from 'hooks/userWallet'
 import { PageModel } from 'model/navModel'
 import { WalletAccount } from 'model/wallet'
@@ -137,5 +137,5 @@ export default function Deposit() {
     )
   }
 
-  return NormalLayout(content(), pageModel)
+  return NormalLayoutComponent(content(), pageModel)
 }

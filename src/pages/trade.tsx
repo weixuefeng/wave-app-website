@@ -2,11 +2,11 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:32:00
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 11:35:33
+ * @LastEditTime: 2022-11-24 16:18:20
  * @FilePath: /wave-app-webiste/src/pages/trade.tsx
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
-import NormalLayout from 'components/layout/NormalLayout'
+import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
 import usePagination from 'hooks/usePagination'
 import { PageModel } from 'model/navModel'
 import { TradeItem } from 'model/trade'
@@ -46,5 +46,5 @@ export default function TradePage(props) {
     )
   }
 
-  return NormalLayout(content(), pageModel)
+  return NormalLayoutComponent(content(), pageModel)
 }

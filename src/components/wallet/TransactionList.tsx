@@ -8,7 +8,7 @@
 import { WalletTransaction } from 'model/wallet'
 import React, { useRef } from 'react'
 import Http from 'services/http'
-import Nodata from 'components/layout/NoData'
+import EmptyComponent from 'components/layout/EmptyComponent'
 import usePagination from 'hooks/usePagination'
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import { useTranslation } from 'react-i18next'
@@ -59,7 +59,7 @@ export function TransactionList() {
   }
 
   if (!data?.length) {
-    return <Nodata />
+    return <EmptyComponent />
   }
 
   return (

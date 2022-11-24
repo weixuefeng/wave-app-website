@@ -3,7 +3,7 @@ import React from 'react'
 import { getAssetDetailPath } from 'utils/route'
 import Link from 'next/link'
 import { AssetType } from 'model/asset'
-import Nodata from 'components/layout/NoData'
+import EmptyComponent from 'components/layout/EmptyComponent'
 
 export function EVTAsset(props) {
   const { item } = props
@@ -129,7 +129,7 @@ export default function RecommendComponent(props) {
         <h1>
           <>{t('HOME_RECOMMAND')}</>
         </h1>
-        <Nodata />
+        <EmptyComponent />
       </div>
     )
   }

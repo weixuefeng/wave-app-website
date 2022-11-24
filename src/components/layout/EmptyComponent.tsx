@@ -2,14 +2,14 @@
  * @Author: zhuxiaotong zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-17 20:26:17
- * @FilePath: /wave-app-webiste/src/components/home/BannerComponent.tsx
+ * @LastEditTime: 2022-11-24 16:11:14
+ * @FilePath: /wave-app-webiste/src/components/layout/EmptyComponent.tsx
  */
 
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-export default function Nodata(props) {
+export default function EmptyComponent(props) {
   const { t } = useTranslation()
   return (
     <div className="container text-center">

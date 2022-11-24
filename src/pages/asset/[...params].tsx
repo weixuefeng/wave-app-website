@@ -2,12 +2,12 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 16:55:35
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-22 20:31:53
+ * @LastEditTime: 2022-11-24 16:17:57
  * @FilePath: /wave-app-webiste/src/pages/asset/[...params].tsx
  */
 import EVTDetailComponent from 'components/asset/EVTDetailComponent'
 import NFTDetailComponent from 'components/asset/NFTDetailComponent'
-import NormalLayout from 'components/layout/NormalLayout'
+import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
 import { AssetPageType } from 'model/asset'
 import { PageModel } from 'model/navModel'
 import { useRouter } from 'next/router'
@@ -44,5 +44,5 @@ export default function AssetDetail() {
     )
   }
 
-  return NormalLayout(content(), pageModel)
+  return NormalLayoutComponent(content(), pageModel)
 }

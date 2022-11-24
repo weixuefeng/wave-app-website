@@ -7,7 +7,7 @@
  */
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import Nodata from './NoData'
+import EmptyComponent from './EmptyComponent'
 
 export default function LoadMoreComponent(props) {
   const { t } = useTranslation()
@@ -21,7 +21,7 @@ export default function LoadMoreComponent(props) {
             <img className="mx-auto mt-10 h-auto w-44" src="/assets/image/loading.gif" alt="loading" />
           </div>
         ) : data && data.length > 0 ? null : (
-          <Nodata />
+          <EmptyComponent />
         )}
       </>
     )

@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-09-21 10:43:33
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-22 19:54:52
+ * @LastEditTime: 2022-11-24 16:17:43
  * @FilePath: /wave-app-webiste/src/pages/blindbox/[id].tsx
  */
 
@@ -20,7 +20,7 @@ import DialogComponent from 'components/common/DialogComponent'
 import BuyBlindBoxDialog from 'components/dialog/BuyBlindBoxDialog'
 import PasswordDialog from 'components/dialog/PasswordDialog'
 import BuySuccessfulDialog from 'components/dialog/BuySuccessfulDialog'
-import NormalLayout from 'components/layout/NormalLayout'
+import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
 
 export default Home
 
@@ -29,7 +29,7 @@ function Home() {
   const [desc, setDesc] = useState('THE WEB3 PLATFORM OF GLOBAL DIGITAL ENTERTAINMENT')
   const [image, setImage] = useState('https://ipfs.wavemall.io/ipfs/QmVtA3LpMUKMoJzt8t28k2eLszomqWkZmBzc8ZQGLpDRg9')
   let pageModel = new PageModel(title, desc, '')
-  return <>{NormalLayout(<Main setTitle={setTitle} setDesc={setDesc} setImage={setImage} />, pageModel)}</>
+  return <>{NormalLayoutComponent(<Main setTitle={setTitle} setDesc={setDesc} setImage={setImage} />, pageModel)}</>
 }
 
 function Main(props) {

@@ -9,7 +9,7 @@ import DialogComponent from 'components/common/DialogComponent'
 import PasswordDialog from 'components/dialog/PasswordDialog'
 import Http from 'services/http'
 import Log from 'utils/log'
-import NormalLayout from 'components/layout/NormalLayout'
+import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
 import { useTranslation } from 'react-i18next'
 
 export default function Withdraw() {
@@ -165,5 +165,5 @@ export default function Withdraw() {
     )
   }
 
-  return NormalLayout(content(), pageModel)
+  return NormalLayoutComponent(content(), pageModel)
 }
