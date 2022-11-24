@@ -4,9 +4,11 @@
 
 .dialog-base {
   @apply relative w-full max-w-[37rem] transform overflow-hidden rounded-2xl bg-white py-12 px-9 text-left align-middle shadow-xl transition-all;
+
   .close {
     @apply absolute top-0 right-0 m-4 h-5 w-5 cursor-pointer;
   }
+
   .login {
     .title {
       @apply relative mb-10;
@@ -24,6 +26,7 @@
       .email,
       .code-box {
         @apply relative;
+
         img {
           @apply absolute top-1/2 left-4 -mt-3 h-6 w-6;
         }
@@ -32,15 +35,18 @@
           @apply pl-11;
         }
       }
+
       .email {
         @apply mb-6;
       }
+
       .code-box {
         @apply mb-8;
       }
 
       input {
         @apply h-14 w-full rounded-xl border-2 border-grayed bg-gragfb;
+
         &::input-placeholder {
           @apply text-grayc7;
         }
@@ -61,6 +67,7 @@
           color: #c7c7c7 !important;
         }
       }
+
       input[type='text']:focus-visible {
         @apply border-gray8c;
       }
@@ -73,9 +80,11 @@
       .tit {
         @apply absolute -bottom-6 left-0 text-xs text-red-700;
       }
+
       .send-code {
         @apply absolute top-0 right-0 h-14 cursor-pointer pr-5 text-sm leading-8 text-gray333;
         border-radius: 0 12px 12px 0;
+
         span {
           @apply border-l-[1px] border-grayed pl-5;
         }
@@ -95,12 +104,15 @@
         .ant-checkbox-wrapper {
           @apply absolute top-0 left-0 -mt-1;
         }
+
         .ant-checkbox-checked .ant-checkbox-inner {
           @apply border-greenMain bg-greenMain;
         }
+
         .ant-checkbox-checked::after {
           @apply border-greenMain;
         }
+
         .ant-checkbox-wrapper:hover .ant-checkbox-inner,
         .ant-checkbox:hover .ant-checkbox-inner,
         .ant-checkbox-input:focus + .ant-checkbox-inner {
@@ -116,6 +128,7 @@
           @apply bg-bg-checked-hover;
         }
       }
+
       .agree {
         @apply ml-5 text-xs text-grayc7;
 
@@ -123,50 +136,65 @@
           @apply text-black;
         }
       }
+
       .login-form-button {
         @apply mt-8 h-12 w-full rounded-xl bg-grayea text-center text-grayc7;
       }
     }
   }
 }
+
 .dialog-buy {
   @apply flex flex-col;
+
   .title {
     @apply text-2xl font-bold text-gray-900;
   }
+
   .asset-info {
     @apply flex flex-row py-4;
+
     img {
       @apply w-1/3 rounded-lg object-cover;
     }
+
     p {
       @apply ml-4 text-xl font-bold text-gray-900;
     }
   }
+
   .sell-info {
     @apply flex flex-col pt-4 pb-10;
+
     .item {
       @apply flex flex-row items-center justify-between;
+
       p {
       }
     }
   }
+
   .price-info {
     @apply flex flex-row items-center justify-between;
+
     p {
       @apply text-2xl font-bold text-gray-900;
     }
   }
+
   .receiver-info {
     @apply mt-2;
+
     .item {
       @apply flex flex-row items-center justify-between;
+
       p {
         @apply text-sm text-gray-600;
         color: #999999;
       }
     }
   }
+
   .balance-info {
     @apply mb-5 flex flex-row items-center justify-between;
   }
@@ -174,65 +202,84 @@
 
 .dialog-make-offer {
   @apply flex flex-col;
+
   .title {
     @apply text-2xl font-bold text-gray-900;
   }
+
   .asset-info {
     @apply flex flex-row py-4;
+
     img {
       @apply w-1/3 rounded-lg object-cover;
     }
+
     p {
       @apply ml-4 text-xl font-bold text-gray-900;
     }
   }
+
   .bid-info {
     @apply flex flex-row;
+
     .item {
       @apply flex flex-row items-center justify-between;
+
       .label {
         @apply pr-2 text-sm;
         color: #999999;
       }
+
       .value {
         @apply text-sm text-green-600;
       }
     }
   }
+
   .offer-info {
     @apply flex flex-row items-center justify-between py-4;
+
     .item {
       .title {
         @apply text-base font-bold text-gray-900;
       }
+
       .ant-picker {
         @apply rounded-lg;
         background: #f5f5f5 !important;
       }
+
       .ant-input-affix-wrapper {
         @apply rounded-lg;
         background: #f5f5f5 !important;
       }
+
       .ant-input {
         @apply rounded-lg;
         background: #f5f5f5 !important;
       }
     }
   }
+
   .receiver-info {
     @apply mt-2;
+
     .item {
       @apply flex flex-row items-center justify-between;
+
       p {
         @apply text-base font-bold text-gray-900;
         color: #333333;
       }
     }
   }
+
   .balance-info {
     @apply mb-5;
+
     .item {
       @apply flex flex-row items-center justify-between;
+
       p {
         @apply text-sm;
         color: #999999;
@@ -243,19 +290,24 @@
 
 .dialog-password {
   @apply flex flex-col items-center justify-start;
+
   .title {
     @apply mb-5 text-2xl text-gray-900;
   }
+
   .password {
     .box-container div {
       @apply h-12 w-12 text-base;
     }
   }
+
   .action {
     @apply mt-5 flex flex-row items-center justify-between;
+
     button.primary {
       @apply py-3.5 px-9;
     }
+
     button.primary.outline.black {
       @apply border-black;
     }
@@ -266,8 +318,10 @@
   h2 {
     @apply mt-7 mb-16 text-center text-2xl text-gray333;
   }
+
   .action {
     @apply rounded-xl bg-gray333 py-3 px-20 text-center;
+
     a {
       @apply block h-full w-full text-base text-white;
     }
@@ -278,11 +332,14 @@
   h2 {
     @apply mt-7 mb-5 text-center text-2xl text-gray333;
   }
+
   .content {
     @apply mb-10 text-center text-base text-gray66;
   }
+
   .action {
     @apply rounded-xl bg-gray333 py-3 px-20 text-center;
+
     a {
       @apply block h-full w-full text-base text-white;
     }
@@ -293,23 +350,30 @@
   h3 {
     @apply text-2xl font-normal text-gray333;
   }
+
   h4 {
     @apply mb-5 mt-4 text-lg font-normal text-gray333;
   }
+
   .from-box {
     @apply mb-6 rounded-lg bg-grayf8 px-3 text-gray66;
+
     .from {
       @apply flex items-center justify-between py-3;
     }
+
     .right {
       @apply text-gray333;
     }
+
     .price {
-      @apply flex items-center justify-between border-y-[1px] border-grayef  py-3;
+      @apply flex items-center justify-between border-y-[1px] border-grayef py-3;
     }
+
     .expire {
-      @apply flex items-center justify-between  py-3;
+      @apply flex items-center justify-between py-3;
     }
+
     .accept {
       @apply cursor-pointer pb-4 text-center text-lg text-green57;
     }
@@ -320,13 +384,17 @@
   h2 {
     @apply text-2xl font-bold text-gray333;
   }
+
   .nick-name {
     @apply relative mt-10;
+
     input {
       @apply w-full rounded-xl border-2 border-grayed bg-grayfb py-4 pl-11 pr-4;
+
       &::input-placeholder {
         @apply text-grayc7;
       }
+
       &::-webkit-input-placeholder {
         color: #c7c7c7 !important;
       }
@@ -343,10 +411,12 @@
         color: #c7c7c7 !important;
       }
     }
+
     img {
       @apply absolute top-4 left-3 h-6 w-6;
     }
   }
+
   .confirm {
     @apply mt-9 cursor-pointer rounded-xl bg-grayea py-3 text-center text-base font-normal text-gray99;
   }
@@ -356,10 +426,12 @@
   h2 {
     @apply mb-10 text-2xl font-bold text-gray333;
   }
+
   .password-box {
     .email,
     .code-box {
       @apply relative;
+
       img {
         @apply absolute top-[70%] left-4 -mt-3 h-6 w-6;
       }
@@ -368,18 +440,22 @@
         @apply pl-11;
       }
     }
+
     .email {
       @apply mb-7;
     }
+
     .code-box {
       @apply mb-9;
     }
+
     .label {
       @apply text-base font-normal text-black17;
     }
 
     input {
       @apply mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-gragfb;
+
       &::input-placeholder {
         @apply text-grayc7;
       }
@@ -400,6 +476,7 @@
         color: #c7c7c7 !important;
       }
     }
+
     input[type='text']:focus-visible {
       @apply border-gray8c;
     }
@@ -407,10 +484,12 @@
     .send-code {
       @apply absolute top-9 right-0 h-14 pr-5 text-sm leading-8 text-gray333;
       border-radius: 0 12px 12px 0;
+
       span {
         @apply border-l-[1px] border-grayed pl-5;
       }
     }
+
     .tit-email,
     .tit {
       @apply absolute -bottom-6 left-0 text-xs text-red-700;
@@ -451,11 +530,13 @@
   h2 {
     @apply mb-10 text-2xl font-bold text-gray333;
   }
+
   .password-box {
     .email,
     .password,
     .code-box {
       @apply relative;
+
       img {
         @apply absolute top-[70%] left-4 -mt-3 h-6 w-6;
       }
@@ -464,22 +545,27 @@
         @apply pl-11;
       }
     }
+
     .password,
     .email {
       @apply mb-7;
     }
+
     .emailed {
       @apply mt-3 text-sm text-black56;
     }
+
     .code-box {
       @apply mb-9;
     }
+
     .label {
       @apply text-base font-normal text-black17;
     }
 
     input {
       @apply mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-gragfb;
+
       &::input-placeholder {
         @apply text-grayc7;
       }
@@ -500,6 +586,7 @@
         color: #c7c7c7 !important;
       }
     }
+
     input[type='text']:focus-visible {
       @apply border-gray8c;
     }
@@ -507,6 +594,7 @@
     .send-code {
       @apply absolute top-9 right-0 h-14 cursor-pointer pr-5 text-sm leading-8 text-gray333;
       border-radius: 0 12px 12px 0;
+
       span {
         @apply border-l-[1px] border-grayed pl-5;
       }
@@ -547,22 +635,29 @@
   h2 {
     @apply w-full text-center text-2xl font-bold text-gray333;
   }
+
   .down-app {
     @apply mt-12 flex items-center justify-between;
+
     a {
       @apply w-44;
     }
+
     .code {
       @apply relative w-[55px] cursor-pointer;
+
       .code-img {
         @apply h-14 w-14;
       }
+
       .code-tit {
         @apply hidden;
       }
+
       canvas {
         @apply mx-auto mt-2 h-[5.5rem] w-[5.5rem];
       }
+
       &:hover {
         .code-tit {
           @apply absolute top-[-107px] left-[-23px] block h-[6.5rem] w-[6.2rem] bg-code bg-contain bg-no-repeat;
@@ -574,12 +669,14 @@
 
 .dialog-network {
   @apply flex flex-col;
+
   .title {
     @apply mb-4 text-2xl font-semibold text-gray-900;
   }
 
   input {
     @apply mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-gragfb focus:border-2 focus:border-green-300;
+
     &::input-placeholder {
       @apply text-grayc7;
     }
@@ -604,33 +701,47 @@
 
 .dialog-buy-blind-box {
   @apply flex flex-col;
+
   h2 {
     @apply mb-28 text-2xl text-gray333;
   }
+
   div {
     @apply flex flex-row items-center justify-between;
   }
+
   .price {
-    @apply mb-6 text-sm text-gray333;
+    @apply relative mb-6 text-sm text-gray333;
+    .tit {
+      @apply absolute -bottom-9 left-1/2 -ml-28 w-56 rounded-3xl py-2 text-center text-sm text-gray333;
+      box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.08);
+    }
   }
+
   .amount {
     @apply flex items-center;
+
     span {
       @apply h-7 w-7 cursor-pointer;
     }
+
     input {
       @apply h-7 w-12 border-y-[1px] border-grayc8 text-center;
     }
   }
+
   .total {
-    @apply pt-11 pb-3 text-base font-bold text-gray333;
+    @apply border-b-[1px] border-grayf5 pt-11 pb-3 pb-5 text-base font-bold text-gray333;
   }
-  .info {
-    @apply pb-2 text-xs text-gray99;
-  }
-  .fee {
-    @apply border-b-[1px] border-grayf5 pb-5;
-  }
+
+  // .info {
+  //   @apply pb-2 text-xs text-gray99;
+  // }
+
+  // .fee {
+  //   @apply border-b-[1px] border-grayf5 pb-5;
+  // }
+
   .balance {
     @apply mb-8 pt-4 text-sm text-gray333;
   }

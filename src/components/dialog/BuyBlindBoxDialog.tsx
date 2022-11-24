@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 19:54:29
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-24 20:17:04
+ * @LastEditTime: 2022-11-24 21:46:20
  * @FilePath: /wave-app-webiste/src/components/dialog/BuyBlindBoxDialog.tsx
  */
 import useWallet from 'hooks/userWallet'
@@ -28,62 +28,79 @@ export default function BuyBlindBoxDialog(props) {
   } = props
 
   const [value, setValue] = useState(1)
+  const [total, setTotal] = useState()
+  const [isTit, setIsTit] = useState(false)
+
+  function subtractionAmount() {
+    setIsTit(false)
+    if (value < 2) return
+    setValue(value - 1)
+  }
+
+  function addAmount() {
+    if (value > 9) {
+      setIsTit(true)
+      return
+    }
+    setIsTit(false)
+    setValue(value + 1)
+  }
+
+  function buttonStatus() {
+    let priceAll = value * price
+    if (parseInt(wallet?.available_balance) < priceAll) {
+      return <button className="button primary black">{t('TOP_UP_TO_PAY')}</button>
+    } else {
+      return (
+        <button
+          className="button primary black"
+          onClick={() => {
+            setIsPasswordOpen(true)
+            closeBuyModal()
+          }}
+        >
+          {t('CONFIRM_PAYMENT')}
+        </button>
+      )
+    }
+  }
+
+  function titText() {
+    return isTit ? <p className="tit">{t('MAXIMUM_OF')}</p> : null
+  }
 
   return (
     <div className="dialog-buy-blind-box">
       <h2>Complete checkout</h2>
       <div className="price">
         <p>{t('PRICE')}</p>
-        <p>{price} new</p>
+        <p>{price} NEW</p>
       </div>
 
       <div className="price">
         <p>{t('AMOUNT_NUM')}</p>
         <p className="amount">
-          <span>
+          <span onClick={subtractionAmount}>
             <img src="/assets/image/icon_subtraction.png" alt="subtraction" />
           </span>
-          <input
-            type="text"
-            placeholder="1"
-            value={value}
-            // onChange={getPriceVal}
-          ></input>
-          <span>
+          <input type="text" placeholder="1" value={value}></input>
+          <span onClick={addAmount}>
             <img src="/assets/image/icon_add.png" alt="add" />
           </span>
         </p>
+        {titText()}
       </div>
 
       <div className="total">
         <p>{t('TOTAL')}</p>
-        <p>{price} new</p>
-      </div>
-
-      <div className="info">
-        <p>· Creator Will Receive</p>
-        <p>200 NEW</p>
-      </div>
-
-      <div className="info fee">
-        <p>· Transaction Fee(2.5%)</p>
-        <p>200 NEW</p>
+        <p>{price * value} NEW</p>
       </div>
 
       <div className="balance">
         <p>{t('ACCOUNT_BALANCE')}</p>
-        <p>{wallet?.available_balance} new</p>
+        <p>{wallet?.available_balance} NEW</p>
       </div>
-
-      <button
-        className="button primary black"
-        onClick={() => {
-          setIsPasswordOpen(true)
-          closeBuyModal()
-        }}
-      >
-        {t('CONFIRM_PAYMENT')}
-      </button>
+      {buttonStatus()}
     </div>
   )
 }
