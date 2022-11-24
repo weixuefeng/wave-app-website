@@ -1,5 +1,12 @@
+/*
+ * @Author: liukeke liukeke@diynova.com
+ * @Date: 2022-11-22 16:55:35
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-24 12:23:38
+ * @FilePath: /wave-app-webiste/src/pages/collection/[...params].tsx
+ */
 import CollectionComponent from 'components/asset/CollectionComponent'
-import NormalLayout from 'components/layout/normalLayout'
+import NormalLayout from 'components/layout/NormalLayout'
 import { PageModel } from 'model/navModel'
 import { useRouter } from 'next/router'
 import React from 'react'

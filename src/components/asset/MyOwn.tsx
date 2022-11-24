@@ -2,22 +2,18 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:42:02
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 17:07:12
+ * @LastEditTime: 2022-11-24 12:28:37
  * @FilePath: /wave-app-webiste/src/components/asset/MyOwn.tsx
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 
 import { AssetsMyOwnData, getAssetNameByType } from 'model/asset'
 import Link from 'next/link'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { selectUser } from 'reducer/userReducer'
 import Http from 'services/http'
 import { UserInfo } from 'model/user'
 import { useAppSelector } from 'store/store'
-import { isInViewPort } from 'utils/functions'
 import { getAssetDetailPathByInfo } from 'utils/route'
-import Log from 'utils/log'
-import Nodata from 'components/layout/NoData'
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import usePagination from 'hooks/usePagination'
 import { useTranslation } from 'react-i18next'
