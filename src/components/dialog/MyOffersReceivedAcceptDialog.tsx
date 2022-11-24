@@ -2,14 +2,14 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-08 16:10:11
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 20:12:24
+ * @LastEditTime: 2022-11-24 16:34:05
  * @FilePath: /wave-app-webiste/src/components/dialog/MyoffersAcceDialog.tsx
  */
 import Link from 'next/link'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-export default function MyoffersAcceDialog() {
+export default function MyOffersReceivedAcceptDialog() {
   const { t } = useTranslation()
   return (
     <div className="dialog-buy-successful">

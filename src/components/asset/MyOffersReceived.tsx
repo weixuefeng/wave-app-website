@@ -1,14 +1,13 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:44:56
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-24 16:02:53
- * @FilePath: /wave-app-website/src/components/asset/MyOffersReceived.tsx
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-24 16:58:40
+ * @FilePath: /wave-app-webiste/src/components/asset/MyOffersReceived.tsx
  */
 import DialogComponent from 'components/common/DialogComponent'
 import MoreOfferComponent from 'components/dialog/MoreOfferComponent'
-import MyoffersAcceDialog from 'components/dialog/MyoffersAcceDialog'
+import MyOffersReceivedAcceptDialog from 'components/dialog/MyOffersReceivedAcceptDialog'
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import usePagination from 'hooks/usePagination'
 import { AssetMyOfferData } from 'model/asset'
@@ -46,12 +45,14 @@ export default function MyOffersReceived(props) {
 
   function closeAcceptModal() {
     setIsAcceptOpen(false)
+    refreshData()
   }
 
   function requestAcceptBid(bidId: number) {
     Http.getInstance()
       .requestAcceptBid(bidId)
       .then(response => {
+        setIsOpen(false)
         setIsAcceptOpen(true)
         // refreshData()
       })
@@ -98,10 +99,9 @@ export default function MyOffersReceived(props) {
                 {t('ACCEPT')}
               </button>
               {item.has_more == 1 && (
-                <div className="see-more" onClick={openModal}>
-                  See more
-                </div>
+                <div className="see-more" onClick={openModal}>{t('SEE_MORE')}</div>
               )}
+
               {/* see more */}
               <DialogComponent isOpen={isOpen} closeModal={closeModal}>
                 <MoreOfferComponent nftId={item.nft_id} requestAcceptBid={id => requestAcceptBid(id)} />
@@ -109,7 +109,7 @@ export default function MyOffersReceived(props) {
 
               {/* successful */}
               <DialogComponent isOpen={isAcceptOpen} closeModal={closeAcceptModal}>
-                <MyoffersAcceDialog />
+                <MyOffersReceivedAcceptDialog />
               </DialogComponent>
             </div>
           )
