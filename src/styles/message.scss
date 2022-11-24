@@ -1,17 +1,17 @@
 .message {
-  @apply min-h-screen pb-48 pt-3;
+  @apply min-h-screen px-4 pb-48 pt-3 xl:px-0;
   .message-itme {
     @apply pb-10;
   }
   .item {
-    @apply grid grid-cols-12 border-b-[1px] border-graye7 py-11;
+    @apply grid-cols-12 border-b-[1px] border-graye7 py-11 md:grid;
     .date {
-      @apply col-span-2 mr-2 w-32 text-sm text-gray99;
+      @apply col-span-2 mr-2 mb-5 w-32 text-sm text-gray99 md:mb-0;
     }
     .content {
       @apply col-span-10;
       h2 {
-        @apply mb-7 text-2xl text-gray333;
+        @apply mb-4 text-xl text-gray333 md:mb-7 md:text-2xl;
       }
       p {
         @apply text-base leading-8 text-gray66;

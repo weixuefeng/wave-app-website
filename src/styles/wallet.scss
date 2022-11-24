@@ -1,5 +1,5 @@
 .wallet {
-  @apply grid h-screen grid-cols-1 gap-x-4 md:grid-cols-6;
+  @apply grid grid-cols-1 gap-x-4 px-4 md:grid-cols-6 xl:px-0;
   .base-info {
     @apply col-span-1 mt-16 flex flex-col md:col-span-2;
     h2 {
@@ -27,18 +27,21 @@
       }
     }
     .action {
-      @apply mt-4 flex flex-row items-center justify-between;
+      @apply mt-4 mb-5 flex flex-row items-center justify-between md:mb-0;
       div {
         @apply flex cursor-pointer flex-col items-center;
         img {
           @apply h-14 w-14;
+        }
+        p {
+          @apply pt-3;
         }
       }
     }
   }
 
   .transaction {
-    @apply col-span-1 rounded-md bg-gray-100 p-4 md:col-span-4;
+    @apply col-span-1 mb-7 rounded-md bg-gray-100 p-4 md:col-span-4 md:mb-0;
     h2 {
       @apply text-2xl;
     }
