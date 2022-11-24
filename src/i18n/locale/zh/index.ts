@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-24 16:39:14
+ * @LastEditTime: 2022-11-24 19:51:52
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -159,4 +159,8 @@ export const zhTransaction = {
   PURCHSSE_TIME: '购买时间',
   CHECK_IN_DEADINE: '检票截止日期',
   SEE_MORE:'查看更多',
+  TOTAL:'总价',
+  AMOUNT_NUM:'数量',
+  ACCOUNT_BALANCE:'帐户余额',
+  CONFIRM_PAYMENT:'确认支付',
 }

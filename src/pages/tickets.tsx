@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 20:26:47
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-24 16:18:27
+ * @LastEditTime: 2022-11-24 18:58:47
  * @FilePath: /wave-app-webiste/src/pages/tickets.tsx
  */
 import CinemaComponent from 'components/cinema/CinemaComponent'
