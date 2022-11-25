@@ -1,56 +1,69 @@
-.header {
-  @apply mx-auto flex h-20 items-center justify-between;
-
-  .logo,
-  .massage-img,
-  .language-img,
-  .login {
-    @apply cursor-pointer;
-  }
-
-  .logo {
-    @apply w-[7.65rem];
-  }
-
-  ul {
-    @apply flex items-center;
-  }
-
-  li {
-    @apply ml-11;
-  }
-
-  .massage {
-    @apply flex font-bold text-gray66;
-
-    .massage-img {
-      @apply relative ml-11 w-[1.38rem];
+.header-pc {
+  @apply hidden border-b-2 border-solid border-gray-100 bg-white px-4 md:block xl:px-0;
+  .header {
+    @apply mx-auto flex h-20 items-center justify-between;
+    .logo,
+    .massage-img,
+    .language-img,
+    .login {
+      @apply cursor-pointer;
     }
-
-    i {
-      @apply absolute top-0 -right-1 h-[0.38rem] w-[0.38rem] rounded-[50%] bg-reddd;
+    .logo {
+      @apply w-[7.65rem];
     }
-  }
-
-  .language {
-    .language-img {
-      @apply relative w-[1.38rem];
+    ul {
+      @apply flex items-center;
     }
-    .item {
-      @apply absolute right-0 -bottom-32 z-50 rounded-xl bg-white p-4;
-      span {
-        @apply h-7 pr-10 text-base leading-7 text-gray3d;
-        &:last-child {
-          display: contents;
+    li {
+      @apply ml-11;
+    }
+    .massage {
+      @apply flex font-bold text-gray66;
+
+      .massage-img {
+        @apply relative ml-11 w-[1.38rem];
+      }
+
+      i {
+        @apply absolute top-0 -right-1 h-[0.38rem] w-[0.38rem] rounded-[50%] bg-reddd;
+      }
+    }
+    .language {
+      .language-img {
+        @apply relative w-[1.38rem];
+      }
+      .item {
+        @apply absolute right-0 -bottom-32 z-50 rounded-xl bg-white p-4;
+        span {
+          @apply h-7 pr-10 text-base leading-7 text-gray3d;
+          &:last-child {
+            display: contents;
+          }
+        }
+        .active {
+          @apply text-green57;
         }
       }
-      .active {
-        @apply text-green57;
-      }
+    }
+    .login {
+      @apply h-10 w-[8.25rem] rounded-xl bg-green57 text-center font-bold leading-10 text-white;
     }
   }
+}
 
-  .login {
-    @apply h-10 w-[8.25rem] rounded-xl bg-green57 text-center font-bold leading-10 text-white;
+.header-mobile-box {
+  @apply block bg-white md:hidden;
+}
+.header-mobile {
+  @apply relative flex h-[3.75rem] items-center border-b-[1px] border-grayf3;
+  .header-menu {
+    @apply absolute top-5 left-5 h-6 w-6 cursor-pointer;
   }
+  .logo {
+    @apply mx-auto w-28;
+  }
+}
+
+.mobile-dialog {
+  @apply mt-[3.75rem] h-screen w-screen bg-white;
 }

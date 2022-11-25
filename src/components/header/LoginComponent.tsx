@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-21 11:55:31
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 16:12:13
+ * @LastEditTime: 2022-11-25 14:06:49
  * @FilePath: /wave-app-webiste/src/components/header/LoginComponent.tsx
  */
 import { Menu } from '@headlessui/react'
@@ -39,15 +39,22 @@ export default function LoginComponent() {
     )
   }
 
+  function imgSrc() {
+    return <img src={currentUser.avatar == '' ? '/assets/image/icon_avata.png' : currentUser.avatar} alt="avatar" />
+  }
+
   function userMenu() {
     return (
       <Menu>
         <Menu.Button>
-          <img className="h-10 w-10 rounded-full" src={currentUser.avatar} alt="avatar" />
+          <div className="portrait">
+            {imgSrc()}
+            <p>{currentUser.name}</p>
+          </div>
         </Menu.Button>
         <Menu.Items as={'div'} className="user-menu">
           <div>
-            <img src={currentUser.avatar} alt="avatar" />
+            {imgSrc()}
             <p className="name">{currentUser.name}</p>
             <p className="address">{splitAddress(currentUser.wallet_address)}</p>
             <div className="list">

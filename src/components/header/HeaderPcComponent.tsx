@@ -2,8 +2,8 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-15 12:51:57
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-22 20:15:10
- * @FilePath: /wave-app-webiste/src/components/header/header.tsx
+ * @LastEditTime: 2022-11-25 14:35:10
+ * @FilePath: /wave-app-webiste/src/components/header/HeaderPcComponent.tsx
  */
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next'
 import LoginComponent from './LoginComponent'
 import { languageTitle } from 'constants/key'
 
-export default function Header(props) {
+export default function HeaderPcComponent(props) {
   let { i18n } = useTranslation()
   const { t } = useTranslation()
 
@@ -30,7 +30,7 @@ export default function Header(props) {
   }
 
   return (
-    <div className="border-b-2 border-solid border-gray-100 bg-white px-4 xl:px-0">
+    <div className="header-pc">
       <div className="header container">
         <div className="logo">
           <Link href="/" passHref>

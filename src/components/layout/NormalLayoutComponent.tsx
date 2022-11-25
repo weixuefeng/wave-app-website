@@ -2,14 +2,14 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-13 11:34:40
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-24 16:15:44
+ * @LastEditTime: 2022-11-25 19:08:40
  * @FilePath: /wave-app-webiste/src/components/layout/NormalLayoutComponent.tsx
  */
 import React from 'react'
 import Head from 'next/head'
-import Header from '../header/header'
 import Footer from '../footer/footer'
 import { PageModel } from 'model/navModel'
+import Header from 'components/header/HeaderComponent'
 
 export default function NormalLayoutComponent(children: React.ReactNode, pageModel: PageModel = null): JSX.Element {
   return (

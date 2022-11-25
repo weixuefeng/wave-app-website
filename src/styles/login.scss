@@ -1,3 +1,13 @@
+.portrait {
+  @apply flex items-center;
+  img {
+    @apply h-10 w-10 rounded-full;
+  }
+  p {
+    @apply ml-3 text-sm font-bold text-gray66;
+  }
+}
+
 .user-menu {
   @apply z-50 flex flex-col rounded-md bg-green-600;
   @apply absolute top-12 right-8;
