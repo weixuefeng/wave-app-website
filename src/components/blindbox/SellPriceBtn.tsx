@@ -1,13 +1,14 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-14 13:36:09
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-21 17:34:18
- * @FilePath: /wave-app-website/src/components/blindbox/SellPriceBtn.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-25 19:49:41
+ * @FilePath: /wave-app-webiste/src/components/blindbox/SellPriceBtn.tsx
  */
 
 import { t } from 'i18next'
 import { CollectionInfo, IsWhiteList, SellStatus, UserInWhiteList, WhiteListSellStatus } from 'model/collection_model'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { calculateCountdown, getUTCDetailTime } from 'utils/functions'
 import Log from 'utils/log'
@@ -139,7 +140,11 @@ export default function SellPriceBtn(props) {
             // can not buy, go to my asset
             return (
               <div className="button" onClick={gotoAssets}>
-                <>{t('CHECKMYASSETS')}</>
+                <Link href="/trade">
+                  <p>
+                    <>{t('GOTOTRADE')}</>
+                  </p>
+                </Link>
               </div>
             )
           }
@@ -157,7 +162,11 @@ export default function SellPriceBtn(props) {
             // no buy, go to trade
             return (
               <div className="button" onClick={gotoTrade}>
-                <>{t('GOTOTRADE')}</>
+                <Link href="/trade">
+                  <p>
+                    <>{t('GOTOTRADE')}</>
+                  </p>
+                </Link>
               </div>
             )
           }
@@ -235,7 +244,17 @@ export default function SellPriceBtn(props) {
   function soldoutComponent() {
     return (
       <div className="button" onClick={props.collectionInfo.is_boughtGo ? gotoAssets : gotoTrade}>
-        <>{props.collectionInfo.is_boughtGo ? t('CHECKMYASSETS') : t('GOTOTRADE')}</>
+        <>
+          {props.collectionInfo.is_boughtGo ? (
+            t('CHECKMYASSETS')
+          ) : (
+            <Link href="/trade">
+              <p>
+                <>{t('GOTOTRADE')}</>
+              </p>
+            </Link>
+          )}
+        </>
       </div>
     )
   }

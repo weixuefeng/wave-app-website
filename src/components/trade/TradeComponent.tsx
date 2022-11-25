@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:33:51
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-18 20:10:30
- * @FilePath: /wave-app-website/src/components/trade/TradeComponent.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-25 19:15:38
+ * @FilePath: /wave-app-webiste/src/components/trade/TradeComponent.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import { t } from 'i18next'
@@ -28,7 +28,7 @@ export default function TradeComponent(props) {
           </div>
           <div className="collection-name">
             <h3>{itemDate.name}</h3>
-            <h4>{floorNum(itemDate.price)}NEW</h4>
+            <h4>{floorNum(itemDate.price) == 0 ? '--' : floorNum(itemDate.price)} NEW</h4>
             <p className="price">
               <span>
                 <>{t('LIST_PRICE')}</>
