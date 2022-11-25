@@ -731,16 +731,8 @@
   }
 
   .total {
-    @apply border-b-[1px] border-grayf5 pt-11 pb-3 pb-5 text-base font-bold text-gray333;
+    @apply border-b-[1px] border-grayf5 pt-11 pb-3 text-base font-bold text-gray333;
   }
-
-  // .info {
-  //   @apply pb-2 text-xs text-gray99;
-  // }
-
-  // .fee {
-  //   @apply border-b-[1px] border-grayf5 pb-5;
-  // }
 
   .balance {
     @apply mb-8 pt-4 text-sm text-gray333;

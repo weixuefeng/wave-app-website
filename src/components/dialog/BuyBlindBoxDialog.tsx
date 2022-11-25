@@ -71,7 +71,7 @@ export default function BuyBlindBoxDialog(props) {
 
   return (
     <div className="dialog-buy-blind-box">
-      <h2>Complete checkout</h2>
+      <h2>{t('COMPLETE_CHECKOUT')}</h2>
       <div className="price">
         <p>{t('PRICE')}</p>
         <p>{price} NEW</p>

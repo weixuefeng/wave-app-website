@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-24 21:45:26
+ * @LastEditTime: 2022-11-25 12:11:44
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -165,4 +165,5 @@ export const zhTransaction = {
   CONFIRM_PAYMENT: '确认支付',
   TOP_UP_TO_PAY: '充值支付',
   MAXIMUM_OF: '每次购买最多10个',
+  COMPLETE_CHECKOUT: '完成付款',
 }
