@@ -39,10 +39,7 @@
       .item {
         @apply absolute right-0 -bottom-32 z-50 rounded-xl bg-white p-4;
         span {
-          @apply h-7 pr-10 text-base leading-7 text-gray3d;
-          &:last-child {
-            display: contents;
-          }
+          @apply block h-7 pr-10 text-base leading-7 text-gray3d w-28;
         }
         .active {
           @apply text-green57;
