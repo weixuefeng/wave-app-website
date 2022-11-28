@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 20:26:47
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-24 18:58:47
- * @FilePath: /wave-app-webiste/src/pages/tickets.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-28 13:42:53
+ * @FilePath: /wave-app-website/src/pages/tickets.tsx
  */
 import CinemaComponent from 'components/cinema/CinemaComponent'
 import DialogComponent from 'components/common/DialogComponent'
@@ -16,6 +16,7 @@ import { TicketsData } from 'model/tickets'
 import React, { useState, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import Http from 'services/http'
+import Log from 'utils/log'
 
 export default function Tickets() {
   let pageModel = new PageModel('Tickets', 'WAVE', '')
@@ -46,7 +47,7 @@ export default function Tickets() {
           </h2>
           <div className="tickets-item">
             {data?.map((item, index) => {
-              return <CinemaComponent key={index} item={item} openModal={openModal()} />
+              return <CinemaComponent key={index} item={item} openModal={openModal} />
             })}
           </div>
           <div ref={ref}>

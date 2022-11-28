@@ -20,6 +20,7 @@ import { CollectionInfo } from 'model/collection_model'
 import { PreCheckEmail, SettingConfig } from 'model/settings'
 import Log from 'utils/log'
 import { MessageList } from 'model/message'
+import { TicketsData } from 'model/tickets'
 
 let client = refreshClient()
 
@@ -184,12 +185,12 @@ class Http {
     return _post(Api.nftActivity, params) as Promise<Pagination<any>>
   }
 
-  getEvtTickets(pageId: number) {
+  getEvtTickets(pageId: number): Promise<Pagination<TicketsData>> {
     let params = {
       page_id: pageId,
       page_size: PAGE_SIZE,
     }
-    return _post(Api.evtTickets, params) as Promise<Pagination<any>>
+    return _post(Api.evtTickets, params) as Promise<Pagination<TicketsData>>
   }
   // wallet info
   getWalletInfo(): Promise<WalletInfo> {
