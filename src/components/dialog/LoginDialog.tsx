@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-21 15:28:55
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 16:28:42
+ * @LastEditTime: 2022-11-29 00:17:39
  * @FilePath: /wave-app-webiste/src/components/dialog/LoginDialog.tsx
  */
 import { Checkbox } from 'antd'
@@ -31,16 +31,30 @@ export default function LoginDialog(props) {
 
   const [isEmail, setIsEmail] = useState(false)
   const [isEmailCode, setEmailCode] = useState(false)
+  const [isCheckAll, setisCheckAll] = useState(false)
+  const [checkAll, setCheckAll] = useState(false)
+
   useEffect(() => {
     clearInterval(countdownInterval)
     return () => clearInterval(countdownInterval)
   }, [])
 
   function requestLogin() {
-    if (verifyCode == undefined) {
+    if (verifyCode !== undefined) {
+      setEmailCode(false)
+    }
+
+    if (verifyCode == undefined || email == undefined) {
+      setIsEmail(true)
       setEmailCode(true)
       return
     }
+
+    if (!checkAll) {
+      setisCheckAll(true)
+      return
+    }
+
     setLoginLoading(true)
     Http.getInstance()
       .login(email, verifyCode)
@@ -54,6 +68,7 @@ export default function LoginDialog(props) {
       .finally(() => {
         setLoginLoading(false)
         setEmailCode(false)
+        setisCheckAll(false)
       })
   }
 
@@ -96,6 +111,11 @@ export default function LoginDialog(props) {
     setCountdownInterval(timeChange)
   }
 
+  const onCheckAllChange = e => {
+    setCheckAll(e.target.checked)
+    setisCheckAll(false)
+  }
+
   return (
     <div className="login">
       <div className="title">
@@ -130,9 +150,9 @@ export default function LoginDialog(props) {
           </span>
         </button>
         <div className="agree-box">
-          <Checkbox className="checkbox"></Checkbox>
+          <Checkbox className="checkbox" onChange={onCheckAllChange} checked={checkAll}></Checkbox>
+          {isCheckAll ? <p className="check-all">{t('PLEASE_READ')}</p> : null}
           <p className="agree">
-            {/* I agree to WAVE&apos;s  */}
             {t('I_AGREE_TO')} <Link href="/b">{t('TERM_OF_SERVICES')}</Link> {t('AND')}{' '}
             <Link href="/a">{t('PRIVACY_POLICY')}</Link>
           </p>
