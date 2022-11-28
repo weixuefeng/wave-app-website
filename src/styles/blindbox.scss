@@ -29,7 +29,6 @@
     @apply mt-5 rounded-xl bg-white px-4  pb-5;
     .title {
       @apply relative text-[1.625rem] font-bold;
-      font-family: 'Avenir Next' !important;
       .icon {
         @apply absolute ml-2 h-[1.125rem] w-[2.175rem] scale-[0.83] rounded-sm bg-greenMain text-center text-xs leading-[1.2rem] text-white;
       }
@@ -51,16 +50,12 @@
     @apply border-t-8 border-grayf9 px-4 py-5;
     .title {
       @apply mb-4 text-lg font-bold text-gray333;
-      font-family: 'Avenir Next' !important;
     }
     .title.introduction {
       @apply mb-3;
     }
     .content-wrap {
       @apply mb-7  text-sm leading-6 text-gray666;
-      // .content {
-      //   @apply h-10 text-gray666 line-clamp-2;
-      // }
     }
     .spec-info {
       @apply text-sm;
@@ -202,31 +197,6 @@
   .downH5 {
     @apply -mt-20 block md:hidden;
   }
-}
-
-@font-face {
-  font-family: 'Roboto-Medium';
-  src: url('/assets/fonts/Roboto-Medium.ttf');
-}
-@font-face {
-  font-family: 'Roboto-Regular';
-  src: url('/assets/fonts/Roboto-Regular.ttf');
-}
-// @font-face {
-//   font-family: 'Avenir Next';
-//   src: url('/assets/fonts/Avenir Next.ttf');
-// }
-body {
-  @apply bg-gray-50;
-  font-family: 'Avenir Next' !important;
-}
-
-h2 {
-  font-family: 'Roboto-Medium' !important;
-}
-
-.container {
-  @apply mx-auto max-w-[1200px];
 }
 
 .skeleton-wap {

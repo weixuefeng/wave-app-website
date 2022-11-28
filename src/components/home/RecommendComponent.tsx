@@ -28,7 +28,7 @@ export function EVTAsset(props) {
         </div>
 
         <div className="info-box">
-          <p className="name truncate">{item.name}</p>
+          <h3 className="name truncate">{item.name}</h3>
           <div className="price">
             <div className="label">{t('FLOOR_PRICE')}: </div>
             <div className="number">{Number(item.highest_bid_price)} NEW</div>
@@ -55,7 +55,7 @@ export function NFTAsset(props) {
           <div className="perfect_square">
             <img alt={item.name} src={item.image} />
             <div className="nft-info">
-              <div className="name truncate">{item.name}</div>
+              <h3 className="name truncate">{item.name}</h3>
               <div className="price">
                 <p>{t('FLOOR_PRICE')}:</p>
                 <p className="number">{Number(item.highest_bid_price)} NEW</p>
@@ -85,7 +85,7 @@ export function CollectionAsset(props) {
           </div>
         </div>
         <div className="info-box">
-          <div className="title-collection truncate">{item.name}</div>
+          <h3 className="title-collection truncate">{item.name}</h3>
         </div>
       </div>
     </Link>

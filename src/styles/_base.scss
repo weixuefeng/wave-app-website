@@ -1,9 +1,33 @@
 * {
   outline: none;
 }
+body {
+  @apply bg-gray-50;
+  font-family: 'AvenirNextMedium';
+}
+
+h1,h2,h3 {
+  @apply font-bold;
+  font-family: 'AvenirNext-Bold';
+}
 
 .anticon {
   svg {
     @apply hidden;
   }
+}
+
+@font-face {
+  font-family: 'AvenirNext-Bold';
+  src: url('/assets/fonts/AvenirNext-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'AvenirNext-DemiBold';
+  src: url('/assets/fonts/AvenirNext-DemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'AvenirNextMedium';
+  src: url('/assets/fonts/AvenirNextMedium.ttf');
 }
