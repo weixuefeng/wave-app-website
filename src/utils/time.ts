@@ -2,9 +2,8 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 18:48:14
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-11 14:24:22
+ * @LastEditTime: 2022-11-28 14:07:26
  * @FilePath: /wave-app-webiste/src/utils/time.ts
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 export function formatDate(value) {
   value = value * 1000
@@ -47,10 +46,20 @@ export function formatDateTime(timestamp) {
   let Y = date.getFullYear() + '-'
   let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-'
   let D = (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + ' '
-  let h = date.getHours() + ':'
-  let m = date.getMinutes() + ':'
-  let s = date.getSeconds()
+  let h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':'
+  let m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':'
+  let s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
   return Y + M + D + h + m + s
+}
+
+export function formatDateTimeNoSeconds(timestamp) {
+  let date = new Date(timestamp * 1000)
+  let Y = date.getFullYear() + '-'
+  let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-'
+  let D = (date.getDate() < 10 ? '0' + date.getDate() : date.getDate()) + ' '
+  let h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':'
+  let m = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
+  return Y + M + D + h + m
 }
 
 export function formatSeconds(value) {

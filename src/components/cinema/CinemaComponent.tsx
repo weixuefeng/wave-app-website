@@ -11,7 +11,6 @@ import React from 'react'
 import { formatSeconds } from 'utils/time'
 
 export default function CinemaComponent(props) {
-  
   const { item, openModal } = props
 
   return (

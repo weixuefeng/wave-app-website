@@ -1,15 +1,15 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 20:26:47
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-28 13:42:53
- * @FilePath: /wave-app-website/src/pages/tickets.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-28 14:00:42
+ * @FilePath: /wave-app-webiste/src/pages/tickets.tsx
  */
-import CinemaComponent from 'components/cinema/CinemaComponent'
 import DialogComponent from 'components/common/DialogComponent'
 import DownAppDialog from 'components/dialog/DownAppDialog'
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
+import TicketsComponent from 'components/tickets/TicketsComponent'
 import usePagination from 'hooks/usePagination'
 import { PageModel } from 'model/navModel'
 import { TicketsData } from 'model/tickets'
@@ -47,7 +47,7 @@ export default function Tickets() {
           </h2>
           <div className="tickets-item">
             {data?.map((item, index) => {
-              return <CinemaComponent key={index} item={item} openModal={openModal} />
+              return <TicketsComponent key={index} item={item} openModal={openModal} />
             })}
           </div>
           <div ref={ref}>
