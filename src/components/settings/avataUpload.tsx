@@ -1,10 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 15:00:09
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-18 14:50:38
- * @FilePath: /wave-app-website/src/components/settings/avataUpload.tsx
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-28 16:31:12
+ * @FilePath: /wave-app-webiste/src/components/settings/avataUpload.tsx
  */
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
 import { message, Upload } from 'antd'
@@ -68,17 +67,24 @@ const AvataUpload: React.FC = () => {
     }
   }
 
+  function imgSrc() {
+    return (
+      <img
+        className="rounded-[50%]"
+        src={
+          currentUser?.avatar == undefined || currentUser?.avatar == ''
+            ? '/assets/image/icon_avata.png'
+            : currentUser?.avatar
+        }
+        alt="avatar"
+      />
+    )
+  }
+
   const uploadButton = (
-    <div>
+    <div className="h-full">
       {loading ? <LoadingOutlined /> : <PlusOutlined />}
-      <div className="h-14 w-14">
-        {/* <img src="/assets/image/icon_avata.png" alt="avata icon" /> */}
-        <img
-          src={currentUser?.avatar !== undefined ? currentUser?.avatar : '/assets/image/icon_avata.png'}
-          alt="avata icon"
-          className="rounded-[50%]"
-        />
-      </div>
+      <div className="mx-auto h-14 w-14">{imgSrc()}</div>
     </div>
   )
 

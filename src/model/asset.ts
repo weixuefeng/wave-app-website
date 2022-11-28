@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-01 15:43:16
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-15 11:35:18
- * @FilePath: /wave-app-website/src/model/asset.ts
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-28 17:31:52
+ * @FilePath: /wave-app-webiste/src/model/asset.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import { Mystery, Recommend } from './banner'
@@ -44,6 +44,20 @@ export function getAssetNameByType(type: number): string {
       return 'collections'
     case 5:
       return 'blind_box'
+    default:
+      break
+  }
+  return ''
+}
+
+export function getTradeNameByType(type: number): string {
+  switch (type) {
+    case 0:
+      return 'NFT'
+    case 1:
+      return 'EVT'
+    case 2:
+      return 'EVT'
     default:
       break
   }

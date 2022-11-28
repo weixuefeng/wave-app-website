@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:35:19
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-24 16:20:05
+ * @LastEditTime: 2022-11-28 16:17:35
  * @FilePath: /wave-app-webiste/src/pages/message.tsx
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
@@ -28,7 +28,7 @@ export default function Message() {
   function content() {
     return (
       <div className="message">
-        <div className="container">
+        <div className="container mx-auto">
           <ul className="message-itme">
             {data?.map((item, index) => {
               return <MessageComponent key={index} item={item} />

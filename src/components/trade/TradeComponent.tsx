@@ -2,33 +2,32 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:33:51
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-25 19:15:38
+ * @LastEditTime: 2022-11-28 17:33:04
  * @FilePath: /wave-app-webiste/src/components/trade/TradeComponent.tsx
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import { t } from 'i18next'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { floorNum } from 'utils/functions'
 import { getAssetDetailPathByTradeItem } from 'utils/route'
-import { getAssetNameByType } from '../../model/asset'
+import { getTradeNameByType } from '../../model/asset'
 
 export default function TradeComponent(props) {
-  const { itemDate } = props
+  const { item } = props
 
   return (
     <li className="item">
-      <Link href={getAssetDetailPathByTradeItem(itemDate)}>
+      <Link href={getAssetDetailPathByTradeItem(item)}>
         <a href="" className="cover">
           <div className="perfect-square">
-            <img src={itemDate.image} alt={itemDate.name} />
-            <span className={getAssetNameByType(itemDate.type) == 'nft' ? 'type' : ''}>
-              {getAssetNameByType(itemDate.type)}
+            <img src={item.image} alt={item.name} />
+            <span className={getTradeNameByType(item.type) == 'NFT' ? 'type' : ''}>
+              {getTradeNameByType(item.type)}
             </span>
           </div>
           <div className="collection-name">
-            <h3>{itemDate.name}</h3>
-            <h4>{floorNum(itemDate.price) == 0 ? '--' : floorNum(itemDate.price)} NEW</h4>
+            <h3>{item.name}</h3>
+            <h4>{floorNum(item.price) == 0 ? '--' : floorNum(item.price)} NEW</h4>
             <p className="price">
               <span>
                 <>{t('LIST_PRICE')}</>
@@ -38,16 +37,16 @@ export default function TradeComponent(props) {
               </span>
             </p>
             <p className="gains">
-              {itemDate.list_price_direction == 1 ? (
+              {item.list_price_direction == 1 ? (
                 <span className="left">
-                  + {floorNum(itemDate.list_price_percent)} % ↑<i></i>
+                  + {floorNum(item.list_price_percent)} % ↑<i></i>
                 </span>
-              ) : itemDate.list_price_direction == 0 ? (
+              ) : item.list_price_direction == 0 ? (
                 <span className="left reduction">
-                  - {floorNum(itemDate.list_price_percent)} % ↓<i></i>
+                  - {floorNum(item.list_price_percent)} % ↓<i></i>
                 </span>
               ) : null}
-              <span className="right">{floorNum(itemDate.list_price_percent)} above</span>
+              <span className="right">{floorNum(item.list_price_percent)} above</span>
             </p>
           </div>
         </a>

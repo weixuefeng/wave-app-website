@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-25 14:49:58
+ * @LastEditTime: 2022-11-28 16:53:40
  * @FilePath: /wave-app-webiste/tailwind.config.js
  */
 module.exports = {
@@ -66,6 +66,7 @@ module.exports = {
         grayEA: '#eaeaea',
         grayee: '#eeeeee',
         grayc4: '#C4C4C4',
+        gray56: '#565656',
         white: '#fff',
         whitef0: '#f0f0f0',
         grey7f7f: '#7F7F7F',

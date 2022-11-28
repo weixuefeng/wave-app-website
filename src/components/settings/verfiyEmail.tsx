@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 15:24:38
+ * @LastEditTime: 2022-11-28 17:12:48
  * @FilePath: /wave-app-webiste/src/components/settings/verfiyEmail.tsx
  */
 
@@ -64,9 +64,7 @@ export default function VerfiyEmail(props) {
         </div>
         <button className="primary black" disabled={nextLoading} onClick={() => oldRequestEmail()}>
           <span>
-            <>
-              {t('NEXT')} {nextLoading && '...'}
-            </>
+            {t('NEXT')} {nextLoading && '...'}
           </span>
         </button>
       </div>

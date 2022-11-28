@@ -443,6 +443,9 @@
 
     .email {
       @apply mb-7;
+      p {
+        @apply mt-3 text-sm text-gray56;
+      }
     }
 
     .code-box {

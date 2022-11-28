@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:32:00
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-24 16:18:20
+ * @LastEditTime: 2022-11-28 17:32:55
  * @FilePath: /wave-app-webiste/src/pages/trade.tsx
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
@@ -35,7 +35,7 @@ export default function TradePage(props) {
           </h2>
           <ul>
             {data?.map((item, index) => {
-              return <TradeComponent key={index} itemDate={item} />
+              return <TradeComponent key={index} item={item} />
             })}
           </ul>
           <div ref={ref}>
