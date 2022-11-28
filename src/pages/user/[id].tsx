@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 16:55:35
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-24 16:17:05
+ * @LastEditTime: 2022-11-28 14:56:25
  * @FilePath: /wave-app-webiste/src/pages/user/[id].tsx
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
@@ -68,7 +68,7 @@ export default function UserPage() {
               <img src={userInfo.avatar} alt={userInfo.name} />
               <div className="user-info">
                 <p className="name">{userInfo.name}</p>
-                <p className="id">UID: ${userInfo.id}</p>
+                <p className="id">UID: {userInfo.id}</p>
               </div>
             </div>
             <div className="my-own">
