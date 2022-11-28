@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:33:51
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-28 17:33:04
+ * @LastEditTime: 2022-11-28 20:20:41
  * @FilePath: /wave-app-webiste/src/components/trade/TradeComponent.tsx
  */
 import { t } from 'i18next'
@@ -14,6 +14,28 @@ import { getTradeNameByType } from '../../model/asset'
 
 export default function TradeComponent(props) {
   const { item } = props
+
+  function priceDirection(direction, percent) {
+    if (direction == 0) {
+      return (
+        <span className="left direction">
+          {floorNum(percent)} % <i></i>
+        </span>
+      )
+    } else if (direction == 1) {
+      return (
+        <span className="left">
+          + {floorNum(percent)} % ↑<i></i>
+        </span>
+      )
+    } else {
+      return (
+        <span className="left reduction">
+          - {floorNum(percent)} % ↓<i></i>
+        </span>
+      )
+    }
+  }
 
   return (
     <li className="item">
@@ -37,16 +59,14 @@ export default function TradeComponent(props) {
               </span>
             </p>
             <p className="gains">
-              {item.list_price_direction == 1 ? (
-                <span className="left">
-                  + {floorNum(item.list_price_percent)} % ↑<i></i>
-                </span>
-              ) : item.list_price_direction == 0 ? (
-                <span className="left reduction">
-                  - {floorNum(item.list_price_percent)} % ↓<i></i>
+              {priceDirection(item.list_price_direction, item.list_price_percent)}
+              {floorNum(item.list_price_percent) !== 0 ? (
+                <span className="right">
+                  <>
+                    {floorNum(item.list_price_percent)} {t('ABOVE')}
+                  </>
                 </span>
               ) : null}
-              <span className="right">{floorNum(item.list_price_percent)} above</span>
             </p>
           </div>
         </a>

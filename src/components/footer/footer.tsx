@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-13 11:26:10
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-28 19:50:42
+ * @LastEditTime: 2022-11-28 19:54:59
  * @FilePath: /wave-app-webiste/src/components/footer/footer.tsx
  */
 import Link from 'next/link'
@@ -30,7 +30,7 @@ export default function Footer() {
           <dl>
             <dt>{t('JOIN_THE_COMMUNITY')}</dt>
             <dd>
-              <Link href=" https://t.me/waveuniverse_group">
+              <Link href="https://t.me/waveuniverse_group">
                 <a target="_blank">
                   <img src="/assets/image/footer_telegram.png" alt="footer-telegram" />
                 </a>
