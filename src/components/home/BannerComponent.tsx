@@ -15,7 +15,7 @@ import 'swiper/css/pagination'
 
 export default function BannerComponent(props) {
   const { banners } = props
-  console.log('banners', banners, banners.length)
+  // console.log('banners', banners, banners.length)
 
   if (banners && banners.length == 1) {
     return (

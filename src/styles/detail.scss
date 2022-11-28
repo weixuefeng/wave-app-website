@@ -86,7 +86,7 @@
 }
 
 .nft-collection {
-  @apply flex flex-col p-2 mt-12;
+  @apply mt-12 flex flex-col p-2;
 
   .base-info {
     @apply grid grid-cols-3 gap-x-3;
@@ -114,7 +114,7 @@
     }
   }
   .related-info {
-    @apply flex flex-col mt-14;
+    @apply mt-14 flex flex-col;
     .tab-item {
       @apply p-2 text-2xl;
       @apply ui-selected:border-b-4 ui-selected:border-black ui-selected:text-black;
