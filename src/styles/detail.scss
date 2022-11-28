@@ -124,17 +124,19 @@
 }
 
 .chain-content {
-  @apply flex flex-col rounded-md bg-gray-100 p-4;
+  @apply flex flex-col rounded-md bg-grayf1 p-4;
   .chain-item {
     @apply m-1 flex flex-row items-center justify-between;
     .label {
-      @apply text-lg text-gray-500;
+      @apply text-sm text-gray66;
+      img {
+        @apply w-4 h-4 ml-1 cursor-pointer;
+      }
     }
     .value {
-      @apply flex flex-row items-center justify-start text-lg text-gray-900;
-      svg {
-        @apply h-4 w-4;
-        @apply cursor-pointer;
+      @apply flex flex-row items-center justify-start text-sm text-gray333;
+      img {
+        @apply w-3 h-3 ml-1 cursor-pointer;
       }
     }
   }

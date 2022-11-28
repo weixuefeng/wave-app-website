@@ -26,7 +26,7 @@ export default function BlindboxComponent(props) {
   if (collectionInfo !== undefined) {
     return (
       <div className="blindbox">
-        <div className="container">
+        <div className="container mx-auto">
           <div className="blindbod-detail">
             <InfoImg collectionInfo={collectionInfo} />
             <div className="info-detail">

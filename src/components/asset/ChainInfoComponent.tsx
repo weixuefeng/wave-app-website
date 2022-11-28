@@ -2,10 +2,9 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-21 16:51:27
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 21:58:40
+ * @LastEditTime: 2022-11-28 15:59:21
  * @FilePath: /wave-app-webiste/src/components/asset/ChainInfoComponent.tsx
  */
-import { ClipboardDocumentIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import copyContent, { splitAddress } from 'utils/functions'
@@ -31,7 +30,7 @@ export default function ChainInfoComponent(props) {
         </p>
         <p className="value">
           {splitAddress(address)}
-          <ClipboardDocumentIcon onClick={() => copyAddress(address)} />
+          <img src='/assets/image/icon_copy.png' onClick={() => copyAddress(address)} alt='copy'/>
         </p>
       </div>
       <div className="chain-item ">
@@ -52,7 +51,7 @@ export default function ChainInfoComponent(props) {
         </p>
         <p className="value">
           {creatorEariningPercent}
-          <InformationCircleIcon />
+          <img src='/assets/image/icon_deail.png' alt='deail'/>
         </p>
       </div>
       {isShowToast && (
