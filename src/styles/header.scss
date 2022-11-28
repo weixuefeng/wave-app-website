@@ -3,7 +3,7 @@
 }
 .header-pc {
   @apply hidden border-b-2 border-solid border-gray-100 bg-white px-4 md:block xl:px-0;
-  @apply fixed top-0 left-0 z-50 w-full;
+  @apply fixed top-0 left-0 z-10 w-full;
   .header {
     @apply mx-auto flex h-20 items-center justify-between;
     .logo,

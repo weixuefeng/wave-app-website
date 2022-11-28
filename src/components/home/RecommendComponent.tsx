@@ -34,7 +34,7 @@ export function EVTAsset(props) {
             <div className="number">{Number(item.highest_bid_price)} NEW</div>
           </div>
           <div className="evt-flag">
-            <img src="/assets/image/play_icon.png" alt="" />
+            <img src="/assets/image/icon_movie.png" alt="icon movie" />
             <span>{calculateRuningTime(item.running_time)}</span>
           </div>
         </div>
