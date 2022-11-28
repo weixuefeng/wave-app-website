@@ -115,6 +115,7 @@
     }
     .event {
       @apply col-span-1;
+      font-family: 'AvenirNext-DemiBold';
     }
     .info {
       @apply col-span-4 flex items-center;
@@ -123,10 +124,12 @@
       }
       h3 {
         @apply text-xl text-gray333;
+        font-family: 'AvenirNext-DemiBold';
       }
     }
     .price {
-      @apply col-span-2 text-xl text-green57;
+      @apply col-span-2 text-xl text-green57 font-normal;
+      font-family: 'AvenirNext-DemiBold';
     }
     .trading {
       @apply col-span-3 flex;
