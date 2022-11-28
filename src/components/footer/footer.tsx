@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-13 11:26:10
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-24 14:22:33
+ * @LastEditTime: 2022-11-28 19:50:42
  * @FilePath: /wave-app-webiste/src/components/footer/footer.tsx
  */
 import Link from 'next/link'
@@ -30,17 +30,17 @@ export default function Footer() {
           <dl>
             <dt>{t('JOIN_THE_COMMUNITY')}</dt>
             <dd>
-              <Link href="https://app.waveuniverse.org/">
+              <Link href=" https://t.me/waveuniverse_group">
                 <a target="_blank">
                   <img src="/assets/image/footer_telegram.png" alt="footer-telegram" />
                 </a>
               </Link>
-              <Link href="https://app.waveuniverse.org/">
+              <Link href="https://twitter.com/wave_universe">
                 <a target="_blank">
                   <img src="/assets/image/footer_twier.png" alt="footer-twier" />
                 </a>
               </Link>
-              <Link href="https://app.waveuniverse.org/">
+              <Link href="https://discord.com/invite/rwnwZCbfhe">
                 <a target="_blank">
                   <img src="/assets/image/footer_discord.png" alt="footer-discord" />
                 </a>
