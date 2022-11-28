@@ -200,7 +200,7 @@ export default function EVTDetailComponent(props) {
             <>{t('BUY')}</>
           </button>
           <button
-            className="primary black ml-4 outline"
+            className="primary black ml-4"
             onClick={() => {
               showMakeOffer()
             }}
@@ -213,7 +213,7 @@ export default function EVTDetailComponent(props) {
       return (
         <div className="action">
           <button
-            className="primary ml-4 outline"
+            className="primary black ml-4"
             onClick={() => {
               showMakeOffer()
             }}
@@ -243,7 +243,9 @@ export default function EVTDetailComponent(props) {
   return (
     <div className="evt-detail">
       <div className="info">
-        <img src={evtDetail.image} alt={evtDetail.name} />
+        <div className="info-img">
+          <img src={evtDetail.image} alt={evtDetail.name} />
+        </div>
         <div className="detail">
           <h2>{evtDetail.name}</h2>
 

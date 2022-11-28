@@ -3,8 +3,14 @@
   @apply mt-10 flex flex-col justify-between p-4;
   .info {
     @apply grid grid-cols-1 md:grid-cols-3;
-    img {
-      @apply col-span-1;
+    .info-img {
+      @apply relative col-span-1 bg-grayf3 pb-[100%];
+      img {
+        @apply absolute h-full w-full object-cover;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
     .detail {
       @apply col-span-2 ml-2 mt-4 flex flex-col justify-start md:ml-8 md:mt-0;
@@ -45,7 +51,7 @@
         }
       }
       .action {
-        @apply mt-4 flex flex-row items-center justify-between;
+        @apply mt-4 flex w-[40%] flex-row items-center justify-between;
         button.primary.outline.black {
           @apply border-black;
         }
@@ -54,7 +60,7 @@
   }
 
   .chain-info {
-    @apply grid grid-cols-1 md:grid-cols-3;
+    @apply mt-16 grid grid-cols-1 md:grid-cols-3;
     .detail {
       @apply col-span-1;
       h2 {
@@ -90,7 +96,6 @@
 
 .nft-collection {
   @apply mt-12 flex flex-col p-2;
-
   .base-info {
     @apply grid grid-cols-3 gap-x-10;
     .info-img {
@@ -171,7 +176,6 @@
     .proportion {
       @apply text-sm text-gray-600;
     }
-
     img {
       @apply absolute top-0 right-0 h-8 w-8 rounded-md;
     }
