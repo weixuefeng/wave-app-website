@@ -13,7 +13,7 @@
       @apply absolute left-6 top-7 rounded-[0.25rem] bg-black bg-opacity-60 p-2 text-base;
     }
     .status-onimg {
-      @apply absolute  left-6 bottom-7  rounded-[0.25rem] bg-black bg-opacity-30 px-2 py-1 text-xs;
+      @apply absolute left-6 bottom-7  rounded-[0.25rem] bg-black bg-opacity-30 px-2 py-1 text-xs;
     }
     .disabled {
       @apply bg-whitef0 bg-opacity-80 text-gray6a;
@@ -229,12 +229,16 @@
       @apply flex items-center;
     }
     .time {
-      @apply rounded-lg bg-yellowf7 p-2 text-sm text-white;
+      @apply rounded-lg bg-yellowf7 p-2 text-sm font-normal text-white;
+      font-family: 'AvenirNext-DemiBold';
     }
     .drop {
-      @apply ml-5 flex items-center text-sm text-gray99;
+      @apply ml-5 flex items-center;
       img {
         @apply mr-1 h-[1.13rem] w-[1.13rem];
+      }
+      h3 {
+        @apply text-sm text-gray99;
       }
     }
     .title {
@@ -252,6 +256,7 @@
         @apply rounded bg-grayee py-1 pr-1 text-gray333;
         span {
           @apply mr-1 rounded bg-graybf px-2 py-1 text-white;
+          font-family: 'AvenirNext-DemiBold';
         }
       }
     }

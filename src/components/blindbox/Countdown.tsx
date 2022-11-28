@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-14 13:36:09
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-21 14:42:10
+ * @LastEditTime: 2022-11-28 16:12:12
  * @FilePath: /wave-app-webiste/src/components/blindbox/Countdown.tsx
  */
 
@@ -72,18 +72,18 @@ function Countdown(props) {
         return (
           <div className="drop">
             <img src="/assets/image/icon_tips.png" alt="upcoming up" />
-            <div className="status-onimg">
+            <h3 className="status-onimg">
               <>{t('UPCOMMINGDROP')}</>
-            </div>
+            </h3>
           </div>
         )
       } else {
         return (
           <div className="drop">
             <img src="/assets/image/icon_tips.png" alt="upcoming up" />
-            <div className="status-onimg">
+            <h3 className="status-onimg">
               <>{t('COMINGSOON')}</>
-            </div>
+            </h3>
           </div>
         )
       }
@@ -91,9 +91,9 @@ function Countdown(props) {
       return (
         <div className="drop">
           <img src="/assets/image/icon_tips.png" alt="upcoming up" />
-          <div className="status-onimg">
+          <h3 className="status-onimg">
             <>{t('LIVEDROP')}</>
-          </div>
+          </h3>
         </div>
       )
     }

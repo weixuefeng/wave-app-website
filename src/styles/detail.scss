@@ -130,13 +130,13 @@
     .label {
       @apply text-sm text-gray66;
       img {
-        @apply w-4 h-4 ml-1 cursor-pointer;
+        @apply ml-1 h-4 w-4 cursor-pointer;
       }
     }
     .value {
       @apply flex flex-row items-center justify-start text-sm text-gray333;
       img {
-        @apply w-3 h-3 ml-1 cursor-pointer;
+        @apply ml-1 h-3 w-3 cursor-pointer;
       }
     }
   }

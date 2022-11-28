@@ -30,7 +30,7 @@ export default function ChainInfoComponent(props) {
         </p>
         <p className="value">
           {splitAddress(address)}
-          <img src='/assets/image/icon_copy.png' onClick={() => copyAddress(address)} alt='copy'/>
+          <img src="/assets/image/icon_copy.png" onClick={() => copyAddress(address)} alt="copy" />
         </p>
       </div>
       <div className="chain-item ">
@@ -51,7 +51,7 @@ export default function ChainInfoComponent(props) {
         </p>
         <p className="value">
           {creatorEariningPercent}
-          <img src='/assets/image/icon_deail.png' alt='deail'/>
+          <img src="/assets/image/icon_deail.png" alt="deail" />
         </p>
       </div>
       {isShowToast && (
