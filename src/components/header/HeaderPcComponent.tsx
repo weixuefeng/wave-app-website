@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-15 12:51:57
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-28 13:54:26
+ * @LastEditTime: 2022-11-28 22:25:34
  * @FilePath: /wave-app-webiste/src/components/header/HeaderPcComponent.tsx
  */
 import React, { useEffect, useState } from 'react'
@@ -10,12 +10,25 @@ import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 import LoginComponent from './LoginComponent'
 import { languageTitle } from 'constants/key'
+import { useAppSelector } from 'store/store'
+import { selectUser } from 'reducer/userReducer'
+import { UserInfo } from 'model/user'
+import DialogComponent from 'components/common/DialogComponent'
+import LoginDialog from 'components/dialog/LoginDialog'
 
 export default function HeaderPcComponent(props) {
   let { i18n } = useTranslation()
   const { t } = useTranslation()
-
+  const currentUser = useAppSelector(selectUser) as UserInfo
   const [isLanguageOpen, setIsLanguageOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  function closeModal() {
+    setIsOpen(false)
+  }
+
+  function openModal() {
+    setIsOpen(true)
+  }
 
   useEffect(() => {
     document.addEventListener('click', e => setIsLanguageOpen(false))
@@ -29,53 +42,75 @@ export default function HeaderPcComponent(props) {
     setIsLanguageOpen(!isLanguageOpen)
   }
 
-  return (
-    <div className="header-pc">
-      <div className="header container">
-        <div className="logo">
-          <Link href="/" passHref>
-            <div>
-              <img src="/assets/image/logo.png" alt="Wave" />
-            </div>
-          </Link>
+  function messageLogin() {
+    if (currentUser !== undefined) {
+      return (
+        <Link href="/message" passHref>
+          <div className="massage-img">
+            <img src="/assets/image/icon_massage.png" alt="massage" />
+            <i></i>
+          </div>
+        </Link>
+      )
+    } else {
+      return (
+        <div onClick={openModal}>
+          <div className="massage-img">
+            <img src="/assets/image/icon_massage.png" alt="massage" />
+            <i></i>
+          </div>
         </div>
-        <ul>
-          <li className="massage">
-            <Link href="/trade" passHref>
-              <a>
-                <>{t('TRADE')}</>
-              </a>
-            </Link>
-            <Link href="/message" passHref>
-              <div className="massage-img">
-                <img src="/assets/image/icon_massage.png" alt="massage" />
-                <i></i>
+      )
+    }
+  }
+
+  return (
+    <>
+      <div className="header-pc">
+        <div className="header container">
+          <div className="logo">
+            <Link href="/" passHref>
+              <div>
+                <img src="/assets/image/logo.png" alt="Wave" />
               </div>
             </Link>
-          </li>
-          <li className="language">
-            <div className="language-img" onClick={onLanguageItem}>
-              <img src="/assets/image/icon_language.png" alt="language" />
-              <div className={`${isLanguageOpen ? 'item block' : 'item hidden'}`}>
-                {languageTitle.map((item, index) => {
-                  return (
-                    <span
-                      key={index}
-                      onClick={() => {
-                        i18n.changeLanguage(item.language)
-                      }}
-                      className={i18n.language == item.language ? 'active' : ''}
-                    >
-                      {item.title}
-                    </span>
-                  )
-                })}
+          </div>
+          <ul>
+            <li className="massage">
+              <Link href="/trade" passHref>
+                <a>
+                  <>{t('TRADE')}</>
+                </a>
+              </Link>
+              {messageLogin()}
+            </li>
+            <li className="language">
+              <div className="language-img" onClick={onLanguageItem}>
+                <img src="/assets/image/icon_language.png" alt="language" />
+                <div className={`${isLanguageOpen ? 'item block' : 'item hidden'}`}>
+                  {languageTitle.map((item, index) => {
+                    return (
+                      <span
+                        key={index}
+                        onClick={() => {
+                          i18n.changeLanguage(item.language)
+                        }}
+                        className={i18n.language == item.language ? 'active' : ''}
+                      >
+                        {item.title}
+                      </span>
+                    )
+                  })}
+                </div>
               </div>
-            </div>
-          </li>
-          <LoginComponent />
-        </ul>
+            </li>
+            <LoginComponent />
+          </ul>
+        </div>
       </div>
-    </div>
+      <DialogComponent isOpen={isOpen} closeModal={closeModal}>
+        <LoginDialog closeModal={closeModal} />
+      </DialogComponent>
+    </>
   )
 }
