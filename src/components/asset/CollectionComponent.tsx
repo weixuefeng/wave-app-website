@@ -1,3 +1,10 @@
+/*
+ * @Author: liukeke liukeke@diynova.com
+ * @Date: 2022-11-22 15:44:16
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-28 19:26:31
+ * @FilePath: /wave-app-webiste/src/components/asset/CollectionComponent.tsx
+ */
 import { Tab } from '@headlessui/react'
 import { t } from 'i18next'
 import { BaseCollectionInfo } from 'model/collection'
@@ -33,7 +40,9 @@ export default function CollectionComponent(props) {
   return (
     <div className="nft-collection">
       <div className="base-info">
-        <img src={collection.image} alt={collection.name} />
+        <div className="info-img">
+          <img src={collection.image} alt={collection.name} />
+        </div>
         <div className="content">
           <h2>{collection.name}</h2>
           <div className="status">
