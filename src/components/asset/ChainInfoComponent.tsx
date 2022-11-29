@@ -2,16 +2,17 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-21 16:51:27
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-28 15:59:21
+ * @LastEditTime: 2022-11-29 16:20:13
  * @FilePath: /wave-app-webiste/src/components/asset/ChainInfoComponent.tsx
  */
+import { Tooltip } from 'antd'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import copyContent, { splitAddress } from 'utils/functions'
 
 export default function ChainInfoComponent(props) {
-  const { t } = useTranslation()
-  const { address, tokenStandard, blockChain, creatorEariningPercent } = props
+  const { i18n, t } = useTranslation()
+  const { address, tokenStandard, blockChain, creatorEariningPercent, tipCreatorEarningsPercent } = props
 
   const [isShowToast, setIsShowToast] = useState(false)
   async function copyAddress(content) {
@@ -51,7 +52,16 @@ export default function ChainInfoComponent(props) {
         </p>
         <p className="value">
           {creatorEariningPercent}
-          <img src="/assets/image/icon_deail.png" alt="deail" />
+          <Tooltip
+            placement="top"
+            title={
+              i18n.language == 'en'
+                ? `The creator(s) of this asset will receive ${tipCreatorEarningsPercent} for every sale.`
+                : `该资产的创建者每出售一次将获得 ${tipCreatorEarningsPercent}.`
+            }
+          >
+            <img src="/assets/image/icon_deail.png" alt="deail" />
+          </Tooltip>
         </p>
       </div>
       {isShowToast && (

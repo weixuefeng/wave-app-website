@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:33:51
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-21 19:14:14
- * @FilePath: /wave-app-website/src/components/blindbox/BlindboxComponent.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-29 16:12:28
+ * @FilePath: /wave-app-webiste/src/components/blindbox/BlindboxComponent.tsx
  */
 
 import ChainInfoComponent from 'components/asset/ChainInfoComponent'
@@ -51,6 +51,7 @@ export default function BlindboxComponent(props) {
                   tokenStandard={collectionInfo.specifications.token_standard}
                   blockChain={collectionInfo.specifications.block_chain}
                   creatorEariningPercent={collectionInfo.specifications.creator_earnings}
+                  tipCreatorEarningsPercent={collectionInfo.specifications.creator_earnings}
                 />
               </div>
               <StaticInfo />

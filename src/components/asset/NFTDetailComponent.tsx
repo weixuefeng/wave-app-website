@@ -295,6 +295,7 @@ export default function NFTDetailComponent(props) {
             tokenStandard={nftDetail.chain_info.token_standard}
             blockChain={nftDetail.chain_info.block_chain}
             creatorEariningPercent={nftDetail.creator_earnings_percent}
+            tipCreatorEarningsPercent={nftDetail.creator_earnings_percent}
           />
           {nftDetail.properties.length > 0 && (
             <>
