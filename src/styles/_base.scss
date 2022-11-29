@@ -26,6 +26,9 @@ h3 {
     }
   }
 }
+.container {
+  @apply max-w-[1440px];
+}
 
 @font-face {
   font-family: 'AvenirNext-Bold';

@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:32:00
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-29 13:06:44
+ * @LastEditTime: 2022-11-29 18:29:25
  * @FilePath: /wave-app-webiste/src/pages/wallet.tsx
  */
 import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
@@ -42,9 +42,9 @@ export default function Wallet() {
       })
   }
 
-  if (!walletInfo) {
-    return <>no wallet</>
-  }
+  // if (!walletInfo) {
+  //   return <>no wallet</>
+  // }
 
   function content() {
     return (
@@ -59,14 +59,14 @@ export default function Wallet() {
               </div>
               <div className="balance">
                 <p className="label">{t('TOTAL_BALANCE')}</p>
-                <p className="value">{walletInfo.balance} NEW</p>
+                <p className="value">{walletInfo?.balance} NEW</p>
               </div>
               <div className="balance-info">
                 <p className="label">{t('AVAILABKE')}</p>
-                <p className="value">{walletInfo.available_balance} NEW</p>
+                <p className="value">{walletInfo?.available_balance} NEW</p>
 
                 <p className="label mt-2">{t('FROZEN')}</p>
-                <p className="value">{walletInfo.lock_balance} NEW</p>
+                <p className="value">{walletInfo?.lock_balance} NEW</p>
               </div>
               <div className="action">
                 <Link href="/deposit">
