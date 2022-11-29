@@ -170,9 +170,13 @@ export default function NFTDetailComponent(props) {
     }
   }
 
-  // if (!nftDetail || !id) {
-  //   return <>loading...</>
-  // }
+  if (!nftDetail || !id) {
+    return (
+      <div className="w-full">
+        <img className="mx-auto pt-20" src="/assets/image/loading.gif" alt="loading img" />
+      </div>
+    )
+  }
 
   function OwnerActionComponent() {
     // owner
@@ -180,7 +184,7 @@ export default function NFTDetailComponent(props) {
       return (
         <div className="action">
           <button
-            className="primary ml-4 black"
+            className="primary black ml-4"
             onClick={() => {
               cancelOrder()
             }}
@@ -193,7 +197,7 @@ export default function NFTDetailComponent(props) {
       return (
         <div className="action">
           <button
-            className="primary ml-4 black"
+            className="primary black ml-4"
             onClick={() => {
               setIsSellAssetOpen(true)
             }}

@@ -237,7 +237,11 @@ export default function EVTDetailComponent(props) {
   }
 
   if (!evtDetail) {
-    return <></>
+    return (
+      <div className="w-full">
+        <img className="mx-auto pt-20" src="/assets/image/loading.gif" alt="loading img" />
+      </div>
+    )
   }
 
   return (

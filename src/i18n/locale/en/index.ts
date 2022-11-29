@@ -174,6 +174,6 @@ export const enTransaction = {
   PLEASE_READ: 'Please read anf check to agress the Terms of Service and Privacy Policy',
   THIS_ADDRESS: 'This address does not match the currently selected primary network.',
   INSUFFICIENT_BALANCE: 'Insufficient balance',
-  SALE:'出售',
-  CANCLE_OF_SALE:'cancle of sale',
+  SALE: '出售',
+  CANCLE_OF_SALE: 'cancle of sale',
 }

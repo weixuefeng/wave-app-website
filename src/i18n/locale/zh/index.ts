@@ -170,6 +170,6 @@ export const zhTransaction = {
   PLEASE_READ: '请您阅读并勾选同意用户协议和隐私条款',
   THIS_ADDRESS: '此地址与当前选择的主网络不匹配.',
   INSUFFICIENT_BALANCE: '余额不足',
-  SALE:'出售',
-  CANCLE_OF_SALE:'取消出售',
+  SALE: '出售',
+  CANCLE_OF_SALE: '取消出售',
 }
