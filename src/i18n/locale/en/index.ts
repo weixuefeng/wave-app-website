@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-29 23:52:29
+ * @LastEditTime: 2022-11-30 00:26:00
  * @FilePath: /wave-app-webiste/src/i18n/locale/en/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -160,6 +160,7 @@ export const enTransaction = {
     'Beware of fraud and do not participate in illegal activities such as proxy purchases, money laundering, and illegal fundraising.',
   INTERNAL_FREE: 'Internal transfer will be free.',
   FEE: 'Fee',
+  FEEs: 'Fees',
   PURCHSSE_TIME: 'Purchase time',
   CHECK_IN_DEADINE: 'Check in deadline',
   SEE_MORE: 'See More',
@@ -177,4 +178,11 @@ export const enTransaction = {
   SALE: 'Sale',
   CANCLE_OF_SALE: 'cancle of sale',
   OFFER_VALID_THRU: 'Offer valid thru',
+  UNSET: 'unset',
+  EXPRIRATION_DATE: 'Expiration date',
+  SELL_NFT: 'Sell NFT',
+  SERVICE_FEE: 'Service Fee',
+  PRIVSTE: 'Private',
+  YOU_CSN_ADDRESS: 'You can specify one address that is allowed to buy it',
+  LISTING_IS_FREE: 'Listing is free. the following fees will be deducted at the time of the sale',
 }

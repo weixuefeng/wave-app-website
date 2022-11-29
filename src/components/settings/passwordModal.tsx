@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 15:38:06
+ * @LastEditTime: 2022-11-30 00:01:03
  * @FilePath: /wave-app-webiste/src/components/settings/passwordModal.tsx
  */
 import DialogComponent from 'components/common/DialogComponent'
@@ -124,7 +124,7 @@ export default function PasswordModal(props) {
         <>{t('PAYMENT_PASSWORD')}</>
       </p>
       <div>
-        <span className="left">{currentUser?.payment_password_set == 1 ? '******' : 'unset'}</span>
+        <span className="left">{currentUser?.payment_password_set == 1 ? '******' : t('UNSET')}</span>
         <span className="edit" onClick={openModal}>
           {t('EDIT')}
         </span>

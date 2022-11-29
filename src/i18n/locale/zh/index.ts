@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-29 23:52:52
+ * @LastEditTime: 2022-11-30 00:26:22
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -156,6 +156,7 @@ export const zhTransaction = {
   BEWARE_OF_FRAUD: '请勿参与代购、洗钱、非法集资等非法活动,谨防网络诈骗.',
   INTERNAL_FREE: '内部转账免手续费.',
   FEE: '手续费',
+  FEEs: '手续费',
   PURCHSSE_TIME: '购买时间',
   CHECK_IN_DEADINE: '检票截止日期',
   SEE_MORE: '查看更多',
@@ -173,4 +174,11 @@ export const zhTransaction = {
   SALE: '出售',
   CANCLE_OF_SALE: '取消出售',
   OFFER_VALID_THRU: '出价有效时间',
+  UNSET: '设置',
+  EXPRIRATION_DATE: '截止日期',
+  SELL_NFT: '出售 NFT',
+  SERVICE_FEE: '服务费',
+  PRIVSTE: '隐私',
+  YOU_CSN_ADDRESS: '您可以指定一个地址购买',
+  LISTING_IS_FREE: '列表是免费的.以下费用将在出售时扣除',
 }

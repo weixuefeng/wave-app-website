@@ -2,17 +2,18 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-14 13:36:09
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-18 19:31:53
+ * @LastEditTime: 2022-11-29 23:57:36
  * @FilePath: /wave-app-webiste/src/components/collection/baseInfo.tsx
  */
 
 import React from 'react'
-import { t } from 'i18next'
 import { CollectionInfo, IssueType } from 'model/collection_model'
+import { useTranslation } from 'react-i18next'
 
 export default BaseInfo
 
 function BaseInfo(props) {
+  const { t } = useTranslation()
   let { collectionInfo } = props
   const info = collectionInfo as CollectionInfo
 

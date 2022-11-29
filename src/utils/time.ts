@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 18:48:14
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-28 14:07:26
+ * @LastEditTime: 2022-11-30 00:07:53
  * @FilePath: /wave-app-webiste/src/utils/time.ts
  */
 export function formatDate(value) {
@@ -39,6 +39,16 @@ export function formatDate(value) {
     mm = 'December'
   }
   return mm + ' ' + d + ',' + y
+}
+
+export function zhFormatDate(value) {
+  value = value * 1000
+  let date = new Date(value)
+  let y = date.getFullYear()
+  let m = date.getMonth() + 1
+  let d = date.getDate()
+
+  return y + '-' + m + '-' + d
 }
 
 export function formatDateTime(timestamp) {

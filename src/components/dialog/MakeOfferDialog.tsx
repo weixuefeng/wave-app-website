@@ -52,7 +52,7 @@ export default function MakeOfferDialog(props) {
 
   return (
     <div className="dialog-make-offer">
-      <h2 className="title">Make Offer</h2>
+      <h2 className="title">{t('MAKE_OFFER')}</h2>
       {/** asset info */}
       <div className="asset-info">
         <div className="info-img">

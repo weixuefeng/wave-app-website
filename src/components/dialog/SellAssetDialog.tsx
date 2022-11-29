@@ -7,8 +7,10 @@ import { Disclosure } from '@headlessui/react'
 import { PlusCircleIcon } from '@heroicons/react/24/solid'
 import { EVTCopyDetail } from 'model/evt_asset'
 import Log from 'utils/log'
+import { useTranslation } from 'react-i18next'
 
 export default function SellAssetDialog(props) {
+  const { t } = useTranslation()
   const {
     nftDetail,
     showPassword,
@@ -53,17 +55,17 @@ export default function SellAssetDialog(props) {
 
   return (
     <div className="dialog-make-offer">
-      <p className="title">Sell NFT</p>
+      <p className="title">{t('SELL_NFT')}</p>
 
       {/** offer info */}
       <div className="offer-info">
         <Row gutter={16} className="item">
           <Col span={8}>
-            <p className="title">Price</p>
+            <p className="title">{t('PRICE')}</p>
             <Input suffix="NEW" onChange={onPriceChange} />
           </Col>
           <Col span={16}>
-            <p className="title">Expiration date</p>
+            <p className="title">{t('EXPRIRATION_DATE')}</p>
             <Row gutter={12}>
               <Col span={12}>
                 <DatePicker placeholder={'Date'} placement={'bottomRight'} onChange={onDateChange} />
@@ -83,21 +85,21 @@ export default function SellAssetDialog(props) {
         <Disclosure>
           <Disclosure.Button className="flex flex-row items-center py-2 text-lg">
             <PlusCircleIcon className="h-8 w-8" />
-            Private
+            <>{t('PRIVSTE')}</>
           </Disclosure.Button>
           <Disclosure.Panel className="text-gray-500">
             <Input onChange={setDirectionAddress} />
-            <p>You can specify one address that is allowed to buy it.</p>
+            <p>{t('YOU_CSN_ADDRESS')}.</p>
           </Disclosure.Panel>
         </Disclosure>
       </div>
 
       <div className="fee-info">
         <p>
-          Fees <span>(Listing is free. the following fees will be deducted at the time of the sale)</span>
+          {t('FEEs')} <span>({t('LISTING_IS_FREE')})</span>
         </p>
-        <p>· Service Fee: 2.5%</p>
-        <p>· Creator Earnings: 5%</p>
+        <p>· {t('SERVICE_FEE')}: 2.5%</p>
+        <p>· {t('CREATOR_EARNINGS')}: 5%</p>
       </div>
 
       <button
@@ -106,7 +108,7 @@ export default function SellAssetDialog(props) {
           requestOrderSell()
         }}
       >
-        Submit
+        {t('CONFIRM')}
       </button>
     </div>
   )
