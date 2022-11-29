@@ -147,6 +147,10 @@ button.tertiary {
     @apply mx-2 w-auto;
   }
 }
+
+button.widthMargin {
+  @apply mx-auto w-1/2;
+}
 a,
 a:focus,
 a:hover {

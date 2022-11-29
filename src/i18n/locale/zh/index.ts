@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-29 21:06:08
+ * @LastEditTime: 2022-11-29 23:52:52
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -172,4 +172,5 @@ export const zhTransaction = {
   INSUFFICIENT_BALANCE: '余额不足',
   SALE: '出售',
   CANCLE_OF_SALE: '取消出售',
+  OFFER_VALID_THRU: '出价有效时间',
 }

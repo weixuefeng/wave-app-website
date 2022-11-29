@@ -52,13 +52,15 @@ export default function MakeOfferDialog(props) {
 
   return (
     <div className="dialog-make-offer">
-      <p className="title">Make Offer222</p>
+      <h2 className="title">Make Offer</h2>
       {/** asset info */}
       <div className="asset-info">
-        <img src={info.image} alt={info.name} />
+        <div className="info-img">
+          <img src={info.image} alt={info.name} />
+        </div>
         <div>
-          <p>{info.name.substring(0, info.name.indexOf('#'))}</p>
-          <p>{`#${info.name.lastIndexOf('#')}`}</p>
+          <h3>{info.name.substring(0, info.name.indexOf('#'))}</h3>
+          <h3>{`#${info.name.lastIndexOf('#')}`}</h3>
         </div>
       </div>
       {/** bid info */}
@@ -77,7 +79,7 @@ export default function MakeOfferDialog(props) {
       <div className="offer-info">
         <Row gutter={16} className="item">
           <Col span={16}>
-            <p className="title">Offer valid thru</p>
+            <p className="title">{t('OFFER_VALID_THRU')}</p>
             <Row gutter={12}>
               <Col span={12}>
                 <DatePicker placeholder={'Date'} placement={'bottomRight'} onChange={onDateChange} />
@@ -88,24 +90,26 @@ export default function MakeOfferDialog(props) {
             </Row>
           </Col>
           <Col span={8}>
-            <p className="title">Price</p>
+            <p className="title">{t('PRICE')}</p>
             <Input suffix="NEW" onChange={onPriceChange} />
           </Col>
         </Row>
       </div>
 
-      <Divider className="my-2" />
-
       {/** balance info */}
       <div className="balance-info">
+        <div className="info-total">
+          <p>{t('TOTAL')}</p>
+          <p>{offerPrice} NEW</p>
+        </div>
         <div className="item">
-          <p>Account Balance:</p>
+          <p>{t('ACCOUNT_BALANCE')}:</p>
           <p>{wallet.available_balance} NEW</p>
         </div>
       </div>
 
       <button
-        className="primary black"
+        className="primary black widthMargin"
         onClick={() => {
           isValue()
         }}
