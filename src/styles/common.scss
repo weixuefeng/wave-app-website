@@ -5,6 +5,10 @@ button:disabled {
   @apply bg-gray-200 text-gray-500;
 }
 
+.outline {
+  @apply outline-none;
+}
+
 button.primary {
   // Global
   @apply transition-all duration-300;
