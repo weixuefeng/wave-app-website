@@ -19,6 +19,14 @@ h3 {
   }
 }
 
+.ant-picker-ranges {
+  .ant-picker-ok {
+    button {
+      @apply bg-blue-500;
+    }
+  }
+}
+
 @font-face {
   font-family: 'AvenirNext-Bold';
   src: url('/assets/fonts/AvenirNext-Bold.ttf');

@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 17:13:45
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-29 11:50:42
+ * @LastEditTime: 2022-11-29 13:17:33
  * @FilePath: /wave-app-webiste/src/components/wallet/TransactionList.tsx
  */
 import { WalletTransaction } from 'model/wallet'
@@ -20,7 +20,10 @@ export function TransactionComponent(props) {
 
   return (
     <div className="history-item">
-      <h3>{t('ASSET_SALE')}</h3>
+      <h3>
+        {/* {t('ASSET_SALE')} */}
+        {item.trade_label}
+      </h3>
       <div className="mt-4">
         <p className="label">
           <>{t('AMOUNT')}</>

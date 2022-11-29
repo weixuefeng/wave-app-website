@@ -1,7 +1,10 @@
 .wallet {
-  @apply grid grid-cols-1 gap-x-4 px-4 md:grid-cols-6 xl:px-0;
+  @apply grid min-h-screen grid-cols-1 gap-x-4 px-4 md:grid-cols-6 xl:px-0;
   .base-info {
     @apply col-span-1 mt-16 flex flex-col md:col-span-2;
+    .info {
+      @apply fixed top-20 w-[23%] pt-24;
+    }
     h2 {
       @apply text-4xl font-medium;
     }
@@ -43,14 +46,12 @@
   .transaction {
     @apply col-span-1 mb-7 rounded-md bg-gray-100 p-4 md:col-span-4 md:mb-0;
     h2 {
-      @apply text-2xl;
+      @apply mt-14 text-2xl;
     }
-
     .list {
-      @apply mt-4 divide-y-2 overflow-y-auto md:max-h-[800px];
-
+      @apply mt-4 divide-y-2;
       .history-item {
-        @apply flex flex-col p-4;
+        @apply flex flex-col border-b-[1px] border-graye3 p-4;
         h3 {
           @apply text-sm font-medium;
         }

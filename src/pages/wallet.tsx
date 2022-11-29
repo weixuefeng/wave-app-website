@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:32:00
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-24 16:18:14
+ * @LastEditTime: 2022-11-29 13:06:44
  * @FilePath: /wave-app-webiste/src/pages/wallet.tsx
  */
 import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
@@ -51,39 +51,41 @@ export default function Wallet() {
       <div className="container mx-auto">
         <div className="wallet">
           <div className="base-info">
-            <div className="title">
-              <h2>
-                <>{t('WALLET')}</>
-              </h2>
-            </div>
-            <div className="balance">
-              <p className="label">{t('TOTAL_BALANCE')}</p>
-              <p className="value">{walletInfo.balance} NEW</p>
-            </div>
-            <div className="balance-info">
-              <p className="label">{t('AVAILABKE')}</p>
-              <p className="value">{walletInfo.available_balance} NEW</p>
+            <div className="info">
+              <div className="title">
+                <h2>
+                  <>{t('WALLET')}</>
+                </h2>
+              </div>
+              <div className="balance">
+                <p className="label">{t('TOTAL_BALANCE')}</p>
+                <p className="value">{walletInfo.balance} NEW</p>
+              </div>
+              <div className="balance-info">
+                <p className="label">{t('AVAILABKE')}</p>
+                <p className="value">{walletInfo.available_balance} NEW</p>
 
-              <p className="label mt-2">{t('FROZEN')}</p>
-              <p className="value">{walletInfo.lock_balance} NEW</p>
-            </div>
-            <div className="action">
-              <Link href="/deposit">
-                <div>
-                  <img src="/assets/image/icon_deposit.png" alt="deposit" />
-                  <p>
-                    <>{t('DEPOSIT')}</>
-                  </p>
-                </div>
-              </Link>
-              <Link href="/withdraw">
-                <div>
-                  <img src="/assets/image/icon_withdraw.png" alt="deposit" />
-                  <p>
-                    <>{t('WITHDRAW')}</>
-                  </p>
-                </div>
-              </Link>
+                <p className="label mt-2">{t('FROZEN')}</p>
+                <p className="value">{walletInfo.lock_balance} NEW</p>
+              </div>
+              <div className="action">
+                <Link href="/deposit">
+                  <div>
+                    <img src="/assets/image/icon_deposit.png" alt="deposit" />
+                    <p>
+                      <>{t('DEPOSIT')}</>
+                    </p>
+                  </div>
+                </Link>
+                <Link href="/withdraw">
+                  <div>
+                    <img src="/assets/image/icon_withdraw.png" alt="deposit" />
+                    <p>
+                      <>{t('WITHDRAW')}</>
+                    </p>
+                  </div>
+                </Link>
+              </div>
             </div>
           </div>
 
