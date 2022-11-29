@@ -170,9 +170,9 @@ export default function NFTDetailComponent(props) {
     }
   }
 
-  if (!nftDetail || !id) {
-    return <>loading...</>
-  }
+  // if (!nftDetail || !id) {
+  //   return <>loading...</>
+  // }
 
   function OwnerActionComponent() {
     // owner
@@ -180,12 +180,12 @@ export default function NFTDetailComponent(props) {
       return (
         <div className="action">
           <button
-            className="primary ml-4 outline"
+            className="primary ml-4 black"
             onClick={() => {
               cancelOrder()
             }}
           >
-            取消出售{' '}
+            {t('CANCLE_OF_SALE')}
           </button>
         </div>
       )
@@ -193,12 +193,12 @@ export default function NFTDetailComponent(props) {
       return (
         <div className="action">
           <button
-            className="primary ml-4 outline"
+            className="primary ml-4 black"
             onClick={() => {
               setIsSellAssetOpen(true)
             }}
           >
-            出售{' '}
+            {t('SALE')}
           </button>
         </div>
       )

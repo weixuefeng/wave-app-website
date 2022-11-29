@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-29 16:59:29
+ * @LastEditTime: 2022-11-29 19:20:18
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -170,4 +170,6 @@ export const zhTransaction = {
   PLEASE_READ: '请您阅读并勾选同意用户协议和隐私条款',
   THIS_ADDRESS: '此地址与当前选择的主网络不匹配.',
   INSUFFICIENT_BALANCE: '余额不足',
+  SALE:'出售',
+  CANCLE_OF_SALE:'取消出售',
 }

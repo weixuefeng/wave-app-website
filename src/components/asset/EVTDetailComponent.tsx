@@ -166,7 +166,7 @@ export default function EVTDetailComponent(props) {
               cancelOrder()
             }}
           >
-            取消出售{' '}
+            {t('CANCLE_OF_SALE')}
           </button>
         </div>
       )
@@ -179,7 +179,7 @@ export default function EVTDetailComponent(props) {
               setIsSellAssetOpen(true)
             }}
           >
-            出售{' '}
+            {t('SALE')}
           </button>
         </div>
       )
