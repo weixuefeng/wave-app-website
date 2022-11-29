@@ -97,9 +97,9 @@
 .nft-collection {
   @apply mt-12 flex flex-col p-2;
   .base-info {
-    @apply grid grid-cols-3 gap-x-10;
+    @apply grid grid-cols-6 gap-x-10;
     .info-img {
-      @apply relative col-span-1 bg-grayf3 pb-[100%];
+      @apply relative col-span-2 bg-grayf3 pb-[100%];
       img {
         @apply absolute h-full w-full object-cover;
         top: 50%;
@@ -108,20 +108,20 @@
       }
     }
     .content {
-      @apply col-span-1 flex flex-col;
-
+      @apply col-span-2 flex flex-col;
       h2 {
         @apply overflow-hidden text-ellipsis whitespace-nowrap text-2xl text-gray-900;
       }
       .status {
-        @apply flex flex-row items-center justify-around;
-        @apply mt-4 rounded-md p-4;
+        @apply grid grid-cols-4 gap-x-10;
+        @apply mt-8 rounded-md;
         .item {
+          @apply col-span-1;
           .value {
             @apply text-lg text-black;
           }
           .label {
-            @apply text-base text-gray-500;
+            @apply text-base text-gray99 md:whitespace-nowrap;
           }
         }
       }

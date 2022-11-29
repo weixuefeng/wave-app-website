@@ -2,20 +2,22 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 15:44:16
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-28 19:26:31
+ * @LastEditTime: 2022-11-29 10:17:04
  * @FilePath: /wave-app-webiste/src/components/asset/CollectionComponent.tsx
  */
 import { Tab } from '@headlessui/react'
-import { t } from 'i18next'
 import { BaseCollectionInfo } from 'model/collection'
 import React, { Fragment, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import Http from 'services/http'
+import { floorNum } from 'utils/functions'
 import Log from 'utils/log'
 import AllItemsComponent from './AllItemsComponent'
 import ChainInfoComponent from './ChainInfoComponent'
 import CollectionActivity from './CollectionActivityComponent'
 
 export default function CollectionComponent(props) {
+  const { t } = useTranslation()
   const { id, type } = props
   const [collection, setCollection] = useState<BaseCollectionInfo>()
   useEffect(() => {
@@ -65,7 +67,7 @@ export default function CollectionComponent(props) {
               </p>
             </div>
             <div className="item">
-              <p className="value">{collection.stats.volume_all}</p>
+              <p className="value">{floorNum(collection.stats.volume_all)}</p>
               <p className="label">
                 <>{t('COLLECTION_VAOLUME_TRADED')}</>
               </p>
