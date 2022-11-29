@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 17:13:45
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 19:29:20
+ * @LastEditTime: 2022-11-29 11:50:42
  * @FilePath: /wave-app-webiste/src/components/wallet/TransactionList.tsx
  */
 import { WalletTransaction } from 'model/wallet'
@@ -33,12 +33,12 @@ export function TransactionComponent(props) {
         </p>
         <p>{info.wallet_balance} NEW</p>
       </div>
-      <div>
+      {/* <div>
         <p className="label">
           <>{t('ASSET_BNAME')}</>
         </p>
         <p>{info.asset_name}</p>
-      </div>
+      </div> */}
       <div>
         <p className="label">
           <>{t('TIME')}</>
