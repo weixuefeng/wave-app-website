@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 20:26:47
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-24 16:19:32
- * @FilePath: /wave-app-webiste/src/pages/cinema.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-29 15:02:17
+ * @FilePath: /wave-app-website/src/pages/cinema.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import CinemaComponent from 'components/cinema/CinemaComponent'
@@ -18,7 +18,7 @@ import React, { useState, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import Http from 'services/http'
 
-export default function Cinema(props) {
+export default function Cinema() {
   let pageModel = new PageModel('Cinema', 'WAVE', '')
   const { t } = useTranslation()
   const ref = useRef(null)
@@ -49,7 +49,7 @@ export default function Cinema(props) {
             </h2>
             <div className="cinema">
               {data?.map((item, index) => {
-                return <CinemaComponent key={index} item={item} openModal={openModal()} />
+                return <CinemaComponent key={index} item={item} openModal={openModal} />
               })}
             </div>
             <div ref={ref}>
