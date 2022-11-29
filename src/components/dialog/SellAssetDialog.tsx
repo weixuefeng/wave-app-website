@@ -103,7 +103,7 @@ export default function SellAssetDialog(props) {
       </div>
 
       <button
-        className="primary black"
+        className="primary black widthMargin"
         onClick={() => {
           requestOrderSell()
         }}
