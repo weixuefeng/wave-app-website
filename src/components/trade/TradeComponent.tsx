@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:33:51
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-28 20:20:41
+ * @LastEditTime: 2022-11-29 11:34:29
  * @FilePath: /wave-app-webiste/src/components/trade/TradeComponent.tsx
  */
 import { t } from 'i18next'
@@ -60,13 +60,11 @@ export default function TradeComponent(props) {
             </p>
             <p className="gains">
               {priceDirection(item.list_price_direction, item.list_price_percent)}
-              {floorNum(item.list_price_percent) !== 0 ? (
-                <span className="right">
-                  <>
-                    {floorNum(item.list_price_percent)} {t('ABOVE')}
-                  </>
-                </span>
-              ) : null}
+              <span className="right">
+                <>
+                  {floorNum(item.list_price_percent)} %{floorNum(item.list_price_percent) !== 0 ? t('ABOVE') : null}
+                </>
+              </span>
             </p>
           </div>
         </a>
