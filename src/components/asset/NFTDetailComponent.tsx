@@ -151,6 +151,8 @@ export default function NFTDetailComponent(props) {
   }
 
   function showMakeOffer() {
+    setOfferEndTime(0)
+    setOfferPrice('0')
     if (currentUser) {
       setIsMakeOfferOpen(true)
       setIsOfferPasswordType(true)
@@ -323,7 +325,9 @@ export default function NFTDetailComponent(props) {
         <MakeOfferDialog
           nftDetail={nftDetail}
           showPassword={showPassword}
+          offerEndTime={offerEndTime}
           setOfferEndTime={setOfferEndTime}
+          offerPrice={offerPrice}
           setOfferPrice={setOfferPrice}
         />
       </DialogComponent>

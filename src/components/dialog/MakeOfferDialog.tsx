@@ -8,7 +8,7 @@ import Log from 'utils/log'
 
 export default function MakeOfferDialog(props) {
   const { t } = useTranslation()
-  const { nftDetail, evtDetail, showPassword, setOfferEndTime, setOfferPrice } = props
+  const { nftDetail, evtDetail, showPassword, offerEndTime,setOfferEndTime,offerPrice, setOfferPrice } = props
   const wallet = useWallet()
 
   const [endDate, setEndDate] = useState(new Date())
@@ -26,6 +26,7 @@ export default function MakeOfferDialog(props) {
     Log.d(endDate)
     setEndDate(endDate)
     setOfferEndTime(parseInt((endDate.getTime() / 1000).toString()))
+    console.log('offerEndTime',offerEndTime)
   }
 
   const onTimeChange: DatePickerProps['onChange'] = (date, dateString) => {
@@ -42,9 +43,15 @@ export default function MakeOfferDialog(props) {
     setOfferPrice(e.target.value)
   }
 
+  function isValue() {
+    let timestamp = new Date().getTime() / 1000;
+    if(offerPrice > wallet.available_balance || offerPrice == '0'  || offerEndTime == '' || timestamp > offerEndTime ) return
+    showPassword()
+  }
+
   return (
     <div className="dialog-make-offer">
-      <p className="title">Make Offer</p>
+      <p className="title">Make Offer222</p>
       {/** asset info */}
       <div className="asset-info">
         <img src={info.image} alt={info.name} />
@@ -98,9 +105,7 @@ export default function MakeOfferDialog(props) {
 
       <button
         className="primary black"
-        onClick={() => {
-          showPassword()
-        }}
+        onClick={() => {isValue()}}
       >
         <>{t('NEXT')}</>
       </button>
