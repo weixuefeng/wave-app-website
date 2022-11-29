@@ -22,16 +22,35 @@ export default function Withdraw() {
   const [isPasswordOpen, setIsPasswordOpen] = useState(false)
   const [amount, setAmount] = useState('')
   const [address, setAddress] = useState('')
+  const [isAmount, setIsAmount] = useState(false)
+  const [isAddress, setIsAddress] = useState(false)
 
   function closePasswordModal() {
     setIsPasswordOpen(false)
+    setIsAmount(false)
+    setIsAddress(false)
   }
 
   function onConfirm() {
+    if (address == '' || amount == '' || parseInt(amount) < 100) {
+      setIsAddress(true)
+      setIsAmount(true)
+      return
+    }
     setIsPasswordOpen(true)
   }
 
+  function onAddress(e) {
+    setAddress(e.target.value)
+  }
+
+  function onAmount(e) {
+    setAmount(e.target.value)
+  }
+
   function onConfirmPassword(value) {
+    setIsAmount(false)
+    setIsAddress(false)
     closePasswordModal()
     Http.getInstance()
       .getWalletWithdraw(amount, value, address)
@@ -113,12 +132,8 @@ export default function Withdraw() {
               <label htmlFor="text" className="label">
                 {t('WITHDRAW_ADDRESS')}
               </label>
-              <input
-                placeholder={t('ENTER_ADDRESS')}
-                onChange={e => {
-                  setAddress(e.target.value)
-                }}
-              />
+              <input placeholder={t('ENTER_ADDRESS')} onChange={onAddress} />
+              {isAddress ? <p className="address-tit">{t('THIS_ADDRESS')}</p> : null}
             </div>
           </div>
 
@@ -130,12 +145,8 @@ export default function Withdraw() {
                   {t('AVAILABKE')} {wallet.available_balance}NEW
                 </span>
               </label>
-              <input
-                placeholder={`${t('MINIMUN')}${walletAccount.withdraw_minimum}`}
-                onChange={e => {
-                  setAmount(e.target.value)
-                }}
-              />
+              <input placeholder={`${t('MINIMUN')}${walletAccount.withdraw_minimum}`} onChange={onAmount} />
+              {isAmount ? <p className="address-tit">{t('INSUFFICIENT_BALANCE')}</p> : null}
             </div>
           </div>
 
