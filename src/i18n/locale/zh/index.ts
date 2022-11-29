@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-29 19:20:18
+ * @LastEditTime: 2022-11-29 21:06:08
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {

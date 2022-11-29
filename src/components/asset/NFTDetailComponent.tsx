@@ -248,10 +248,14 @@ export default function NFTDetailComponent(props) {
     }
   }
 
+  console.log('nftDetail',nftDetail)
+
   return (
     <div className="nft-detail">
       <div className="info">
-        <img src={nftDetail.image} alt={nftDetail.name} />
+        <div className='info-img'>
+          <img src={nftDetail.image} alt={nftDetail.name} />
+        </div>
         <div className="detail">
           <h2>{nftDetail.name}</h2>
           {/** owner info */}

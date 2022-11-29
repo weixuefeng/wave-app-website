@@ -276,7 +276,7 @@ export default function EVTDetailComponent(props) {
 
       <div className="chain-info">
         <div className="detail">
-          <h2>Details</h2>
+          <h2>{t('Details')}</h2>
           <ChainInfoComponent
             address={evtDetail.chain_info.contract_address}
             tokenStandard={evtDetail.chain_info.token_standard}
@@ -285,13 +285,13 @@ export default function EVTDetailComponent(props) {
           />
           {evtDetail.properties.length > 0 && (
             <>
-              <h2>Properties</h2>
+              <h2>{t('PROPERTIES')}</h2>
               <PropertiesComponents properties={evtDetail.properties} />
             </>
           )}
         </div>
         <div className="intro">
-          <h2>Introduction</h2>
+          <h2>{t('INTRODUCTION')}</h2>
           <div className="content">
             <p>{evtDetail.introduction}</p>
           </div>
