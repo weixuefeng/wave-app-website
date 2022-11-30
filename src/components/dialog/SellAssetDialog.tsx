@@ -68,10 +68,10 @@ export default function SellAssetDialog(props) {
             <p className="title">{t('EXPRIRATION_DATE')}</p>
             <Row gutter={12}>
               <Col span={12}>
-                <DatePicker placeholder={'Date'} placement={'bottomRight'} onChange={onDateChange} />
+                <DatePicker placeholder={t('DATE')} placement={'bottomRight'} onChange={onDateChange} />
               </Col>
               <Col span={12}>
-                <TimePicker placeholder={'Time'} placement={'bottomRight'} onChange={onTimeChange} />
+                <TimePicker placeholder={t('TIME')} placement={'bottomRight'} onChange={onTimeChange} />
               </Col>
             </Row>
           </Col>

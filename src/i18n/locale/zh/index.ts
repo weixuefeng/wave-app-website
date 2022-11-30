@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 00:26:22
+ * @LastEditTime: 2022-11-30 10:07:08
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -18,6 +18,7 @@ export const zhTransaction = {
   SOLD_OUT: '已售罄',
   LIVE_DROP: '热卖中',
   REMAINING: '剩余',
+  DATE: '日期',
   TIME: '时间',
   REVEALS_AT: '开盒时间',
   STARTS_AT: '开售时间',
