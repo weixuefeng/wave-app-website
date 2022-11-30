@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 10:07:08
+ * @LastEditTime: 2022-11-30 15:51:12
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -182,4 +182,5 @@ export const zhTransaction = {
   PRIVSTE: '隐私',
   YOU_CSN_ADDRESS: '您可以指定一个地址购买',
   LISTING_IS_FREE: '列表是免费的.以下费用将在出售时扣除',
+  MORE_OFFERS:'更多的出价',
 }

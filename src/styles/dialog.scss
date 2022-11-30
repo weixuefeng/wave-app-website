@@ -361,8 +361,11 @@
 }
 
 .dialog-offers-received {
+  h2 {
+    @apply text-[1.5rem] font-normal text-gray333 pb-4;
+  }
   h3 {
-    @apply text-2xl font-normal text-gray333;
+    @apply text-gray333 text-lg font-normal pb-5;
   }
 
   h4 {

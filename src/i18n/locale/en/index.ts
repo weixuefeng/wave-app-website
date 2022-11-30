@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 12:30:05
+ * @LastEditTime: 2022-11-30 15:50:53
  * @FilePath: /wave-app-webiste/src/i18n/locale/en/index.ts
  */
 export const enTransaction = {
@@ -185,4 +185,5 @@ export const enTransaction = {
   PRIVSTE: 'Private',
   YOU_CSN_ADDRESS: 'You can specify one address that is allowed to buy it',
   LISTING_IS_FREE: 'Listing is free. the following fees will be deducted at the time of the sale',
+  MORE_OFFERS:'More offers',
 }

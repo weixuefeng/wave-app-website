@@ -1,3 +1,11 @@
+/*
+ * @Author: liukeke liukeke@diynova.com
+ * @Date: 2022-11-22 22:35:08
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-30 15:58:36
+ * @FilePath: /wave-app-webiste/src/components/dialog/MoreOfferComponent.tsx
+ */
+import LoadingCompontent from 'components/layout/LoadingCompontent'
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import usePagination from 'hooks/usePagination'
 import { AssetMyOfferData } from 'model/asset'
@@ -9,37 +17,35 @@ import { formatDateTime } from 'utils/time'
 
 export function OfferReceivedItem(props) {
   const { t } = useTranslation()
-  const { id, nftName, fromName, price, time, requestAcceptBid } = props
+  const { id,fromName, price, time, requestAcceptBid } = props
   return (
-    <div className="dialog-offers-received">
-      <h3>{nftName}</h3>
-      <div className="from-box">
-        <div className="from">
-          <span>{t('FROM')}</span>
-          <span className="right">{fromName}</span>
-        </div>
-        <div className="price">
-          <span>{t('PRICE')}</span>
-          <span className="right">{floorNum(price)} NEW</span>
-        </div>
-        <div className="expire">
-          <span>{t('EXPIRE_DATE')}</span>
-          <span className="right">{formatDateTime(time)}</span>
-        </div>
-        <div
-          className="accept"
-          onClick={() => {
-            requestAcceptBid(id)
-          }}
-        >
-          {t('ACCEPT')}
-        </div>
+    <div className="from-box">
+      <div className="from">
+        <span>{t('FROM')}</span>
+        <span className="right">{fromName}</span>
+      </div>
+      <div className="price">
+        <span>{t('PRICE')}</span>
+        <span className="right">{floorNum(price)} NEW</span>
+      </div>
+      <div className="expire">
+        <span>{t('EXPIRE_DATE')}</span>
+        <span className="right">{formatDateTime(time)}</span>
+      </div>
+      <div
+        className="accept"
+        onClick={() => {
+          requestAcceptBid(id)
+        }}
+      >
+        {t('ACCEPT')}
       </div>
     </div>
   )
 }
 
 export default function MoreOfferComponent(props) {
+  const { t } = useTranslation()
   const { nftId, requestAcceptBid } = props
   const ref = useRef(null)
 
@@ -50,11 +56,13 @@ export default function MoreOfferComponent(props) {
   }
 
   if (!data) {
-    return <></>
+    return <LoadingCompontent />
   }
 
   return (
-    <div>
+    <div className="dialog-offers-received">
+      <h2>{data[0].nft.name}</h2>
+      <h3>{t('MORE_OFFERS')}</h3>
       {data.map((item, index) => {
         return (
           <div key={index}>
