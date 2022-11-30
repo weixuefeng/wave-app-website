@@ -20,11 +20,15 @@ import BidSucceededDialog from 'components/dialog/BidSucceededDialog'
 import BuySuccessfulDialog from 'components/dialog/BuySuccessfulDialog'
 import { useTranslation } from 'react-i18next'
 import LoadingCompontent from 'components/layout/LoadingCompontent'
+import { UserInfo } from 'model/user'
+import { useRouter } from 'next/router'
 
 export default function NFTDetailComponent(props) {
   const { t } = useTranslation()
   const { id } = props
-  const currentUser = useAppSelector(selectUser)
+  const currentUser = useAppSelector<UserInfo>(selectUser)
+
+  const router = useRouter()
 
   const [nftDetail, setNFTDetail] = useState<NFTDetail>(null)
   const [isBuyOpen, setIsBuyOpen] = useState(false)
@@ -164,8 +168,12 @@ export default function NFTDetailComponent(props) {
 
   function showBuy() {
     if (currentUser) {
-      setIsOfferPasswordType(false)
-      setIsBuyOpen(true)
+      if(currentUser.payment_password_set == 1) {
+        setIsOfferPasswordType(false)
+        setIsBuyOpen(true)
+      } else {
+        router.push("/settings")
+      }
     } else {
       setIsLoginOpen(true)
     }
