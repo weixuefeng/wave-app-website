@@ -403,6 +403,11 @@ class Http {
     }
     return _post(Api.nftOrderOffers, params) as Promise<any>
   }
+
+  requestWalletOptions(): Promise<any> {
+    let params = {}
+    return _post(Api.walletOptions, params) as Promise<any>
+  }
 }
 
 export default Http
