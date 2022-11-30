@@ -34,7 +34,7 @@
   .avatar-uploader {
     @apply relative pb-8;
     .avater-text {
-      @apply absolute top-6 left-0 h-14 w-14 rounded-[50%] bg-black text-center text-base leading-[3.5rem] text-white;
+      @apply absolute top-[23px] left-0 h-14 w-14 rounded-[50%] bg-black text-center text-base leading-[3.5rem] text-white;
       background: rgba(0, 0, 0, 0.6);
     }
   }

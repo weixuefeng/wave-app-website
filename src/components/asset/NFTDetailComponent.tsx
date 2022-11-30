@@ -368,6 +368,7 @@ export default function NFTDetailComponent(props) {
           setSellExpiredTime={setSellExpiredTime}
           requestOrderSell={requestOrderSell}
           setDirectionAddress={setDirectionAddress}
+          tipCreatorEarningsPercent={nftDetail.creator_earnings_percent}
         />
       </DialogComponent>
 

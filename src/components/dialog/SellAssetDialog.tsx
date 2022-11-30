@@ -19,6 +19,7 @@ export default function SellAssetDialog(props) {
     requestOrderSell,
     setDirectionAddress,
     evtDetail,
+    tipCreatorEarningsPercent
   } = props
   const wallet = useWallet()
   const [endDate, setEndDate] = useState(new Date())
@@ -99,7 +100,7 @@ export default function SellAssetDialog(props) {
           {t('FEEs')} <span>({t('LISTING_IS_FREE')})</span>
         </p>
         <p>· {t('SERVICE_FEE')}: 2.5%</p>
-        <p>· {t('CREATOR_EARNINGS')}: 5%</p>
+        <p>· {t('CREATOR_EARNINGS')}: {tipCreatorEarningsPercent}</p>
       </div>
 
       <button

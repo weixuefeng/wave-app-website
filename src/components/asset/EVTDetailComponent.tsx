@@ -279,6 +279,7 @@ export default function EVTDetailComponent(props) {
             tokenStandard={evtDetail.chain_info.token_standard}
             blockChain={evtDetail.chain_info.block_chain}
             creatorEariningPercent={evtDetail.creator_earnings_percent}
+            tipCreatorEarningsPercent={evtDetail.creator_earnings_percent}
           />
           {evtDetail.properties.length > 0 && (
             <>
@@ -334,6 +335,7 @@ export default function EVTDetailComponent(props) {
           setSellExpiredTime={setSellExpiredTime}
           requestOrderSell={requestOrderSell}
           setDirectionAddress={setDirectionAddress}
+          tipCreatorEarningsPercent={evtDetail.creator_earnings_percent}
         />
       </DialogComponent>
 
