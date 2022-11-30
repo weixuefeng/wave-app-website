@@ -15,15 +15,7 @@ export default function LoadMoreComponent(props) {
   const { currentPage, isLoading, hasMore, data } = props
 
   if (currentPage == 1) {
-    return (
-      <>
-        {isLoading ? (
-          <LoadingCompontent />
-        ) : data && data.length > 0 ? null : (
-          <EmptyComponent />
-        )}
-      </>
-    )
+    return <>{isLoading ? <LoadingCompontent /> : data && data.length > 0 ? null : <EmptyComponent />}</>
   } else {
     return (
       <>

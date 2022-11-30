@@ -2,10 +2,11 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 15:44:16
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-29 10:17:04
+ * @LastEditTime: 2022-11-30 15:28:05
  * @FilePath: /wave-app-webiste/src/components/asset/CollectionComponent.tsx
  */
 import { Tab } from '@headlessui/react'
+import LoadingCompontent from 'components/layout/LoadingCompontent'
 import { BaseCollectionInfo } from 'model/collection'
 import React, { Fragment, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -36,7 +37,7 @@ export default function CollectionComponent(props) {
   }
 
   if (!id || !collection) {
-    return <></>
+    return <LoadingCompontent />
   }
 
   return (

@@ -93,7 +93,13 @@
     }
   }
 }
-
+.evt-detail {
+  .detail {
+    h3 {
+      @apply mt-6 h-7 w-14 rounded-lg bg-green57 text-center leading-7 text-white;
+    }
+  }
+}
 .nft-collection {
   @apply mt-12 flex flex-col p-2;
   .base-info {

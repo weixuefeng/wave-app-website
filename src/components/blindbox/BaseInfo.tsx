@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-14 13:36:09
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-29 23:59:07
+ * @LastEditTime: 2022-11-30 14:40:14
  * @FilePath: /wave-app-webiste/src/components/blindbox/BaseInfo.tsx
  */
 

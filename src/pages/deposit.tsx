@@ -27,7 +27,7 @@ export default function Deposit() {
   }, [wallet])
 
   if (!walletAccount) {
-    return <LoadingCompontent/>
+    return <LoadingCompontent />
   }
 
   async function copyAddress(content) {

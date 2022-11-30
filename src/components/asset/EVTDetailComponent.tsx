@@ -249,7 +249,7 @@ export default function EVTDetailComponent(props) {
         </div>
         <div className="detail">
           <h2>{evtDetail.name}</h2>
-
+          <h3>EVT</h3>
           {/** price info */}
           <div className="price">
             <div>
