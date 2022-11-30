@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 17:39:19
+ * @LastEditTime: 2022-11-30 19:46:28
  * @FilePath: /wave-app-webiste/src/i18n/locale/en/index.ts
  */
 export const enTransaction = {
@@ -189,4 +189,7 @@ export const enTransaction = {
   WHAT_IS_EVT: 'What is EVT',
   WHAT_IS_EVT_INFO:
     'EVT(Encrypted Variable Token) is a new kind of token type that we can use to replace NFT in metaverse and physical world',
+  HOW_TO_GET_NEW: 'How to get NEW?',
+  YOU_NEED_TO_BUY:
+    'You need to buy NEW in Houbi first, and then transfer it to the wallet address by withdrawing coins.',
 }

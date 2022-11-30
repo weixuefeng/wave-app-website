@@ -6,7 +6,10 @@
       @apply fixed top-20 w-[23%] pt-24;
     }
     h2 {
-      @apply text-4xl font-medium;
+      @apply relative text-[2.125rem] font-bold text-gray333;
+      img {
+        @apply absolute top-0 -right-8 h-6 w-6 cursor-pointer;
+      }
     }
     .title {
       @apply flex flex-row;
