@@ -1,16 +1,28 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 10:58:54
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-16 11:59:03
- * @FilePath: /wave-app-webiste/src/components/dialog/DownAppDialog.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-30 20:29:08
+ * @FilePath: /wave-app-website/src/components/dialog/DownAppDialog.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%A
  */
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import QRCode from 'qrcode.react'
 import Link from 'next/link'
+import Http from 'services/http'
+import Log from 'utils/log'
 export default function DownAppDialog() {
+
+  // useEffect(() => {
+  //   requestUpgrade()
+  // }, [])
+
+  // async function requestUpgrade() {
+  //   const response = await Http.getInstance().requestUpgrade()
+  //   Log.d(response)
+  // }
+
   return (
     <div className="down-app-dialog">
       <h2>Please Download the Wave App to View</h2>

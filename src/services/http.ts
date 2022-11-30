@@ -108,6 +108,11 @@ class Http {
     return _post(Api.commonEmailCode, params)
   }
 
+  requestUpgrade(): Promise<any> {
+    let params = {}
+    return _post(Api.commonUpgrade, params) as Promise<any>
+  }
+
   // login
   login(email: string, code: string): Promise<UserInfo> {
     let params = {
