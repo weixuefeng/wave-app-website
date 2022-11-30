@@ -1,7 +1,7 @@
 .withdraw {
-  @apply mt-14 mb-20 flex flex-col;
+  @apply mt-14 mb-20 flex flex-col px-4 xl:px-0;
   .title {
-    @apply text-4xl font-semibold text-gray-900;
+    @apply text-[2.125rem] font-bold text-gray333;
   }
 
   .token {
@@ -16,9 +16,11 @@
     .from-content {
       @apply relative mb-7;
       .label {
-        @apply text-base font-semibold;
+        @apply text-base font-normal flex items-center justify-between;
+        font-family: 'AvenirNext-Bold';
         .label-right {
-          @apply float-right text-xs text-gray999;
+          @apply float-right text-xs text-gray999 font-medium;
+          font-family: 'AvenirNextMedium';
         }
       }
       img {
@@ -58,7 +60,8 @@
 
   .fee-box {
     .label {
-      @apply mb-2 text-base font-semibold;
+      @apply mb-2 text-base font-normal;
+      font-family: 'AvenirNext-Bold';
     }
     .value {
       @apply text-gray999;

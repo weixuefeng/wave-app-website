@@ -76,7 +76,7 @@ export default function Withdraw() {
     return (
       <div className="container mx-auto">
         <div className="withdraw">
-          <p className="title">{t('WITHDRAW')}</p>
+          <h2 className="title">{t('WITHDRAW')}</h2>
           <div className="token">
             <p className="mr-3">{t('TOKEN')}:</p>
             <img className="mr-1" src="/assets/image/icon_newton.png" alt="" />
