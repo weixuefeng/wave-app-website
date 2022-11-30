@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 15:44:16
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 15:28:05
+ * @LastEditTime: 2022-11-30 23:14:27
  * @FilePath: /wave-app-webiste/src/components/asset/CollectionComponent.tsx
  */
 import { Tab } from '@headlessui/react'
@@ -48,6 +48,7 @@ export default function CollectionComponent(props) {
         </div>
         <div className="content">
           <h2>{collection.name}</h2>
+          {type !== 0 ? <h3>EVT</h3> : null}
           <div className="status">
             <div className="item">
               <p className="value">{collection.stats.item_number}</p>

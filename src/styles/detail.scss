@@ -98,6 +98,21 @@
     h3 {
       @apply mt-6 h-7 w-14 rounded-lg bg-green57 text-center leading-7 text-white;
     }
+    .licenes {
+      @apply mt-10 w-1/2;
+      a {
+        @apply flex items-center justify-between;
+      }
+      @apply mt-5 h-11 rounded-xl bg-grayf1 px-4 text-base font-normal leading-[2.75rem] text-gray333;
+      font-family: 'AvenirNext-DemiBold';
+    }
+  }
+}
+.nft-collection {
+  .content {
+    h3 {
+      @apply mt-6 h-7 w-14 rounded-lg bg-green57 text-center leading-7 text-white;
+    }
   }
 }
 .nft-collection {

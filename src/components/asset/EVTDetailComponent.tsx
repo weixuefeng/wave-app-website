@@ -9,6 +9,7 @@ import SellAssetDialog from 'components/dialog/SellAssetDialog'
 import LoadingCompontent from 'components/layout/LoadingCompontent'
 import { AssetSellStatus } from 'model/asset'
 import { EVTCopyDetail } from 'model/evt_asset'
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { selectUser } from 'reducer/userReducer'
@@ -268,6 +269,17 @@ export default function EVTDetailComponent(props) {
           {currentUser && currentUser.id && currentUser.id == evtDetail.user.id
             ? OwnerActionComponent()
             : NormalActionComponent()}
+
+          {evtDetail.license_url !== '' ? (
+            <div className="licenes">
+              <Link href={evtDetail.license_url}>
+                <a target="_blank">
+                  <span>{t('LICENSE')}</span>
+                  <span>-&gt;</span>
+                </a>
+              </Link>
+            </div>
+          ) : null}
         </div>
       </div>
 

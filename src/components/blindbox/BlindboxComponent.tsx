@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:33:51
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 18:19:54
+ * @LastEditTime: 2022-11-30 23:09:51
  * @FilePath: /wave-app-webiste/src/components/blindbox/BlindboxComponent.tsx
  */
 
@@ -22,6 +22,7 @@ export default function BlindboxComponent(props) {
 
   const router = useRouter()
   const { t } = useTranslation()
+  console.log('collectionInfo', collectionInfo)
 
   if (collectionInfo !== undefined) {
     return (

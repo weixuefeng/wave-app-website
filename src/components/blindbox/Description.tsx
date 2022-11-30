@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-14 13:36:09
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 18:06:51
+ * @LastEditTime: 2022-11-30 23:25:18
  * @FilePath: /wave-app-webiste/src/components/blindbox/Description.tsx
  */
 
@@ -22,7 +22,8 @@ function Description(props) {
       <div>
         <h3>{t('DESCRIPTION')}</h3>
         <div className="description">
-          <div className="text">{collectionInfo.picture_description}</div>
+          {/* <div className="text"></div> */}
+          <img src={collectionInfo.picture_description} alt="" />
         </div>
       </div>
     </div>
