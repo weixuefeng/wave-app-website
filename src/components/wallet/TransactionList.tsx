@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 17:13:45
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 16:23:57
- * @FilePath: /wave-app-webiste/src/components/wallet/TransactionList.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-11-30 19:53:31
+ * @FilePath: /wave-app-website/src/components/wallet/TransactionList.tsx
  */
 import { WalletTransaction } from 'model/wallet'
 import React, { useRef } from 'react'
@@ -12,6 +12,7 @@ import EmptyComponent from 'components/layout/EmptyComponent'
 import usePagination from 'hooks/usePagination'
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import { useTranslation } from 'react-i18next'
+import Log from 'utils/log'
 
 export function TransactionComponent(props) {
   const { t } = useTranslation()
@@ -19,6 +20,7 @@ export function TransactionComponent(props) {
   const info = item as WalletTransaction
 
   function walletPrice(price) {
+    Log.d(price)
     let numPrice = price.charAt(0)
     if (numPrice == '-') {
       return <p className="buy">{price} NEW</p>
@@ -37,7 +39,7 @@ export function TransactionComponent(props) {
         <p className="label">
           <>{t('AMOUNT')}</>
         </p>
-        {walletPrice(info.amount)}
+        {walletPrice(info.total)}
       </div>
       <div>
         <p className="label">
