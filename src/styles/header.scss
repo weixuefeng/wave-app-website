@@ -19,7 +19,7 @@
       @apply flex items-center;
     }
     li {
-      @apply ml-11;
+      @apply ml-11 flex items-center;
     }
     .massage {
       @apply flex text-lg font-bold text-gray66;
@@ -48,6 +48,9 @@
     }
     .login {
       @apply h-10 w-[8.25rem] rounded-xl bg-green57 text-center font-bold leading-10 text-white;
+      span {
+        @apply w-full;
+      }
     }
   }
 }
