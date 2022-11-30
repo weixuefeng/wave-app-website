@@ -26,7 +26,6 @@ export default function MakeOfferDialog(props) {
     Log.d(endDate)
     setEndDate(endDate)
     setOfferEndTime(parseInt((endDate.getTime() / 1000).toString()))
-    console.log('offerEndTime', offerEndTime)
   }
 
   const onTimeChange: DatePickerProps['onChange'] = (date, dateString) => {

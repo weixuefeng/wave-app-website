@@ -245,8 +245,6 @@ export default function NFTDetailComponent(props) {
     }
   }
 
-  console.log('nftDetail', nftDetail)
-
   return (
     <div className="nft-detail">
       <div className="info">
