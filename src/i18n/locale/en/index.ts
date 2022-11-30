@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 19:46:28
+ * @LastEditTime: 2022-11-30 21:15:20
  * @FilePath: /wave-app-webiste/src/i18n/locale/en/index.ts
  */
 export const enTransaction = {
@@ -192,4 +192,5 @@ export const enTransaction = {
   HOW_TO_GET_NEW: 'How to get NEW?',
   YOU_NEED_TO_BUY:
     'You need to buy NEW in Houbi first, and then transfer it to the wallet address by withdrawing coins.',
+  HOME: 'Home',
 }

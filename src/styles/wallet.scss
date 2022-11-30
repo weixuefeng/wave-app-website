@@ -3,7 +3,7 @@
   .base-info {
     @apply col-span-1 mt-16 flex flex-col md:col-span-2;
     .info {
-      @apply fixed top-20 w-[23%] pt-24;
+      @apply fixed top-20 w-[23%] pt-9;
     }
     h2 {
       @apply relative text-[2.125rem] font-bold text-gray333;
@@ -73,5 +73,15 @@
         }
       }
     }
+  }
+}
+
+.bread {
+  @apply pb-10 text-gray99;
+  a {
+    @apply text-sm text-gray99;
+  }
+  .active {
+    @apply text-green57;
   }
 }

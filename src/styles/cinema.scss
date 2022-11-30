@@ -1,7 +1,7 @@
 .cinema-page {
   @apply min-h-screen bg-grayf8;
   .title {
-    @apply pt-12 pb-8 text-4xl font-bold text-gray333;
+    @apply pb-8 text-4xl font-bold text-gray333;
   }
   .cinema {
     @apply mt-10 grid grid-cols-1 gap-4 pb-14 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:grid-cols-4;

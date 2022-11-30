@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:49:32
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 13:47:50
+ * @LastEditTime: 2022-11-30 21:43:22
  * @FilePath: /wave-app-webiste/src/pages/assets.tsx
  */
 import React from 'react'
@@ -18,6 +18,7 @@ import { Navigation, Pagination } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import { useTranslation } from 'react-i18next'
+import Link from 'next/link'
 
 export default function Assets() {
   let pageModel = new PageModel('Assets', 'WAVE', '')
@@ -26,7 +27,13 @@ export default function Assets() {
   function content() {
     return (
       <div className="assets-page">
-        <div className="container mx-auto">
+        <div className="container mx-auto pt-9">
+          <div className="bread">
+            <Link href="/">{t('HOME')}</Link> /{' '}
+            <Link href="/assets">
+              <a className="active">{t('ASSETS')}</a>
+            </Link>
+          </div>
           <h2 className="title">
             <>{t('ASSETS')}</>
           </h2>

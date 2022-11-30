@@ -13,7 +13,6 @@ import Link from 'next/link'
 import Http from 'services/http'
 import Log from 'utils/log'
 export default function DownAppDialog() {
-
   // useEffect(() => {
   //   requestUpgrade()
   // }, [])

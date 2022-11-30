@@ -1,7 +1,6 @@
 .deposit {
-  @apply flex flex-col px-4 xl:px-0;
+  @apply flex flex-col px-4 pt-9 xl:px-0;
   .title {
-    @apply mt-14;
     @apply text-[2.125rem] font-bold text-gray333;
   }
   .token {

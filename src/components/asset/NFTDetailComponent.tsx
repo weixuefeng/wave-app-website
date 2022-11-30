@@ -168,11 +168,11 @@ export default function NFTDetailComponent(props) {
 
   function showBuy() {
     if (currentUser) {
-      if(currentUser.payment_password_set == 1) {
+      if (currentUser.payment_password_set == 1) {
         setIsOfferPasswordType(false)
         setIsBuyOpen(true)
       } else {
-        router.push("/settings")
+        router.push('/settings')
       }
     } else {
       setIsLoginOpen(true)

@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 20:26:47
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-28 14:00:42
+ * @LastEditTime: 2022-11-30 21:51:46
  * @FilePath: /wave-app-webiste/src/pages/tickets.tsx
  */
 import DialogComponent from 'components/common/DialogComponent'
@@ -13,6 +13,7 @@ import TicketsComponent from 'components/tickets/TicketsComponent'
 import usePagination from 'hooks/usePagination'
 import { PageModel } from 'model/navModel'
 import { TicketsData } from 'model/tickets'
+import Link from 'next/link'
 import React, { useState, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import Http from 'services/http'
@@ -41,7 +42,13 @@ export default function Tickets() {
   function content() {
     return (
       <div className="tickets">
-        <div className="container mx-auto">
+        <div className="container mx-auto pt-9">
+          <div className="bread">
+            <Link href="/">{t('HOME')}</Link> /{' '}
+            <Link href="/tickets">
+              <a className="active">{t('TICKETS')}</a>
+            </Link>
+          </div>
           <h2 className="title">
             <>{t('TICKETS')}</>
           </h2>

@@ -12,6 +12,7 @@ import Log from 'utils/log'
 import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
 import { useTranslation } from 'react-i18next'
 import LoadingCompontent from 'components/layout/LoadingCompontent'
+import Link from 'next/link'
 
 export default function Withdraw() {
   let pageModel = new PageModel('Withdraw', 'WAVE', '')
@@ -77,6 +78,12 @@ export default function Withdraw() {
     return (
       <div className="container mx-auto">
         <div className="withdraw">
+          <div className="bread">
+            <Link href="/">{t('HOME')}</Link> / <Link href="/wallet">{t('WALLET')}</Link> /{' '}
+            <Link href="/withdraw">
+              <a className="active">{t('WITHDRAW')}</a>
+            </Link>
+          </div>
           <h2 className="title">{t('WITHDRAW')}</h2>
           <div className="token">
             <p className="mr-3">{t('TOKEN')}:</p>

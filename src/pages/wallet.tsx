@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:32:00
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 19:36:54
+ * @LastEditTime: 2022-11-30 21:26:25
  * @FilePath: /wave-app-webiste/src/pages/wallet.tsx
  */
 import DialogComponent from 'components/common/DialogComponent'
@@ -65,6 +65,12 @@ export default function Wallet() {
           <div className="wallet">
             <div className="base-info">
               <div className="info">
+                <div className="bread">
+                  <Link href="/">{t('HOME')}</Link> /{' '}
+                  <Link href="/wallet">
+                    <a className="active">{t('WALLET')}</a>
+                  </Link>
+                </div>
                 <div className="title">
                   <h2>
                     <>{t('WALLET')}</>

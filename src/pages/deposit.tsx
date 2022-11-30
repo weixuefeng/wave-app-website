@@ -10,6 +10,7 @@ import { ClipboardDocumentIcon } from '@heroicons/react/24/outline'
 import { CheckIcon } from '@heroicons/react/20/solid'
 import { useTranslation } from 'react-i18next'
 import LoadingCompontent from 'components/layout/LoadingCompontent'
+import Link from 'next/link'
 
 export default function Deposit() {
   let pageModel = new PageModel('Deposit', 'WAVE', '')
@@ -42,6 +43,12 @@ export default function Deposit() {
     return (
       <div className="container mx-auto">
         <div className="deposit">
+          <div className="bread">
+            <Link href="/">{t('HOME')}</Link> / <Link href="/wallet">{t('WALLET')}</Link> /{' '}
+            <Link href="/deposit">
+              <a className="active">{t('DEPOSIT')}</a>
+            </Link>
+          </div>
           <h2 className="title">{t('DEPOSIT')}</h2>
           <div className="token">
             <p className="token-p">{t('TOKEN')}:</p>
