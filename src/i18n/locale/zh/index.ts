@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 15:51:12
+ * @LastEditTime: 2022-11-30 17:18:55
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -183,4 +183,6 @@ export const zhTransaction = {
   YOU_CSN_ADDRESS: '您可以指定一个地址购买',
   LISTING_IS_FREE: '列表是免费的.以下费用将在出售时扣除',
   MORE_OFFERS: '更多的出价',
+  WHAT_IS_EVT: '什么是 EVT',
+  WHAT_IS_EVT_INFO: 'EVT(加密可变通证)是一种新型的通证类型,我们可以用它来替代元宇宙和物理世界中的NFT',
 }

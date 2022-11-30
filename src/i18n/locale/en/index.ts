@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 15:50:53
+ * @LastEditTime: 2022-11-30 17:39:19
  * @FilePath: /wave-app-webiste/src/i18n/locale/en/index.ts
  */
 export const enTransaction = {
@@ -186,4 +186,6 @@ export const enTransaction = {
   YOU_CSN_ADDRESS: 'You can specify one address that is allowed to buy it',
   LISTING_IS_FREE: 'Listing is free. the following fees will be deducted at the time of the sale',
   MORE_OFFERS: 'More offers',
+  WHAT_IS_EVT: 'What is EVT',
+  WHAT_IS_EVT_INFO:'EVT(Encrypted Variable Token) is a new kind of token type that we can use to replace NFT in metaverse and physical world',
 }

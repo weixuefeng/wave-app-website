@@ -36,7 +36,7 @@
         }
       }
       .price {
-        @apply mt-6 flex flex-row items-center p-2;
+        @apply mt-6 flex flex-row items-center py-2;
         > div {
           @apply flex flex-row items-center justify-between;
           .label {

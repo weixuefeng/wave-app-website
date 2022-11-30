@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-14 13:36:09
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-21 17:16:00
- * @FilePath: /wave-app-website/src/components/blindbox/StaticInfo.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-30 17:21:44
+ * @FilePath: /wave-app-webiste/src/components/blindbox/StaticInfo.tsx
  */
 
 import React from 'react'
@@ -28,12 +28,11 @@ function StaticInfo(props) {
       </div>
 
       <div className="info-content info-evt">
-        <h3>What is EVT</h3>
+        <h3>{t('WHAT_IS_EVT')}</h3>
         <p>
-          EVT(Encrypted Variable Token) is a new kind of token type that we can use to replace NFT in metaverse and
-          physical world
+          {t('WHAT_IS_EVT_INFO')}
           <Link href="https://www.newtonproject.org/en/evt/">
-            <a target="_blank">...More</a>
+            <a target="_blank">...{t('MORE')}</a>
           </Link>
         </p>
       </div>

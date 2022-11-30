@@ -181,7 +181,7 @@ export default function NFTDetailComponent(props) {
       return (
         <div className="action">
           <button
-            className="primary black ml-4"
+            className="primary black"
             onClick={() => {
               cancelOrder()
             }}
@@ -194,7 +194,7 @@ export default function NFTDetailComponent(props) {
       return (
         <div className="action">
           <button
-            className="primary black ml-4"
+            className="primary black"
             onClick={() => {
               setIsSellAssetOpen(true)
             }}
@@ -220,7 +220,7 @@ export default function NFTDetailComponent(props) {
             <>{t('BUY')}</>
           </button>
           <button
-            className="primary black ml-4 outline"
+            className="primary black outline"
             onClick={() => {
               showMakeOffer()
             }}
@@ -233,7 +233,7 @@ export default function NFTDetailComponent(props) {
       return (
         <div className="action w-[40%]">
           <button
-            className="primary black ml-4"
+            className="primary black"
             onClick={() => {
               showMakeOffer()
             }}
