@@ -1,10 +1,11 @@
 .settings-page {
   @apply min-h-screen bg-grayf8;
-
   .setting-list {
     @apply px-4 pt-14 md:px-44;
+    h2 {
+      @apply pb-2 text-[2.125rem];
+    }
   }
-
   .itme {
     li {
       @apply flex items-center justify-between border-b-[1px] border-grayd8 pt-7 pb-4;
@@ -19,5 +20,25 @@
         @apply h-14 w-14;
       }
     }
+  }
+  .avata {
+    .ant-upload {
+      .mx-auto {
+        @apply overflow-hidden rounded-[50%];
+        img {
+          @apply container;
+        }
+      }
+    }
+  }
+  .avatar-uploader {
+    @apply relative pb-8;
+    .avater-text {
+      @apply absolute top-6 left-0 h-14 w-14 rounded-[50%] bg-black text-center text-base leading-[3.5rem] text-white;
+      background: rgba(0, 0, 0, 0.6);
+    }
+  }
+  .ant-upload.ant-upload-select-picture-card {
+    @apply h-14 w-14 border-none bg-grayf8;
   }
 }

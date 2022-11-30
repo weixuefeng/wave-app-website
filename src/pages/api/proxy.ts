@@ -20,7 +20,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     const { internal_url, params } = req.body
     const url = `${WAVE_BASE_URL}/${API_PREFIX}/v${API_VERSION}/${internal_url}`
     let config = {}
-    Log.d(url + "\r\n")
+    Log.d(url + '\r\n')
     Log.d(params)
     http
       .post(url, params, config)

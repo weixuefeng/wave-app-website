@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 15:00:09
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-28 16:31:12
+ * @LastEditTime: 2022-11-30 12:51:07
  * @FilePath: /wave-app-webiste/src/components/settings/avataUpload.tsx
  */
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
@@ -12,6 +12,7 @@ import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface'
 import { IPFS_UPLOAD } from 'constants/setting'
 import { UserInfo } from 'model/user'
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { selectUser, updateUserInfo } from 'reducer/userReducer'
 import Http from 'services/http'
 import { useAppDispatch, useAppSelector } from 'store/store'
@@ -40,6 +41,7 @@ const AvataUpload: React.FC = () => {
   const [loading, setLoading] = useState(false)
   const [imageUrl, setImageUrl] = useState<string>()
   const dispatch = useAppDispatch()
+  const { t } = useTranslation()
 
   const handleChange: UploadProps['onChange'] = (info: UploadChangeParam<UploadFile>) => {
     if (info.file.status === 'uploading') {
@@ -98,7 +100,8 @@ const AvataUpload: React.FC = () => {
       beforeUpload={beforeUpload}
       onChange={handleChange}
     >
-      {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }} /> : uploadButton}
+      {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%', height: '100%' }} /> : uploadButton}
+      <div className="avater-text">{t('EDIT')}</div>
     </Upload>
   )
 }
