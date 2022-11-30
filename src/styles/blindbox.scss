@@ -261,7 +261,8 @@
       }
     }
     .price {
-      @apply mt-10 mb-8 text-3xl font-bold text-green57;
+      @apply mt-10 mb-8 text-[2rem] font-bold text-green57;
+      font-family: 'AvenirNext-Bold';
     }
     .button {
       @apply w-1/2 cursor-pointer rounded-xl bg-gray333 py-5 text-center text-[1.38rem] text-white;
