@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 17:13:45
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-29 13:17:33
+ * @LastEditTime: 2022-11-30 16:23:57
  * @FilePath: /wave-app-webiste/src/components/wallet/TransactionList.tsx
  */
 import { WalletTransaction } from 'model/wallet'
@@ -18,6 +18,15 @@ export function TransactionComponent(props) {
   const { item } = props
   const info = item as WalletTransaction
 
+  function walletPrice(price) {
+    let numPrice = price.charAt(0)
+    if (numPrice == '-') {
+      return <p className="buy">{price} NEW</p>
+    } else {
+      return <p className="income">{price} NEW</p>
+    }
+  }
+
   return (
     <div className="history-item">
       <h3>
@@ -28,7 +37,7 @@ export function TransactionComponent(props) {
         <p className="label">
           <>{t('AMOUNT')}</>
         </p>
-        <p>{info.amount} NEW</p>
+        {walletPrice(info.amount)}
       </div>
       <div>
         <p className="label">

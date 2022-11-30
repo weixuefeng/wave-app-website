@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:32:00
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 14:32:08
+ * @LastEditTime: 2022-11-30 16:03:37
  * @FilePath: /wave-app-webiste/src/pages/wallet.tsx
  */
 import LoadingCompontent from 'components/layout/LoadingCompontent'
@@ -44,7 +44,7 @@ export default function Wallet() {
   }
 
   if (!walletInfo) {
-    return <LoadingCompontent />
+    return NormalLayoutComponent(<LoadingCompontent />, pageModel)
   }
 
   function content() {

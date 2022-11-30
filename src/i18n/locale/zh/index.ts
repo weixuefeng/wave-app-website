@@ -182,5 +182,5 @@ export const zhTransaction = {
   PRIVSTE: '隐私',
   YOU_CSN_ADDRESS: '您可以指定一个地址购买',
   LISTING_IS_FREE: '列表是免费的.以下费用将在出售时扣除',
-  MORE_OFFERS:'更多的出价',
+  MORE_OFFERS: '更多的出价',
 }

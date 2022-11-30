@@ -17,7 +17,7 @@ import { formatDateTime } from 'utils/time'
 
 export function OfferReceivedItem(props) {
   const { t } = useTranslation()
-  const { id,fromName, price, time, requestAcceptBid } = props
+  const { id, fromName, price, time, requestAcceptBid } = props
   return (
     <div className="from-box">
       <div className="from">

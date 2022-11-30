@@ -10,7 +10,7 @@ import React from 'react'
 
 export default function LoadingCompontent(props) {
   return (
-    <div className="w-full">
+    <div className="w-full pb-10">
       <img className="mx-auto h-auto w-44 pt-20" src="/assets/image/loading.gif" alt="loading img" />
     </div>
   )

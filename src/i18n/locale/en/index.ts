@@ -185,5 +185,5 @@ export const enTransaction = {
   PRIVSTE: 'Private',
   YOU_CSN_ADDRESS: 'You can specify one address that is allowed to buy it',
   LISTING_IS_FREE: 'Listing is free. the following fees will be deducted at the time of the sale',
-  MORE_OFFERS:'More offers',
+  MORE_OFFERS: 'More offers',
 }
