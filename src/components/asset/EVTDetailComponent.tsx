@@ -6,6 +6,7 @@ import LoginDialog from 'components/dialog/LoginDialog'
 import MakeOfferDialog from 'components/dialog/MakeOfferDialog'
 import PasswordDialog from 'components/dialog/PasswordDialog'
 import SellAssetDialog from 'components/dialog/SellAssetDialog'
+import LoadingCompontent from 'components/layout/LoadingCompontent'
 import { AssetSellStatus } from 'model/asset'
 import { EVTCopyDetail } from 'model/evt_asset'
 import React, { useEffect, useState } from 'react'
@@ -237,11 +238,7 @@ export default function EVTDetailComponent(props) {
   }
 
   if (!evtDetail) {
-    return (
-      <div className="w-full">
-        <img className="mx-auto h-auto w-44 pt-20" src="/assets/image/loading.gif" alt="loading img" />
-      </div>
-    )
+    return <LoadingCompontent />
   }
 
   return (

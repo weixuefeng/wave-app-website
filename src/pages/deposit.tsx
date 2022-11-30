@@ -9,6 +9,7 @@ import copyContent from 'utils/functions'
 import { ClipboardDocumentIcon } from '@heroicons/react/24/outline'
 import { CheckIcon } from '@heroicons/react/20/solid'
 import { useTranslation } from 'react-i18next'
+import LoadingCompontent from 'components/layout/LoadingCompontent'
 
 export default function Deposit() {
   let pageModel = new PageModel('Deposit', 'WAVE', '')
@@ -26,7 +27,7 @@ export default function Deposit() {
   }, [wallet])
 
   if (!walletAccount) {
-    return <></>
+    return <LoadingCompontent/>
   }
 
   async function copyAddress(content) {

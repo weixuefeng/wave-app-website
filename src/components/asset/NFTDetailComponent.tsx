@@ -19,6 +19,7 @@ import Link from 'next/link'
 import BidSucceededDialog from 'components/dialog/BidSucceededDialog'
 import BuySuccessfulDialog from 'components/dialog/BuySuccessfulDialog'
 import { useTranslation } from 'react-i18next'
+import LoadingCompontent from 'components/layout/LoadingCompontent'
 
 export default function NFTDetailComponent(props) {
   const { t } = useTranslation()
@@ -171,11 +172,7 @@ export default function NFTDetailComponent(props) {
   }
 
   if (!nftDetail || !id) {
-    return (
-      <div className="w-full">
-        <img className="mx-auto h-auto w-44 pt-20" src="/assets/image/loading.gif" alt="loading img" />
-      </div>
-    )
+    return <LoadingCompontent />
   }
 
   function OwnerActionComponent() {

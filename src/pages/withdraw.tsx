@@ -11,6 +11,7 @@ import Http from 'services/http'
 import Log from 'utils/log'
 import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
 import { useTranslation } from 'react-i18next'
+import LoadingCompontent from 'components/layout/LoadingCompontent'
 
 export default function Withdraw() {
   let pageModel = new PageModel('Withdraw', 'WAVE', '')
@@ -69,7 +70,7 @@ export default function Withdraw() {
   }, [wallet])
 
   if (!walletAccount) {
-    return <></>
+    return <LoadingCompontent />
   }
 
   function content() {

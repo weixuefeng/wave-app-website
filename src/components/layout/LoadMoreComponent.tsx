@@ -8,6 +8,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import EmptyComponent from './EmptyComponent'
+import LoadingCompontent from './LoadingCompontent'
 
 export default function LoadMoreComponent(props) {
   const { t } = useTranslation()
@@ -17,9 +18,7 @@ export default function LoadMoreComponent(props) {
     return (
       <>
         {isLoading ? (
-          <div className="mt-10 text-center text-base text-gray99">
-            <img className="mx-auto mt-10 h-auto w-44" src="/assets/image/loading.gif" alt="loading" />
-          </div>
+          <LoadingCompontent />
         ) : data && data.length > 0 ? null : (
           <EmptyComponent />
         )}
