@@ -187,5 +187,6 @@ export const enTransaction = {
   LISTING_IS_FREE: 'Listing is free. the following fees will be deducted at the time of the sale',
   MORE_OFFERS: 'More offers',
   WHAT_IS_EVT: 'What is EVT',
-  WHAT_IS_EVT_INFO:'EVT(Encrypted Variable Token) is a new kind of token type that we can use to replace NFT in metaverse and physical world',
+  WHAT_IS_EVT_INFO:
+    'EVT(Encrypted Variable Token) is a new kind of token type that we can use to replace NFT in metaverse and physical world',
 }

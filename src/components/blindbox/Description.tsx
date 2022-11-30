@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-14 13:36:09
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-21 17:15:21
- * @FilePath: /wave-app-website/src/components/blindbox/Description.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-11-30 18:06:51
+ * @FilePath: /wave-app-webiste/src/components/blindbox/Description.tsx
  */
 
 import React from 'react'
@@ -22,7 +22,7 @@ function Description(props) {
       <div>
         <h3>{t('DESCRIPTION')}</h3>
         <div className="description">
-          <div className="text">{collectionInfo.description}</div>
+          <div className="text">{collectionInfo.picture_description}</div>
         </div>
       </div>
     </div>

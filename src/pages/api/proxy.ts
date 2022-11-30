@@ -21,12 +21,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { internal_url, params } = req.body
     const url = `${WAVE_BASE_URL}/${API_PREFIX}/v${API_VERSION}/${internal_url}`
     let config = {}
-    try{
+    try {
       const response = await http.post(url, params, config)
-      Log.d(`-----${url} ---- \r\n request header: ${JSON.stringify(req.headers)} \r\n params: ${JSON.stringify(params)} \r\n response: \r\n ${JSON.stringify(response.data)}`)
-      Log.d("----end----- \r\n\r\n")
+      Log.d(
+        `-----${url} ---- \r\n request header: ${JSON.stringify(req.headers)} \r\n params: ${JSON.stringify(
+          params
+        )} \r\n response: \r\n ${JSON.stringify(response.data)}`
+      )
+      Log.d('----end----- \r\n\r\n')
       res.status(200).json(response.data)
-    } catch(error) {
+    } catch (error) {
       Log.e(`error url is: ${url} error:${JSON.stringify(error)}`)
       res.status(400).json(error)
     }
@@ -36,7 +40,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const response = await http.get(url)
       Log.d(`success data:${JSON.stringify(response.data)}`)
       res.status(200).json(response.data)
-    } catch(error) {
+    } catch (error) {
       Log.e(`error url is: ${url} error:${JSON.stringify(error)}`)
       res.status(400).json(error)
     }
