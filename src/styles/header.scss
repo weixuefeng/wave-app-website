@@ -22,8 +22,8 @@
       @apply ml-11;
     }
     .massage {
-      @apply flex font-bold text-gray66;
-
+      @apply flex font-bold text-gray66 text-lg;
+      font-family: 'AvenirNext-Bold';
       .massage-img {
         @apply relative ml-11 w-[1.38rem];
       }
