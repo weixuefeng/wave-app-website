@@ -2,11 +2,11 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:42:02
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-24 12:28:37
+ * @LastEditTime: 2022-11-30 13:54:25
  * @FilePath: /wave-app-webiste/src/components/asset/MyOwn.tsx
  */
 
-import { AssetsMyOwnData, getAssetNameByType } from 'model/asset'
+import { AssetsMyOwnData, getTradeNameByType } from 'model/asset'
 import Link from 'next/link'
 import React, { useRef } from 'react'
 import { selectUser } from 'reducer/userReducer'
@@ -39,8 +39,8 @@ export default function Myown(props) {
                 <a className="cover">
                   <div className="perfect-square">
                     <img src={item.image} alt={item.name} />
-                    <span className={getAssetNameByType(item.type) == 'nft' ? 'type' : ''}>
-                      {getAssetNameByType(item.type)}
+                    <span className={getTradeNameByType(item.type) == 'NFT' ? 'type' : ''}>
+                      {getTradeNameByType(item.type)}
                     </span>
                     {item.status == 1 ? (
                       <p className="on-sale">

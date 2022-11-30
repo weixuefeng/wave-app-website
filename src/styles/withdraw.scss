@@ -16,10 +16,10 @@
     .from-content {
       @apply relative mb-7;
       .label {
-        @apply text-base font-normal flex items-center justify-between;
+        @apply flex items-center justify-between text-base font-normal;
         font-family: 'AvenirNext-Bold';
         .label-right {
-          @apply float-right text-xs text-gray999 font-medium;
+          @apply float-right text-xs font-medium text-gray999;
           font-family: 'AvenirNextMedium';
         }
       }

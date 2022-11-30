@@ -2,13 +2,13 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 16:55:35
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-28 14:56:25
+ * @LastEditTime: 2022-11-30 13:56:41
  * @FilePath: /wave-app-webiste/src/pages/user/[id].tsx
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
 import usePagination from 'hooks/usePagination'
-import { getAssetNameByType, MyAsset } from 'model/asset'
+import { getTradeNameByType, MyAsset } from 'model/asset'
 import { PageModel } from 'model/navModel'
 import { UserInfo } from 'model/user'
 import Link from 'next/link'
@@ -79,8 +79,8 @@ export default function UserPage() {
                       <a className="cover">
                         <div className="perfect-square">
                           <img src={item.image} alt={item.name} />
-                          <span className={getAssetNameByType(item.type) == 'nft' ? 'type' : ''}>
-                            {getAssetNameByType(item.type)}
+                          <span className={getTradeNameByType(item.type) == 'NFT' ? 'type' : ''}>
+                            {getTradeNameByType(item.type)}
                           </span>
                           {item.status == 1 ? (
                             <p className="on-sale">

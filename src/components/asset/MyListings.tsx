@@ -2,14 +2,13 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:43:46
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 16:04:51
+ * @LastEditTime: 2022-11-30 13:55:52
  * @FilePath: /wave-app-webiste/src/components/asset/MyListings.tsx
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import usePagination from 'hooks/usePagination'
 import { t } from 'i18next'
-import { AssetsOrderOnSaleData, getAssetNameByType } from 'model/asset'
+import { AssetsOrderOnSaleData, getTradeNameByType } from 'model/asset'
 import { UserInfo } from 'model/user'
 import Link from 'next/link'
 import React, { useRef } from 'react'
@@ -40,8 +39,8 @@ export default function Mylistings(props) {
                 <a href="" className="cover">
                   <div className="perfect-square">
                     <img src={item.nft.image} alt={item.nft.name} />
-                    <span className={getAssetNameByType(item.nft.type) == 'nft' ? 'type' : ''}>
-                      {getAssetNameByType(item.nft.type)}
+                    <span className={getTradeNameByType(item.nft.type) == 'NFT' ? 'type' : ''}>
+                      {getTradeNameByType(item.nft.type)}
                     </span>
                   </div>
                   <div className="name">

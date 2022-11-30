@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-17 20:18:09
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 11:49:07
+ * @LastEditTime: 2022-11-30 13:59:50
  * @FilePath: /wave-app-webiste/src/components/layout/LoadMoreComponent.tsx
  */
 import React from 'react'
@@ -29,7 +29,7 @@ export default function LoadMoreComponent(props) {
     return (
       <>
         {
-          <div className="mt-10 text-center text-base text-gray99">
+          <div className="mt-10 pb-16 text-center text-base text-gray99">
             {hasMore ? `${t('LOADING') + '...'}` : `${t('NOMOREDATA')}`}
           </div>
         }

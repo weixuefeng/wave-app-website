@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:32:00
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-29 18:29:25
+ * @LastEditTime: 2022-11-30 14:01:37
  * @FilePath: /wave-app-webiste/src/pages/wallet.tsx
  */
 import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
@@ -42,9 +42,13 @@ export default function Wallet() {
       })
   }
 
-  // if (!walletInfo) {
-  //   return <>no wallet</>
-  // }
+  if (!walletInfo) {
+    return (
+      <div className="w-full">
+        <img className="mx-auto h-auto w-44 pt-20" src="/assets/image/loading.gif" alt="loading img" />
+      </div>
+    )
+  }
 
   function content() {
     return (
