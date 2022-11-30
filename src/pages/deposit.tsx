@@ -27,7 +27,7 @@ export default function Deposit() {
   }, [wallet])
 
   if (!walletAccount) {
-    return <LoadingCompontent />
+    return NormalLayoutComponent(<LoadingCompontent />, pageModel)
   }
 
   async function copyAddress(content) {
@@ -42,16 +42,16 @@ export default function Deposit() {
     return (
       <div className="container mx-auto">
         <div className="deposit">
-          <p className="title">{t('DEPOSIT')}</p>
+          <h2 className="title">{t('DEPOSIT')}</h2>
           <div className="token">
-            <p className="mr-3">{t('TOKEN')}:</p>
+            <p className="token-p">{t('TOKEN')}:</p>
             <img className="mr-1" src="/assets/image/icon_newton.png" alt="" />
-            <p>NEW</p>
+            <p className="new">NEW</p>
             <p className="label">{walletAccount.label}</p>
           </div>
 
           <div className="select">
-            <p>{t('DEPOSIT_NETWORK')}</p>
+            <h3 className="select-title">{t('DEPOSIT_NETWORK')}</h3>
             <p className="content">{t('SELECT_ADDRESS')}</p>
           </div>
 
