@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 19:54:29
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-01 22:25:14
+ * @LastEditTime: 2022-12-02 00:04:33
  * @FilePath: /wave-app-webiste/src/components/dialog/WalletHistoryDialog.tsx
  */
 
@@ -27,16 +27,43 @@ export default function WalletHistoryDialog(props) {
     // console.log('e.target.value',e.target.value)
   }
 
+  const walletHistory = [
+    {
+      value: 'All',
+      text: t('ALL')
+    },
+    {
+      value: 'Deposit',
+      text: t('DEPOSIT')
+    },
+    {
+      value: 'withdraw',
+      text: t('WITHDRAW')
+    },
+    {
+      value: 'Asset Sale',
+      text: t('ASSET_SALE')
+    }, 
+    {
+      value: 'Transfer',
+      text: t('TRANSFER')
+    }, {
+      value: 'Ticket Purchase',
+      text: t('TICKET_PURCHASE')
+    }
+  ]
+
   return (
     <div className="dialog-wallet-history">
       <h2 className="title">{t('FILTER')}</h2>
       <Radio.Group value={filterVal} onChange={filterChange}>
-        <Radio.Button value="All">{t('ALL')}</Radio.Button>
-        <Radio.Button value="Deposit">{t('DEPOSIT')}</Radio.Button>
-        <Radio.Button value="withdraw">{t('WITHDRAW')}</Radio.Button>
-        <Radio.Button value="Asset Sale">{t('ASSET_SALE')}</Radio.Button>
-        <Radio.Button value="Transfer">{t('TRANSFER')}</Radio.Button>
-        <Radio.Button value="Ticket Purchase">{t('TICKET_PURCHASE')}</Radio.Button>
+        {
+          walletHistory.map((item, index) => {
+            return (
+              <Radio.Button key={index} value={item.value}>{item.text}</Radio.Button>
+            )
+          })
+        }
       </Radio.Group>
     </div>
   )

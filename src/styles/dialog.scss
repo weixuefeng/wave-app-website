@@ -804,8 +804,11 @@
     @apply text-green2d;
     &::before {
       content: '';
-      @apply absolute top-0 right-0 h-5 w-5 bg-red-700;
+      @apply absolute top-0 right-0 h-5 w-5 bg-wallet-active bg-contain;
     }
+  }
+  .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before {
+    @apply bg-transparent;
   }
   .ant-radio-button-wrapper:hover {
     @apply text-green2d;
