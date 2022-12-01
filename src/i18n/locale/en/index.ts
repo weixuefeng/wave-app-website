@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-01 16:10:56
+ * @LastEditTime: 2022-12-01 17:08:46
  * @FilePath: /wave-app-webiste/src/i18n/locale/en/index.ts
  */
 export const enTransaction = {
@@ -62,7 +62,7 @@ export const enTransaction = {
   HOME_RECOMMAND: 'Recommand',
   TRADE: 'Trade',
   TICKETS: 'Tickets',
-  WALLET: 'My Wallet',
+  WALLET: 'Wallet',
   WALLET_BALANCE: 'Wallet Balance',
   AMOUNT: 'Amount',
   TOTAL_BALANCE: 'Total Balance',
@@ -71,10 +71,10 @@ export const enTransaction = {
   DEPOSIT: 'Deposit',
   WITHDRAW: 'Withdraw',
   TRANSACTION_HISTORY: 'Transaction History',
-  ASSETS: 'My Assets',
+  ASSETS: 'Assets',
   ASSET_BNAME: 'Assets Name',
   ASSET_SALE: 'Assets Sale',
-  MY_CINEMA: 'My Cinema',
+  MY_CINEMA: 'Cinema',
   MY_OWN: 'My Own',
   MY_LISTINGS: 'My Listings',
   ON_SALE: 'On Sale',

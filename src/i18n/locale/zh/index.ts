@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-01 16:10:16
+ * @LastEditTime: 2022-12-01 17:08:09
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -60,7 +60,7 @@ export const zhTransaction = {
   HOME_RECOMMAND: '推荐',
   TRADE: '市场',
   TICKETS: '票夹',
-  WALLET: '我的钱包',
+  WALLET: '钱包',
   TOTAL_BALANCE: '余额',
   WALLET_BALANCE: '钱包余额',
   AMOUNT: '金额',
@@ -69,10 +69,10 @@ export const zhTransaction = {
   DEPOSIT: '充币',
   WITHDRAW: '提币',
   TRANSACTION_HISTORY: '交易历史',
-  ASSETS: '我的资产',
+  ASSETS: '资产',
   ASSET_BNAME: '资产名称',
   ASSET_SALE: '资产购买',
-  MY_CINEMA: '我的影院',
+  MY_CINEMA: '影院',
   MY_OWN: '我自己的',
   MY_LISTINGS: '我在售的',
   ON_SALE: '在售',
