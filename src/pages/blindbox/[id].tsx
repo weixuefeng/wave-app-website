@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-09-21 10:43:33
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-01 11:21:30
+ * @LastEditTime: 2022-12-01 16:03:52
  * @FilePath: /wave-app-webiste/src/pages/blindbox/[id].tsx
  */
 
@@ -21,6 +21,10 @@ import BuyBlindBoxDialog from 'components/dialog/BuyBlindBoxDialog'
 import PasswordDialog from 'components/dialog/PasswordDialog'
 import BuySuccessfulDialog from 'components/dialog/BuySuccessfulDialog'
 import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
+import { useAppSelector } from 'store/store'
+import { UserInfo } from 'model/user'
+import { selectUser } from 'reducer/userReducer'
+import LoginDialog from 'components/dialog/LoginDialog'
 
 export default Home
 
@@ -35,6 +39,7 @@ function Home() {
 function Main(props) {
   const { setTitle, setDesc, setImage } = props
   const { t, i18n } = useTranslation()
+  const currentUser = useAppSelector<UserInfo>(selectUser)
   const router = useRouter()
   const { id } = router.query
   const [isLogin, setIsLogin] = useState(false)
@@ -54,11 +59,18 @@ function Main(props) {
   const [isBuySucceeded, setBuySucceeded] = useState(false)
   const [isPassError, setIsPassError] = useState(false)
 
+  // login dialog
+  const [isLoginOpen, setIsLoginOpen] = useState(false)
+
   useEffect(() => {
     fetchCollectionInfo()
   }, [id])
 
   const [isBuyOpen, setIsBuyOpen] = useState(false)
+
+  function closeLoginModal() {
+    setIsLoginOpen(false)
+  }
 
   function closeBuyModal() {
     setIsBuyOpen(false)
@@ -167,49 +179,57 @@ function Main(props) {
   }
 
   function requestPayOrder() {
-    let to = ''
-    if (collectionInfo.specifications && collectionInfo.specifications.contract_address) {
-      to = collectionInfo.specifications && collectionInfo.specifications.contract_address
-    }
-    let is_whitelist_order = false
-    let sellPrice = collectionInfo.sell_price
+    if (currentUser) {
+      if (currentUser.payment_password_set == 1) {
+        let to = ''
+        if (collectionInfo.specifications && collectionInfo.specifications.contract_address) {
+          to = collectionInfo.specifications && collectionInfo.specifications.contract_address
+        }
+        let is_whitelist_order = false
+        let sellPrice = collectionInfo.sell_price
 
-    const now = Date.now()
-    let preemptionBuyLimit = 0
-    let preemptionBuyLimitOneTime = 0
-    let preemptionTotalLimit = 0
-    if (
-      collectionInfo.white_list_settings &&
-      collectionInfo.white_list_settings.preemption_end_at * 1000 > now &&
-      collectionInfo.current_user_in_white_list == UserInWhiteList.YES
-    ) {
-      is_whitelist_order = true
-      sellPrice = collectionInfo.white_list_settings.preemption_sell_price
+        const now = Date.now()
+        let preemptionBuyLimit = 0
+        let preemptionBuyLimitOneTime = 0
+        let preemptionTotalLimit = 0
+        if (
+          collectionInfo.white_list_settings &&
+          collectionInfo.white_list_settings.preemption_end_at * 1000 > now &&
+          collectionInfo.current_user_in_white_list == UserInWhiteList.YES
+        ) {
+          is_whitelist_order = true
+          sellPrice = collectionInfo.white_list_settings.preemption_sell_price
+        } else {
+          sellPrice = collectionInfo.sell_price
+        }
+        if (collectionInfo.white_list_settings) {
+          preemptionBuyLimit = collectionInfo.white_list_settings.preemption_buy_limit
+          preemptionBuyLimitOneTime = collectionInfo.white_list_settings.preemption_buy_limit_one_time
+          preemptionTotalLimit = collectionInfo.white_list_settings.preemption_total_limit
+        }
+        let params = {
+          collection_id: collectionInfo.id.toString(),
+          mystery_box_id: collectionInfo.mystery_box_id ? collectionInfo.mystery_box_id.toString() : '',
+          price: sellPrice,
+          to_address: to,
+          is_whitelist_order: is_whitelist_order,
+          have_white_list: collectionInfo.have_white_list,
+          preemption_buy_limit: preemptionBuyLimit,
+          preemption_buy_limit_one_time: preemptionBuyLimitOneTime,
+          preemption_total_limit: preemptionTotalLimit,
+          current_user_in_white_list: collectionInfo.current_user_in_white_list,
+          buy_quantity_limit: collectionInfo.buy_quantity_limit,
+          closeBuyModal: closeBuyModal,
+          setIsPasswordOpen: setIsPasswordOpen,
+        }
+        setBlindBoxProps(params)
+        setIsBuyOpen(true)
+      } else {
+        router.push('/settings')
+      }
     } else {
-      sellPrice = collectionInfo.sell_price
+      setIsLoginOpen(true)
     }
-    if (collectionInfo.white_list_settings) {
-      preemptionBuyLimit = collectionInfo.white_list_settings.preemption_buy_limit
-      preemptionBuyLimitOneTime = collectionInfo.white_list_settings.preemption_buy_limit_one_time
-      preemptionTotalLimit = collectionInfo.white_list_settings.preemption_total_limit
-    }
-    let params = {
-      collection_id: collectionInfo.id.toString(),
-      mystery_box_id: collectionInfo.mystery_box_id ? collectionInfo.mystery_box_id.toString() : '',
-      price: sellPrice,
-      to_address: to,
-      is_whitelist_order: is_whitelist_order,
-      have_white_list: collectionInfo.have_white_list,
-      preemption_buy_limit: preemptionBuyLimit,
-      preemption_buy_limit_one_time: preemptionBuyLimitOneTime,
-      preemption_total_limit: preemptionTotalLimit,
-      current_user_in_white_list: collectionInfo.current_user_in_white_list,
-      buy_quantity_limit: collectionInfo.buy_quantity_limit,
-      closeBuyModal: closeBuyModal,
-      setIsPasswordOpen: setIsPasswordOpen,
-    }
-    setBlindBoxProps(params)
-    setIsBuyOpen(true)
   }
 
   function gotoTrade() {
@@ -349,6 +369,11 @@ function Main(props) {
         {/* buy Succeeded Dialog */}
         <DialogComponent isOpen={isBuySucceeded} closeModal={closeBuySucceededModal}>
           <BuySuccessfulDialog onCancel={() => closeBuySucceededModal()} />
+        </DialogComponent>
+
+        {/** login dialog */}
+        <DialogComponent isOpen={isLoginOpen} closeModal={closeLoginModal}>
+          <LoginDialog closeModal={closeLoginModal} />
         </DialogComponent>
       </>
     )

@@ -13,12 +13,17 @@ import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
 import { useTranslation } from 'react-i18next'
 import LoadingCompontent from 'components/layout/LoadingCompontent'
 import Link from 'next/link'
+import { useAppSelector } from 'store/store'
+import { UserInfo } from 'model/user'
+import { selectUser } from 'reducer/userReducer'
 
 export default function Withdraw() {
   let pageModel = new PageModel('Withdraw', 'WAVE', '')
   const { t } = useTranslation()
   const wallet = useWallet()
   const [walletAccount, setWalletAccount] = useState<WalletAccount>()
+  const currentUser = useAppSelector<UserInfo>(selectUser)
+
   const router = useRouter()
 
   const [isPasswordOpen, setIsPasswordOpen] = useState(false)
@@ -42,7 +47,14 @@ export default function Withdraw() {
       setIsAmount(true)
       return
     }
-    setIsPasswordOpen(true)
+
+    if (currentUser) {
+      if (currentUser.payment_password_set == 1) {
+        setIsPasswordOpen(true)
+      } else {
+        router.push('/settings')
+      }
+    }
   }
 
   function onAddress(e) {

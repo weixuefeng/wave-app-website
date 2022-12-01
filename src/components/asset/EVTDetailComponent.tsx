@@ -10,6 +10,7 @@ import LoadingCompontent from 'components/layout/LoadingCompontent'
 import { AssetSellStatus } from 'model/asset'
 import { EVTCopyDetail } from 'model/evt_asset'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { selectUser } from 'reducer/userReducer'
@@ -23,7 +24,7 @@ export default function EVTDetailComponent(props) {
   const { t } = useTranslation()
   const { id } = props
   const [evtDetail, setEvtDetail] = useState<EVTCopyDetail>()
-
+  const router = useRouter()
   const currentUser = useAppSelector(selectUser)
 
   // buy dialog
@@ -140,8 +141,12 @@ export default function EVTDetailComponent(props) {
     setIsbalance(false)
     setIsOfferEndTime(false)
     if (currentUser) {
-      setIsMakeOfferOpen(true)
-      setIsOfferPasswordType(true)
+      if (currentUser.payment_password_set == 1) {
+        setIsMakeOfferOpen(true)
+        setIsOfferPasswordType(true)
+      } else {
+        router.push('/settings')
+      }
     } else {
       setIsLoginOpen(true)
     }
@@ -152,8 +157,12 @@ export default function EVTDetailComponent(props) {
     setIsbalance(false)
     setIsOfferEndTime(false)
     if (currentUser) {
-      setIsOfferPasswordType(false)
-      setIsBuyOpen(true)
+      if (currentUser.payment_password_set == 1) {
+        setIsOfferPasswordType(false)
+        setIsBuyOpen(true)
+      } else {
+        router.push('/settings')
+      }
     } else {
       setIsLoginOpen(true)
     }

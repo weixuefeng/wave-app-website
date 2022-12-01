@@ -169,8 +169,12 @@ export default function NFTDetailComponent(props) {
     setOfferEndTime(0)
     setOfferPrice('0')
     if (currentUser) {
-      setIsMakeOfferOpen(true)
-      setIsOfferPasswordType(true)
+      if (currentUser.payment_password_set == 1) {
+        setIsMakeOfferOpen(true)
+        setIsOfferPasswordType(true)
+      } else {
+        router.push('/settings')
+      }
     } else {
       setIsLoginOpen(true)
     }
