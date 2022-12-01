@@ -313,9 +313,16 @@
     @apply mb-5 text-[1.375rem] text-gray333;
   }
 
+  .box-container div {
+    @apply border-grayc8;
+  }
+
   .password {
     .box-container div {
-      @apply h-12 w-12 text-base;
+      @apply h-12 w-12 text-xl rounded-lg pt-1;
+      .shake {
+        @apply pt-0;
+      }
     }
   }
 
@@ -330,6 +337,7 @@
       @apply border-black;
     }
   }
+
 }
 
 .dialog-bid-succeeded {
