@@ -1,7 +1,7 @@
 .message {
   @apply min-h-screen px-4 pb-48 pt-3 xl:px-0;
   .title {
-    @apply pt-12 text-[2.125rem] text-gray333 font-bold;
+    @apply pt-12 text-[2.125rem] font-bold text-gray333;
   }
   .message-itme {
     @apply pb-10;

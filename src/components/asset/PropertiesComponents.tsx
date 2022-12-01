@@ -1,14 +1,25 @@
+import { Tooltip } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 export function Property(props) {
+  const { t } = useTranslation()
   const { property } = props
 
   function getTypeIcon(type: string) {
     switch (type) {
       case 'ENCRYPTION':
-        return <img src="/assets/image/icon_lock.png" alt="img_lock" />
+        return (
+          <Tooltip placement="top" title={t('ENCRYPTED')}>
+            <img className="img" src="/assets/image/icon_lock.png" alt="img_lock" />
+          </Tooltip>
+        )
       case 'VARIABLE':
-        return <img src="/assets/image/icon_var.png" alt="img_var" />
+        return (
+          <Tooltip placement="top" title={t('VARIABLE')}>
+            <img className="img" src="/assets/image/icon_var.png" alt="img_var" />
+          </Tooltip>
+        )
       default:
         return <></>
     }

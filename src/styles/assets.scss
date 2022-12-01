@@ -8,7 +8,7 @@
     @apply ui-selected:border-b-4 ui-selected:border-black ui-selected:text-black;
     @apply ui-not-selected:text-gray99;
     @apply mr-24;
-    &:last-child{
+    &:last-child {
       @apply mr-0;
     }
   }

@@ -31,7 +31,7 @@ export default function Message() {
     return (
       <div className="message">
         <div className="container mx-auto">
-          <h2 className='title'>{t('NOTIFICATION')}</h2>
+          <h2 className="title">{t('NOTIFICATION')}</h2>
           <ul className="message-itme">
             {data?.map((item, index) => {
               return <MessageComponent key={index} item={item} />

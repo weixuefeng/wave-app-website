@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-01 22:53:25
+ * @LastEditTime: 2022-12-01 23:41:23
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -195,5 +195,7 @@ export const zhTransaction = {
   ALL: '全部',
   TRANSFER: '转出',
   TICKET_PURCHASE: '购票',
-  NOTIFICATION:'消息通知',
+  NOTIFICATION: '消息通知',
+  ENCRYPTED: '加密',
+  VARIABLE: '可变',
 }

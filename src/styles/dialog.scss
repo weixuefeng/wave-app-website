@@ -319,7 +319,7 @@
 
   .password {
     .box-container div {
-      @apply h-12 w-12 text-xl rounded-lg pt-1;
+      @apply h-12 w-12 rounded-lg pt-1 text-xl;
       .shake {
         @apply pt-0;
       }
@@ -337,7 +337,6 @@
       @apply border-black;
     }
   }
-
 }
 
 .dialog-bid-succeeded {

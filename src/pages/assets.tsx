@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:49:32
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-01 23:02:03
+ * @LastEditTime: 2022-12-01 23:09:01
  * @FilePath: /wave-app-webiste/src/pages/assets.tsx
  */
 import React from 'react'
@@ -70,6 +70,7 @@ export default function Assets() {
                 </Tab.Panels>
               </Tab.Group>
             </div>
+            {/* h5 page */}
             <div className="block md:hidden">
               <Tab.Group>
                 <Tab.List className="h5-list">
