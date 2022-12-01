@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 17:13:45
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-30 19:53:31
- * @FilePath: /wave-app-website/src/components/wallet/TransactionList.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-12-01 17:41:34
+ * @FilePath: /wave-app-webiste/src/components/wallet/TransactionList.tsx
  */
 import { WalletTransaction } from 'model/wallet'
 import React, { useRef } from 'react'
@@ -31,10 +31,7 @@ export function TransactionComponent(props) {
 
   return (
     <div className="history-item">
-      <h3>
-        {/* {t('ASSET_SALE')} */}
-        {item.trade_label}
-      </h3>
+      <h3>{item.trade_label}</h3>
       <div className="mt-4">
         <p className="label">
           <>{t('AMOUNT')}</>
@@ -47,12 +44,6 @@ export function TransactionComponent(props) {
         </p>
         <p>{info.wallet_balance} NEW</p>
       </div>
-      {/* <div>
-        <p className="label">
-          <>{t('ASSET_BNAME')}</>
-        </p>
-        <p>{info.asset_name}</p>
-      </div> */}
       <div>
         <p className="label">
           <>{t('TIME')}</>
@@ -63,29 +54,29 @@ export function TransactionComponent(props) {
   )
 }
 
-export function TransactionList() {
-  const ref = useRef(null)
+// export function TransactionList() {
+//   const ref = useRef(null)
 
-  const { hasMore, isLoading, currentPage, data, error } = usePagination<WalletTransaction>(ref, fetchData)
+//   const { hasMore, isLoading, currentPage, data, error } = usePagination<WalletTransaction>(ref, fetchData)
 
-  function fetchData() {
-    return Http.getInstance().getWalletTransaction(currentPage, 0)
-  }
+//   function fetchData() {
+//     return Http.getInstance().getWalletTransaction(currentPage, 0)
+//   }
 
-  if (!data?.length) {
-    return <EmptyComponent />
-  }
+//   if (!data?.length) {
+//     return <EmptyComponent />
+//   }
 
-  return (
-    <div className="list">
-      <ul>
-        {data?.map((item, index) => {
-          return <TransactionComponent key={index} item={item} />
-        })}
-      </ul>
-      <div ref={ref}>
-        <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data} />
-      </div>
-    </div>
-  )
-}
+//   return (
+//     <div className="list">
+//       <ul>
+//         {data?.map((item, index) => {
+//           return <TransactionComponent key={index} item={item} />
+//         })}
+//       </ul>
+//       <div ref={ref}>
+//         <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data} />
+//       </div>
+//     </div>
+//   )
+// }

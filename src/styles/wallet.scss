@@ -48,8 +48,11 @@
 
   .transaction {
     @apply col-span-1 mb-7 rounded-md bg-gray-100 p-4 md:col-span-4 md:mb-0;
-    h2 {
-      @apply mt-14 text-2xl;
+    .title {
+      @apply mt-14 flex items-center justify-between text-2xl;
+      img {
+        @apply h-6 w-6 cursor-pointer;
+      }
     }
     .list {
       @apply mt-4 divide-y-2;

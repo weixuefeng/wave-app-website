@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-01 17:08:09
+ * @LastEditTime: 2022-12-01 19:40:20
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -191,4 +191,8 @@ export const zhTransaction = {
   HOME: '首页',
   INVSILD_PASSWORD: '支付密码错误',
   PLEASE_FILL_TIME: '请正确填写日期,时间或者出价',
+  FILTER: '过滤',
+  ALL: '全部',
+  TRANSFER: '转出',
+  TICKET_PURCHASE: '购票',
 }

@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-01 17:08:46
+ * @LastEditTime: 2022-12-01 20:33:54
  * @FilePath: /wave-app-webiste/src/i18n/locale/en/index.ts
  */
 export const enTransaction = {
@@ -196,4 +196,9 @@ export const enTransaction = {
   HOME: 'Home',
   INVSILD_PASSWORD: 'Invaild password',
   PLEASE_FILL_TIME: 'Please fill in the correct date, time or bid',
+  FILTER: 'Filter',
+  ALL: 'All',
+  ASSET_PURCHASE: 'Asset Purchase',
+  TRANSFER: 'Transfer',
+  TICKET_PURCHASE: 'Ticket Purchase',
 }

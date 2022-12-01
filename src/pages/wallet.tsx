@@ -2,38 +2,40 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:32:00
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 21:26:25
+ * @LastEditTime: 2022-12-01 22:18:29
  * @FilePath: /wave-app-webiste/src/pages/wallet.tsx
  */
 import DialogComponent from 'components/common/DialogComponent'
+import WalletHistoryDialog from 'components/dialog/WalletHistoryDialog'
 import WalletReminderDialog from 'components/dialog/WalletReminderDialog'
+import EmptyComponent from 'components/layout/EmptyComponent'
 import LoadingCompontent from 'components/layout/LoadingCompontent'
+import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
-import { TransactionList } from 'components/wallet/TransactionList'
+import { TransactionComponent } from 'components/wallet/TransactionList'
+import usePagination from 'hooks/usePagination'
 import { PageModel } from 'model/navModel'
-import { WalletInfo } from 'model/wallet'
+import { WalletInfo, WalletTransaction } from 'model/wallet'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { selectUser } from 'reducer/userReducer'
 import Http from 'services/http'
 import { useAppSelector } from 'store/store'
 import Log from 'utils/log'
 
-export default function Wallet() {
+export default function Wallet(props) {
   let pageModel = new PageModel('Wallet', 'WAVE', '')
   const { t } = useTranslation()
   const currentUser = useAppSelector(selectUser)
   const [walletInfo, setWalletInfo] = useState<WalletInfo>()
   const [isOpen, setIsOpen] = useState(false)
+  const [isOpenHistory, setIsOpenHistory] = useState(false)
+  const [filterVal, setFilterVal] = useState('')
 
-  function closeModal() {
-    setIsOpen(false)
-  }
+  const ref = useRef(null)
 
-  function openModal() {
-    setIsOpen(true)
-  }
+  const { hasMore, isLoading, currentPage, data, error } = usePagination<WalletTransaction>(ref, fetchData)
 
   useEffect(() => {
     if (!currentUser) {
@@ -42,6 +44,24 @@ export default function Wallet() {
       getWalletInfo()
     }
   }, [currentUser])
+
+  function closeModal() {
+    setIsOpen(false)
+  }
+  function openModal() {
+    setIsOpen(true)
+  }
+
+  function closeHistoryModal() {
+    setIsOpenHistory(false)
+  }
+  function openHistoryModal() {
+    setIsOpenHistory(true)
+  }
+
+  function fetchData() {
+    return Http.getInstance().getWalletTransaction(currentPage, 0)
+  }
 
   function getWalletInfo() {
     Http.getInstance()
@@ -58,7 +78,11 @@ export default function Wallet() {
     return NormalLayoutComponent(<LoadingCompontent />, pageModel)
   }
 
-  function content() {
+  if (!data?.length) {
+    return <EmptyComponent />
+  }
+
+  function content(props) {
     return (
       <>
         <div className="container mx-auto">
@@ -110,19 +134,37 @@ export default function Wallet() {
             </div>
 
             <div className="transaction">
-              <h2>
-                <>{t('TRANSACTION_HISTORY')}</>
+              <h2 className="title">
+                <span>{t('TRANSACTION_HISTORY')}</span>
+                <img onClick={openHistoryModal} src="/assets/image/icon_screening.png" alt="screening" />
               </h2>
-              <TransactionList />
+              <div className="list">
+                <ul>
+                  {data?.map((item, index) => {
+                    return (
+                      <TransactionComponent key={index} item={item} filterVal={filterVal} setFilterVal={setFilterVal} />
+                    )
+                  })}
+                </ul>
+                <div ref={ref}>
+                  <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data} />
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        {/* wallet tip */}
         <DialogComponent isOpen={isOpen} closeModal={closeModal}>
           <WalletReminderDialog />
+        </DialogComponent>
+
+        {/* history */}
+        <DialogComponent isOpen={isOpenHistory} closeModal={closeHistoryModal}>
+          <WalletHistoryDialog />
         </DialogComponent>
       </>
     )
   }
 
-  return NormalLayoutComponent(content(), pageModel)
+  return NormalLayoutComponent(content(props), pageModel)
 }

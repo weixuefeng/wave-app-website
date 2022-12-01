@@ -772,3 +772,35 @@
     font-family: 'AvenirNext-DemiBold';
   }
 }
+
+.dialog-wallet-history {
+  .title {
+    @apply pb-6 text-[1.375rem] font-bold text-gray333;
+  }
+  .ant-radio-group {
+    @apply grid;
+  }
+  .ant-radio-button-wrapper {
+    @apply relative h-11 border-none py-2 text-base text-gray333;
+    font-family: 'AvenirNext-DemiBold';
+  }
+  .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+  }
+  .ant-radio-button-wrapper:not(:first-child)::before {
+    @apply bg-white;
+  }
+  .ant-radio-button-wrapper:focus-within,
+  .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):focus-within {
+    box-shadow: 0 0 0 0px rgb(24 144 255 / 12%);
+  }
+  .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+    @apply text-green2d;
+    &::before {
+      content: '';
+      @apply absolute top-0 right-0 h-5 w-5 bg-red-700;
+    }
+  }
+  .ant-radio-button-wrapper:hover {
+    @apply text-green2d;
+  }
+}
