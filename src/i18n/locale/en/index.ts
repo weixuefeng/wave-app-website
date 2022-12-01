@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-01 14:31:49
+ * @LastEditTime: 2022-12-01 16:10:56
  * @FilePath: /wave-app-webiste/src/i18n/locale/en/index.ts
  */
 export const enTransaction = {
@@ -116,6 +116,7 @@ export const enTransaction = {
   VERIFICATION_CODE: 'Verification Code',
   NEXT: 'Next',
   MODIFY_PAYMENT_PASSWORD: 'Modify Payment Password',
+  UNSET_PAYMENT_PASSWORD: 'Unset Payment Password',
   TRANSACTION_PASSWORD: 'Transaction Password',
   CONFIRM_TRANSACTION_PASSWORD: 'Confirm Transaction Password',
   TRANSACTION_PASSWORD_PLACEHOLDER: 'Please enter the six-digit password',

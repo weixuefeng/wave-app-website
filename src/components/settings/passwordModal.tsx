@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 00:01:03
+ * @LastEditTime: 2022-12-01 16:13:11
  * @FilePath: /wave-app-webiste/src/components/settings/passwordModal.tsx
  */
 import DialogComponent from 'components/common/DialogComponent'
@@ -12,7 +12,6 @@ import { selectUser, updateUserInfo } from 'reducer/userReducer'
 import Http from 'services/http'
 import { useAppDispatch, useAppSelector } from 'store/store'
 import Log from 'utils/log'
-import { t } from 'i18next'
 import SendVerifyCodeButton from 'components/common/SendVerifyCodeButton'
 import { useTranslation } from 'react-i18next'
 
@@ -61,7 +60,12 @@ export default function PasswordModal(props) {
   function dialogContent() {
     return (
       <div className="dialog-settings-password">
-        <h2>{t('MODIFY_PAYMENT_PASSWORD')}</h2>
+        <h2>
+          {
+            currentUser?.payment_password_set == 1 ?
+              t('MODIFY_PAYMENT_PASSWORD') : t('UNSET_PAYMENT_PASSWORD')
+          }
+        </h2>
         <div className={'password-box'}>
           <div className="email">
             <label htmlFor="email" className="label">

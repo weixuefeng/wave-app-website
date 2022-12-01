@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-01 14:31:58
+ * @LastEditTime: 2022-12-01 16:10:16
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -114,6 +114,7 @@ export const zhTransaction = {
   VERIFICATION_CODE: '验证码',
   NEXT: '下一步',
   MODIFY_PAYMENT_PASSWORD: '修改交易密码',
+  UNSET_PAYMENT_PASSWORD: '设置交易密码',
   TRANSACTION_PASSWORD: '交易密码',
   CONFIRM_TRANSACTION_PASSWORD: '确认交易密码',
   TRANSACTION_PASSWORD_PLACEHOLDER: '请输入六位数数字密码',
