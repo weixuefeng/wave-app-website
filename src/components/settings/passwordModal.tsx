@@ -60,12 +60,7 @@ export default function PasswordModal(props) {
   function dialogContent() {
     return (
       <div className="dialog-settings-password">
-        <h2>
-          {
-            currentUser?.payment_password_set == 1 ?
-              t('MODIFY_PAYMENT_PASSWORD') : t('UNSET_PAYMENT_PASSWORD')
-          }
-        </h2>
+        <h2>{currentUser?.payment_password_set == 1 ? t('MODIFY_PAYMENT_PASSWORD') : t('UNSET_PAYMENT_PASSWORD')}</h2>
         <div className={'password-box'}>
           <div className="email">
             <label htmlFor="email" className="label">
