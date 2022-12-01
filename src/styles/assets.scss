@@ -7,6 +7,10 @@
     @apply p-2 text-xl text-gray333;
     @apply ui-selected:border-b-4 ui-selected:border-black ui-selected:text-black;
     @apply ui-not-selected:text-gray99;
+    @apply mr-24;
+    &:last-child{
+      @apply mr-0;
+    }
   }
   .h5-list {
     .tab-item {
