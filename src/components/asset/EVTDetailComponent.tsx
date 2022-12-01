@@ -45,6 +45,7 @@ export default function EVTDetailComponent(props) {
 
   const [isBidSucceeded, setBidSucceeded] = useState(false)
   const [isBuySucceeded, setBuySucceeded] = useState(false)
+  const [isPassError, setIsPassError] = useState(false)
 
   function closeLoginModal() {
     setIsLoginOpen(false)
@@ -79,6 +80,7 @@ export default function EVTDetailComponent(props) {
     closeBuyModal()
     closeSellAssetModal()
     setIsPasswordOpen(true)
+    setIsPassError(false)
   }
 
   function requestOrderSell() {
@@ -95,7 +97,6 @@ export default function EVTDetailComponent(props) {
   }
 
   function onConfirmPassword(value) {
-    closePasswordModal()
     if (isOfferPasswordType) {
       // make offer
       Http.getInstance()
@@ -104,9 +105,11 @@ export default function EVTDetailComponent(props) {
           // refresh page
           loadData()
           setBidSucceeded(true)
+          closePasswordModal()
         })
         .catch(error => {
           Log.e(error)
+          setIsPassError(true)
         })
     } else {
       // buy
@@ -116,11 +119,14 @@ export default function EVTDetailComponent(props) {
           // refresh page
           loadData()
           setBuySucceeded(true)
+          closePasswordModal()
         })
         .catch(error => {
           Log.e(error)
+          setIsPassError(true)
         })
     }
+    setIsPassError(false)
   }
 
   useEffect(() => {
@@ -325,7 +331,7 @@ export default function EVTDetailComponent(props) {
 
       {/** password dialog */}
       <DialogComponent isOpen={isPasswordOpen} closeModal={closePasswordModal}>
-        <PasswordDialog onCancel={() => closePasswordModal()} onConfirm={onConfirmPassword} />
+        <PasswordDialog onCancel={() => closePasswordModal()} onConfirm={onConfirmPassword} isPassError={isPassError} />
       </DialogComponent>
 
       {/* Bid Succeeded Dialog */}

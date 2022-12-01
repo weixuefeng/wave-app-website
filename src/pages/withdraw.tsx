@@ -27,10 +27,13 @@ export default function Withdraw() {
   const [isAmount, setIsAmount] = useState(false)
   const [isAddress, setIsAddress] = useState(false)
 
+  const [isPassError, setIsPassError] = useState(false)
+
   function closePasswordModal() {
     setIsPasswordOpen(false)
     setIsAmount(false)
     setIsAddress(false)
+    setIsPassError(false)
   }
 
   function onConfirm() {
@@ -53,15 +56,18 @@ export default function Withdraw() {
   function onConfirmPassword(value) {
     setIsAmount(false)
     setIsAddress(false)
-    closePasswordModal()
+
     Http.getInstance()
       .getWalletWithdraw(amount, value, address)
       .then(response => {
         router.push('wallet')
+        closePasswordModal()
       })
       .catch(error => {
         Log.e(error)
+        setIsPassError(true)
       })
+    setIsPassError(false)
   }
 
   useEffect(() => {
@@ -178,7 +184,11 @@ export default function Withdraw() {
         </div>
 
         <DialogComponent isOpen={isPasswordOpen} closeModal={closePasswordModal}>
-          <PasswordDialog onCancel={() => closePasswordModal()} onConfirm={onConfirmPassword} />
+          <PasswordDialog
+            onCancel={() => closePasswordModal()}
+            onConfirm={onConfirmPassword}
+            isPassError={isPassError}
+          />
         </DialogComponent>
       </div>
     )

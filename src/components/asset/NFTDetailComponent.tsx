@@ -43,6 +43,7 @@ export default function NFTDetailComponent(props) {
   const [sellPrice, setSellPrice] = useState('')
   const [sellExpiredTime, setSellExpiredTime] = useState('')
   const [directionAddress, setDirectionAddress] = useState(null)
+  const [isPassError, setIsPassError] = useState(false)
 
   // login dialog
   const [isLoginOpen, setIsLoginOpen] = useState(false)
@@ -85,8 +86,9 @@ export default function NFTDetailComponent(props) {
     setIsPasswordOpen(true)
   }
 
+  console.log('currentUser', currentUser)
+
   function onConfirmPassword(value) {
-    closePasswordModal()
     if (isOfferPasswordType) {
       // make offer
       Http.getInstance()
@@ -95,9 +97,11 @@ export default function NFTDetailComponent(props) {
           // refresh page
           loadData()
           setBidSucceeded(true)
+          closePasswordModal()
         })
         .catch(error => {
           Log.e(error)
+          setIsPassError(true)
         })
     } else {
       // buy
@@ -107,11 +111,14 @@ export default function NFTDetailComponent(props) {
           // refresh page
           loadData()
           setBuySucceeded(true)
+          closePasswordModal()
         })
         .catch(error => {
           Log.e(error)
+          setIsPassError(true)
         })
     }
+    setIsPassError(false)
   }
 
   useEffect(() => {
@@ -156,6 +163,7 @@ export default function NFTDetailComponent(props) {
   }
 
   function showMakeOffer() {
+    setIsPassError(false)
     setOfferEndTime(0)
     setOfferPrice('0')
     if (currentUser) {
@@ -167,6 +175,7 @@ export default function NFTDetailComponent(props) {
   }
 
   function showBuy() {
+    setIsPassError(false)
     if (currentUser) {
       if (currentUser.payment_password_set == 1) {
         setIsOfferPasswordType(false)
@@ -260,7 +269,7 @@ export default function NFTDetailComponent(props) {
           <img src={nftDetail.image} alt={nftDetail.name} />
         </div>
         <div className="detail">
-          <h2>{nftDetail.name}</h2>
+          <h2>000000{nftDetail.name}</h2>
           {/** owner info */}
           <div className="owner">
             <Link href={`/collection/0/${nftDetail.collection.id}`}>
@@ -346,7 +355,7 @@ export default function NFTDetailComponent(props) {
 
       {/** password dialog */}
       <DialogComponent isOpen={isPasswordOpen} closeModal={closePasswordModal}>
-        <PasswordDialog onCancel={() => closePasswordModal()} onConfirm={onConfirmPassword} />
+        <PasswordDialog onCancel={() => closePasswordModal()} onConfirm={onConfirmPassword} isPassError={isPassError} />
       </DialogComponent>
 
       {/* Bid Succeeded Dialog */}

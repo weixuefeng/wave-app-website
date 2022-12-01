@@ -302,11 +302,15 @@
   }
 }
 
+.error {
+  @apply mt-2 text-left text-xs text-redb6;
+}
+
 .dialog-password {
   @apply flex flex-col items-center justify-start;
 
   .title {
-    @apply mb-5 text-2xl text-gray-900;
+    @apply mb-5 text-[1.375rem] text-gray333;
   }
 
   .password {

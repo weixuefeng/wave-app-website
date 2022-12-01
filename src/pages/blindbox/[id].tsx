@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-09-21 10:43:33
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-24 16:17:43
+ * @LastEditTime: 2022-12-01 11:21:30
  * @FilePath: /wave-app-webiste/src/pages/blindbox/[id].tsx
  */
 
@@ -52,6 +52,7 @@ function Main(props) {
 
   const [isPasswordOpen, setIsPasswordOpen] = useState(false)
   const [isBuySucceeded, setBuySucceeded] = useState(false)
+  const [isPassError, setIsPassError] = useState(false)
 
   useEffect(() => {
     fetchCollectionInfo()
@@ -65,6 +66,7 @@ function Main(props) {
 
   function closePasswordModal() {
     setIsPasswordOpen(false)
+    setIsPassError(false)
   }
 
   function closeBuySucceededModal() {
@@ -72,17 +74,19 @@ function Main(props) {
   }
 
   function onConfirmPassword(password: string) {
-    closePasswordModal()
     Http.getInstance()
       .requestBuyBlindBox(id.toString(), password, 1)
       .then(response => {
         setBuySucceeded(true)
         Log.d(response)
         fetchCollectionInfo()
+        closePasswordModal()
       })
       .catch(err => {
         Log.e(err)
+        setIsPassError(true)
       })
+    setIsPassError(false)
   }
 
   function fetchCollectionInfo() {
@@ -335,7 +339,11 @@ function Main(props) {
 
         {/** password dialog */}
         <DialogComponent isOpen={isPasswordOpen} closeModal={closePasswordModal}>
-          <PasswordDialog onCancel={() => closePasswordModal()} onConfirm={onConfirmPassword} />
+          <PasswordDialog
+            onCancel={() => closePasswordModal()}
+            onConfirm={onConfirmPassword}
+            isPassError={isPassError}
+          />
         </DialogComponent>
 
         {/* buy Succeeded Dialog */}

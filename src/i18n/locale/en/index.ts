@@ -193,4 +193,5 @@ export const enTransaction = {
   YOU_NEED_TO_BUY:
     'You need to buy NEW in Houbi first, and then transfer it to the wallet address by withdrawing coins.',
   HOME: 'Home',
+  INVSILD_PASSWORD: 'Invaild password',
 }
