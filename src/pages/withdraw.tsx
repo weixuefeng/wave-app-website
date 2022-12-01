@@ -89,7 +89,7 @@ export default function Withdraw() {
   }, [wallet])
 
   if (!walletAccount) {
-    return <LoadingCompontent />
+    return NormalLayoutComponent(<LoadingCompontent />, pageModel)
   }
 
   function content() {

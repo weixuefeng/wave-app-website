@@ -2,7 +2,7 @@
  * @Author: zhuxiaotong zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 18:20:00
+ * @LastEditTime: 2022-12-02 00:17:54
  * @FilePath: /wave-app-webiste/src/components/home/BannerComponent.tsx
  */
 
@@ -12,6 +12,7 @@ import { Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
+import LoadingCompontent from 'components/layout/LoadingCompontent'
 
 export default function BannerComponent(props) {
   const { banners } = props
@@ -61,6 +62,6 @@ export default function BannerComponent(props) {
       </div>
     )
   } else {
-    return <></>
+    return <LoadingCompontent />
   }
 }

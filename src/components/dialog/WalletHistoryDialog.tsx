@@ -30,40 +30,41 @@ export default function WalletHistoryDialog(props) {
   const walletHistory = [
     {
       value: 'All',
-      text: t('ALL')
+      text: t('ALL'),
     },
     {
       value: 'Deposit',
-      text: t('DEPOSIT')
+      text: t('DEPOSIT'),
     },
     {
       value: 'withdraw',
-      text: t('WITHDRAW')
+      text: t('WITHDRAW'),
     },
     {
       value: 'Asset Sale',
-      text: t('ASSET_SALE')
-    }, 
+      text: t('ASSET_SALE'),
+    },
     {
       value: 'Transfer',
-      text: t('TRANSFER')
-    }, {
+      text: t('TRANSFER'),
+    },
+    {
       value: 'Ticket Purchase',
-      text: t('TICKET_PURCHASE')
-    }
+      text: t('TICKET_PURCHASE'),
+    },
   ]
 
   return (
     <div className="dialog-wallet-history">
       <h2 className="title">{t('FILTER')}</h2>
       <Radio.Group value={filterVal} onChange={filterChange}>
-        {
-          walletHistory.map((item, index) => {
-            return (
-              <Radio.Button key={index} value={item.value}>{item.text}</Radio.Button>
-            )
-          })
-        }
+        {walletHistory.map((item, index) => {
+          return (
+            <Radio.Button key={index} value={item.value}>
+              {item.text}
+            </Radio.Button>
+          )
+        })}
       </Radio.Group>
     </div>
   )

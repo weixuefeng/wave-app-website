@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-24 16:19:55
+ * @LastEditTime: 2022-12-02 00:16:30
  * @FilePath: /wave-app-webiste/src/pages/index.tsx
  */
 
@@ -14,14 +14,10 @@ import BannerComponent from 'components/home/BannerComponent'
 import { Banner } from 'model/banner'
 import HomeDataComonent from 'components/home/HomeDataComonent'
 import Log from 'utils/log'
-export default Home
 
-function Home() {
+export default function Home() {
   let pageModel = new PageModel('HOME', 'WAVE', '')
-  return <>{NormalLayoutComponent(Main(), pageModel)}</>
-}
 
-function Main() {
   const [banners, setBanners] = useState<Array<Banner>>([])
   const [homeData, setHomeData] = useState<any>()
 
@@ -52,12 +48,15 @@ function Main() {
       })
   }
 
-  return (
-    <div className={'home'}>
-      <BannerComponent banners={banners} />
-      <div className={'container mx-auto'}>
-        <HomeDataComonent homeData={homeData} />
+  function content() {
+    return (
+      <div className={'home'}>
+        <BannerComponent banners={banners} />
+        <div className={'container mx-auto'}>
+          <HomeDataComonent homeData={homeData} />
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
+  return <>{NormalLayoutComponent(content(), pageModel)}</>
 }
