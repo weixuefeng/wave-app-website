@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 19:54:29
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-01 11:04:34
+ * @LastEditTime: 2022-12-01 14:08:24
  * @FilePath: /wave-app-webiste/src/components/dialog/PasswordDialog.tsx
  */
 import React, { useState } from 'react'
@@ -19,8 +19,6 @@ export default function PasswordDialog(props) {
   function onComplete() {
     onConfirm(value)
   }
-
-  console.log('isPassError', isPassError)
 
   return (
     <div className="dialog-password">

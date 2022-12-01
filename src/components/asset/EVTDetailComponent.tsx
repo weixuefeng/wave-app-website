@@ -46,6 +46,8 @@ export default function EVTDetailComponent(props) {
   const [isBidSucceeded, setBidSucceeded] = useState(false)
   const [isBuySucceeded, setBuySucceeded] = useState(false)
   const [isPassError, setIsPassError] = useState(false)
+  const [isBalance, setIsbalance] = useState(false)
+  const [isOfferEndTime, setIsOfferEndTime] = useState(false)
 
   function closeLoginModal() {
     setIsLoginOpen(false)
@@ -134,6 +136,9 @@ export default function EVTDetailComponent(props) {
   }, [])
 
   function showMakeOffer() {
+    setIsPassError(false)
+    setIsbalance(false)
+    setIsOfferEndTime(false)
     if (currentUser) {
       setIsMakeOfferOpen(true)
       setIsOfferPasswordType(true)
@@ -143,6 +148,9 @@ export default function EVTDetailComponent(props) {
   }
 
   function showBuy() {
+    setIsPassError(false)
+    setIsbalance(false)
+    setIsOfferEndTime(false)
     if (currentUser) {
       setIsOfferPasswordType(false)
       setIsBuyOpen(true)
@@ -324,8 +332,14 @@ export default function EVTDetailComponent(props) {
         <MakeOfferDialog
           evtDetail={evtDetail}
           showPassword={showPassword}
+          offerEndTime={offerEndTime}
           setOfferEndTime={setOfferEndTime}
+          offerPrice={offerPrice}
           setOfferPrice={setOfferPrice}
+          isBalance={isBalance}
+          isOfferEndTime={isOfferEndTime}
+          setIsbalance={setIsbalance}
+          setIsOfferEndTime={setIsOfferEndTime}
         />
       </DialogComponent>
 

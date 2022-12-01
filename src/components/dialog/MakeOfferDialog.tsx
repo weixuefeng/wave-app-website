@@ -8,7 +8,19 @@ import Log from 'utils/log'
 
 export default function MakeOfferDialog(props) {
   const { t } = useTranslation()
-  const { nftDetail, evtDetail, showPassword, offerEndTime, setOfferEndTime, offerPrice, setOfferPrice } = props
+  const {
+    nftDetail,
+    evtDetail,
+    showPassword,
+    offerEndTime,
+    setOfferEndTime,
+    offerPrice,
+    setOfferPrice,
+    isBalance,
+    setIsbalance,
+    isOfferEndTime,
+    setIsOfferEndTime,
+  } = props
   const wallet = useWallet()
 
   const [endDate, setEndDate] = useState(new Date())
@@ -44,8 +56,13 @@ export default function MakeOfferDialog(props) {
 
   function isValue() {
     let timestamp = new Date().getTime() / 1000
-    if (offerPrice > wallet.available_balance || offerPrice == '0' || offerEndTime == '' || timestamp > offerEndTime)
-      return
+    if (parseInt(offerPrice) > parseInt(wallet.available_balance)) {
+      return setIsbalance(true)
+    }
+    if (parseInt(offerPrice) == 0 || offerEndTime == '' || timestamp > parseInt(offerEndTime)) {
+      return setIsOfferEndTime(true)
+    }
+
     showPassword()
   }
 
@@ -58,7 +75,7 @@ export default function MakeOfferDialog(props) {
           <img src={info.image} alt={info.name} />
         </div>
         <div>
-          <h3>{info.name.substring(0, info.name.indexOf('#'))}</h3>
+          <h3>{info.name.substring(0, info.name.indexOf('#'))}0000000</h3>
           <h3>{`#${info.name.lastIndexOf('#')}`}</h3>
         </div>
       </div>
@@ -107,6 +124,8 @@ export default function MakeOfferDialog(props) {
         </div>
       </div>
 
+      {isBalance ? <p className="error text-center">{t('INSUFFICIENT_BALANCE')}</p> : null}
+      {isOfferEndTime ? <p className="error text-center">{t('PLEASE_FILL_TIME')}</p> : null}
       <button
         className="primary black widthMargin"
         onClick={() => {

@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 21:15:20
+ * @LastEditTime: 2022-12-01 14:31:49
  * @FilePath: /wave-app-webiste/src/i18n/locale/en/index.ts
  */
 export const enTransaction = {
@@ -194,4 +194,5 @@ export const enTransaction = {
     'You need to buy NEW in Houbi first, and then transfer it to the wallet address by withdrawing coins.',
   HOME: 'Home',
   INVSILD_PASSWORD: 'Invaild password',
+  PLEASE_FILL_TIME: 'Please fill in the correct date, time or bid',
 }

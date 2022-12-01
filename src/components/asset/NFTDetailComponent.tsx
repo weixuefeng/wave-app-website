@@ -44,6 +44,8 @@ export default function NFTDetailComponent(props) {
   const [sellExpiredTime, setSellExpiredTime] = useState('')
   const [directionAddress, setDirectionAddress] = useState(null)
   const [isPassError, setIsPassError] = useState(false)
+  const [isBalance, setIsbalance] = useState(false)
+  const [isOfferEndTime, setIsOfferEndTime] = useState(false)
 
   // login dialog
   const [isLoginOpen, setIsLoginOpen] = useState(false)
@@ -85,8 +87,6 @@ export default function NFTDetailComponent(props) {
     closeSellAssetModal()
     setIsPasswordOpen(true)
   }
-
-  console.log('currentUser', currentUser)
 
   function onConfirmPassword(value) {
     if (isOfferPasswordType) {
@@ -163,6 +163,8 @@ export default function NFTDetailComponent(props) {
   }
 
   function showMakeOffer() {
+    setIsbalance(false)
+    setIsOfferEndTime(false)
     setIsPassError(false)
     setOfferEndTime(0)
     setOfferPrice('0')
@@ -176,6 +178,8 @@ export default function NFTDetailComponent(props) {
 
   function showBuy() {
     setIsPassError(false)
+    setIsbalance(false)
+    setIsOfferEndTime(false)
     if (currentUser) {
       if (currentUser.payment_password_set == 1) {
         setIsOfferPasswordType(false)
@@ -350,6 +354,10 @@ export default function NFTDetailComponent(props) {
           setOfferEndTime={setOfferEndTime}
           offerPrice={offerPrice}
           setOfferPrice={setOfferPrice}
+          isBalance={isBalance}
+          isOfferEndTime={isOfferEndTime}
+          setIsbalance={setIsbalance}
+          setIsOfferEndTime={setIsOfferEndTime}
         />
       </DialogComponent>
 
