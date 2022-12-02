@@ -199,6 +199,6 @@ export const zhTransaction = {
   ENCRYPTED: '加密',
   VARIABLE: '可变',
   OWNED_BY: '持有者',
-  PLEASE_CODE:'请输入验证码',
-  PLEASE_EMAIL:'请输入邮箱'
+  PLEASE_CODE: '请输入验证码',
+  PLEASE_EMAIL: '请输入邮箱',
 }

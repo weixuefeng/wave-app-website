@@ -2,7 +2,7 @@
  * @Author: zhuxiaotong zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 00:17:54
+ * @LastEditTime: 2022-12-02 15:37:24
  * @FilePath: /wave-app-webiste/src/components/home/BannerComponent.tsx
  */
 
@@ -12,12 +12,11 @@ import { Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
-import LoadingCompontent from 'components/layout/LoadingCompontent'
 
 export default function BannerComponent(props) {
   const { banners } = props
 
-  if (banners && banners.length == 1) {
+  if (banners.length == 1) {
     return (
       <div className="banner">
         <Swiper spaceBetween={10} autoplay slidesPerView="auto" loop pagination={{ clickable: true }} threshold={40}>
@@ -35,7 +34,7 @@ export default function BannerComponent(props) {
         </Swiper>
       </div>
     )
-  } else if (banners && banners.length > 1) {
+  } else if (banners.length > 1) {
     return (
       <div className="banner">
         <Swiper
@@ -62,6 +61,6 @@ export default function BannerComponent(props) {
       </div>
     )
   } else {
-    return <LoadingCompontent />
+    return <></>
   }
 }

@@ -2,53 +2,62 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 18:48:14
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 00:07:53
+ * @LastEditTime: 2022-12-02 15:39:33
  * @FilePath: /wave-app-webiste/src/utils/time.ts
  */
 export function formatDate(value) {
   value = value * 1000
   let date = new Date(value)
-  let y = date.getFullYear()
-  let m = date.getMonth() + 1
-  let d = date.getDate()
+  let Y = date.getFullYear()
+  let M = date.getMonth() + 1
+  let D = date.getDate()
   let mm
 
-  if (m == 1) {
+  let h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':'
+  let m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':'
+  let s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
+
+  if (M == 1) {
     mm = 'January'
-  } else if (m == 2) {
+  } else if (M == 2) {
     mm = 'February'
-  } else if (m == 3) {
+  } else if (M == 3) {
     mm = 'March'
-  } else if (m == 4) {
+  } else if (M == 4) {
     mm = 'April'
-  } else if (m == 5) {
+  } else if (M == 5) {
     mm = 'May'
-  } else if (m == 6) {
+  } else if (M == 6) {
     mm = 'June'
-  } else if (m == 7) {
+  } else if (M == 7) {
     mm = 'July'
-  } else if (m == 8) {
+  } else if (M == 8) {
     mm = 'August'
-  } else if (m == 9) {
+  } else if (M == 9) {
     mm = 'September'
-  } else if (m == 10) {
+  } else if (M == 10) {
     mm = 'October'
-  } else if (m == 11) {
+  } else if (M == 11) {
     mm = 'November'
-  } else if (m == 12) {
+  } else if (M == 12) {
     mm = 'December'
   }
-  return mm + ' ' + d + ',' + y
+
+  return mm + ' ' + D + ',' + Y + ' ' + ' ' + ' ' + h + m + s
 }
 
 export function zhFormatDate(value) {
   value = value * 1000
   let date = new Date(value)
-  let y = date.getFullYear()
-  let m = date.getMonth() + 1
-  let d = date.getDate()
+  let Y = date.getFullYear()
+  let M = date.getMonth() + 1
+  let D = date.getDate()
 
-  return y + '-' + m + '-' + d
+  let h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':'
+  let m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':'
+  let s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
+
+  return Y + '/' + M + '/' + D + ' ' + h + m + s
 }
 
 export function formatDateTime(timestamp) {

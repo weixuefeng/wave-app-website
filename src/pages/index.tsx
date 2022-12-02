@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 00:16:30
+ * @LastEditTime: 2022-12-02 15:38:18
  * @FilePath: /wave-app-webiste/src/pages/index.tsx
  */
 
@@ -14,6 +14,7 @@ import BannerComponent from 'components/home/BannerComponent'
 import { Banner } from 'model/banner'
 import HomeDataComonent from 'components/home/HomeDataComonent'
 import Log from 'utils/log'
+import LoadingCompontent from 'components/layout/LoadingCompontent'
 
 export default function Home() {
   let pageModel = new PageModel('HOME', 'WAVE', '')
@@ -21,19 +22,24 @@ export default function Home() {
   const [banners, setBanners] = useState<Array<Banner>>([])
   const [homeData, setHomeData] = useState<any>()
 
+  const [isLoading, setIsLoading] = useState(false)
+
   useEffect(() => {
     getHomeData()
     getHomeBanner()
   }, [])
 
   const getHomeBanner = async () => {
+    setIsLoading(true)
     Http.getInstance()
       .getHomeBanner()
       .then(response => {
         setBanners(response.data)
+        setIsLoading(false)
       })
       .catch(error => {
         Log.e(error)
+        setIsLoading(false)
       })
   }
 
@@ -48,6 +54,10 @@ export default function Home() {
       })
   }
 
+  if (isLoading) {
+    return NormalLayoutComponent(<LoadingCompontent />, pageModel)
+  }
+
   function content() {
     return (
       <div className={'home'}>
@@ -58,5 +68,5 @@ export default function Home() {
       </div>
     )
   }
-  return <>{NormalLayoutComponent(content(), pageModel)}</>
+  return NormalLayoutComponent(content(), pageModel)
 }

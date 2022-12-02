@@ -205,6 +205,6 @@ export const enTransaction = {
   ENCRYPTED: 'Encrypted',
   VARIABLE: 'Variable',
   OWNED_BY: 'Owned by',
-  PLEASE_CODE:'Please enter the verification code',
-  PLEASE_EMAIL:'Please enter email address'
+  PLEASE_CODE: 'Please enter the verification code',
+  PLEASE_EMAIL: 'Please enter email address',
 }

@@ -37,13 +37,13 @@ export default function TradeComponent(props) {
     }
   }
 
-  if(!item) {
+  if (!item) {
     return <></>
   }
-  
+
   return (
     <li className="item">
-      <Link href={getAssetDetailPathByTradeItem(item) !== null ? getAssetDetailPathByTradeItem(item) : '/' }>
+      <Link href={getAssetDetailPathByTradeItem(item) !== null ? getAssetDetailPathByTradeItem(item) : '/'}>
         <a className="cover">
           <div className="perfect-square">
             <img src={item.image} alt={item.name} />

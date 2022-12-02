@@ -9,10 +9,10 @@
   .item {
     @apply grid-cols-12 border-b-[1px] border-graye7 py-11 md:grid;
     .date {
-      @apply col-span-2 mr-2 mb-5 w-32 text-sm text-gray99 md:mb-0;
+      @apply col-span-3 mr-2 mb-5 text-sm text-gray99 md:mb-0;
     }
     .content {
-      @apply col-span-10;
+      @apply col-span-9;
       h2 {
         @apply mb-4 text-xl text-gray333 md:mb-7 md:text-2xl;
       }
