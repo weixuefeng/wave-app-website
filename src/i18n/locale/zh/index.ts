@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-01 23:41:23
+ * @LastEditTime: 2022-12-02 14:57:29
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -199,4 +199,6 @@ export const zhTransaction = {
   ENCRYPTED: '加密',
   VARIABLE: '可变',
   OWNED_BY: '持有者',
+  PLEASE_CODE:'请输入验证码',
+  PLEASE_EMAIL:'请输入邮箱Please enter email address'
 }

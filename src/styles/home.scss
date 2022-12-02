@@ -137,7 +137,7 @@
       .info-box {
         @apply flex flex-col rounded-lg bg-white p-4;
         .name {
-          @apply mb-2 text-left text-base;
+          @apply mb-3 text-left text-base;
         }
         .price {
           @apply flex flex-row items-center justify-start;

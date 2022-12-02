@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-21 15:28:55
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-29 00:17:39
+ * @LastEditTime: 2022-12-02 14:58:15
  * @FilePath: /wave-app-webiste/src/components/dialog/LoginDialog.tsx
  */
 import { Checkbox } from 'antd'
@@ -127,7 +127,7 @@ export default function LoginDialog(props) {
         <div className="email">
           <input placeholder={t('EMAIL_ADDRESS')} onChange={e => setEmail(e.target.value)} />
           <img src="assets/image/icon_email.png" alt="email" />
-          {isEmail ? <p className="tit-email">请输入邮箱</p> : null}
+          {isEmail ? <p className="tit-email">{t('PLEASE_EMAIL')}</p> : null}
         </div>
 
         <div className="code-box">
@@ -138,7 +138,7 @@ export default function LoginDialog(props) {
               {btnContent} {!btnDisabled && sendCodeloading && '...'}
             </span>
           </button>
-          {isEmailCode ? <p className="tit-email">请输入验证码</p> : null}
+          {isEmailCode ? <p className="tit-email">{t('PLEASE_CODE')}</p> : null}
         </div>
         <button
           onClick={() => requestLogin()}
@@ -153,8 +153,8 @@ export default function LoginDialog(props) {
           <Checkbox className="checkbox" onChange={onCheckAllChange} checked={checkAll}></Checkbox>
           {isCheckAll ? <p className="check-all">{t('PLEASE_READ')}</p> : null}
           <p className="agree">
-            {t('I_AGREE_TO')} <Link href="/b">{t('TERM_OF_SERVICES')}</Link> {t('AND')}{' '}
-            <Link href="/a">{t('PRIVACY_POLICY')}</Link>
+            {t('I_AGREE_TO')} <Link href="/terms">{t('TERM_OF_SERVICES')}</Link> {t('AND')}{' '}
+            <Link href="/privacy">{t('PRIVACY_POLICY')}</Link>
           </p>
         </div>
       </div>

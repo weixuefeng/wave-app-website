@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 10:59:58
+ * @LastEditTime: 2022-12-02 14:57:56
  * @FilePath: /wave-app-webiste/src/i18n/locale/en/index.ts
  */
 export const enTransaction = {
@@ -205,4 +205,6 @@ export const enTransaction = {
   ENCRYPTED: 'Encrypted',
   VARIABLE: 'Variable',
   OWNED_BY: 'Owned by',
+  PLEASE_CODE:'Please enter the verification code',
+  PLEASE_EMAIL:'Please enter email address'
 }

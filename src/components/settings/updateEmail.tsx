@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 16:29:13
+ * @LastEditTime: 2022-12-02 14:58:24
  * @FilePath: /wave-app-webiste/src/components/settings/updateEmail.tsx
  */
 
@@ -120,7 +120,7 @@ export default function UpdateEmail(props) {
           </label>
           <input placeholder={t('EMAIL_ADDRESS')} onChange={e => setEmail(e.target.value)} />
           <img src="assets/image/icon_email.png" alt="email" />
-          {isEmail ? <p className="tit-email">请输入邮箱</p> : null}
+          {isEmail ? <p className="tit-email">{t('PLEASE_EMAIL')}</p> : null}
         </div>
         <div className="code-box">
           <label htmlFor="text" className="label">
@@ -134,7 +134,7 @@ export default function UpdateEmail(props) {
               {!btnDisabled && sendCodeloading && '...'}
             </span>
           </button>
-          {isUpdateEmailCode ? <p className="tit-email">请输入验证码</p> : null}
+          {isUpdateEmailCode ? <p className="tit-email">{t('PLEASE_CODE')}</p> : null}
         </div>
         <button className="primary black" disabled={confirmLoading} onClick={() => requestEmail()}>
           <span>

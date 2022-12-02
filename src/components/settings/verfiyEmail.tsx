@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-28 17:12:48
+ * @LastEditTime: 2022-12-02 14:57:04
  * @FilePath: /wave-app-webiste/src/components/settings/verfiyEmail.tsx
  */
 
@@ -60,7 +60,7 @@ export default function VerfiyEmail(props) {
           </label>
           <input placeholder={t('VERIFICATION_CODE')} onChange={e => setVerfiyEmailCode(e.target.value)} />
           <SendVerifyCodeButton email={currentUser?.email} action={EmailAction.CHECK_EMAIL} />
-          {isVerfiyEmailCode == true ? <p className="tit">请输入验证码</p> : null}
+          {isVerfiyEmailCode == true ? <p className="tit">{t('PLEASE_CODE')}</p> : null}
         </div>
         <button className="primary black" disabled={nextLoading} onClick={() => oldRequestEmail()}>
           <span>
