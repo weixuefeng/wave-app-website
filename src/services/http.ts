@@ -411,7 +411,7 @@ class Http {
 
   requestWaveVersion(): Promise<any> {
     let params = {}
-    return _post(Api.waveVersion, params) as Promise<any>
+    return _get(Api.waveVersion) as Promise<any>
   }
 }
 
