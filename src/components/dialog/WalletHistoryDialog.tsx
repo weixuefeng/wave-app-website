@@ -1,14 +1,13 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 19:54:29
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-12-02 12:08:33
- * @FilePath: /wave-app-website/src/components/dialog/WalletHistoryDialog.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-12-03 00:05:07
+ * @FilePath: /wave-app-webiste/src/components/dialog/WalletHistoryDialog.tsx
  */
 
-import { Radio, RadioChangeEvent } from 'antd'
-import { SelectCommonPlacement } from 'antd/lib/_util/motion'
-import { Options, WalletOptions } from 'model/wallet'
+import { Radio } from 'antd'
+import { Options } from 'model/wallet'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import Http from 'services/http'

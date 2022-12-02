@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-15 12:51:57
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-25 19:06:21
+ * @LastEditTime: 2022-12-03 00:32:21
  * @FilePath: /wave-app-webiste/src/components/header/HeaderMobileComponent.tsx
  */
 import React, { Fragment, useEffect, useState } from 'react'
@@ -17,13 +17,20 @@ export default function HeaderMobileComponent(props) {
 
   const SiteNavMenu = props => {
     return (
-      <div>
-        <div>
-          <img src="/assets/image/icon_trade.png" alt="trade" />
-          <span>{t('TRADE')}</span>
+      <div className='item'>
+        <div className='item-list'>
+          <Link href='/trade'>
+            <a>
+              <img src="/assets/image/icon_trade.png" alt="trade" />
+              <span>{t('TRADE')}</span>
+            </a>
+          </Link>
         </div>
-        <div>
-          <img src="/assets/image/icon_language.png" alt="language" />
+        <div className='item-list'>
+          <p>
+            <img src="/assets/image/icon_language.png" alt="language" />
+            {t('LANGUAGE')}
+          </p>
           <p>zh</p>
         </div>
       </div>
@@ -99,7 +106,7 @@ export default function HeaderMobileComponent(props) {
                 </Link>
               </head>
               <nav className="mobile-dialog">
-                <div className="space-y-2 px-2" onClick={() => setMobileSidebarOpen(false)}>
+                <div onClick={() => setMobileSidebarOpen(false)}>
                   <SiteNavMenu />
                 </div>
               </nav>

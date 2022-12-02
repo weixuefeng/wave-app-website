@@ -1,5 +1,5 @@
 .header-box {
-  @apply h-20;
+  @apply h-[3.75rem] md:h-20;
 }
 .header-pc {
   @apply hidden border-b-2 border-solid border-gray-100 bg-white px-4 md:block xl:px-0;
@@ -67,10 +67,25 @@
     @apply absolute top-5 left-5 h-6 w-6 cursor-pointer;
   }
   .logo {
-    @apply mx-auto w-28;
+    @apply mx-auto w-28 cursor-pointer;
   }
+
 }
 
 .mobile-dialog {
   @apply mt-[3.75rem] h-screen w-screen bg-white;
+  .item {
+    @apply pt-8;
+  }
+  .item-list {
+    @apply w-full flex justify-between items-center p-4;
+    a,p {
+      @apply flex text-gray333 font-normal text-lg w-full;
+      font-family: 'AvenirNext-DemiBold';
+    }
+    img {
+      @apply w-[1.565rem] h-[1.565rem] mr-2;
+    }
+
+  }
 }

@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 21:34:05
+ * @LastEditTime: 2022-12-03 00:18:12
  * @FilePath: /wave-app-webiste/src/i18n/locale/en/index.ts
  */
 export const enTransaction = {
@@ -216,4 +216,5 @@ export const enTransaction = {
   MINUTES: 'Minutes',
   SECONDS: 'Seconds',
   PLEASE_DOWNLOAD_WAVE: 'Please Download the Wave App to View',
+  LANGUAGE:'Language',
 }
