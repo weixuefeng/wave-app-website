@@ -74,7 +74,7 @@ export default function LoginComponent() {
               </div>
               <div className="settings">
                 <Link href="/settings" className="mt-4">
-                  <p className='settings-itme'>{t('SETTINGS')}</p>
+                  <p className="settings-itme">{t('SETTINGS')}</p>
                 </Link>
                 <p
                   className="login-out"

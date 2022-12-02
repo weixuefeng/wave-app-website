@@ -26,34 +26,41 @@ export default function CollectionActivity(props) {
   return (
     <>
       <div className="collection-activity">
-        {data && data?.map((item, index) => {
-          return (
-            <div className="item" key={index}>
-              <div className="event">{item.event}</div>
-              <div className="info">
-                <div>
-                  <img src={item.nft.image} alt={item.nft.name} />
+        {data &&
+          data?.map((item, index) => {
+            return (
+              <div className="item" key={index}>
+                <div className="event">{item.event}</div>
+                <div className="info">
+                  <div>
+                    <img src={item.nft.image} alt={item.nft.name} />
+                  </div>
+                  <h3>{item.nft.name}</h3>
                 </div>
-                <h3>{item.nft.name}</h3>
+                <div className="price">{floorNum(item.price)} NEW</div>
+                <div className="trading">
+                  <div className="form">
+                    <img
+                      src={item.from_user.avatar == '' ? '/assets/image/icon_avata.png' : item.from_user.avatar}
+                      alt="avatar"
+                    />
+                  </div>
+                  <h4>{trimStr(item.from_user.name)}</h4>
+                  <div className="arrow">
+                    <img src="/assets/image/icon_arrow.png" alt="arrow-img" />
+                  </div>
+                  <div className="to">
+                    <img
+                      src={item.to_user.avatar == '' ? '/assets/image/icon_avata.png' : item.to_user.avatar}
+                      alt="avatar"
+                    />
+                  </div>
+                  <h4>{trimStr(item.to_user.name)}</h4>
+                </div>
+                <div className="date">{formatDate(item.activity_time)}</div>
               </div>
-              <div className="price">{floorNum(item.price)} NEW</div>
-              <div className="trading">
-                <div className="form">
-                  <img src={item.from_user.avatar == '' ? '/assets/image/icon_avata.png' : item.from_user.avatar} alt="avatar" />
-                </div>
-                <h4>{trimStr(item.from_user.name)}</h4>
-                <div className="arrow">
-                  <img src="/assets/image/icon_arrow.png" alt="arrow-img" />
-                </div>
-                <div className="to">
-                  <img src={item.to_user.avatar == '' ? '/assets/image/icon_avata.png' : item.to_user.avatar} alt="avatar" />
-                </div>
-                <h4>{trimStr(item.to_user.name)}</h4>
-              </div>
-              <div className="date">{formatDate(item.activity_time)}</div>
-            </div>
-          )
-        })}
+            )
+          })}
       </div>
       <div ref={ref}>
         <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data} />
