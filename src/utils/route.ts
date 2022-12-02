@@ -1,5 +1,6 @@
 import { Asset, AssetPageType, AssetType } from 'model/asset'
 import { TradeItem, TradeType } from 'model/trade'
+import Log from './log'
 
 /**
  * if asset type is nft,evt, return to asset page
@@ -31,7 +32,7 @@ export function getAssetDetailPathByTradeItem(asset: TradeItem): string {
   } else if (asset.type == TradeType.MOVIE || asset.type == TradeType.SERIOS) {
     return `/asset/${AssetPageType.NFT}/${asset.nft_id}`
   } else {
-    return null
+    return `/asset/${AssetPageType.NFT}/${asset.nft_id}`
   }
 }
 

@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:33:51
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-29 11:34:29
- * @FilePath: /wave-app-webiste/src/components/trade/TradeComponent.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-12-02 14:09:35
+ * @FilePath: /wave-app-website/src/components/trade/TradeComponent.tsx
  */
 import { t } from 'i18next'
 import Link from 'next/link'
@@ -37,6 +37,10 @@ export default function TradeComponent(props) {
     }
   }
 
+  if(!item) {
+    return <></>
+  }
+  
   return (
     <li className="item">
       <Link href={getAssetDetailPathByTradeItem(item)}>
