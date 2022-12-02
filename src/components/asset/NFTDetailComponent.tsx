@@ -277,7 +277,7 @@ export default function NFTDetailComponent(props) {
           <img src={nftDetail.image} alt={nftDetail.name} />
         </div>
         <div className="detail">
-          <h2>000000{nftDetail.name}</h2>
+          <h2>{nftDetail.name}</h2>
           {/** owner info */}
           <div className="owner">
             <Link href={`/collection/0/${nftDetail.collection.id}`}>
@@ -287,7 +287,7 @@ export default function NFTDetailComponent(props) {
               </div>
             </Link>
             <div className="tr">
-              <p>Owned by</p>
+              <p>{t('Owned by')}</p>
               <Link href={`/user/${nftDetail.user.id}`}>
                 <p className="name cursor-pointer">{nftDetail.user.name}</p>
               </Link>

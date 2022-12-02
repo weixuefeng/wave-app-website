@@ -198,4 +198,5 @@ export const zhTransaction = {
   NOTIFICATION: '消息通知',
   ENCRYPTED: '加密',
   VARIABLE: '可变',
+  OWNED_BY:'持有者',
 }

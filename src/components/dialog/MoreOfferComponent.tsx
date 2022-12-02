@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 22:35:08
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 15:58:36
+ * @LastEditTime: 2022-12-02 11:03:57
  * @FilePath: /wave-app-webiste/src/components/dialog/MoreOfferComponent.tsx
  */
 import LoadingCompontent from 'components/layout/LoadingCompontent'
@@ -56,7 +56,7 @@ export default function MoreOfferComponent(props) {
   }
 
   if (!data) {
-    return <LoadingCompontent />
+    return <></>
   }
 
   return (
