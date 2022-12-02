@@ -4,11 +4,9 @@
   .info {
     @apply grid grid-cols-1 md:grid-cols-3;
     .info-img {
-      @apply relative col-span-1 bg-grayf3 pb-[100%];
+      @apply relative col-span-1 bg-grayf3 pb-[100%] overflow-hidden;
       img {
-        @apply absolute h-full w-full object-cover;
-        top: 50%;
-        left: 50%;
+        @apply absolute top-1/2 left-1/2 h-auto w-full object-cover;
         transform: translate(-50%, -50%);
       }
     }
@@ -120,11 +118,9 @@
   .base-info {
     @apply grid grid-cols-6 gap-x-10;
     .info-img {
-      @apply relative col-span-2 bg-grayf3 pb-[100%];
+      @apply relative col-span-2 bg-grayf3 pb-[100%] overflow-hidden;
       img {
-        @apply absolute h-full w-full object-cover;
-        top: 50%;
-        left: 50%;
+        @apply absolute top-1/2 left-1/2 h-auto w-full object-cover;
         transform: translate(-50%, -50%);
       }
     }

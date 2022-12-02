@@ -117,19 +117,25 @@
   .received-img {
     @apply grid grid-cols-3 pb-3;
     .img-box {
-      @apply relative col-span-1 w-[95%] rounded-xl bg-grayf3 pb-[95%];
+      @apply relative col-span-1 w-[95%] rounded-xl bg-grayf3 pb-[95%] overflow-hidden;
       img {
-        @apply absolute top-[50%] left-[50%] h-full w-full rounded-lg object-cover;
+        @apply absolute top-[50%] left-[50%] h-auto w-full rounded-lg object-cover;
         transform: translate(-50%, -50%);
       }
     }
     .name {
       @apply col-span-2 pl-1;
       h3 {
-        @apply pb-5 text-lg font-normal text-gray333;
+        @apply pb-5 text-lg font-normal text-gray333 truncate;
       }
       p {
-        @apply text-gray99;
+        @apply text-gray99 overflow-hidden;
+        text-overflow: -o-ellipsis-lastline;		
+	      text-overflow: ellipsis;		
+	      display: -webkit-box;			
+	      -webkit-line-clamp: 2;			
+	      line-clamp: 2;					
+	      -webkit-box-orient: vertical;
       }
     }
   }
