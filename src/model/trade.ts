@@ -16,4 +16,6 @@ export enum TradeType {
   NFT = 0,
   MOVIE = 1,
   SERIOS = 2,
+  TICKET = 3,
+  MUSIC = 4,
 }

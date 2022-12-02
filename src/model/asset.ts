@@ -1,12 +1,13 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-01 15:43:16
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-28 17:31:52
- * @FilePath: /wave-app-webiste/src/model/asset.ts
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-12-02 17:34:16
+ * @FilePath: /wave-app-website/src/model/asset.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import { Mystery, Recommend } from './banner'
+import { TradeType } from './trade'
 
 export interface Asset {
   server_current_time: number
@@ -52,11 +53,15 @@ export function getAssetNameByType(type: number): string {
 
 export function getTradeNameByType(type: number): string {
   switch (type) {
-    case 0:
+    case TradeType.NFT:
       return 'NFT'
-    case 1:
+    case TradeType.MOVIE:
       return 'EVT'
-    case 2:
+    case TradeType.SERIOS:
+      return 'EVT'
+    case TradeType.TICKET:
+      return 'EVT'
+    case TradeType.MUSIC:
       return 'EVT'
     default:
       break

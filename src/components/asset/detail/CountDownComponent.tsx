@@ -61,7 +61,7 @@ export default function CountDownComponent(props) {
   }
   return (
     <div className="countdown">
-      <div>Sale ends at {new Date(endTime).toString()} in</div>
+      <div>Sale ends at {new Date(endTime * 1000).toString()} in</div>
       <div className="time-info">
         <div className="item">
           <p className="green">{day}</p>
