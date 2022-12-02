@@ -1,6 +1,15 @@
+/*
+ * @Author: liukeke liukeke@diynova.com
+ * @Date: 2022-12-02 17:51:23
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-12-02 18:03:27
+ * @FilePath: /wave-app-webiste/src/components/asset/detail/CountDownComponent.tsx
+ */
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function CountDownComponent(props) {
+  const { t } = useTranslation()
   const { endTime, serverTime } = props
   const deltaTime = endTime - serverTime
 
@@ -61,23 +70,25 @@ export default function CountDownComponent(props) {
   }
   return (
     <div className="countdown">
-      <div>Sale ends at {new Date(endTime * 1000).toString()} in</div>
+      <div>
+        {t('SALE_ENDS_AT')} {new Date(endTime * 1000).toString()} {t('IN')}
+      </div>
       <div className="time-info">
         <div className="item">
           <p className="green">{day}</p>
-          <p>Days</p>
+          <p>{t('DAYS')}</p>
         </div>
         <div className="item">
           <p className="green">{hour}</p>
-          <p>Hours</p>
+          <p>{t('HOURS')}</p>
         </div>
         <div className="item">
           <p className="green">{minute}</p>
-          <p>Minutes</p>
+          <p>{t('MINUTES')}</p>
         </div>
         <div className="item">
           <p className="green">{second}</p>
-          <p>Seconds</p>
+          <p>{t('SECONDS')}</p>
         </div>
       </div>
     </div>

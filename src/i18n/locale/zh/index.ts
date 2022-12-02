@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 16:18:37
+ * @LastEditTime: 2022-12-02 18:02:59
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -203,4 +203,10 @@ export const zhTransaction = {
   PLEASE_EMAIL: '请输入邮箱',
   PLEASE_FILL_CODE: '请填写正确的验证码',
   PASSWPORD_NOT_EQUALS: '密码不一致或者密码不能为空',
+  SALE_ENDS_AT: '距售卖截止时间',
+  IN: '还有',
+  DAYS: '天',
+  HOURS: '小时',
+  MINUTES: '分',
+  SECONDS: '秒',
 }

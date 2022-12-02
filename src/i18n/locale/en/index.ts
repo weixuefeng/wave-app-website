@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 16:18:47
+ * @LastEditTime: 2022-12-02 18:03:11
  * @FilePath: /wave-app-webiste/src/i18n/locale/en/index.ts
  */
 export const enTransaction = {
@@ -209,4 +209,10 @@ export const enTransaction = {
   PLEASE_EMAIL: 'Please enter email address',
   PLEASE_FILL_CODE: 'Please fill in the correct verification code',
   PASSWPORD_NOT_EQUALS: 'The password is inconsistent or cannot be empty',
+  SALE_ENDS_AT: 'Sale ends at',
+  IN: 'in',
+  DAYS: 'Days',
+  HOURS: 'Hours',
+  MINUTES: 'Minutes',
+  SECONDS: 'Seconds',
 }

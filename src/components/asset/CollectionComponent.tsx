@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 15:44:16
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 23:14:27
+ * @LastEditTime: 2022-12-02 17:54:51
  * @FilePath: /wave-app-webiste/src/components/asset/CollectionComponent.tsx
  */
 import { Tab } from '@headlessui/react'
@@ -63,13 +63,13 @@ export default function CollectionComponent(props) {
               </p>
             </div>
             <div className="item">
-              <p className="value">{collection.stats.floor_price}</p>
+              <p className="value">{floorNum(collection.stats.floor_price)}</p>
               <p className="label">
                 <>{t('FLOOR_PRICE')}</>
               </p>
             </div>
             <div className="item">
-              <p className="value">{floorNum(collection.stats.volume_all)}</p>
+              <p className="value">{collection.stats.volume_all}</p>
               <p className="label">
                 <>{t('COLLECTION_VAOLUME_TRADED')}</>
               </p>
