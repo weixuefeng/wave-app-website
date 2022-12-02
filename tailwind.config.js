@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 19:50:43
+ * @LastEditTime: 2022-12-02 19:56:59
  * @FilePath: /wave-app-webiste/tailwind.config.js
  */
 module.exports = {
@@ -110,6 +110,7 @@ module.exports = {
         'footer-discord': "url('/assets/image/discord.png')",
         'footer-discord-hover': "url('/assets/image/discord_hover.png')",
         'wallet-active': "url('/assets/image/icon_seleted.png')",
+        'language-active': "url('/assets/image/icon_language_active.png')",
       }
     },
   },

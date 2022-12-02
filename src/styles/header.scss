@@ -36,12 +36,16 @@
         @apply relative w-[1.38rem];
       }
       .item {
-        @apply absolute right-0 -bottom-32 z-50 rounded-xl bg-white p-4;
+        @apply absolute right-0 -bottom-32 z-50 rounded-xl bg-white py-4;
         span {
-          @apply block h-7 w-28 pr-10 text-base leading-7 text-gray3d;
+          @apply px-4 block h-7 w-44 pr-10 text-base leading-7 text-gray3d hover:bg-greenf2 relative;
         }
         .active {
           @apply text-green57;
+          &::before {
+            content: '';
+            @apply absolute top-[6px] right-4 w-[0.875rem] h-[0.875rem] bg-language-active bg-cover;
+          }
         }
       }
     }
