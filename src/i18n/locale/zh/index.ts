@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 14:57:29
+ * @LastEditTime: 2022-12-02 15:00:24
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -187,7 +187,7 @@ export const zhTransaction = {
   WHAT_IS_EVT: '什么是 EVT',
   WHAT_IS_EVT_INFO: 'EVT(加密可变通证)是一种新型的通证类型,我们可以用它来替代元宇宙和物理世界中的NFT',
   HOW_TO_GET_NEW: '如何获得NEW?',
-  YOU_NEED_TO_BUY: '您需要先在后壁购买NEW，然后通过取币的方式转账到钱包地址.',
+  YOU_NEED_TO_BUY: '您需要先在后壁购买NEW,然后通过取币的方式转账到钱包地址.',
   HOME: '首页',
   INVSILD_PASSWORD: '支付密码错误',
   PLEASE_FILL_TIME: '请正确填写日期,时间或者出价',
@@ -200,5 +200,5 @@ export const zhTransaction = {
   VARIABLE: '可变',
   OWNED_BY: '持有者',
   PLEASE_CODE:'请输入验证码',
-  PLEASE_EMAIL:'请输入邮箱Please enter email address'
+  PLEASE_EMAIL:'请输入邮箱'
 }
