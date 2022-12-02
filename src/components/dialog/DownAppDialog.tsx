@@ -1,10 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 10:58:54
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-30 20:29:08
- * @FilePath: /wave-app-website/src/components/dialog/DownAppDialog.tsx
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%A
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-12-02 21:11:50
+ * @FilePath: /wave-app-webiste/src/components/dialog/DownAppDialog.tsx
  */
 
 import React, { useEffect } from 'react'
@@ -21,6 +20,17 @@ export default function DownAppDialog() {
   //   const response = await Http.getInstance().requestUpgrade()
   //   Log.d(response)
   // }
+
+  useEffect(() => {
+    Http.getInstance()
+      .requestWaveVersion()
+      .then(response => {
+       Log.d(response)
+      })
+      .catch(error => {
+        Log.e(error)
+      })
+  }, [])
 
   return (
     <div className="down-app-dialog">

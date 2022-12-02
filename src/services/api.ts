@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-13 16:06:08
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-30 20:40:11
- * @FilePath: /wave-app-website/src/services/api.ts
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-12-02 20:54:51
+ * @FilePath: /wave-app-webiste/src/services/api.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import { API_VERSION } from 'constants/constant'
@@ -72,4 +72,7 @@ export const Api = {
 
   // message
   message: 'message/sessions/detail/',
+
+  // wave app down
+  waveVersion: 'common/version/latest',
 }

@@ -408,6 +408,11 @@ class Http {
     let params = {}
     return _post(Api.walletOptions, params) as Promise<WalletOptions>
   }
+
+  requestWaveVersion(): Promise<any> {
+    let params = {}
+    return _post(Api.waveVersion, params) as Promise<any>
+  }
 }
 
 export default Http
