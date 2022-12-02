@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 19:54:29
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 00:04:33
+ * @LastEditTime: 2022-12-02 11:28:20
  * @FilePath: /wave-app-webiste/src/components/dialog/WalletHistoryDialog.tsx
  */
 
@@ -14,8 +14,8 @@ import { useTranslation } from 'react-i18next'
 export default function WalletHistoryDialog(props) {
   const { t } = useTranslation()
 
-  // const {filterVal,setFilterVal} = props
-  const [filterVal, setFilterVal] = useState('')
+  const {filterVal,setFilterVal} = props
+  // const [filterVal, setFilterVal] = useState('')
   // let deVal = <>{t('ALL')}</>
 
   // const [filterVal, setFilterVal] = useState('');
