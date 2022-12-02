@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-21 11:55:31
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-25 14:06:49
+ * @LastEditTime: 2022-12-02 20:37:34
  * @FilePath: /wave-app-webiste/src/components/header/LoginComponent.tsx
  */
 import { Menu } from '@headlessui/react'
@@ -74,7 +74,7 @@ export default function LoginComponent() {
               </div>
               <div className="settings">
                 <Link href="/settings" className="mt-4">
-                  <p>{t('SETTINGS')}</p>
+                  <p className='settings-itme'>{t('SETTINGS')}</p>
                 </Link>
                 <p
                   className="login-out"

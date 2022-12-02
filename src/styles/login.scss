@@ -24,12 +24,21 @@
       @apply mt-2 mb-2 rounded-md bg-green-800 bg-opacity-25 px-2 py-1 text-xs text-white;
     }
     .list {
-      @apply flex w-full flex-col items-start bg-white p-4 text-left;
+      @apply flex w-full flex-col items-start bg-white text-left py-4;
       .page {
         @apply w-full border-b-[1px] border-grayf3 pb-3;
+        p {
+          @apply px-4 hover:bg-greenf2;
+        }
       }
       .settings {
-        @apply pt-3;
+        @apply pt-3 w-full;
+        p {
+          @apply px-4;
+        }
+      }
+      .settings-itme {
+        @apply hover:bg-greenf2;
       }
       p {
         @apply w-full cursor-pointer py-2 text-left text-base text-gray3d;
