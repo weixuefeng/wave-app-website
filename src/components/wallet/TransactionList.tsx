@@ -1,18 +1,13 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 17:13:45
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-12-02 12:01:38
- * @FilePath: /wave-app-website/src/components/wallet/TransactionList.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-12-02 14:24:35
+ * @FilePath: /wave-app-webiste/src/components/wallet/TransactionList.tsx
  */
 import { WalletTransaction } from 'model/wallet'
-import React, { useRef } from 'react'
-import Http from 'services/http'
-import EmptyComponent from 'components/layout/EmptyComponent'
-import usePagination from 'hooks/usePagination'
-import LoadMoreComponent from 'components/layout/LoadMoreComponent'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
-import Log from 'utils/log'
 
 export function TransactionComponent(props) {
   const { t } = useTranslation()
@@ -52,30 +47,3 @@ export function TransactionComponent(props) {
     </div>
   )
 }
-
-// export function TransactionList() {
-//   const ref = useRef(null)
-
-//   const { hasMore, isLoading, currentPage, data, error } = usePagination<WalletTransaction>(ref, fetchData)
-
-//   function fetchData() {
-//     return Http.getInstance().getWalletTransaction(currentPage, 0)
-//   }
-
-//   if (!data?.length) {
-//     return <EmptyComponent />
-//   }
-
-//   return (
-//     <div className="list">
-//       <ul>
-//         {data?.map((item, index) => {
-//           return <TransactionComponent key={index} item={item} />
-//         })}
-//       </ul>
-//       <div ref={ref}>
-//         <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data} />
-//       </div>
-//     </div>
-//   )
-// }

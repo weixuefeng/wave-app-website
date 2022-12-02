@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:32:00
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-12-02 12:24:32
- * @FilePath: /wave-app-website/src/pages/wallet.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-12-02 13:44:21
+ * @FilePath: /wave-app-webiste/src/pages/wallet.tsx
  */
 import DialogComponent from 'components/common/DialogComponent'
 import WalletHistoryDialog from 'components/dialog/WalletHistoryDialog'
@@ -82,9 +82,9 @@ export default function Wallet(props) {
     return NormalLayoutComponent(<LoadingCompontent />, pageModel)
   }
 
-  if (!data?.length) {
-    return <EmptyComponent />
-  }
+  // if (!data?.length) {
+  //   return <EmptyComponent />
+  // }
 
   function content(props) {
     return (

@@ -807,6 +807,9 @@
       @apply absolute top-0 right-0 h-5 w-5 bg-wallet-active bg-contain;
     }
   }
+  .ant-radio-button-wrapper:not(:first-child)::before {
+    @apply right-0 left-auto;
+  }
   .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before {
     @apply bg-transparent;
   }

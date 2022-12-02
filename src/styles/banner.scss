@@ -1,6 +1,6 @@
 .banner {
   .swiper {
-    @apply h-[280px] w-full md:h-[480px];
+    @apply h-[240px] w-full md:h-[420px];
   }
 
   .swiper-img {
@@ -23,9 +23,9 @@
   .banner .swiper-pagination-bullets.swiper-pagination-horizontal,
   .swiper-pagination-custom,
   .banner .swiper-pagination-fraction {
-    @apply flex h-8 w-[8.5rem] items-center justify-between bg-black53;
-    border-radius: 398px 398px 398px 398px;
+    @apply flex h-8 w-[8.5rem] items-center justify-between bg-black53 rounded-[398px];
     opacity: 0.7;
+    backdrop-filter: blur(3px);
   }
 
   .swiper-pagination-bullet {

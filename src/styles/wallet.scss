@@ -55,7 +55,7 @@
       }
     }
     .list {
-      @apply mt-4 divide-y-2;
+      @apply mt-4;
       .history-item {
         @apply flex flex-col border-b-[1px] border-graye3 p-4;
         h3 {
