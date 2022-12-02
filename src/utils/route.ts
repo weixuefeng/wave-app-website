@@ -29,7 +29,12 @@ export function getAssetDetailPath(asset: Asset): string {
 export function getAssetDetailPathByTradeItem(asset: TradeItem): string {
   if (asset.type == TradeType.NFT) {
     return `/asset/${AssetPageType.NFT}/${asset.nft_id}`
-  } else if (asset.type == TradeType.MOVIE || asset.type == TradeType.SERIOS || asset.type == TradeType.MUSIC || asset.type == TradeType.TICKET) {
+  } else if (
+    asset.type == TradeType.MOVIE ||
+    asset.type == TradeType.SERIOS ||
+    asset.type == TradeType.MUSIC ||
+    asset.type == TradeType.TICKET
+  ) {
     return `/asset/${AssetPageType.EVT}/${asset.nft_id}`
   } else {
     return `/asset/${AssetPageType.NFT}/${asset.nft_id}`

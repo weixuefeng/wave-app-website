@@ -237,7 +237,7 @@ export default function NFTDetailComponent(props) {
       return (
         <div className="action w-[40%]">
           <button
-            className="primary black"
+            className="primary black mr-4"
             onClick={() => {
               showBuy()
             }}
@@ -287,7 +287,7 @@ export default function NFTDetailComponent(props) {
               </div>
             </Link>
             <div className="tr">
-              <p>{t('Owned by')}</p>
+              <p>{t('OWNED_BY')}</p>
               <Link href={`/user/${nftDetail.user.id}`}>
                 <p className="name cursor-pointer">{nftDetail.user.name}</p>
               </Link>

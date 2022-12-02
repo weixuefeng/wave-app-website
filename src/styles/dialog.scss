@@ -587,7 +587,10 @@
     }
 
     .code-box {
-      @apply mb-9;
+      @apply relative mb-9;
+      .error {
+        @apply absolute -bottom-6 left-0;
+      }
     }
 
     .label {

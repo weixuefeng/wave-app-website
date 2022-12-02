@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-01 16:13:11
+ * @LastEditTime: 2022-12-02 16:29:52
  * @FilePath: /wave-app-webiste/src/components/settings/passwordModal.tsx
  */
 import DialogComponent from 'components/common/DialogComponent'
@@ -17,15 +17,25 @@ import { useTranslation } from 'react-i18next'
 
 export default function PasswordModal(props) {
   const { t } = useTranslation()
-  let [isOpen, setIsOpen] = useState(false)
+  const dispatch = useAppDispatch()
+
   const currentUser = useAppSelector(selectUser) as UserInfo
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [emailCode, setEmailCode] = useState('')
+
   const [confirmLoading, setConfirmLoading] = useState(false)
-  const dispatch = useAppDispatch()
+  const [isOpen, setIsOpen] = useState(false)
+  const [isCode, setIsCode] = useState(false)
+  const [isPassord, setIsPassword] = useState(false)
+
   function closeModal() {
     setIsOpen(false)
+    setIsCode(false)
+    setIsPassword(false)
+    setEmailCode('')
+    setPassword('')
+    setConfirmPassword('')
   }
 
   function openModal() {
@@ -33,10 +43,14 @@ export default function PasswordModal(props) {
   }
 
   function requestUpdatePassword() {
-    //todo:// add password check
-    if (password != confirmPassword) {
-      alert('password not equals')
+    if (emailCode == '') {
+      return setIsCode(true)
     }
+
+    if (password != confirmPassword || password == '' || confirmPassword == '') {
+      return setIsPassword(true)
+    }
+
     setConfirmLoading(true)
     Http.getInstance()
       .requestUpdatePassword(emailCode, password)
@@ -48,9 +62,13 @@ export default function PasswordModal(props) {
         }
         newUser.payment_password_set = 1
         dispatch(updateUserInfo(newUser))
+        setIsCode(false)
+        setIsPassword(false)
       })
       .catch(error => {
         Log.e(error)
+        setIsCode(false)
+        setIsPassword(false)
       })
       .finally(() => {
         setConfirmLoading(false)
@@ -80,6 +98,7 @@ export default function PasswordModal(props) {
               }}
             />
             <SendVerifyCodeButton email={currentUser?.email} action={EmailAction.PAYMENT_PASSWORD} />
+            {isCode ? <p className="error">{t('PLEASE_FILL_CODE')}</p> : null}
           </div>
 
           <div className="password">
@@ -107,6 +126,8 @@ export default function PasswordModal(props) {
             />
             <img src="assets/image/icon_passworded.png" alt="passworded icon" />
           </div>
+
+          {isPassord ? <p className="error">{t('PASSWPORD_NOT_EQUALS')}</p> : null}
 
           <button className="primary black" disabled={confirmLoading} onClick={requestUpdatePassword}>
             <span>
