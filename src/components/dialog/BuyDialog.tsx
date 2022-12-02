@@ -24,7 +24,7 @@ export default function BuyDialog(props) {
       <p className="title">Buy</p>
       {/** asset info */}
       <div className="asset-info">
-        <div className='info-img'>
+        <div className="info-img">
           <img src={info.image} alt={info.name} />
         </div>
         <div>

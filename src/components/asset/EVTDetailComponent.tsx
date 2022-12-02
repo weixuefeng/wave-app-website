@@ -5,6 +5,7 @@ import BuySuccessfulDialog from 'components/dialog/BuySuccessfulDialog'
 import LoginDialog from 'components/dialog/LoginDialog'
 import MakeOfferDialog from 'components/dialog/MakeOfferDialog'
 import PasswordDialog from 'components/dialog/PasswordDialog'
+import PaymentPasswordDialog from 'components/dialog/PaymentPasswordDialog'
 import SellAssetDialog from 'components/dialog/SellAssetDialog'
 import LoadingCompontent from 'components/layout/LoadingCompontent'
 import { AssetSellStatus } from 'model/asset'
@@ -13,13 +14,12 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { selectUser } from 'reducer/userReducer'
+import { selectUser, updateUserInfo } from 'reducer/userReducer'
 import Http from 'services/http'
-import { useAppSelector } from 'store/store'
+import { useAppDispatch, useAppSelector } from 'store/store'
 import Log from 'utils/log'
 import ChainInfoComponent from './ChainInfoComponent'
 import PropertiesComponents from './PropertiesComponents'
-
 export default function EVTDetailComponent(props) {
   const { t } = useTranslation()
   const { id } = props
@@ -50,6 +50,29 @@ export default function EVTDetailComponent(props) {
   const [isBalance, setIsbalance] = useState(false)
   const [isOfferEndTime, setIsOfferEndTime] = useState(false)
 
+  // payment dialog
+  const dispatch = useAppDispatch()
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [emailCode, setEmailCode] = useState('')
+  const [confirmLoading, setConfirmLoading] = useState(false)
+  const [isPaymentOpen, setIsPaymentOpen] = useState(false)
+  const [isCode, setIsCode] = useState(false)
+  const [isPassord, setIsPassword] = useState(false)
+
+  function paymentCloseModal() {
+    setIsPaymentOpen(false)
+    setIsCode(false)
+    setIsPassword(false)
+    setEmailCode('')
+    setPassword('')
+    setConfirmPassword('')
+  }
+
+  function paymentOpenModal() {
+    setIsPaymentOpen(true)
+  }
+
   function closeLoginModal() {
     setIsLoginOpen(false)
   }
@@ -76,6 +99,37 @@ export default function EVTDetailComponent(props) {
 
   function closeBuySucceededModal() {
     setBuySucceeded(false)
+  }
+
+  function requestUpdatePassword() {
+    if (emailCode == '') {
+      return setIsCode(true)
+    }
+    if (password != confirmPassword || password == '' || confirmPassword == '') {
+      return setIsPassword(true)
+    }
+    setConfirmLoading(true)
+    Http.getInstance()
+      .requestUpdatePassword(emailCode, password)
+      .then(response => {
+        Log.d(response)
+        paymentCloseModal()
+        let newUser = {
+          ...currentUser,
+        }
+        newUser.payment_password_set = 1
+        dispatch(updateUserInfo(newUser))
+        setIsCode(false)
+        setIsPassword(false)
+      })
+      .catch(error => {
+        Log.e(error)
+        setIsCode(false)
+        setIsPassword(false)
+      })
+      .finally(() => {
+        setConfirmLoading(false)
+      })
   }
 
   function showPassword() {
@@ -145,7 +199,7 @@ export default function EVTDetailComponent(props) {
         setIsMakeOfferOpen(true)
         setIsOfferPasswordType(true)
       } else {
-        router.push('/settings')
+        setIsPaymentOpen(true)
       }
     } else {
       setIsLoginOpen(true)
@@ -161,7 +215,7 @@ export default function EVTDetailComponent(props) {
         setIsOfferPasswordType(false)
         setIsBuyOpen(true)
       } else {
-        router.push('/settings')
+        setIsPaymentOpen(true)
       }
     } else {
       setIsLoginOpen(true)
@@ -383,6 +437,19 @@ export default function EVTDetailComponent(props) {
       {/** login dialog */}
       <DialogComponent isOpen={isLoginOpen} closeModal={closeLoginModal}>
         <LoginDialog closeModal={closeLoginModal} />
+      </DialogComponent>
+
+      {/* payment dialog */}
+      <DialogComponent isOpen={isPaymentOpen} closeModal={paymentCloseModal}>
+        <PaymentPasswordDialog
+          setEmailCode={setEmailCode}
+          isCode={isCode}
+          setPassword={setPassword}
+          setConfirmPassword={setConfirmPassword}
+          isPassord={isPassord}
+          confirmLoading={confirmLoading}
+          requestUpdatePassword={requestUpdatePassword}
+        />
       </DialogComponent>
     </div>
   )

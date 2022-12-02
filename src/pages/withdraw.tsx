@@ -13,9 +13,10 @@ import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
 import { useTranslation } from 'react-i18next'
 import LoadingCompontent from 'components/layout/LoadingCompontent'
 import Link from 'next/link'
-import { useAppSelector } from 'store/store'
+import { useAppDispatch, useAppSelector } from 'store/store'
 import { UserInfo } from 'model/user'
-import { selectUser } from 'reducer/userReducer'
+import { selectUser, updateUserInfo } from 'reducer/userReducer'
+import PaymentPasswordDialog from 'components/dialog/PaymentPasswordDialog'
 
 export default function Withdraw() {
   let pageModel = new PageModel('Withdraw', 'WAVE', '')
@@ -33,6 +34,61 @@ export default function Withdraw() {
   const [isAddress, setIsAddress] = useState(false)
 
   const [isPassError, setIsPassError] = useState(false)
+
+  // payment dialog
+  const dispatch = useAppDispatch()
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [emailCode, setEmailCode] = useState('')
+
+  const [confirmLoading, setConfirmLoading] = useState(false)
+  const [isPaymentOpen, setIsPaymentOpen] = useState(false)
+  const [isCode, setIsCode] = useState(false)
+  const [isPassord, setIsPassword] = useState(false)
+
+  function paymentCloseModal() {
+    setIsPaymentOpen(false)
+    setIsCode(false)
+    setIsPassword(false)
+    setEmailCode('')
+    setPassword('')
+    setConfirmPassword('')
+  }
+
+  function paymentOpenModal() {
+    setIsPaymentOpen(true)
+  }
+
+  function requestUpdatePassword() {
+    if (emailCode == '') {
+      return setIsCode(true)
+    }
+    if (password != confirmPassword || password == '' || confirmPassword == '') {
+      return setIsPassword(true)
+    }
+    setConfirmLoading(true)
+    Http.getInstance()
+      .requestUpdatePassword(emailCode, password)
+      .then(response => {
+        Log.d(response)
+        paymentCloseModal()
+        let newUser = {
+          ...currentUser,
+        }
+        newUser.payment_password_set = 1
+        dispatch(updateUserInfo(newUser))
+        setIsCode(false)
+        setIsPassword(false)
+      })
+      .catch(error => {
+        Log.e(error)
+        setIsCode(false)
+        setIsPassword(false)
+      })
+      .finally(() => {
+        setConfirmLoading(false)
+      })
+  }
 
   function closePasswordModal() {
     setIsPasswordOpen(false)
@@ -52,7 +108,7 @@ export default function Withdraw() {
       if (currentUser.payment_password_set == 1) {
         setIsPasswordOpen(true)
       } else {
-        router.push('/settings')
+        setIsPaymentOpen(true)
       }
     }
   }
@@ -200,6 +256,19 @@ export default function Withdraw() {
             onCancel={() => closePasswordModal()}
             onConfirm={onConfirmPassword}
             isPassError={isPassError}
+          />
+        </DialogComponent>
+
+        {/* payment dialog */}
+        <DialogComponent isOpen={isPaymentOpen} closeModal={paymentCloseModal}>
+          <PaymentPasswordDialog
+            setEmailCode={setEmailCode}
+            isCode={isCode}
+            setPassword={setPassword}
+            setConfirmPassword={setConfirmPassword}
+            isPassord={isPassord}
+            confirmLoading={confirmLoading}
+            requestUpdatePassword={requestUpdatePassword}
           />
         </DialogComponent>
       </div>

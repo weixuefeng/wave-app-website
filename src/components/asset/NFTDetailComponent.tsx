@@ -9,8 +9,8 @@ import BuyDialog from 'components/dialog/BuyDialog'
 import MakeOfferDialog from 'components/dialog/MakeOfferDialog'
 import PasswordDialog from 'components/dialog/PasswordDialog'
 import { AssetSellStatus } from 'model/asset'
-import { useAppSelector } from 'store/store'
-import { selectUser } from 'reducer/userReducer'
+import { useAppDispatch, useAppSelector } from 'store/store'
+import { selectUser, updateUserInfo } from 'reducer/userReducer'
 import SellAssetDialog from 'components/dialog/SellAssetDialog'
 import Log from 'utils/log'
 import { loadGetInitialProps } from 'next/dist/shared/lib/utils'
@@ -22,6 +22,7 @@ import { useTranslation } from 'react-i18next'
 import LoadingCompontent from 'components/layout/LoadingCompontent'
 import { UserInfo } from 'model/user'
 import { useRouter } from 'next/router'
+import PaymentPasswordDialog from 'components/dialog/PaymentPasswordDialog'
 
 export default function NFTDetailComponent(props) {
   const { t } = useTranslation()
@@ -52,6 +53,17 @@ export default function NFTDetailComponent(props) {
 
   const [isBidSucceeded, setBidSucceeded] = useState(false)
   const [isBuySucceeded, setBuySucceeded] = useState(false)
+
+  // payment dialog
+  const dispatch = useAppDispatch()
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [emailCode, setEmailCode] = useState('')
+
+  const [confirmLoading, setConfirmLoading] = useState(false)
+  const [isPaymentOpen, setIsPaymentOpen] = useState(false)
+  const [isCode, setIsCode] = useState(false)
+  const [isPassord, setIsPassword] = useState(false)
 
   function closeLoginModal() {
     setIsLoginOpen(false)
@@ -86,6 +98,51 @@ export default function NFTDetailComponent(props) {
     closeBuyModal()
     closeSellAssetModal()
     setIsPasswordOpen(true)
+  }
+
+  // payment dialog
+  function paymentCloseModal() {
+    setIsPaymentOpen(false)
+    setIsCode(false)
+    setIsPassword(false)
+    setEmailCode('')
+    setPassword('')
+    setConfirmPassword('')
+  }
+
+  function paymentOpenModal() {
+    setIsPaymentOpen(true)
+  }
+
+  function requestUpdatePassword() {
+    if (emailCode == '') {
+      return setIsCode(true)
+    }
+    if (password != confirmPassword || password == '' || confirmPassword == '') {
+      return setIsPassword(true)
+    }
+    setConfirmLoading(true)
+    Http.getInstance()
+      .requestUpdatePassword(emailCode, password)
+      .then(response => {
+        Log.d(response)
+        paymentCloseModal()
+        let newUser = {
+          ...currentUser,
+        }
+        newUser.payment_password_set = 1
+        dispatch(updateUserInfo(newUser))
+        setIsCode(false)
+        setIsPassword(false)
+      })
+      .catch(error => {
+        Log.e(error)
+        setIsCode(false)
+        setIsPassword(false)
+      })
+      .finally(() => {
+        setConfirmLoading(false)
+      })
   }
 
   function onConfirmPassword(value) {
@@ -173,7 +230,7 @@ export default function NFTDetailComponent(props) {
         setIsMakeOfferOpen(true)
         setIsOfferPasswordType(true)
       } else {
-        router.push('/settings')
+        setIsPaymentOpen(true)
       }
     } else {
       setIsLoginOpen(true)
@@ -189,7 +246,7 @@ export default function NFTDetailComponent(props) {
         setIsOfferPasswordType(false)
         setIsBuyOpen(true)
       } else {
-        router.push('/settings')
+        setIsPaymentOpen(true)
       }
     } else {
       setIsLoginOpen(true)
@@ -396,6 +453,19 @@ export default function NFTDetailComponent(props) {
       {/** login dialog */}
       <DialogComponent isOpen={isLoginOpen} closeModal={closeLoginModal}>
         <LoginDialog closeModal={closeLoginModal} />
+      </DialogComponent>
+
+      {/* payment dialog */}
+      <DialogComponent isOpen={isPaymentOpen} closeModal={paymentCloseModal}>
+        <PaymentPasswordDialog
+          setEmailCode={setEmailCode}
+          isCode={isCode}
+          setPassword={setPassword}
+          setConfirmPassword={setConfirmPassword}
+          isPassord={isPassord}
+          confirmLoading={confirmLoading}
+          requestUpdatePassword={requestUpdatePassword}
+        />
       </DialogComponent>
     </div>
   )

@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-09-21 10:43:33
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-01 16:03:52
+ * @LastEditTime: 2022-12-02 19:36:07
  * @FilePath: /wave-app-webiste/src/pages/blindbox/[id].tsx
  */
 
@@ -21,10 +21,11 @@ import BuyBlindBoxDialog from 'components/dialog/BuyBlindBoxDialog'
 import PasswordDialog from 'components/dialog/PasswordDialog'
 import BuySuccessfulDialog from 'components/dialog/BuySuccessfulDialog'
 import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
-import { useAppSelector } from 'store/store'
+import { useAppDispatch, useAppSelector } from 'store/store'
 import { UserInfo } from 'model/user'
-import { selectUser } from 'reducer/userReducer'
+import { selectUser, updateUserInfo } from 'reducer/userReducer'
 import LoginDialog from 'components/dialog/LoginDialog'
+import PaymentPasswordDialog from 'components/dialog/PaymentPasswordDialog'
 
 export default Home
 
@@ -61,6 +62,61 @@ function Main(props) {
 
   // login dialog
   const [isLoginOpen, setIsLoginOpen] = useState(false)
+
+  // payment dialog
+  const dispatch = useAppDispatch()
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [emailCode, setEmailCode] = useState('')
+
+  const [confirmLoading, setConfirmLoading] = useState(false)
+  const [isPaymentOpen, setIsPaymentOpen] = useState(false)
+  const [isCode, setIsCode] = useState(false)
+  const [isPassord, setIsPassword] = useState(false)
+
+  function paymentCloseModal() {
+    setIsPaymentOpen(false)
+    setIsCode(false)
+    setIsPassword(false)
+    setEmailCode('')
+    setPassword('')
+    setConfirmPassword('')
+  }
+
+  function paymentOpenModal() {
+    setIsPaymentOpen(true)
+  }
+
+  function requestUpdatePassword() {
+    if (emailCode == '') {
+      return setIsCode(true)
+    }
+    if (password != confirmPassword || password == '' || confirmPassword == '') {
+      return setIsPassword(true)
+    }
+    setConfirmLoading(true)
+    Http.getInstance()
+      .requestUpdatePassword(emailCode, password)
+      .then(response => {
+        Log.d(response)
+        paymentCloseModal()
+        let newUser = {
+          ...currentUser,
+        }
+        newUser.payment_password_set = 1
+        dispatch(updateUserInfo(newUser))
+        setIsCode(false)
+        setIsPassword(false)
+      })
+      .catch(error => {
+        Log.e(error)
+        setIsCode(false)
+        setIsPassword(false)
+      })
+      .finally(() => {
+        setConfirmLoading(false)
+      })
+  }
 
   useEffect(() => {
     fetchCollectionInfo()
@@ -225,7 +281,7 @@ function Main(props) {
         setBlindBoxProps(params)
         setIsBuyOpen(true)
       } else {
-        router.push('/settings')
+        setIsPaymentOpen(true)
       }
     } else {
       setIsLoginOpen(true)
@@ -374,6 +430,19 @@ function Main(props) {
         {/** login dialog */}
         <DialogComponent isOpen={isLoginOpen} closeModal={closeLoginModal}>
           <LoginDialog closeModal={closeLoginModal} />
+        </DialogComponent>
+
+        {/* payment dialog */}
+        <DialogComponent isOpen={isPaymentOpen} closeModal={paymentCloseModal}>
+          <PaymentPasswordDialog
+            setEmailCode={setEmailCode}
+            isCode={isCode}
+            setPassword={setPassword}
+            setConfirmPassword={setConfirmPassword}
+            isPassord={isPassord}
+            confirmLoading={confirmLoading}
+            requestUpdatePassword={requestUpdatePassword}
+          />
         </DialogComponent>
       </>
     )

@@ -157,7 +157,7 @@
   .asset-info {
     @apply flex flex-row py-4;
     .info-img {
-      @apply relative w-1/5 col-span-5 overflow-hidden  rounded-xl bg-grayf3 pb-[20%];
+      @apply relative col-span-5 w-1/5 overflow-hidden  rounded-xl bg-grayf3 pb-[20%];
       img {
         @apply absolute top-[50%] left-[50%] h-auto w-full rounded-xl rounded-t-lg object-cover;
         transform: translate(-50%, -50%);
