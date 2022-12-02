@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:35:19
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-01 22:54:10
- * @FilePath: /wave-app-webiste/src/pages/message.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-12-02 12:27:12
+ * @FilePath: /wave-app-website/src/pages/message.tsx
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
@@ -23,8 +23,8 @@ export default function Message() {
 
   const { hasMore, isLoading, currentPage, data, error } = usePagination<MessageList>(ref, fetchData)
 
-  function fetchData() {
-    return Http.getInstance().getMessageList(0, currentPage)
+  function fetchData(page) {
+    return Http.getInstance().getMessageList(0, page)
   }
 
   function content() {

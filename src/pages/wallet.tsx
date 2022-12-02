@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:32:00
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-01 22:18:29
- * @FilePath: /wave-app-webiste/src/pages/wallet.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-12-02 12:24:32
+ * @FilePath: /wave-app-website/src/pages/wallet.tsx
  */
 import DialogComponent from 'components/common/DialogComponent'
 import WalletHistoryDialog from 'components/dialog/WalletHistoryDialog'
@@ -31,11 +31,11 @@ export default function Wallet(props) {
   const [walletInfo, setWalletInfo] = useState<WalletInfo>()
   const [isOpen, setIsOpen] = useState(false)
   const [isOpenHistory, setIsOpenHistory] = useState(false)
-  const [filterVal, setFilterVal] = useState('')
+  const [filterVal, setFilterVal] = useState(0)
 
   const ref = useRef(null)
 
-  const { hasMore, isLoading, currentPage, data, error } = usePagination<WalletTransaction>(ref, fetchData)
+  const { hasMore, isLoading, currentPage, data, error, refreshData } = usePagination<WalletTransaction>(ref, fetchData)
 
   useEffect(() => {
     if (!currentUser) {
@@ -44,6 +44,10 @@ export default function Wallet(props) {
       getWalletInfo()
     }
   }, [currentUser])
+
+  useEffect(() => {
+    refreshData()
+  }, [filterVal])
 
   function closeModal() {
     setIsOpen(false)
@@ -59,8 +63,8 @@ export default function Wallet(props) {
     setIsOpenHistory(true)
   }
 
-  function fetchData() {
-    return Http.getInstance().getWalletTransaction(currentPage, 0)
+  function fetchData(page) {
+    return Http.getInstance().getWalletTransaction(page, filterVal)
   }
 
   function getWalletInfo() {
@@ -141,9 +145,7 @@ export default function Wallet(props) {
               <div className="list">
                 <ul>
                   {data?.map((item, index) => {
-                    return (
-                      <TransactionComponent key={index} item={item} filterVal={filterVal} setFilterVal={setFilterVal} />
-                    )
+                    return <TransactionComponent key={index} item={item} />
                   })}
                 </ul>
                 <div ref={ref}>
@@ -160,7 +162,12 @@ export default function Wallet(props) {
 
         {/* history */}
         <DialogComponent isOpen={isOpenHistory} closeModal={closeHistoryModal}>
-          <WalletHistoryDialog />
+          <WalletHistoryDialog
+            filterVal={filterVal}
+            setFilterVal={setFilterVal}
+            refreshData={refreshData}
+            closeModal={closeHistoryModal}
+          />
         </DialogComponent>
       </>
     )

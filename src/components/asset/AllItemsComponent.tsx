@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:46:58
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-01 23:17:59
- * @FilePath: /wave-app-webiste/src/components/asset/AllItemsComponent.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-12-02 12:25:03
+ * @FilePath: /wave-app-website/src/components/asset/AllItemsComponent.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
@@ -22,8 +22,8 @@ export default function AllItemsComponent(props) {
 
   const { hasMore, isLoading, currentPage, data, error } = usePagination<CollectionAllItem>(ref, fetchData)
 
-  function fetchData() {
-    return Http.getInstance().getNFTList(collectionId, currentPage)
+  function fetchData(page) {
+    return Http.getInstance().getNFTList(collectionId, page)
   }
 
   console.log('data', data)

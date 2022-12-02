@@ -31,3 +31,12 @@ export interface WalletTransaction {
   asset_name: string
   total: string
 }
+
+export interface Options {
+  label: string
+  value: number
+}
+
+export interface WalletOptions {
+  TRADE_TYPE: Options[]
+}

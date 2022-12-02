@@ -217,7 +217,7 @@
     @apply grid grid-cols-12 gap-10 pt-14;
   }
   .info-img {
-    @apply relative col-span-5 rounded-xl  pb-[100%] bg-grayf3 overflow-hidden;
+    @apply relative col-span-5 overflow-hidden  rounded-xl bg-grayf3 pb-[100%];
     .img {
       @apply absolute top-[50%] left-[50%] h-auto w-full rounded-xl rounded-t-lg object-cover;
       transform: translate(-50%, -50%);

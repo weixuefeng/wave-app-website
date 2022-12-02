@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 16:55:35
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 13:56:41
- * @FilePath: /wave-app-webiste/src/pages/user/[id].tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-12-02 12:28:11
+ * @FilePath: /wave-app-website/src/pages/user/[id].tsx
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
@@ -27,7 +27,7 @@ export default function UserPage() {
 
   const ref = useRef(null)
   const [userInfo, setUserInfo] = useState<UserInfo>()
-  const { hasMore, isLoading, currentPage, data, error } = usePagination<MyAsset>(ref, getUserAssetList)
+  const { hasMore, isLoading, currentPage, data, error } = usePagination<MyAsset>(ref, fetchData)
 
   useEffect(() => {
     getUserInfo()
@@ -51,8 +51,8 @@ export default function UserPage() {
       })
   }
 
-  function getUserAssetList() {
-    return Http.getInstance().getOtherAssetList(userId, currentPage)
+  function fetchData(page) {
+    return Http.getInstance().getOtherAssetList(userId, page)
   }
 
   if (!userInfo) {

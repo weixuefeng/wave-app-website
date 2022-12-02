@@ -19,8 +19,8 @@ export default function CollectionActivity(props) {
   const ref = useRef(null)
   const { hasMore, isLoading, currentPage, data, error } = usePagination<CollectionActivitiesItem>(ref, fetchData)
 
-  function fetchData() {
-    return Http.getInstance().getNFTActivity(collectionId, currentPage)
+  function fetchData(page) {
+    return Http.getInstance().getNFTActivity(collectionId, page)
   }
 
   return (

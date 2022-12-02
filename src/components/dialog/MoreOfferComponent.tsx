@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 22:35:08
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 11:03:57
- * @FilePath: /wave-app-webiste/src/components/dialog/MoreOfferComponent.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-12-02 12:26:56
+ * @FilePath: /wave-app-website/src/components/dialog/MoreOfferComponent.tsx
  */
 import LoadingCompontent from 'components/layout/LoadingCompontent'
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
@@ -51,8 +51,8 @@ export default function MoreOfferComponent(props) {
 
   const { hasMore, isLoading, currentPage, data, error } = usePagination<AssetMyOfferData>(ref, fetchData)
 
-  function fetchData() {
-    return Http.getInstance().requestNFTOrderOffers(nftId, currentPage)
+  function fetchData(page) {
+    return Http.getInstance().requestNFTOrderOffers(nftId, page)
   }
 
   if (!data) {

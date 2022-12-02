@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 20:26:47
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 21:51:46
- * @FilePath: /wave-app-webiste/src/pages/tickets.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-12-02 12:27:21
+ * @FilePath: /wave-app-website/src/pages/tickets.tsx
  */
 import DialogComponent from 'components/common/DialogComponent'
 import DownAppDialog from 'components/dialog/DownAppDialog'
@@ -27,8 +27,8 @@ export default function Tickets() {
 
   const { hasMore, isLoading, currentPage, data, error } = usePagination<TicketsData>(ref, fetchData)
 
-  function fetchData() {
-    return Http.getInstance().getEvtTickets(currentPage)
+  function fetchData(page) {
+    return Http.getInstance().getEvtTickets(page)
   }
 
   function closeModal() {

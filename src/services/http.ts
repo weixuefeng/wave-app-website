@@ -13,7 +13,7 @@ import { BaseCollectionInfo, CollectionAllItem } from 'model/collection'
 import { PAGE_SIZE } from 'constants/constant'
 import { LocalKey } from 'constants/key'
 import { updateUserInfo } from 'reducer/userReducer'
-import { WalletInfo, WalletTransaction } from 'model/wallet'
+import { WalletInfo, WalletOptions, WalletTransaction } from 'model/wallet'
 import { OfferType } from 'model/offer'
 import { CinemaList } from 'model/cinema'
 import { CollectionInfo } from 'model/collection_model'
@@ -404,9 +404,9 @@ class Http {
     return _post(Api.nftOrderOffers, params) as Promise<any>
   }
 
-  requestWalletOptions(): Promise<any> {
+  requestWalletOptions(): Promise<WalletOptions> {
     let params = {}
-    return _post(Api.walletOptions, params) as Promise<any>
+    return _post(Api.walletOptions, params) as Promise<WalletOptions>
   }
 }
 

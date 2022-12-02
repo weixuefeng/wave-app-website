@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:42:02
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 13:54:25
- * @FilePath: /wave-app-webiste/src/components/asset/MyOwn.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-12-02 12:26:10
+ * @FilePath: /wave-app-website/src/components/asset/MyOwn.tsx
  */
 
 import { AssetsMyOwnData, getTradeNameByType } from 'model/asset'
@@ -25,8 +25,8 @@ export default function Myown(props) {
 
   const { hasMore, isLoading, currentPage, data, error } = usePagination<AssetsMyOwnData>(ref, fetchData)
 
-  function fetchData() {
-    return Http.getInstance().getMyAssetList(currentUser.id, currentPage)
+  function fetchData(page) {
+    return Http.getInstance().getMyAssetList(currentUser.id, page)
   }
 
   return (

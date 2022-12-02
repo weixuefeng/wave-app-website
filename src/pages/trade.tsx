@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:32:00
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-28 17:32:55
- * @FilePath: /wave-app-webiste/src/pages/trade.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-12-02 12:27:29
+ * @FilePath: /wave-app-website/src/pages/trade.tsx
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
@@ -22,8 +22,8 @@ export default function TradePage(props) {
 
   const { hasMore, isLoading, currentPage, data, error } = usePagination<TradeItem>(ref, fetchData)
 
-  function fetchData() {
-    return Http.getInstance().getNFTTradeList(currentPage, null)
+  function fetchData(page) {
+    return Http.getInstance().getNFTTradeList(page, null)
   }
 
   function content() {

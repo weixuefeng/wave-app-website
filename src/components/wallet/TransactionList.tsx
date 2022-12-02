@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 17:13:45
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-01 17:41:34
- * @FilePath: /wave-app-webiste/src/components/wallet/TransactionList.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-12-02 12:01:38
+ * @FilePath: /wave-app-website/src/components/wallet/TransactionList.tsx
  */
 import { WalletTransaction } from 'model/wallet'
 import React, { useRef } from 'react'
@@ -20,7 +20,6 @@ export function TransactionComponent(props) {
   const info = item as WalletTransaction
 
   function walletPrice(price) {
-    Log.d(price)
     let numPrice = price.charAt(0)
     if (numPrice == '-') {
       return <p className="buy">{price} NEW</p>

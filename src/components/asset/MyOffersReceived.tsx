@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:44:56
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-24 16:58:40
- * @FilePath: /wave-app-webiste/src/components/asset/MyOffersReceived.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-12-02 12:25:57
+ * @FilePath: /wave-app-website/src/components/asset/MyOffersReceived.tsx
  */
 import DialogComponent from 'components/common/DialogComponent'
 import MoreOfferComponent from 'components/dialog/MoreOfferComponent'
@@ -31,8 +31,8 @@ export default function MyOffersReceived(props) {
   const [isOpen, setIsOpen] = useState(false)
   const [isAcceptOpen, setIsAcceptOpen] = useState(false)
 
-  function fetchData() {
-    return Http.getInstance().getOrderOffer(currentUser.id, currentPage, OfferType.RECEIVED)
+  function fetchData(page) {
+    return Http.getInstance().getOrderOffer(currentUser.id, page, OfferType.RECEIVED)
   }
 
   function closeModal() {

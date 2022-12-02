@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-17 18:32:09
  * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-11-28 13:44:26
+ * @LastEditTime: 2022-12-02 12:24:03
  * @FilePath: /wave-app-website/src/hooks/usePagination.ts
  */
 import { Pagination } from 'model/base'
@@ -13,7 +13,7 @@ import { useAppSelector } from 'store/store'
 import { isInViewPort } from 'utils/functions'
 import Log from 'utils/log'
 
-type LoadPaginationData<M> = () => Promise<Pagination<M>>
+type LoadPaginationData<M> = (page: number | null) => Promise<Pagination<M>>
 
 export default function usePagination<T>(ref: React.MutableRefObject<any>, loadPaginationData: LoadPaginationData<T>) {
   const currentUser = useAppSelector(selectUser) as UserInfo
@@ -46,7 +46,7 @@ export default function usePagination<T>(ref: React.MutableRefObject<any>, loadP
   async function loadData(page) {
     try {
       setIsLoading(true)
-      var response = await loadPaginationData()
+      var response = await loadPaginationData(page)
       if (page == 1) {
         // first page data
         if (response.data && response.data.length > 0) {

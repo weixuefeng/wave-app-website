@@ -788,7 +788,7 @@
     @apply grid;
   }
   .ant-radio-button-wrapper {
-    @apply  h-11 border-none py-2 text-base text-gray333;
+    @apply h-11 border-none py-2 text-base text-gray333;
     font-family: 'AvenirNext-DemiBold';
   }
   .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
@@ -801,7 +801,7 @@
     box-shadow: 0 0 0 0px rgb(24 144 255 / 12%);
   }
   .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
-    @apply text-green2d relative;
+    @apply relative text-green2d;
     &::before {
       content: '';
       @apply absolute top-0 right-0 h-5 w-5 bg-wallet-active bg-contain;

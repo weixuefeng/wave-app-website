@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:43:46
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 13:55:52
- * @FilePath: /wave-app-webiste/src/components/asset/MyListings.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-12-02 12:25:20
+ * @FilePath: /wave-app-website/src/components/asset/MyListings.tsx
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import usePagination from 'hooks/usePagination'
@@ -25,8 +25,8 @@ export default function Mylistings(props) {
 
   const { hasMore, isLoading, currentPage, data, error } = usePagination<AssetsOrderOnSaleData>(ref, fetchData)
 
-  function fetchData() {
-    return Http.getInstance().getOrderOnSale(currentUser.id, currentPage)
+  function fetchData(page) {
+    return Http.getInstance().getOrderOnSale(currentUser.id, page)
   }
 
   return (

@@ -204,5 +204,5 @@ export const enTransaction = {
   NOTIFICATION: 'Notification',
   ENCRYPTED: 'Encrypted',
   VARIABLE: 'Variable',
-  OWNED_BY:'Owned by',
+  OWNED_BY: 'Owned by',
 }
