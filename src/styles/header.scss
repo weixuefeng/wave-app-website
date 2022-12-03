@@ -59,7 +59,7 @@
 }
 
 .header-mobile-box {
-  @apply block bg-white md:hidden;
+  @apply block bg-white pr-4 md:hidden;
 }
 .header-mobile {
   @apply relative flex h-[3.75rem] items-center border-b-[1px] border-grayf3;
@@ -68,6 +68,9 @@
   }
   .logo {
     @apply mx-auto w-28 cursor-pointer;
+  }
+  .avatat {
+    @apply h-[1.875rem] w-[1.875rem] cursor-pointer rounded-full;
   }
 }
 
@@ -79,6 +82,7 @@
   .item-list {
     @apply w-full cursor-pointer p-4;
     .trade-info,
+    .list-me,
     .list-language {
       @apply flex w-full items-center justify-between;
     }
@@ -96,6 +100,16 @@
     img {
       @apply mr-2 h-[1.565rem] w-[1.565rem];
     }
+    .pic {
+      @apply h-auto w-6;
+    }
+    .page {
+      @apply pt-4;
+      p {
+        @apply w-full py-2 pl-6 font-normal;
+        font-family: 'AvenirNext-DemiBold';
+      }
+    }
 
     .language-item {
       @apply pt-4;
@@ -104,7 +118,8 @@
       }
     }
   }
-  .login {
+  .login,
+  .login-out {
     @apply fixed bottom-[3.125rem] left-0 w-full;
     span {
       @apply block h-[3.125rem] w-[92%] font-normal leading-[3.125rem];

@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-15 12:51:57
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-03 23:43:18
+ * @LastEditTime: 2022-12-04 00:29:21
  * @FilePath: /wave-app-webiste/src/components/header/HeaderMobileComponent.tsx
  */
 import React, { Fragment, useEffect, useState } from 'react'
@@ -10,13 +10,16 @@ import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 import { Dialog, Transition } from '@headlessui/react'
 import { languageTitle } from 'constants/key'
-import LoginComponent from './LoginComponent'
 import DialogComponent from 'components/common/DialogComponent'
 import LoginDialog from 'components/dialog/LoginDialog'
+import { selectUser, updateUserInfo } from 'reducer/userReducer'
+import { useAppDispatch, useAppSelector } from 'store/store'
 
 export default function HeaderMobileComponent(props) {
   let { i18n } = useTranslation()
   const { t } = useTranslation()
+  const dispatch = useAppDispatch()
+  const currentUser = useAppSelector(selectUser)
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
 
   const SiteNavMenu = props => {
@@ -27,62 +30,165 @@ export default function HeaderMobileComponent(props) {
 
     function openModal() {
       setIsOpen(true)
-      console.log('99999')
     }
-    return (
-      // no loading
-      <>
-        <div className="item" onClick={() => setMobileSidebarOpen(false)}>
-          <div className="item-list">
-            <Link href="/trade">
-              <a className="trade-info">
+
+    if (currentUser == null) {
+      return (
+        // no login
+        <>
+          <div className="item" onClick={() => setMobileSidebarOpen(false)}>
+            <div className="item-list">
+              <Link href="/trade">
+                <a className="trade-info">
+                  <p>
+                    <img src="/assets/image/icon_trade.png" alt="trade" />
+                    <span>
+                      <>{t('TRADE')}</>
+                    </span>
+                  </p>
+                  <img src="/assets/image/icon_header_arrow.png" alt="arrow" />
+                </a>
+              </Link>
+            </div>
+            <div className="item-list">
+              <div className="list-language">
                 <p>
-                  <img src="/assets/image/icon_trade.png" alt="trade" />
-                  <span>
-                    <>{t('TRADE')}</>
-                  </span>
+                  <img src="/assets/image/icon_language.png" alt="language" />
+                  {t('LANGUAGE')}
                 </p>
-                <img src="/assets/image/icon_header_arrow.png" alt="arrow" />
-              </a>
-            </Link>
-          </div>
-          <div className="item-list">
-            <div className="list-language">
-              <p>
-                <img src="/assets/image/icon_language.png" alt="language" />
-                {t('LANGUAGE')}
-              </p>
-              <p>
-                <span className="language">{i18n.language == 'en' ? 'en' : 'zh'}</span>
-                <img src="/assets/image/icon_header_arrow.png" alt="arrow" />
-              </p>
-            </div>
-            <div className="language-item">
-              {languageTitle.map((item, index) => {
-                return (
-                  <span
-                    key={index}
-                    onClick={() => {
-                      i18n.changeLanguage(item.language)
-                    }}
-                    className={i18n.language == item.language ? 'active' : ''}
-                  >
-                    {item.title}
-                  </span>
-                )
-              })}
+                <p>
+                  <span className="language">{i18n.language == 'en' ? 'en' : 'zh'}</span>
+                  <img src="/assets/image/icon_header_arrow.png" alt="arrow" />
+                </p>
+              </div>
+              <div className="language-item">
+                {languageTitle.map((item, index) => {
+                  return (
+                    <span
+                      key={index}
+                      onClick={() => {
+                        i18n.changeLanguage(item.language)
+                      }}
+                      className={i18n.language == item.language ? 'active' : ''}
+                    >
+                      {item.title}
+                    </span>
+                  )
+                })}
+              </div>
             </div>
           </div>
+          <div onClick={openModal} className="login">
+            <span>{t('LOGIMN_SIGN_UP')}</span>
+          </div>
+          {/* login */}
+          <DialogComponent isOpen={isOpen} closeModal={closeModal}>
+            <LoginDialog closeModal={closeModal} />
+          </DialogComponent>
+        </>
+      )
+    } else {
+      return (
+        // login
+        <>
+          <div className="item" onClick={() => setMobileSidebarOpen(false)}>
+            <div className="item-list">
+              <Link href="/trade">
+                <a className="trade-info">
+                  <p>
+                    <img src="/assets/image/icon_trade.png" alt="trade" />
+                    <span>
+                      <>{t('TRADE')}</>
+                    </span>
+                  </p>
+                  <img className="pic" src="/assets/image/icon_header_arrow.png" alt="arrow" />
+                </a>
+              </Link>
+            </div>
+
+            <div className="item-list">
+              <div className="list-me">
+                <p>
+                  <img src="/assets/image/icon_me.png" alt="me" />
+                  {t('ME')}
+                </p>
+                <img className="pic" src="/assets/image/icon_header_arrow.png" alt="arrow" />
+              </div>
+              <div className="page">
+                <Link href="/tickets">
+                  <p>{t('TICKETS')}</p>
+                </Link>
+                <Link href="/wallet">
+                  <p>{t('WALLET')}</p>
+                </Link>
+                <Link href="/assets">
+                  <p>{t('ASSETS')}</p>
+                </Link>
+                <Link href="/cinema">
+                  <p>{t('MY_CINEMA')}</p>
+                </Link>
+              </div>
+            </div>
+            <div className="item-list">
+              <div className="list-language">
+                <p>
+                  <img src="/assets/image/icon_language.png" alt="language" />
+                  {t('LANGUAGE')}
+                </p>
+                <p>
+                  <span className="language">{i18n.language == 'en' ? 'en' : 'zh'}</span>
+                  <img className="pic" src="/assets/image/icon_header_arrow.png" alt="arrow" />
+                </p>
+              </div>
+              <div className="language-item">
+                {languageTitle.map((item, index) => {
+                  return (
+                    <span
+                      key={index}
+                      onClick={() => {
+                        i18n.changeLanguage(item.language)
+                      }}
+                      className={i18n.language == item.language ? 'active' : ''}
+                    >
+                      {item.title}
+                    </span>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
+          <div
+            className="login-out"
+            onClick={() => {
+              dispatch(updateUserInfo(null))
+              localStorage.clear()
+            }}
+          >
+            <span>{t('LOGOUT')}</span>
+          </div>
+        </>
+      )
+    }
+  }
+
+  function avatatImg() {
+    if (currentUser !== null) {
+      return (
+        <div className="avatat">
+          <Link href="/settings">
+            <img
+              className="rounded-[50%]"
+              src={
+                currentUser?.avatar == undefined || currentUser?.avatar == ''
+                  ? '/assets/image/icon_avata_h5.png'
+                  : currentUser?.avatar
+              }
+              alt="avatar"
+            />
+          </Link>
         </div>
-        <div onClick={openModal} className="login">
-          <span>{t('LOGIMN_SIGN_UP')}</span>
-        </div>
-        {/* login */}
-        <DialogComponent isOpen={isOpen} closeModal={closeModal}>
-          <LoginDialog closeModal={closeModal} />
-        </DialogComponent>
-      </>
-    )
+      )
+    }
   }
 
   return (
@@ -98,6 +204,7 @@ export default function HeaderMobileComponent(props) {
             </div>
           </Link>
         </div>
+        {avatatImg()}
       </div>
       <Transition.Root show={mobileSidebarOpen} as={Fragment}>
         <Dialog

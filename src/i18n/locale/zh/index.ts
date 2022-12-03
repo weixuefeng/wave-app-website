@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-03 00:17:45
+ * @LastEditTime: 2022-12-03 23:53:23
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -211,4 +211,5 @@ export const zhTransaction = {
   SECONDS: '秒',
   PLEASE_DOWNLOAD_WAVE: '请下载Wave App查看',
   LANGUAGE: '语言',
+  ME: '我的',
 }
