@@ -104,4 +104,12 @@
       }
     }
   }
+  .login {
+    @apply fixed bottom-[3.125rem] left-0 w-full;
+    span {
+      @apply block h-[3.125rem] w-[92%] font-normal leading-[3.125rem];
+      @apply mx-[4%] cursor-pointer rounded-xl bg-gray333 text-center text-white;
+    }
+    font-family: 'AvenirNext-DemiBold';
+  }
 }
