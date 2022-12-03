@@ -216,5 +216,5 @@ export const enTransaction = {
   MINUTES: 'Minutes',
   SECONDS: 'Seconds',
   PLEASE_DOWNLOAD_WAVE: 'Please Download the Wave App to View',
-  LANGUAGE:'Language',
+  LANGUAGE: 'Language',
 }

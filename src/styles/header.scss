@@ -69,7 +69,6 @@
   .logo {
     @apply mx-auto w-28 cursor-pointer;
   }
-
 }
 
 .mobile-dialog {
@@ -78,14 +77,31 @@
     @apply pt-8;
   }
   .item-list {
-    @apply w-full flex justify-between items-center p-4;
-    a,p {
-      @apply flex text-gray333 font-normal text-lg w-full;
+    @apply w-full cursor-pointer p-4;
+    .trade-info,
+    .list-language {
+      @apply flex w-full items-center justify-between;
+    }
+    p,
+    a {
+      @apply text-lg font-normal text-gray333;
       font-family: 'AvenirNext-DemiBold';
     }
+    p {
+      @apply flex;
+      .language {
+        @apply text-lg text-gray99;
+      }
+    }
     img {
-      @apply w-[1.565rem] h-[1.565rem] mr-2;
+      @apply mr-2 h-[1.565rem] w-[1.565rem];
     }
 
+    .language-item {
+      @apply pt-4;
+      span {
+        @apply block py-2 pl-6 text-lg font-normal text-gray333;
+      }
+    }
   }
 }

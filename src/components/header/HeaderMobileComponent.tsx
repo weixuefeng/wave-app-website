@@ -2,13 +2,14 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-15 12:51:57
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-03 00:32:21
+ * @LastEditTime: 2022-12-03 23:17:56
  * @FilePath: /wave-app-webiste/src/components/header/HeaderMobileComponent.tsx
  */
 import React, { Fragment, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 import { Dialog, Transition } from '@headlessui/react'
+import { languageTitle } from 'constants/key'
 
 export default function HeaderMobileComponent(props) {
   let { i18n } = useTranslation()
@@ -17,21 +18,47 @@ export default function HeaderMobileComponent(props) {
 
   const SiteNavMenu = props => {
     return (
-      <div className='item'>
-        <div className='item-list'>
-          <Link href='/trade'>
-            <a>
-              <img src="/assets/image/icon_trade.png" alt="trade" />
-              <span>{t('TRADE')}</span>
+      // no loading
+      <div className="item">
+        <div className="item-list">
+          <Link href="/trade">
+            <a className="trade-info">
+              <p>
+                <img src="/assets/image/icon_trade.png" alt="trade" />
+                <span>
+                  <>{t('TRADE')}</>
+                </span>
+              </p>
+              <img src="/assets/image/icon_header_arrow.png" alt="arrow" />
             </a>
           </Link>
         </div>
-        <div className='item-list'>
-          <p>
-            <img src="/assets/image/icon_language.png" alt="language" />
-            {t('LANGUAGE')}
-          </p>
-          <p>zh</p>
+        <div className="item-list">
+          <div className="list-language">
+            <p>
+              <img src="/assets/image/icon_language.png" alt="language" />
+              {t('LANGUAGE')}
+            </p>
+            <p>
+              <span className="language">{i18n.language == 'en' ? 'en' : 'zh'}</span>
+              <img src="/assets/image/icon_header_arrow.png" alt="arrow" />
+            </p>
+          </div>
+          <div className="language-item">
+            {languageTitle.map((item, index) => {
+              return (
+                <span
+                  key={index}
+                  onClick={() => {
+                    i18n.changeLanguage(item.language)
+                  }}
+                  className={i18n.language == item.language ? 'active' : ''}
+                >
+                  {item.title}
+                </span>
+              )
+            })}
+          </div>
         </div>
       </div>
     )

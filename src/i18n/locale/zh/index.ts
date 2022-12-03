@@ -210,5 +210,5 @@ export const zhTransaction = {
   MINUTES: '分',
   SECONDS: '秒',
   PLEASE_DOWNLOAD_WAVE: '请下载Wave App查看',
-  LANGUAGE:'语言',
+  LANGUAGE: '语言',
 }
