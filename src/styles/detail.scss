@@ -1,6 +1,6 @@
 .evt-detail,
 .nft-detail {
-  @apply mt-10 flex flex-col justify-between p-4;
+  @apply mt-10 flex flex-col justify-between;
   .info {
     @apply grid grid-cols-1 md:grid-cols-3;
     .info-img {
@@ -114,7 +114,7 @@
   }
 }
 .nft-collection {
-  @apply mt-12 flex flex-col p-2;
+  @apply mt-6 flex flex-col px-4 md:mt-12 xl:px-0;
   .base-info {
     @apply grid grid-cols-6 gap-x-10;
     .info-img {
@@ -145,9 +145,9 @@
     }
   }
   .related-info {
-    @apply mt-14 flex flex-col;
+    @apply mt-7 flex flex-col md:mt-14;
     .tab-item {
-      @apply p-2 text-2xl;
+      @apply p-2 text-lg md:text-2xl;
       @apply ui-selected:border-b-4 ui-selected:border-black ui-selected:text-black;
       @apply ui-not-selected:text-gray-500;
     }
