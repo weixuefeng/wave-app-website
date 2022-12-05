@@ -213,8 +213,9 @@
 }
 
 .blindbox {
+  @apply px-4 xl:px-0;
   .blindbod-detail {
-    @apply grid grid-cols-12 gap-10 pt-14;
+    @apply grid-cols-12 gap-10 pt-14 md:grid;
   }
   .info-img {
     @apply relative col-span-5 overflow-hidden  rounded-xl bg-grayf3 pb-[100%];

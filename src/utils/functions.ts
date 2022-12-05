@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:32:00
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-29 17:12:50
+ * @LastEditTime: 2022-12-05 17:43:15
  * @FilePath: /wave-app-webiste/src/utils/functions.ts
  */
 import Log from './log'
@@ -40,7 +40,11 @@ export default async function copyContent(content: string) {
 }
 
 export function floorNum(num) {
-  return Math.floor(num * 100) / 100
+  if (num == '--') {
+    return '--'
+  } else {
+    return Math.floor(num * 100) / 100
+  }
 }
 
 export function isInViewPort(el) {
