@@ -1,7 +1,7 @@
 .tickets {
   @apply h-screen bg-grayf8 px-4 xl:px-0;
   .title {
-    @apply z-20 pb-8 text-[1.625rem] font-bold leading-6 text-gray333 md:text-4xl;
+    @apply z-20 pb-8 text-font26xl font-bold leading-6 text-gray333 md:text-4xl;
   }
   .tickets-item {
     @apply grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:grid-cols-4;

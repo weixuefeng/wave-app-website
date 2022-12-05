@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 19:56:59
+ * @LastEditTime: 2022-12-05 16:32:17
  * @FilePath: /wave-app-webiste/tailwind.config.js
  */
 module.exports = {
@@ -20,7 +20,8 @@ module.exports = {
         font40xl: ['2.55rem'],
         font22xl: ['1.375rem'],
         font32xl: ['2rem'],
-        font7: ['0.35rem']
+        font26xl: ['1.625rem'],
+        font7: ['0.35rem'],
       },
       colors: {
         whitef0: '#f0f0f0',
