@@ -1,6 +1,6 @@
 .evt-detail,
 .nft-detail {
-  @apply mt-10 flex flex-col justify-between;
+  @apply mt-10 flex flex-col justify-between px-4 xl:px-0;
   .info {
     @apply grid grid-cols-1 md:grid-cols-3;
     .info-img {
@@ -13,7 +13,7 @@
     .detail {
       @apply col-span-2 ml-2 mt-4 flex flex-col justify-start md:ml-8 md:mt-0;
       h2 {
-        @apply text-3xl font-medium;
+        @apply text-font26xl font-medium md:text-3xl;
       }
       .owner {
         @apply my-7 flex flex-row items-center justify-start;
@@ -49,7 +49,7 @@
         }
       }
       .action {
-        @apply mt-4 flex w-[40%] flex-row items-center justify-between;
+        @apply mt-4 flex flex-row items-center justify-between md:w-[40%];
         button.primary.outline.black {
           @apply border-black;
         }
@@ -94,7 +94,7 @@
 .evt-detail {
   .detail {
     h3 {
-      @apply mt-6 h-7 w-14 rounded-lg bg-green57 text-center leading-7 text-white;
+      @apply mt-2 h-7 w-14 rounded-lg bg-green57 text-center leading-7 text-white md:mt-6;
     }
     .licenes {
       @apply mt-10 w-1/2;

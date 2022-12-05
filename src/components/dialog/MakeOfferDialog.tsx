@@ -75,7 +75,7 @@ export default function MakeOfferDialog(props) {
           <img src={info.image} alt={info.name} />
         </div>
         <div>
-          <h3>{info.name.substring(0, info.name.indexOf('#'))}0000000</h3>
+          <h3>{info.name.substring(0, info.name.indexOf('#'))}</h3>
           <h3>{`#${info.name.lastIndexOf('#')}`}</h3>
         </div>
       </div>
