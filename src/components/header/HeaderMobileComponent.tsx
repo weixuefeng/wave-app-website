@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-15 12:51:57
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-04 00:29:21
+ * @LastEditTime: 2022-12-05 20:07:00
  * @FilePath: /wave-app-webiste/src/components/header/HeaderMobileComponent.tsx
  */
 import React, { Fragment, useEffect, useState } from 'react'
@@ -180,7 +180,7 @@ export default function HeaderMobileComponent(props) {
               className="rounded-[50%]"
               src={
                 currentUser?.avatar == undefined || currentUser?.avatar == ''
-                  ? '/assets/image/icon_avata_h5.png'
+                  ? '/assets/image/icon_avata.png'
                   : currentUser?.avatar
               }
               alt="avatar"
