@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:33:51
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 14:41:36
+ * @LastEditTime: 2022-12-05 14:48:38
  * @FilePath: /wave-app-webiste/src/components/trade/TradeComponent.tsx
  */
 import { t } from 'i18next'
@@ -39,6 +39,19 @@ export default function TradeComponent(props) {
 
   if (!item) {
     return <></>
+  }
+
+  function titleIndex(name) {
+    if (name.lastIndexOf('#') !== -1) {
+      return (
+        <h3>
+          {name.substring(0, item.name.indexOf('#'))}
+          <br className="black md:hidden" /># {name.lastIndexOf('#')}
+        </h3>
+      )
+    } else {
+      return <h3>{name}</h3>
+    }
   }
 
   return (

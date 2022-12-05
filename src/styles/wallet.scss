@@ -80,7 +80,7 @@
 }
 
 .bread {
-  @apply pb-10 text-gray99;
+  @apply pb-5 text-gray99 md:pb-10;
   a {
     @apply text-sm text-gray99;
   }

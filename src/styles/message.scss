@@ -1,23 +1,23 @@
 .message {
-  @apply min-h-screen px-4 pb-48 pt-3 xl:px-0;
+  @apply min-h-screen px-4 pt-3 md:pb-48 xl:px-0;
   .title {
-    @apply pt-12 text-[2.125rem] font-bold text-gray333;
+    @apply pt-7 text-[1.625rem] font-bold text-gray333 md:pt-12 md:text-[2.125rem];
   }
   .message-itme {
     @apply pb-10;
   }
   .item {
-    @apply grid-cols-12 border-b-[1px] border-graye7 py-11 md:grid;
+    @apply grid-cols-12 border-b-[1px] border-graye7 py-5 md:grid md:py-11;
     .date {
       @apply col-span-3 mr-2 mb-5 text-sm text-gray99 md:mb-0;
     }
     .content {
       @apply col-span-9;
       h2 {
-        @apply mb-4 text-xl text-gray333 md:mb-7 md:text-2xl;
+        @apply mb-4 text-base text-gray333 md:mb-7 md:text-2xl;
       }
       p {
-        @apply text-base leading-8 text-gray66;
+        @apply text-sm leading-8 text-gray66 md:text-base;
       }
     }
     &:last-child {

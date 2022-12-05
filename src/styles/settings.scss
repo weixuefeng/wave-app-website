@@ -1,15 +1,15 @@
 .settings-page {
   @apply min-h-screen bg-grayf8;
   .setting-list {
-    @apply px-4 pt-14 md:px-44;
+    @apply px-4 pt-7 md:px-44;
     h2 {
-      @apply pb-2 text-[2.125rem];
+      @apply pb-2 text-[1.625rem] md:text-[2.125rem];
     }
   }
   .itme {
     li {
-      @apply flex items-center justify-between border-b-[1px] border-grayd8 pt-7 pb-4;
-      @apply text-base text-gray3d;
+      @apply flex items-center justify-between border-b-[1px] border-grayd8 pt-4 pb-4 md:pt-7;
+      @apply text-sm text-gray3d md:text-base;
       .left {
         @apply mr-4 text-sm text-gray99;
       }
@@ -34,7 +34,7 @@
   .avatar-uploader {
     @apply relative pb-8;
     .avater-text {
-      @apply absolute top-[23px] left-0 h-14 w-14 rounded-[50%] bg-black text-center text-base leading-[3.5rem] text-white;
+      @apply absolute top-[23px] left-0 h-14 w-14 rounded-[50%] bg-black text-center text-sm leading-[3.5rem] text-white md:text-base;
       background: rgba(0, 0, 0, 0.6);
     }
   }

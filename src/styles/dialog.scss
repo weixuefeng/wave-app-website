@@ -3,7 +3,8 @@
 }
 
 .dialog-base {
-  @apply relative w-full max-w-[37rem] transform overflow-hidden rounded-2xl bg-white py-12 px-9 text-left align-middle shadow-xl transition-all;
+  @apply relative w-full max-w-[25rem] transform overflow-hidden rounded-2xl bg-white md:max-w-[37rem];
+  @apply py-7 px-5 text-left align-middle shadow-xl transition-all md:py-12 md:px-9;
 
   .close {
     @apply absolute top-0 right-0 m-4 h-5 w-5 cursor-pointer;
@@ -413,14 +414,13 @@
 
 .dialog-settings-name {
   h2 {
-    @apply text-2xl font-bold text-gray333;
+    @apply text-base font-bold text-gray333 md:text-2xl;
   }
-
   .nick-name {
-    @apply relative mt-10;
+    @apply relative mt-5 md:mt-10;
 
     input {
-      @apply w-full rounded-xl border-2 border-grayed bg-grayfb py-4 pl-11 pr-4;
+      @apply w-full rounded-xl border-2 border-grayed bg-grayfb py-2 pl-11 pr-4 md:py-4;
 
       &::input-placeholder {
         @apply text-grayc7;
@@ -444,7 +444,7 @@
     }
 
     img {
-      @apply absolute top-4 left-3 h-6 w-6;
+      @apply absolute top-2 left-3 h-6 w-6 md:top-4;
     }
   }
 
@@ -455,7 +455,7 @@
 
 .dialog-settings-email {
   h2 {
-    @apply mb-10 text-2xl font-bold text-gray333;
+    @apply mb-5 text-base font-bold text-gray333 md:mb-10 md:text-2xl;
   }
 
   .password-box {
@@ -464,7 +464,7 @@
       @apply relative;
 
       img {
-        @apply absolute top-[70%] left-4 -mt-3 h-6 w-6;
+        @apply absolute top-[73%] left-4 -mt-3 h-6 w-6 md:top-[70%];
       }
 
       input {
@@ -473,22 +473,22 @@
     }
 
     .email {
-      @apply mb-7;
+      @apply mb-4 md:mb-7;
       p {
         @apply mt-3 text-sm text-gray56;
       }
     }
 
     .code-box {
-      @apply mb-9;
+      @apply mb-5 md:mb-9;
     }
 
     .label {
-      @apply text-base font-normal text-black17;
+      @apply text-sm font-normal text-black17 md:text-base;
     }
 
     input {
-      @apply mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-gragfb;
+      @apply mt-3 h-10 w-full rounded-xl border-2 border-grayed bg-gragfb md:h-14;
 
       &::input-placeholder {
         @apply text-grayc7;
@@ -516,7 +516,7 @@
     }
 
     .send-code {
-      @apply absolute top-9 right-0 h-14 pr-5 text-sm leading-8 text-gray333;
+      @apply absolute top-8 right-0 h-10 pr-5 text-xs leading-8 text-gray333 md:top-9 md:h-14 md:text-sm;
       border-radius: 0 12px 12px 0;
 
       span {
@@ -562,7 +562,7 @@
 
 .dialog-settings-password {
   h2 {
-    @apply mb-10 text-2xl font-bold text-gray333;
+    @apply mb-5 text-base font-bold text-gray333 md:mb-10 md:text-2xl;
   }
 
   .password-box {
@@ -572,7 +572,7 @@
       @apply relative;
 
       img {
-        @apply absolute top-[70%] left-4 -mt-3 h-6 w-6;
+        @apply absolute top-[73%] left-4 -mt-3 h-6 w-6 md:top-[70%];
       }
 
       input {
@@ -582,7 +582,7 @@
 
     .password,
     .email {
-      @apply mb-7;
+      @apply mb-4 md:mb-7;
     }
 
     .emailed {
@@ -590,18 +590,18 @@
     }
 
     .code-box {
-      @apply relative mb-9;
+      @apply relative mb-4 md:mb-9;
       .error {
-        @apply absolute -bottom-6 left-0;
+        @apply absolute -bottom-4 left-0 md:-bottom-6;
       }
     }
 
     .label {
-      @apply text-base font-normal text-black17;
+      @apply text-sm font-normal text-black17 md:text-base;
     }
 
     input {
-      @apply mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-gragfb;
+      @apply mt-3 h-10 w-full rounded-xl border-2 border-grayed bg-gragfb md:h-14;
 
       &::input-placeholder {
         @apply text-grayc7;
@@ -629,7 +629,7 @@
     }
 
     .send-code {
-      @apply absolute top-9 right-0 h-14 cursor-pointer pr-5 text-sm leading-8 text-gray333;
+      @apply absolute top-8 right-0 h-10 cursor-pointer pr-5 text-xs leading-8 text-gray333 md:top-9 md:h-14 md:text-sm;
       border-radius: 0 12px 12px 0;
 
       span {
