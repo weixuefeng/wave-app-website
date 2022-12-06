@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-15 12:51:57
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-28 22:25:34
+ * @LastEditTime: 2022-12-06 11:38:03
  * @FilePath: /wave-app-webiste/src/components/header/HeaderPcComponent.tsx
  */
 import React, { useEffect, useState } from 'react'
@@ -47,7 +47,7 @@ export default function HeaderPcComponent(props) {
       return (
         <Link href="/message" passHref>
           <div className="massage-img">
-            <img src="/assets/image/icon_massage.png" alt="massage" />
+            <img src="/assets/image/icon_message.png" alt="massage" />
             <i></i>
           </div>
         </Link>
@@ -56,7 +56,7 @@ export default function HeaderPcComponent(props) {
       return (
         <div onClick={openModal}>
           <div className="massage-img">
-            <img src="/assets/image/icon_massage.png" alt="massage" />
+            <img src="/assets/image/icon_message.png" alt="massage" />
             <i></i>
           </div>
         </div>

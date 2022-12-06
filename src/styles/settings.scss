@@ -3,7 +3,7 @@
   .setting-list {
     @apply px-4 pt-7 md:px-44;
     h2 {
-      @apply pb-2 text-font26xl md:text-[2.125rem];
+      @apply pb-5 text-font26xl md:pb-7 md:text-[2.125rem];
     }
   }
   .itme {
@@ -32,9 +32,14 @@
     }
   }
   .avatar-uploader {
-    @apply relative pb-8;
+    @apply relative pb-4 md:pb-8;
+    .avater-img {
+      @apply absolute top-0 left-0 h-14 w-14;
+    }
     .avater-text {
-      @apply absolute top-[23px] left-0 h-14 w-14 rounded-[50%] bg-black text-center text-sm leading-[3.5rem] text-white md:text-base;
+      @apply absolute top-0 left-0 h-14 w-14 rounded-[50%];
+      @apply bg-black text-center text-sm text-white md:text-base;
+      line-height: 3.5rem !important;
       background: rgba(0, 0, 0, 0.6);
     }
   }

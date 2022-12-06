@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-15 12:51:57
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-05 20:07:00
+ * @LastEditTime: 2022-12-06 13:10:04
  * @FilePath: /wave-app-webiste/src/components/header/HeaderMobileComponent.tsx
  */
 import React, { Fragment, useEffect, useState } from 'react'
@@ -107,6 +107,20 @@ export default function HeaderMobileComponent(props) {
             </div>
 
             <div className="item-list">
+              <Link href="/message">
+                <a className="trade-info">
+                  <p>
+                    <img src="/assets/image/icon_message_h5.png" alt="message" />
+                    <span>
+                      <>{t('NOTIFICATION')}</>
+                    </span>
+                  </p>
+                  <img className="pic" src="/assets/image/icon_header_arrow.png" alt="arrow" />
+                </a>
+              </Link>
+            </div>
+
+            <div className="item-list">
               <div className="list-me">
                 <p>
                   <img src="/assets/image/icon_me.png" alt="me" />
@@ -132,11 +146,11 @@ export default function HeaderMobileComponent(props) {
             <div className="item-list">
               <div className="list-language">
                 <p>
-                  <img src="/assets/image/icon_language.png" alt="language" />
+                  <img src="/assets/image/icon_language_h5.png" alt="language" />
                   {t('LANGUAGE')}
                 </p>
                 <p>
-                  <span className="language">{i18n.language == 'en' ? 'en' : 'zh'}</span>
+                  {/* <span className="language">{i18n.language == 'en' ? 'en' : 'zh'}</span> */}
                   <img className="pic" src="/assets/image/icon_header_arrow.png" alt="arrow" />
                 </p>
               </div>
@@ -157,7 +171,7 @@ export default function HeaderMobileComponent(props) {
               </div>
             </div>
           </div>
-          <div
+          {/* <div
             className="login-out"
             onClick={() => {
               dispatch(updateUserInfo(null))
@@ -165,7 +179,7 @@ export default function HeaderMobileComponent(props) {
             }}
           >
             <span>{t('LOGOUT')}</span>
-          </div>
+          </div> */}
         </>
       )
     }

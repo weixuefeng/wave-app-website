@@ -114,12 +114,21 @@
     .language-item {
       @apply pt-4;
       span {
+        @apply relative;
+      }
+      .active {
+        @apply text-green57;
+        &::before {
+          content: '';
+          @apply absolute top-[14px] right-4 h-[0.875rem] w-[0.875rem] bg-language-active bg-cover;
+        }
+      }
+      span {
         @apply block py-2 pl-6 text-lg font-normal text-gray333;
       }
     }
   }
-  .login,
-  .login-out {
+  .login {
     @apply fixed bottom-[3.125rem] left-0 w-full;
     span {
       @apply block h-[3.125rem] w-[92%] font-normal leading-[3.125rem];
@@ -127,4 +136,12 @@
     }
     font-family: 'AvenirNext-DemiBold';
   }
+}
+.login-out {
+  @apply pt-20;
+  span {
+    @apply block h-[3.125rem] w-[92%] font-normal leading-[3.125rem];
+    @apply mx-[4%] cursor-pointer rounded-xl bg-gray333 text-center text-white;
+  }
+  font-family: 'AvenirNext-DemiBold';
 }

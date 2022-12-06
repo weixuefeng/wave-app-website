@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 15:00:09
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-30 12:51:07
+ * @LastEditTime: 2022-12-06 13:38:51
  * @FilePath: /wave-app-webiste/src/components/settings/avataUpload.tsx
  */
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
@@ -86,7 +86,7 @@ const AvataUpload: React.FC = () => {
   const uploadButton = (
     <div className="h-full">
       {loading ? <LoadingOutlined /> : <PlusOutlined />}
-      <div className="mx-auto h-14 w-14">{imgSrc()}</div>
+      <div className="avater-img">{imgSrc()}</div>
     </div>
   )
 
