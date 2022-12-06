@@ -670,14 +670,14 @@
 
 .down-app-dialog {
   h2 {
-    @apply w-full text-center text-2xl font-bold text-gray333;
+    @apply w-full text-center text-xl font-bold text-gray333 md:text-2xl;
   }
 
   .down-app {
-    @apply mt-12 flex items-center justify-between;
+    @apply mt-8 flex items-center justify-between md:mt-12;
 
     a {
-      @apply w-44;
+      @apply w-36 md:w-44;
     }
 
     .code {
