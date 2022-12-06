@@ -239,8 +239,9 @@ export default function EVTDetailComponent(props) {
     if (evtDetail.is_sell == AssetSellStatus.SELLING) {
       return (
         <div className="action">
+          {/* outline */}
           <button
-            className="primary ml-4 outline"
+            className="primary black ml-4"
             onClick={() => {
               cancelOrder()
             }}
@@ -253,7 +254,7 @@ export default function EVTDetailComponent(props) {
       return (
         <div className="action">
           <button
-            className="primary ml-4 outline"
+            className="primary black ml-4"
             onClick={() => {
               setIsSellAssetOpen(true)
             }}

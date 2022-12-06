@@ -112,7 +112,7 @@
     @apply grid grid-cols-1 gap-2 pb-14 sm:grid-cols-1 md:grid-cols-2 md:gap-9 lg:grid-cols-3;
   }
   .item {
-    @apply rounded-2xl bg-white px-2 pt-4 pb-3;
+    @apply mb-10 rounded-2xl bg-white px-2 pt-4 md:mb-0 md:pb-3;
   }
   .received-img {
     @apply grid grid-cols-3 pb-3;

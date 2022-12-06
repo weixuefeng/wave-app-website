@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:42:02
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-12-02 12:26:10
- * @FilePath: /wave-app-website/src/components/asset/MyOwn.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-12-06 16:23:10
+ * @FilePath: /wave-app-webiste/src/components/asset/MyOwn.tsx
  */
 
 import { AssetsMyOwnData, getTradeNameByType } from 'model/asset'
@@ -28,6 +28,8 @@ export default function Myown(props) {
   function fetchData(page) {
     return Http.getInstance().getMyAssetList(currentUser.id, page)
   }
+
+  console.log('datadata', data)
 
   return (
     <>
