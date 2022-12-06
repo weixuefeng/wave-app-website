@@ -2,13 +2,14 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-14 13:36:09
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-01 16:57:56
+ * @LastEditTime: 2022-12-06 14:34:55
  * @FilePath: /wave-app-webiste/src/components/blindbox/InfoImg.tsx
  */
 
 import React from 'react'
 import { CollectionInfo } from 'model/collection_model'
 import i18n from 'i18n'
+import Countdown from './Countdown'
 
 export default InfoImg
 
@@ -34,6 +35,9 @@ function InfoImg(props) {
   return (
     <div className="info-img">
       <img className="img" src={collectionInfo.image} alt={collectionInfo.name} />
+      <div className="block md:hidden">
+        <Countdown collectionInfo={collectionInfo} />
+      </div>
       {soldOut()}
     </div>
   )
