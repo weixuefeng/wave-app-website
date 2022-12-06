@@ -157,7 +157,7 @@
     @apply mt-4 mb-2 cursor-pointer rounded-lg bg-gray333 py-3 text-center text-lg text-white;
   }
   .see-more {
-    @apply cursor-pointer py-2 text-center text-lg text-gray333;
+    @apply cursor-pointer py-2 text-center text-base text-gray333 md:text-lg;
   }
   .cancel {
     @apply cursor-pointer py-3 text-center text-lg font-normal text-gray333;

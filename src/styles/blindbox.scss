@@ -230,7 +230,7 @@
   }
   //count-down
   .count-down {
-    @apply absolute left-2 top-3 w-[73%] rounded-[0.25rem] bg-black bg-opacity-60 p-2 text-center text-sm text-white;
+    @apply absolute left-2 top-3 w-[73%] rounded-[0.25rem] bg-black bg-opacity-60 p-2 text-center text-sm text-white md:static md:bg-transparent;
   }
   .info-detail {
     @apply col-span-7;
@@ -274,7 +274,7 @@
       font-family: 'AvenirNext-Bold';
     }
     .button {
-      @apply w-1/2 cursor-pointer rounded-xl bg-gray333 py-5 text-center text-[1.38rem] text-white;
+      @apply w-1/2 cursor-pointer rounded-xl bg-gray333 py-2 text-center text-base text-white md:py-5 md:text-font22xl;
     }
   }
 

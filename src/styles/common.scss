@@ -13,7 +13,7 @@ button.primary {
   // Global
   @apply transition-all duration-300;
   // Primary  uppercase
-  @apply mt-3 inline-flex w-full justify-center rounded-2xl px-4 py-3 text-base font-medium;
+  @apply mt-3 inline-flex w-full justify-center rounded-2xl px-4 py-2 text-sm font-medium md:py-3 md:text-base;
   @apply border border-transparent;
   // Green
   @apply bg-green-500 text-white hover:bg-green-700 focus:ring-green-500;

@@ -377,10 +377,10 @@
 
 .dialog-offers-received {
   h2 {
-    @apply pb-4 text-[1.5rem] font-normal text-gray333;
+    @apply pb-4 text-lg font-normal text-gray333 md:text-[1.5rem];
   }
   h3 {
-    @apply pb-5 text-lg font-normal text-gray333;
+    @apply pb-5 text-base font-normal text-gray333 md:text-lg;
   }
 
   h4 {
@@ -407,7 +407,7 @@
     }
 
     .accept {
-      @apply cursor-pointer pb-4 text-center text-lg text-green57;
+      @apply cursor-pointer pb-4 text-center text-base text-green57 md:text-lg;
     }
   }
 }
