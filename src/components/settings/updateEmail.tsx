@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 14:58:24
+ * @LastEditTime: 2022-12-07 20:02:00
  * @FilePath: /wave-app-webiste/src/components/settings/updateEmail.tsx
  */
 
@@ -33,6 +33,8 @@ export default function UpdateEmail(props) {
   const [confirmLoading, setConfirmLoading] = useState(false)
   const [sendCodeloading, setSendCodeLoading] = useState(false)
   const [countdownInterval, setCountdownInterval] = useState<NodeJS.Timer>()
+
+  let sendAgain = t('SEND_AGAIN')
 
   useEffect(() => {
     clearInterval(countdownInterval)
@@ -81,7 +83,7 @@ export default function UpdateEmail(props) {
       .requestVerifyCode(email, EmailAction.RESET_EMAIL)
       .then(response => {
         setBtnDisabled(true)
-        setBtnContent(`${time} s`)
+        setBtnContent(`${sendAgain} ${time} s`)
         sendCodeCountDown(time)
       })
       .catch(error => {
@@ -101,7 +103,7 @@ export default function UpdateEmail(props) {
         setBtnDisabled(false)
         setTime(60)
       } else {
-        setBtnContent(`${countdownTime} s`)
+        setBtnContent(`${sendAgain} ${countdownTime} s`)
         setTime(--countdownTime)
       }
     }, 1000)

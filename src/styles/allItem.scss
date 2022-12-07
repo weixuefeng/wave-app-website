@@ -123,15 +123,15 @@
     .info {
       @apply col-span-4 flex items-center;
       img {
-        @apply mr-4 h-11 md:h-[5.5rem] w-11 md:w-[5.5rem] rounded-xl;
+        @apply mr-4 h-11 w-11 rounded-xl md:h-[5.5rem] md:w-[5.5rem];
       }
       h3 {
-        @apply text-sm md:text-xl text-gray333;
+        @apply text-sm text-gray333 md:text-xl;
         font-family: 'AvenirNext-DemiBold';
       }
     }
     .price {
-      @apply col-span-2 text-sm md:text-xl font-normal text-green57;
+      @apply col-span-2 text-sm font-normal text-green57 md:text-xl;
       font-family: 'AvenirNext-DemiBold';
     }
     .trading {
@@ -140,7 +140,7 @@
         @apply h-5 w-5 rounded-[50%];
       }
       h4 {
-        @apply ml-1 text-sm md:text-lg text-gray99;
+        @apply ml-1 text-sm text-gray99 md:text-lg;
       }
       .to {
         @apply ml-1 flex items-center;
@@ -156,7 +156,7 @@
       }
     }
     .date {
-      @apply col-span-2 text-right text-base md:text-lg text-gray99;
+      @apply col-span-2 text-right text-base text-gray99 md:text-lg;
     }
   }
 }

@@ -218,4 +218,5 @@ export const enTransaction = {
   PLEASE_DOWNLOAD_WAVE: 'Please Download the Wave App to View',
   LANGUAGE: 'Language',
   ME: 'Me',
+  SEND_AGAIN: 'Send again',
 }

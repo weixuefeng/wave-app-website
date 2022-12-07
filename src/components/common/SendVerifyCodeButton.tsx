@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 17:23:27
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-11-23 21:46:06
+ * @LastEditTime: 2022-12-07 19:59:29
  * @FilePath: /wave-app-webiste/src/components/common/SendVerifyCodeButton.tsx
  */
 import React, { useEffect, useState } from 'react'
@@ -21,6 +21,7 @@ export default function SendVerifyCodeButton(props) {
   const [btnDisabled, setBtnDisabled] = useState(false)
   const [sendCodeloading, setSendCodeLoading] = useState(false)
   const [countdownInterval, setCountdownInterval] = useState<NodeJS.Timer>()
+  let sendAgain = t('SEND_AGAIN')
 
   useEffect(() => {
     clearInterval(countdownInterval)
@@ -36,7 +37,7 @@ export default function SendVerifyCodeButton(props) {
         setBtnDisabled(false)
         setTime(60)
       } else {
-        setBtnContent(`${countdownTime} s`)
+        setBtnContent(`${sendAgain} ${countdownTime} s`)
         setTime(--countdownTime)
       }
     }, 1000)
@@ -49,7 +50,7 @@ export default function SendVerifyCodeButton(props) {
       .requestVerifyCode(email, action)
       .then(response => {
         setBtnDisabled(true)
-        setBtnContent(`${time} s`)
+        setBtnContent(`${sendAgain} ${time} s`)
         sendCodeCountDown(time)
       })
       .catch(error => {

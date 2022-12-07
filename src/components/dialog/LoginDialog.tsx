@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-21 15:28:55
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 14:58:15
+ * @LastEditTime: 2022-12-07 19:59:56
  * @FilePath: /wave-app-webiste/src/components/dialog/LoginDialog.tsx
  */
 import { Checkbox } from 'antd'
@@ -33,6 +33,8 @@ export default function LoginDialog(props) {
   const [isEmailCode, setEmailCode] = useState(false)
   const [isCheckAll, setisCheckAll] = useState(false)
   const [checkAll, setCheckAll] = useState(false)
+
+  let sendAgain = t('SEND_AGAIN')
 
   useEffect(() => {
     clearInterval(countdownInterval)
@@ -82,7 +84,7 @@ export default function LoginDialog(props) {
       .requestVerifyCode(email, EmailAction.LOGIN)
       .then(response => {
         setBtnDisabled(true)
-        setBtnContent(`${time} s`)
+        setBtnContent(`${sendAgain} ${time} s`)
         sendCodeCountDown(time)
         Log.d(response)
       })
@@ -104,7 +106,7 @@ export default function LoginDialog(props) {
         setBtnDisabled(false)
         setTime(60)
       } else {
-        setBtnContent(`${countdownTime} s`)
+        setBtnContent(`${sendAgain} ${countdownTime} s`)
         setTime(--countdownTime)
       }
     }, 1000)
