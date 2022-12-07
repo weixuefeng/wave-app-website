@@ -280,7 +280,7 @@ export default function EVTDetailComponent(props) {
             <>{t('BUY')}</>
           </button>
           <button
-            className="primary black ml-4"
+            className="primary black ml-4 outline"
             onClick={() => {
               showMakeOffer()
             }}

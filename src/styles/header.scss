@@ -62,20 +62,32 @@
   @apply block bg-white pr-4 md:hidden;
 }
 .header-mobile {
-  @apply relative flex h-[3.75rem] items-center border-b-[1px] border-grayf3;
+  @apply relative ml-4 flex h-[3.75rem] items-center border-b-[1px] border-grayf3;
   .header-menu {
-    @apply absolute top-5 left-5 h-6 w-6 cursor-pointer;
+    @apply absolute top-5 left-0 h-6 w-6 cursor-pointer;
   }
   .logo {
     @apply mx-auto w-28 cursor-pointer;
   }
   .avatat {
-    @apply h-[1.875rem] w-[1.875rem] cursor-pointer rounded-full;
+    @apply absolute top-1/2 right-0 -mt-[15px] h-[1.875rem] w-[1.875rem] cursor-pointer rounded-full;
+  }
+}
+.header-brand {
+  @apply relative flex h-[3.75rem] w-full items-center;
+  .header-logo {
+    @apply mx-auto w-28 cursor-pointer;
+    img {
+      @apply h-full w-full opacity-0;
+    }
+  }
+  .setting {
+    @apply absolute top-1/2 right-4 -mt-[15px] h-[1.875rem] w-[1.875rem] cursor-pointer rounded-full;
   }
 }
 
 .mobile-dialog {
-  @apply mt-[3.75rem] h-screen w-screen bg-white;
+  @apply h-screen w-screen bg-white;
   .item {
     @apply pt-8;
   }

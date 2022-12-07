@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 20:26:47
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-06 13:50:09
+ * @LastEditTime: 2022-12-07 15:52:07
  * @FilePath: /wave-app-webiste/src/pages/settings.tsx
  */
 import NormalLayoutComponent from 'components/layout/NormalLayoutComponent'
@@ -23,7 +23,7 @@ export default function Settings() {
   let pageModel = new PageModel('Settings', 'WAVE', '')
 
   function loginOut() {
-    if (currentUser !== null) {
+    if (currentUser !== null && currentUser !== undefined) {
       return (
         <div
           className="login-out block md:hidden"

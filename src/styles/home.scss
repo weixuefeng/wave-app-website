@@ -19,7 +19,7 @@
 
   .blind-box {
     h1 {
-      @apply mb-7 mt-20 ml-2 text-2xl;
+      @apply mb-4 mt-10 ml-2 text-xl md:mb-7 md:mt-20 md:text-2xl;
     }
     .list {
       @apply mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-4 lg:grid-cols-4;
@@ -88,7 +88,7 @@
 
   .recommend {
     h1 {
-      @apply ml-2 mb-7 mt-16 text-2xl font-bold;
+      @apply ml-2 mb-4 mt-8 text-xl font-bold md:mb-7 md:mt-16 md:text-2xl;
     }
     .list {
       @apply mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-4 lg:grid-cols-4;

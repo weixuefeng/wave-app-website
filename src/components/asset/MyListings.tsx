@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:43:46
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-12-02 12:25:20
- * @FilePath: /wave-app-website/src/components/asset/MyListings.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-12-07 15:30:25
+ * @FilePath: /wave-app-webiste/src/components/asset/MyListings.tsx
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import usePagination from 'hooks/usePagination'

@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-15 12:51:57
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-06 13:10:04
+ * @LastEditTime: 2022-12-07 15:55:15
  * @FilePath: /wave-app-webiste/src/components/header/HeaderMobileComponent.tsx
  */
 import React, { Fragment, useEffect, useState } from 'react'
@@ -57,7 +57,7 @@ export default function HeaderMobileComponent(props) {
                   {t('LANGUAGE')}
                 </p>
                 <p>
-                  <span className="language">{i18n.language == 'en' ? 'en' : 'zh'}</span>
+                  {/* <span className="language">{i18n.language == 'en' ? 'en' : 'zh'}</span> */}
                   <img src="/assets/image/icon_header_arrow.png" alt="arrow" />
                 </p>
               </div>
@@ -186,7 +186,7 @@ export default function HeaderMobileComponent(props) {
   }
 
   function avatatImg() {
-    if (currentUser !== null) {
+    if (currentUser !== null && currentUser !== undefined) {
       return (
         <div className="avatat">
           <Link href="/settings">
@@ -249,15 +249,7 @@ export default function HeaderMobileComponent(props) {
             leaveTo="-translate-x-full"
           >
             <div id="mobile-sidebar">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-in-out duration-200"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                leave="ease-in-out duration-200"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-              >
+              <div className="header-brand">
                 <div className="absolute top-0 left-0 -mr-16 bg-white pt-5">
                   <button
                     className="ml-6 flex items-center justify-center bg-white bg-opacity-0 focus:outline-none dark:bg-opacity-0"
@@ -266,25 +258,23 @@ export default function HeaderMobileComponent(props) {
                     <img className="h-5 w-5" src="/assets/image/icon_closed.png" alt="closed" />
                   </button>
                 </div>
-              </Transition.Child>
-              <head className="brand">
                 <Link href="/" passHref>
-                  <a onClick={() => setMobileSidebarOpen(false)}>
-                    <img className="header-logo" src="/assets/image/logo_white.png" alt="weinvent" />
+                  <a className="header-logo" onClick={() => setMobileSidebarOpen(false)}>
+                    <img src="/assets/image/logo.png" alt="wave" />
                   </a>
                 </Link>
-              </head>
+                {currentUser !== null ? (
+                  <Link href="/settings">
+                    <a className="setting" onClick={() => setMobileSidebarOpen(false)}></a>
+                  </Link>
+                ) : null}
+              </div>
+              {/* content */}
               <nav className="mobile-dialog">
-                {/* <div onClick={() => setMobileSidebarOpen(false)}>
-                  <SiteNavMenu />
-                </div> */}
                 <SiteNavMenu />
               </nav>
             </div>
           </Transition.Child>
-          <div className="w-14 flex-shrink-0" aria-hidden="true">
-            {/* Dummy element */}
-          </div>
         </Dialog>
       </Transition.Root>
     </div>
