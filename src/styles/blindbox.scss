@@ -230,7 +230,19 @@
   }
   //count-down
   .count-down {
-    @apply absolute left-2 top-3 w-[73%] rounded-[0.25rem] bg-black bg-opacity-60 p-2 text-center text-sm text-white md:static md:bg-transparent;
+    @apply absolute left-2 top-3 w-[73%] text-sm text-white md:static md:bg-transparent;
+    .time {
+      @apply bg-black bg-opacity-60 rounded-[0.25rem] p-2 text-center;
+    }
+    .drop {
+      @apply flex items-center;
+      img {
+        @apply mr-1 h-[1.13rem] w-[1.13rem];
+      }
+      h3 {
+        @apply text-sm text-gray333;
+      }
+    }
   }
   .info-detail {
     @apply col-span-7;
