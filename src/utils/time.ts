@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 18:48:14
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 15:39:33
+ * @LastEditTime: 2022-12-07 20:32:07
  * @FilePath: /wave-app-webiste/src/utils/time.ts
  */
 export function formatDate(value) {
@@ -57,7 +57,7 @@ export function zhFormatDate(value) {
   let m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':'
   let s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
 
-  return Y + '/' + M + '/' + D + ' ' + h + m + s
+  return Y + '-' + M + '-' + D + ' ' + h + m + s
 }
 
 export function formatDateTime(timestamp) {

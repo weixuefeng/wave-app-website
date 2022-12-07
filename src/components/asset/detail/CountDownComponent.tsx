@@ -2,11 +2,12 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-12-02 17:51:23
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 18:03:27
+ * @LastEditTime: 2022-12-07 20:33:20
  * @FilePath: /wave-app-webiste/src/components/asset/detail/CountDownComponent.tsx
  */
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { zhFormatDate } from 'utils/time'
 
 export default function CountDownComponent(props) {
   const { t } = useTranslation()
@@ -68,10 +69,11 @@ export default function CountDownComponent(props) {
   if (deltaTime <= 0) {
     return <></>
   }
+  // console.log('000',new Date(endTime * 1000).toString())
   return (
     <div className="countdown">
       <div>
-        {t('SALE_ENDS_AT')} {new Date(endTime * 1000).toString()} {t('IN')}
+        {t('SALE_ENDS_AT')} {zhFormatDate(endTime)} {t('IN')}
       </div>
       <div className="time-info">
         <div className="item">

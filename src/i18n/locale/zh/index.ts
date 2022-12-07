@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-07 19:53:25
+ * @LastEditTime: 2022-12-07 20:21:35
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -93,7 +93,7 @@ export const zhTransaction = {
   COLLECTION_VAOLUME_TRADED: '总交易额',
   LIST_PRICE: '挂单价',
   FLOOR_DIFFERENCE: '地板价差异',
-  MAKE_OFFER: '出价',
+  MAKE_OFFER: '出一个你期望的价格',
   PROPERTIES: '属性信息',
   DESCRIPTION: '描述',
   AVATAR: '头像',

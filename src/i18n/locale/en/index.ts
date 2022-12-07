@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-03 23:52:41
+ * @LastEditTime: 2022-12-07 20:21:53
  * @FilePath: /wave-app-webiste/src/i18n/locale/en/index.ts
  */
 export const enTransaction = {
@@ -95,7 +95,7 @@ export const enTransaction = {
   COLLECTION_VAOLUME_TRADED: 'Volume Traded',
   LIST_PRICE: 'List Price',
   FLOOR_DIFFERENCE: 'Floor Difference',
-  MAKE_OFFER: 'Make Offer',
+  MAKE_OFFER: 'Make offer at a price you expect',
   PROPERTIES: 'Properties',
   DESCRIPTION: 'Description',
   AVATAR: 'Avatar',
