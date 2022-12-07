@@ -59,8 +59,11 @@
 }
 
 // collection activity
+.collection-activity-box {
+  @apply overflow-auto;
+}
 .collection-activity {
-  @apply pt-4 md:pt-8;
+  @apply w-[60rem] pt-4 pb-4 md:w-full md:pt-8 md:pb-0;
   .item {
     @apply grid grid-cols-12 items-center border-b-2 border-graye7 pb-4 pt-5;
     .event {

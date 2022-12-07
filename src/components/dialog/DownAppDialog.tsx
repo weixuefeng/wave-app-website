@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 10:58:54
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-06 22:21:00
+ * @LastEditTime: 2022-12-07 11:30:56
  * @FilePath: /wave-app-webiste/src/components/dialog/DownAppDialog.tsx
  */
 
@@ -41,7 +41,7 @@ export default function DownAppDialog() {
     if (isIosAndroidA) {
       return (
         <Link href="https://apps.apple.com/us/app/wave-nft-browser/id1626787987">
-          <a className="store" target="_blank">
+          <a className="store mx-auto" target="_blank">
             <img src="/assets/image/app-store.png" alt="appStore" />
           </a>
         </Link>

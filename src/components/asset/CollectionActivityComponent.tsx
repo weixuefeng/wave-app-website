@@ -2,9 +2,8 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 16:47:08
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 20:28:15
+ * @LastEditTime: 2022-12-07 11:59:19
  * @FilePath: /wave-app-webiste/src/components/asset/CollectionActivityComponent.tsx
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
 import usePagination from 'hooks/usePagination'
@@ -24,7 +23,7 @@ export default function CollectionActivity(props) {
   }
 
   return (
-    <>
+    <div className="collection-activity-box">
       <div className="collection-activity">
         {data &&
           data?.map((item, index) => {
@@ -65,6 +64,6 @@ export default function CollectionActivity(props) {
       <div ref={ref}>
         <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data} />
       </div>
-    </>
+    </div>
   )
 }
