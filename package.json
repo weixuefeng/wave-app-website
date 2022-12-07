@@ -6,6 +6,7 @@
     "export": "next build && next export",
     "dev": "next dev",
     "build": "next build",
+    "build:sentry": "SENTRY_AUTH_TOKEN=d604cf7148fa48fd8cb93b7dec6867896593a02a34e544218b3bb8bf28d45dd0 yarn build",
     "start": "next start --port 8004",
     "lint": "next lint",
     "fc": "npx prettier --check ./src",
