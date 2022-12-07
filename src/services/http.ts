@@ -44,7 +44,7 @@ function _post(url: string, param: any, config: any = null) {
       internal_url: url,
     }
     client
-      .post('/api/proxy/', data, config)
+      .post('/api/proxy', data, config)
       .then(response => {
         if (response.status === 200) {
           const info = response.data as BaseResponse<any>
