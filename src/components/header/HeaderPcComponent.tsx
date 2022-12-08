@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-15 12:51:57
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-06 11:38:03
- * @FilePath: /wave-app-webiste/src/components/header/HeaderPcComponent.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-12-08 20:39:59
+ * @FilePath: /wave-app-website/src/components/header/HeaderPcComponent.tsx
  */
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
