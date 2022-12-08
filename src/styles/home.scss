@@ -160,7 +160,7 @@
     .nftItem {
       .cover {
         .perfect_square {
-          @apply pb-[103%];
+          @apply pb-[103%] overflow-hidden;
         }
       }
     }
