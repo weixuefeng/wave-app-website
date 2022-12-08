@@ -2,16 +2,16 @@
 .nft-detail {
   @apply mt-10 flex flex-col justify-between px-4 xl:px-0;
   .info {
-    @apply grid grid-cols-1 md:grid-cols-3;
+    @apply grid grid-cols-1 md:grid-cols-5;
     .info-img {
-      @apply relative col-span-1 overflow-hidden bg-grayf3 pb-[100%];
+      @apply relative col-span-2 overflow-hidden bg-grayf3 pb-[100%];
       img {
         @apply absolute top-1/2 left-1/2 h-auto w-full object-cover;
         transform: translate(-50%, -50%);
       }
     }
     .detail {
-      @apply col-span-1 ml-2 mt-4 flex flex-col justify-start md:ml-8 md:mt-0;
+      @apply col-span-2 ml-2 mt-4 flex flex-col justify-start md:ml-8 md:mt-0;
       h2 {
         @apply text-font26xl font-medium md:text-3xl;
       }
@@ -49,7 +49,7 @@
         }
       }
       .action {
-        @apply mt-4 flex flex-row items-center justify-between md:w-[40%];
+        @apply mt-4 flex-row items-center justify-between md:flex;
         button.primary.outline.black {
           @apply border-black;
         }

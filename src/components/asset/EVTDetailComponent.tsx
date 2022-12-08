@@ -241,7 +241,7 @@ export default function EVTDetailComponent(props) {
         <div className="action">
           {/* outline */}
           <button
-            className="primary black ml-4"
+            className="primary black"
             onClick={() => {
               cancelOrder()
             }}
@@ -280,7 +280,7 @@ export default function EVTDetailComponent(props) {
             <>{t('BUY')}</>
           </button>
           <button
-            className="primary black ml-4 outline"
+            className="primary black outline md:ml-4"
             onClick={() => {
               showMakeOffer()
             }}
@@ -293,7 +293,7 @@ export default function EVTDetailComponent(props) {
       return (
         <div className="action">
           <button
-            className="primary black ml-4"
+            className="primary black"
             onClick={() => {
               showMakeOffer()
             }}

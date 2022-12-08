@@ -292,9 +292,9 @@ export default function NFTDetailComponent(props) {
     // not owner
     if (nftDetail.is_sell == AssetSellStatus.SELLING) {
       return (
-        <div className="action md:w-[40%]">
+        <div className="action">
           <button
-            className="primary black mr-4"
+            className="primary black md:mr-4"
             onClick={() => {
               showBuy()
             }}
@@ -313,7 +313,7 @@ export default function NFTDetailComponent(props) {
       )
     } else {
       return (
-        <div className="action md:w-[40%]">
+        <div className="action">
           <button
             className="primary black"
             onClick={() => {
