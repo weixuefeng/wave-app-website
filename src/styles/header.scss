@@ -36,15 +36,15 @@
         @apply relative w-[1.38rem];
       }
       .item {
-        @apply absolute right-0 -bottom-32 z-50 rounded-xl bg-white py-4;
+        @apply absolute right-0 -bottom-[10.5rem] z-50 rounded-xl bg-white py-4;
         span {
-          @apply relative block h-7 w-44 px-4 pr-10 text-base leading-7 text-gray3d hover:bg-greenf2;
+          @apply relative block h-12 w-44 px-4 pr-10 text-base leading-[3rem] text-gray3d hover:bg-greenf2;
         }
         .active {
           @apply text-green57;
           &::before {
             content: '';
-            @apply absolute top-[6px] right-4 h-[0.875rem] w-[0.875rem] bg-language-active bg-cover;
+            @apply absolute top-1/2 right-4 -mt-[8px] h-[0.875rem] w-[0.875rem] bg-language-active bg-cover;
           }
         }
       }
