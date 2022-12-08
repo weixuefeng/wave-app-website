@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-07 20:02:00
- * @FilePath: /wave-app-webiste/src/components/settings/updateEmail.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-12-08 13:50:00
+ * @FilePath: /wave-app-website/src/components/settings/updateEmail.tsx
  */
 
 import { EmailAction, UserInfo } from 'model/user'
@@ -121,7 +121,7 @@ export default function UpdateEmail(props) {
             {t('NEW_EMAIL_ADDRESS')}
           </label>
           <input placeholder={t('EMAIL_ADDRESS')} onChange={e => setEmail(e.target.value)} />
-          <img src="assets/image/icon_email.png" alt="email" />
+          <img src="/assets/image/icon_email.png" alt="email" />
           {isEmail ? <p className="tit-email">{t('PLEASE_EMAIL')}</p> : null}
         </div>
         <div className="code-box">
@@ -129,7 +129,7 @@ export default function UpdateEmail(props) {
             {t('EMAIL_VERIFY_CODE')}
           </label>
           <input placeholder={t('VERIFICATION_CODE')} onChange={e => setUpdateEmailCode(e.target.value)} />
-          <img src="assets/image/icon_code.png" alt="code" />
+          <img src="/assets/image/icon_code.png" alt="code" />
           <button className="send-code" disabled={btnDisabled || sendCodeloading} onClick={() => requestVerifyCode()}>
             <span>
               {btnContent}

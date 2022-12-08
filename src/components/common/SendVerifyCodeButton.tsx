@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 17:23:27
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-07 19:59:29
- * @FilePath: /wave-app-webiste/src/components/common/SendVerifyCodeButton.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-12-08 13:50:21
+ * @FilePath: /wave-app-website/src/components/common/SendVerifyCodeButton.tsx
  */
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -63,7 +63,7 @@ export default function SendVerifyCodeButton(props) {
 
   return (
     <div>
-      <img src="assets/image/icon_code.png" alt="code" />
+      <img src="/assets/image/icon_code.png" alt="code" />
       <button className="send-code" disabled={btnDisabled || sendCodeloading} onClick={() => sendEmailCode()}>
         <span>
           {btnContent} {!btnDisabled && sendCodeloading && '...'}

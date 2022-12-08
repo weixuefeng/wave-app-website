@@ -68,7 +68,7 @@ export default function Deposit() {
                 <Listbox.Button className="mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-grayee">
                   <span className="block w-24 truncate">{walletAccount.label}</span>
                   <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2 pt-2">
-                    <img src="assets/image/icon_change.png" className="mr-2 h-5 w-5 text-gray-400" alt="" />
+                    <img src="/assets/image/icon_change.png" className="mr-2 h-5 w-5 text-gray-400" alt="" />
                   </span>
                 </Listbox.Button>
               </div>

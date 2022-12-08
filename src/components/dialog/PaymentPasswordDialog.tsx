@@ -56,7 +56,7 @@ export default function PaymentPasswordDialog(props) {
               setPassword(e.target.value)
             }}
           />
-          <img src="assets/image/icon_password.png" alt="password icon" />
+          <img src="/assets/image/icon_password.png" alt="password icon" />
         </div>
 
         <div className="password">
@@ -69,7 +69,7 @@ export default function PaymentPasswordDialog(props) {
               setConfirmPassword(e.target.value)
             }}
           />
-          <img src="assets/image/icon_passworded.png" alt="passworded icon" />
+          <img src="/assets/image/icon_passworded.png" alt="passworded icon" />
         </div>
 
         {isPassord ? <p className="error">{t('PASSWPORD_NOT_EQUALS')}</p> : null}

@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-21 15:28:55
- * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-07 19:59:56
- * @FilePath: /wave-app-webiste/src/components/dialog/LoginDialog.tsx
+ * @LastEditors: weixuefeng weixuefeng@diynova.com
+ * @LastEditTime: 2022-12-08 13:51:05
+ * @FilePath: /wave-app-website/src/components/dialog/LoginDialog.tsx
  */
 import { Checkbox } from 'antd'
 import { EmailAction } from 'model/user'
@@ -128,13 +128,13 @@ export default function LoginDialog(props) {
       <div className={'password-box'}>
         <div className="email">
           <input placeholder={t('EMAIL_ADDRESS')} onChange={e => setEmail(e.target.value)} />
-          <img src="assets/image/icon_email.png" alt="email" />
+          <img src="/assets/image/icon_email.png" alt="email" />
           {isEmail ? <p className="tit-email">{t('PLEASE_EMAIL')}</p> : null}
         </div>
 
         <div className="code-box">
           <input placeholder={t('EMAIL_VERIFY_CODE')} onChange={e => setVerifyCode(e.target.value)} />
-          <img src="assets/image/icon_code.png" alt="code" />
+          <img src="/assets/image/icon_code.png" alt="code" />
           <button disabled={btnDisabled || sendCodeloading} onClick={() => requestVerifyCode()} className="send-code">
             <span>
               {btnContent} {!btnDisabled && sendCodeloading && '...'}

@@ -60,7 +60,7 @@ export default function NameModal(props) {
         <h2>{t('EDIT_NICKNAME')}</h2>
         <div className="nick-name">
           <input className="name" placeholder={t('NICKNAME')} onChange={onNameChange} />
-          <img src="assets/image/icon_username.png" alt="username" />
+          <img src="/assets/image/icon_username.png" alt="username" />
         </div>
         <button className="primary black confirm" disabled={confirmLoading} onClick={() => updateName()}>
           {t('CONFIRM')} {confirmLoading && '...'}
