@@ -219,5 +219,5 @@ export const enTransaction = {
   LANGUAGE: 'Language',
   ME: 'Me',
   SEND_AGAIN: 'Send again',
-  INCORRECT_CODE:'Incorrect verification code'
+  INCORRECT_CODE: 'Incorrect verification code',
 }

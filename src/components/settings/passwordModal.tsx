@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 19:23:02
+ * @LastEditTime: 2022-12-08 15:39:32
  * @FilePath: /wave-app-webiste/src/components/settings/passwordModal.tsx
  */
 import DialogComponent from 'components/common/DialogComponent'
@@ -29,6 +29,9 @@ export default function PasswordModal(props) {
   const [isCode, setIsCode] = useState(false)
   const [isPassord, setIsPassword] = useState(false)
 
+  // 验证码错误提示
+  const [incorrectCode, setIncorrectCode] = useState(false)
+
   function paymentCloseModal() {
     setIsPaymentOpen(false)
     setIsCode(false)
@@ -50,6 +53,7 @@ export default function PasswordModal(props) {
       return setIsPassword(true)
     }
     setConfirmLoading(true)
+    setIncorrectCode(false)
     Http.getInstance()
       .requestUpdatePassword(emailCode, password)
       .then(response => {
@@ -67,6 +71,7 @@ export default function PasswordModal(props) {
         Log.e(error)
         setIsCode(false)
         setIsPassword(false)
+        setIncorrectCode(true)
       })
       .finally(() => {
         setConfirmLoading(false)
@@ -92,6 +97,7 @@ export default function PasswordModal(props) {
           setConfirmPassword={setConfirmPassword}
           isPassord={isPassord}
           confirmLoading={confirmLoading}
+          incorrectCode={incorrectCode}
           requestUpdatePassword={requestUpdatePassword}
         />
       </DialogComponent>

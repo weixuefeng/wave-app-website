@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 14:57:04
+ * @LastEditTime: 2022-12-08 15:18:21
  * @FilePath: /wave-app-webiste/src/components/settings/verfiyEmail.tsx
  */
 
@@ -23,6 +23,9 @@ export default function VerfiyEmail(props) {
   const [isVerfiyEmailCode, setIsVerfiyEmailCode] = useState(false)
   const [nextLoading, setNextLoading] = useState(false)
 
+  // 验证码错误提示
+  const [incorrectCode, setIncorrectCode] = useState(false)
+
   function oldRequestEmail() {
     if (verfiyEmailCode == undefined || '') {
       setIsVerfiyEmailCode(true)
@@ -30,6 +33,7 @@ export default function VerfiyEmail(props) {
     }
     setNextLoading(true)
     setIsVerfiyEmailCode(false)
+    setIncorrectCode(false)
     Http.getInstance()
       .requestEmailprecheck(verfiyEmailCode)
       .then(response => {
@@ -38,6 +42,7 @@ export default function VerfiyEmail(props) {
       })
       .catch(error => {
         Log.e(error)
+        setIncorrectCode(true)
       })
       .finally(() => {
         setNextLoading(false)
@@ -61,6 +66,7 @@ export default function VerfiyEmail(props) {
           <input placeholder={t('VERIFICATION_CODE')} onChange={e => setVerfiyEmailCode(e.target.value)} />
           <SendVerifyCodeButton email={currentUser?.email} action={EmailAction.CHECK_EMAIL} />
           {isVerfiyEmailCode == true ? <p className="tit">{t('PLEASE_CODE')}</p> : null}
+          {incorrectCode == true ? <p className="tit">{t('INCORRECT_CODE')}</p> : null}
         </div>
         <button className="primary black" disabled={nextLoading} onClick={() => oldRequestEmail()}>
           <span>

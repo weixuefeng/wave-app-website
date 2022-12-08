@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-10 16:18:52
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-12-08 13:50:00
- * @FilePath: /wave-app-website/src/components/settings/updateEmail.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-12-08 15:24:43
+ * @FilePath: /wave-app-webiste/src/components/settings/updateEmail.tsx
  */
 
 import { EmailAction, UserInfo } from 'model/user'
@@ -34,6 +34,9 @@ export default function UpdateEmail(props) {
   const [sendCodeloading, setSendCodeLoading] = useState(false)
   const [countdownInterval, setCountdownInterval] = useState<NodeJS.Timer>()
 
+  // 验证码错误提示
+  const [incorrectCode, setIncorrectCode] = useState(false)
+
   let sendAgain = t('SEND_AGAIN')
 
   useEffect(() => {
@@ -53,6 +56,7 @@ export default function UpdateEmail(props) {
     setIsEmail(false)
     setIsUpdateEmailCode(false)
     setConfirmLoading(true)
+    setIncorrectCode(false)
     Http.getInstance()
       .requestUpdateEmail(ticket, email, updateEmailCode, null)
       .then(response => {
@@ -66,6 +70,7 @@ export default function UpdateEmail(props) {
       })
       .catch(error => {
         Log.e(error)
+        setIncorrectCode(true)
       })
       .finally(() => {
         setConfirmLoading(false)
@@ -137,6 +142,7 @@ export default function UpdateEmail(props) {
             </span>
           </button>
           {isUpdateEmailCode ? <p className="tit-email">{t('PLEASE_CODE')}</p> : null}
+          {incorrectCode ? <p className="tit-email">{t('PLEASE_CODE')}</p> : null}
         </div>
         <button className="primary black" disabled={confirmLoading} onClick={() => requestEmail()}>
           <span>

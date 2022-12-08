@@ -35,7 +35,7 @@ export default function LoginDialog(props) {
   const [checkAll, setCheckAll] = useState(false)
 
   // 验证码错误提示
-  const [incorrectCode,setIncorrectCode] = useState(false)
+  const [incorrectCode, setIncorrectCode] = useState(false)
 
   let sendAgain = t('SEND_AGAIN')
 
@@ -70,7 +70,7 @@ export default function LoginDialog(props) {
       })
       .catch(error => {
         Log.e(error)
-        console.log('error',error)
+        console.log('error', error)
         setIncorrectCode(true)
       })
       .finally(() => {

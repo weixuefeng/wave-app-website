@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-22 19:54:29
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 18:42:29
+ * @LastEditTime: 2022-12-08 15:40:15
  * @FilePath: /wave-app-webiste/src/components/dialog/PaymentPasswordDialog.tsx
  */
 
@@ -18,8 +18,16 @@ export default function PaymentPasswordDialog(props) {
 
   const currentUser = useAppSelector(selectUser) as UserInfo
 
-  const { setEmailCode, isCode, setPassword, setConfirmPassword, isPassord, confirmLoading, requestUpdatePassword } =
-    props
+  const {
+    setEmailCode,
+    isCode,
+    setPassword,
+    setConfirmPassword,
+    isPassord,
+    confirmLoading,
+    incorrectCode,
+    requestUpdatePassword,
+  } = props
 
   return (
     <div className="dialog-settings-password">
@@ -73,6 +81,8 @@ export default function PaymentPasswordDialog(props) {
         </div>
 
         {isPassord ? <p className="error">{t('PASSWPORD_NOT_EQUALS')}</p> : null}
+
+        {incorrectCode ? <p className="error">{t('INCORRECT_CODE')}</p> : null}
 
         <button className="primary black" disabled={confirmLoading} onClick={requestUpdatePassword}>
           <span>

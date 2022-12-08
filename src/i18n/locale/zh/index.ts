@@ -213,5 +213,5 @@ export const zhTransaction = {
   LANGUAGE: '语言',
   ME: '我的',
   SEND_AGAIN: '重新发送',
-  INCORRECT_CODE:'验证码错误'
+  INCORRECT_CODE: '验证码错误',
 }
