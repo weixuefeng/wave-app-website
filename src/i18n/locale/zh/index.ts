@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-07 20:21:35
+ * @LastEditTime: 2022-12-08 14:28:47
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -213,4 +213,5 @@ export const zhTransaction = {
   LANGUAGE: '语言',
   ME: '我的',
   SEND_AGAIN: '重新发送',
+  INCORRECT_CODE:'验证码错误'
 }

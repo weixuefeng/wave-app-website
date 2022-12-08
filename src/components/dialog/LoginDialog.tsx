@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-21 15:28:55
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-12-08 13:51:05
- * @FilePath: /wave-app-website/src/components/dialog/LoginDialog.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-12-08 14:42:16
+ * @FilePath: /wave-app-webiste/src/components/dialog/LoginDialog.tsx
  */
 import { Checkbox } from 'antd'
 import { EmailAction } from 'model/user'
@@ -34,6 +34,9 @@ export default function LoginDialog(props) {
   const [isCheckAll, setisCheckAll] = useState(false)
   const [checkAll, setCheckAll] = useState(false)
 
+  // 验证码错误提示
+  const [incorrectCode,setIncorrectCode] = useState(false)
+
   let sendAgain = t('SEND_AGAIN')
 
   useEffect(() => {
@@ -58,6 +61,7 @@ export default function LoginDialog(props) {
     }
 
     setLoginLoading(true)
+    setIncorrectCode(false)
     Http.getInstance()
       .login(email, verifyCode)
       .then(response => {
@@ -66,6 +70,8 @@ export default function LoginDialog(props) {
       })
       .catch(error => {
         Log.e(error)
+        console.log('error',error)
+        setIncorrectCode(true)
       })
       .finally(() => {
         setLoginLoading(false)
@@ -141,6 +147,7 @@ export default function LoginDialog(props) {
             </span>
           </button>
           {isEmailCode ? <p className="tit-email">{t('PLEASE_CODE')}</p> : null}
+          {incorrectCode ? <p className="tit-email">{t('INCORRECT_CODE')}</p> : null}
         </div>
         <button
           onClick={() => requestLogin()}
