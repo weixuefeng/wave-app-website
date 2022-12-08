@@ -12,7 +12,7 @@
   .swiper-pagination-bullets.swiper-pagination-horizontal,
   .swiper-pagination-custom,
   .swiper-pagination-fraction {
-    @apply left-[80%] bottom-6;
+    @apply left-[65%] bottom-6 md:left-[80%];
   }
 
   .swiper-pagination {
@@ -23,13 +23,14 @@
   .banner .swiper-pagination-bullets.swiper-pagination-horizontal,
   .swiper-pagination-custom,
   .banner .swiper-pagination-fraction {
-    @apply flex h-8 w-[8.5rem] items-center justify-between rounded-[398px] bg-black53;
-    opacity: 0.7;
+    @apply flex h-4 w-[8.5rem] items-center justify-between rounded-[398px] md:h-8;
+    // opacity: 0.7;
+    background-color: rgb(83, 83, 83) 0.7;
     backdrop-filter: blur(3px);
   }
 
   .swiper-pagination-bullet {
-    @apply h-2 w-7 bg-black68;
+    @apply h-1 w-7 bg-black68 md:h-2;
     opacity: 1;
     border-radius: 450px 450px 450px 450px;
   }
