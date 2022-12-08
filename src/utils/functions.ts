@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-16 18:32:00
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-05 17:43:15
+ * @LastEditTime: 2022-12-08 16:41:10
  * @FilePath: /wave-app-webiste/src/utils/functions.ts
  */
 import Log from './log'
@@ -89,4 +89,15 @@ export function TicketsTypeList(type) {
   } else if (type == 2) {
     return '/assets/image/tickets_expired.png'
   }
+}
+
+export function addressStr(str: string): string {
+  if (!str) {
+    return str
+  }
+  if (str.length < 24) {
+    return str
+  }
+
+  return str.substring(0, 15) + '...' + str.substring(str.length - 15)
 }

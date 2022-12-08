@@ -42,7 +42,7 @@
 
       .address {
         @apply flex flex-row items-center justify-start rounded-2xl bg-gray-100 p-2 text-xs md:text-sm;
-        svg {
+        img {
           @apply ml-2 h-4 w-4;
           @apply cursor-pointer;
         }

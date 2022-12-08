@@ -5,7 +5,7 @@ import { PageModel } from 'model/navModel'
 import { WalletAccount } from 'model/wallet'
 import { useQRCode } from 'next-qrcode'
 import React, { useEffect, useState } from 'react'
-import copyContent from 'utils/functions'
+import copyContent, { addressStr } from 'utils/functions'
 import { ClipboardDocumentIcon } from '@heroicons/react/24/outline'
 import { CheckIcon } from '@heroicons/react/20/solid'
 import { useTranslation } from 'react-i18next'
@@ -62,7 +62,7 @@ export default function Deposit() {
             <p className="content">{t('SELECT_ADDRESS')}</p>
           </div>
 
-          <div className="w-72">
+          <div className="w-full md:w-72">
             <Listbox value={walletAccount} onChange={setWalletAccount}>
               <div className="relative">
                 <Listbox.Button className="mt-3 h-14 w-full rounded-xl border-2 border-grayed bg-grayee">
@@ -121,8 +121,14 @@ export default function Deposit() {
               <p className="content_title">{t('DEPOSIT_ADDRESS')}</p>
               <p className="content_tips">{t('SCAN_ADDRESS')}</p>
               <p className="address">
-                {walletAccount.wallet_address}
-                <ClipboardDocumentIcon onClick={() => copyAddress(walletAccount.wallet_address)} />
+                <span className="hidden md:block">{walletAccount.wallet_address}</span>
+                <span className="block md:hidden">{addressStr(walletAccount.wallet_address)}</span>
+                {/* <ClipboardDocumentIcon onClick={() => copyAddress(walletAccount.wallet_address)} /> */}
+                <img
+                  src="/assets/image/icon_copy.png"
+                  onClick={() => copyAddress(walletAccount.wallet_address)}
+                  alt="copy"
+                />
               </p>
             </div>
           </div>
