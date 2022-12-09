@@ -143,7 +143,7 @@ export default function EVTDetailComponent(props) {
   function requestOrderSell() {
     closeSellAssetModal()
     Http.getInstance()
-      .requestOrderSell(evtDetail.id, sellPrice, sellExpiredTime, directionAddress)
+      .requestOrderSell(id, sellPrice, sellExpiredTime, directionAddress)
       .then(response => {
         Log.d(response)
         loadData()

@@ -209,7 +209,7 @@ export default function NFTDetailComponent(props) {
   function requestOrderSell() {
     closeSellAssetModal()
     Http.getInstance()
-      .requestOrderSell(nftDetail.id, sellPrice, sellExpiredTime, directionAddress)
+      .requestOrderSell(id, sellPrice, sellExpiredTime, directionAddress)
       .then(response => {
         Log.d(response)
         loadData()
