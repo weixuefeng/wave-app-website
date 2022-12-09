@@ -336,10 +336,8 @@ export default function EVTDetailComponent(props) {
               <p className="value">{evtDetail.highest_bid_price} NEW</p>
             </div>
             <div>
-              <p className="label">
-                <>{t('FLOOR_PRICE')}</>:
-              </p>
-              <p className="value">{evtDetail.lowest_bid_price} NEW</p>
+              <p className="label">{t('PRICE')}:</p>
+              <p className="value">{evtDetail.is_sell == 1 ? evtDetail.price : '--'} NEW</p>
             </div>
           </div>
 
