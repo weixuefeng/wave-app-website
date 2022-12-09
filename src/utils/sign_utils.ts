@@ -6,7 +6,7 @@ import { createHash } from 'crypto'
 import { UserInfo } from 'model/user'
 
 function fetchCommonPrams() {
-  const time = Date.now()
+  const time = parseInt((Date.now() / 1000).toString()).toString()
   const param = {
     os: 'web',
     version: APP_VERSION,
