@@ -23,7 +23,7 @@
     "@tailwindcss/typography": "^0.5.7",
     "antd": "^4.24.0",
     "autoprefixer": "^10.4.12",
-    "axios": "^1.1.2",
+    "axios": "1.2.1",
     "i18next": "^21.8.0",
     "js-base64": "^3.7.2",
     "localstorage-slim": "^2.2.0",
