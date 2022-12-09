@@ -39,6 +39,9 @@ export function sign(data) {
   Object.keys(content)
     .sort()
     .forEach(key => {
+      if(!content[key]) {
+        content[key] = ''
+      }
       signContent += key + '=' + content[key] + '&'
     })
   signContent = signContent.substring(0, signContent.length - 1) + APP_SECRET
