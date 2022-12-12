@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-08 14:29:27
+ * @LastEditTime: 2022-12-12 10:50:52
  * @FilePath: /wave-app-webiste/src/i18n/locale/en/index.ts
  */
 export const enTransaction = {
@@ -142,6 +142,7 @@ export const enTransaction = {
   ACCEPT: 'Accept',
   EXPIRE_DATE: 'Expire date',
   FROM: 'From',
+  TO: 'To',
   COPIED: 'Copied',
   DEPOSIT_NETWORK: 'Deposit Network',
   TOKEN: 'Token',
@@ -220,4 +221,10 @@ export const enTransaction = {
   ME: 'Me',
   SEND_AGAIN: 'Send again',
   INCORRECT_CODE: 'Incorrect verification code',
+  SWLLER_WILLP_RECEIVE: 'Seller Will Receive',
+  CEWATOR_EARNINGS: 'Creator Earnings',
+  TRANSACTOION_FEE: 'Transaction Fee',
+  THE_CRESTORS_OF: 'The creator(s) of this asset will receive',
+  FOR_EVERY_SALE: 'for every sale',
+  WAVE_FEE: 'Wave platform transaction fee',
 }

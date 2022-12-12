@@ -21,7 +21,7 @@ export default function BuyDialog(props) {
 
   return (
     <div className="dialog-buy">
-      <p className="title">Buy</p>
+      <p className="title">{t('BUY')}</p>
       {/** asset info */}
       <div className="asset-info">
         <div className="info-img">
@@ -35,29 +35,29 @@ export default function BuyDialog(props) {
       {/** sell info */}
       <div className="sell-info">
         <div className="item">
-          <p>Price</p>
+          <p>{t('PRICE')}</p>
           <p>{info.price} NEW</p>
         </div>
         <div className="item py-4">
-          <p>From</p>
+          <p>{t('FROM')}</p>
           <p>{splitAddress(wallet.wallet_address)}</p>
         </div>
         <div className="item">
-          <p>To</p>
+          <p>{t('TO')}</p>
           <p>{splitAddress(info.user.wallet_address)}</p>
         </div>
       </div>
 
       {/** price & seller info */}
       <div className="price-info">
-        <p>Total</p>
+        <p>{t('TOTAL')}</p>
         <p>{info.price} NEW</p>
       </div>
 
       {/** receiver info */}
       <div className="receiver-info">
         <div className="item">
-          <p>Seller Will Receive</p>
+          <p>{t('SWLLER_WILLP_RECEIVE')}</p>
           <p>
             {info.price -
               (parseFloat(info.creator_earnings_percent.replace('%', '')) / 100) * info.price -
@@ -67,10 +67,12 @@ export default function BuyDialog(props) {
         </div>
         <div className="item my-2">
           <p>
-            <span>Creator Earnings</span>
+            <span>
+              {t('CEWATOR_EARNINGS')} ({info.creator_earnings_percent})
+            </span>
             <Tooltip
               placement="top"
-              title={`The creator(s) of this asset will receive ${info.creator_earnings_percent} for every sale.`}
+              title={`${t('THE_CRESTORS_OF')} ${info.creator_earnings_percent} ${t('FOR_EVERY_SALE')}.`}
             >
               <QuestionMarkCircleIcon className="ml-0.5 mb-0.5 inline-block w-4" />
             </Tooltip>
@@ -79,11 +81,10 @@ export default function BuyDialog(props) {
         </div>
         <div className="item">
           <p>
-            <span>Transaction Fee</span>
-            <Tooltip
-              placement="top"
-              title={`Wave platform transaction fee ${parseFloat(settings?.nft_trade_fee) * 100}%.`}
-            >
+            <span>
+              {t('TRANSACTOION_FEE')}({parseFloat(settings?.nft_trade_fee) * 100}%)
+            </span>
+            <Tooltip placement="top" title={`${t('WAVE_FEE')} ${parseFloat(settings?.nft_trade_fee) * 100}%.`}>
               <QuestionMarkCircleIcon className="ml-0.5 mb-0.5 inline-block w-4" />
             </Tooltip>
           </p>
@@ -95,7 +96,7 @@ export default function BuyDialog(props) {
 
       {/** balance info */}
       <div className="balance-info">
-        <p>Account Balance</p>
+        <p>{t('WALLET_BALANCE')}</p>
         <p>{wallet.available_balance} NEW</p>
       </div>
 

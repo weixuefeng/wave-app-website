@@ -1,14 +1,14 @@
-import ls from 'localstorage-slim';
+import ls from 'localstorage-slim'
 
 export function putLocalData(key: string, value: any) {
   if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-    ls.set(key, value, { encrypt: true }); 
+    ls.set(key, value, { encrypt: true })
   }
 }
 
 export function getLocalData(key: string, defaultValue: any) {
   if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-    const res = ls.get(key, {decrypt: true});
+    const res = ls.get(key, { decrypt: true })
     if (res) {
       return res
     } else {

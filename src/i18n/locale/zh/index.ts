@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-08 14:28:47
+ * @LastEditTime: 2022-12-12 11:03:11
  * @FilePath: /wave-app-webiste/src/i18n/locale/zh/index.ts
  */
 export const zhTransaction = {
@@ -140,7 +140,8 @@ export const zhTransaction = {
   BID_SUCCEEDED: '出价成功',
   ACCEPT: '接受',
   EXPIRE_DATE: '截止时间',
-  FROM: '接收者',
+  FROM: '出价者',
+  TO: '接受者',
   COPIED: '复制',
   DEPOSIT_NETWORK: '充币网络',
   TOKEN: '币种',
@@ -214,4 +215,10 @@ export const zhTransaction = {
   ME: '我的',
   SEND_AGAIN: '重新发送',
   INCORRECT_CODE: '验证码错误',
+  SWLLER_WILLP_RECEIVE: '卖家将收到',
+  CEWATOR_EARNINGS: '创作者收到',
+  TRANSACTOION_FEE: '平台交易手续费',
+  THE_CRESTORS_OF: '每笔交易创作者收取',
+  FOR_EVERY_SALE: '的收入',
+  WAVE_FEE: 'Wave 平台交易手续费',
 }
