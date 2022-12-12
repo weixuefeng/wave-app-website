@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 20:26:47
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-12-02 12:27:05
- * @FilePath: /wave-app-website/src/pages/cinema.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-12-12 15:55:14
+ * @FilePath: /wave-app-webiste/src/pages/cinema.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import CinemaComponent from 'components/cinema/CinemaComponent'
@@ -54,11 +54,13 @@ export default function Cinema() {
             <h2 className="title">
               <>{t('MY_CINEMA')}</>
             </h2>
-            <div className="cinema">
-              {data?.map((item, index) => {
-                return <CinemaComponent key={index} item={item} openModal={openModal} />
-              })}
-            </div>
+            {data?.length !== 0 ? (
+              <div className="cinema">
+                {data?.map((item, index) => {
+                  return <CinemaComponent key={index} item={item} openModal={openModal} />
+                })}
+              </div>
+            ) : null}
             <div ref={ref}>
               <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data} />
             </div>

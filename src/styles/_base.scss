@@ -44,3 +44,12 @@ h3 {
   font-family: 'AvenirNextMedium';
   src: url('/assets/fonts/AvenirNextMedium.ttf');
 }
+
+// loading
+.loading-box {
+  @apply relative h-screen w-full;
+  img {
+    @apply absolute top-1/2 left-1/2 h-auto w-44;
+    transform: translate(-50%, -50%);
+  }
+}

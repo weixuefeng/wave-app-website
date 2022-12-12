@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:44:56
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-12-02 12:25:30
- * @FilePath: /wave-app-website/src/components/asset/MyOffersMade.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-12-12 16:10:35
+ * @FilePath: /wave-app-webiste/src/components/asset/MyOffersMade.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import DialogComponent from 'components/common/DialogComponent'
@@ -76,47 +76,51 @@ export default function MyOffersMade(props) {
   }
 
   return (
-    <div className="my-offers">
-      <div className="offers-item">
-        {data?.map((item, index) => {
-          return (
-            <div className="item" key={index}>
-              <div className="received-img">
-                <div className="img-box">
-                  <img src={item.nft.image} alt={item.nft.name} />
+    <>
+      <div className="my-offers">
+        {data?.length !== 0 ? (
+          <div className="offers-item">
+            {data?.map((item, index) => {
+              return (
+                <div className="item" key={index}>
+                  <div className="received-img">
+                    <div className="img-box">
+                      <img src={item.nft.image} alt={item.nft.name} />
+                    </div>
+                    <div className="name">
+                      <h3>{item.nft.name}</h3>
+                      <p>{item.collection.name}</p>
+                    </div>
+                  </div>
+                  <ul className="price">
+                    <li>
+                      <span>{t('FROM')}</span>
+                      <span className="right">{item.from.name}</span>
+                    </li>
+                    <li>
+                      <span>{t('PRICE')}</span>
+                      <span className="right">{floorNum(item.price)} NEW</span>
+                    </li>
+                    <li>
+                      <span>{t('EXPIRE_DATE')}</span>
+                      <span className="right">{formatDateTime(item.expire_time)}</span>
+                    </li>
+                  </ul>
+                  <div className="cancel" onClick={openModal}>
+                    <>{t('CANCEL')}</>
+                  </div>
+                  <DialogComponent isOpen={isOpen} closeModal={closeModal}>
+                    {dialogContent(item.id)}
+                  </DialogComponent>
                 </div>
-                <div className="name">
-                  <h3>{item.nft.name}</h3>
-                  <p>{item.collection.name}</p>
-                </div>
-              </div>
-              <ul className="price">
-                <li>
-                  <span>{t('FROM')}</span>
-                  <span className="right">{item.from.name}</span>
-                </li>
-                <li>
-                  <span>{t('PRICE')}</span>
-                  <span className="right">{floorNum(item.price)} NEW</span>
-                </li>
-                <li>
-                  <span>{t('EXPIRE_DATE')}</span>
-                  <span className="right">{formatDateTime(item.expire_time)}</span>
-                </li>
-              </ul>
-              <div className="cancel" onClick={openModal}>
-                <>{t('CANCEL')}</>
-              </div>
-              <DialogComponent isOpen={isOpen} closeModal={closeModal}>
-                {dialogContent(item.id)}
-              </DialogComponent>
-            </div>
-          )
-        })}
+              )
+            })}
+          </div>
+        ) : null}
+        <div ref={ref}>
+          <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data} />
+        </div>
       </div>
-      <div ref={ref}>
-        <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data} />
-      </div>
-    </div>
+    </>
   )
 }

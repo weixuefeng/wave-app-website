@@ -1,9 +1,9 @@
 /*
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:44:56
- * @LastEditors: weixuefeng weixuefeng@diynova.com
- * @LastEditTime: 2022-12-02 12:25:57
- * @FilePath: /wave-app-website/src/components/asset/MyOffersReceived.tsx
+ * @LastEditors: liukeke liukeke@diynova.com
+ * @LastEditTime: 2022-12-12 16:14:03
+ * @FilePath: /wave-app-webiste/src/components/asset/MyOffersReceived.tsx
  */
 import DialogComponent from 'components/common/DialogComponent'
 import MoreOfferComponent from 'components/dialog/MoreOfferComponent'
@@ -63,60 +63,62 @@ export default function MyOffersReceived(props) {
 
   return (
     <div className="my-offers">
-      <div className="offers-item">
-        {data?.map((item, index) => {
-          return (
-            <div className="item" key={index}>
-              <div className="received-img">
-                <div className="img-box">
-                  <img src={item.nft.image} alt={item.nft.name} />
+      {data?.length !== 0 ? (
+        <div className="offers-item">
+          {data?.map((item, index) => {
+            return (
+              <div className="item" key={index}>
+                <div className="received-img">
+                  <div className="img-box">
+                    <img src={item.nft.image} alt={item.nft.name} />
+                  </div>
+                  <div className="name">
+                    <h3>{item.nft.name}</h3>
+                    <p>{item.collection.name}</p>
+                  </div>
                 </div>
-                <div className="name">
-                  <h3>{item.nft.name}</h3>
-                  <p>{item.collection.name}</p>
-                </div>
+                <ul className="price">
+                  <li>
+                    <span>{t('FROM')}</span>
+                    <span className="right">{item.from.name}</span>
+                  </li>
+                  <li>
+                    <span>{t('PRICE')}</span>
+                    <span className="right">{floorNum(item.price)} NEW</span>
+                  </li>
+                  <li>
+                    <span>{t('EXPIRE_DATE')}</span>
+                    <span className="right">{formatDateTime(item.expire_time)}</span>
+                  </li>
+                </ul>
+                <button
+                  className="button primary black"
+                  onClick={() => {
+                    requestAcceptBid(item.id)
+                  }}
+                >
+                  {t('ACCEPT')}
+                </button>
+                {item.has_more == 1 && (
+                  <div className="see-more" onClick={openModal}>
+                    {t('SEE_MORE')}
+                  </div>
+                )}
+
+                {/* see more */}
+                <DialogComponent isOpen={isOpen} closeModal={closeModal}>
+                  <MoreOfferComponent nftId={item.nft_id} requestAcceptBid={id => requestAcceptBid(id)} />
+                </DialogComponent>
+
+                {/* successful */}
+                <DialogComponent isOpen={isAcceptOpen} closeModal={closeAcceptModal}>
+                  <MyOffersReceivedAcceptDialog />
+                </DialogComponent>
               </div>
-              <ul className="price">
-                <li>
-                  <span>{t('FROM')}</span>
-                  <span className="right">{item.from.name}</span>
-                </li>
-                <li>
-                  <span>{t('PRICE')}</span>
-                  <span className="right">{floorNum(item.price)} NEW</span>
-                </li>
-                <li>
-                  <span>{t('EXPIRE_DATE')}</span>
-                  <span className="right">{formatDateTime(item.expire_time)}</span>
-                </li>
-              </ul>
-              <button
-                className="button primary black"
-                onClick={() => {
-                  requestAcceptBid(item.id)
-                }}
-              >
-                {t('ACCEPT')}
-              </button>
-              {item.has_more == 1 && (
-                <div className="see-more" onClick={openModal}>
-                  {t('SEE_MORE')}
-                </div>
-              )}
-
-              {/* see more */}
-              <DialogComponent isOpen={isOpen} closeModal={closeModal}>
-                <MoreOfferComponent nftId={item.nft_id} requestAcceptBid={id => requestAcceptBid(id)} />
-              </DialogComponent>
-
-              {/* successful */}
-              <DialogComponent isOpen={isAcceptOpen} closeModal={closeAcceptModal}>
-                <MyOffersReceivedAcceptDialog />
-              </DialogComponent>
-            </div>
-          )
-        })}
-      </div>
+            )
+          })}
+        </div>
+      ) : null}
       <div ref={ref}>
         <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data} />
       </div>

@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:42:02
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-06 22:23:52
+ * @LastEditTime: 2022-12-12 16:03:07
  * @FilePath: /wave-app-webiste/src/components/asset/MyOwn.tsx
  */
 
@@ -31,30 +31,32 @@ export default function Myown(props) {
 
   return (
     <>
-      <div className="my-own">
-        {data?.map((item, index) => {
-          return (
-            <div className="item" key={index}>
-              <Link href={getAssetDetailPathByInfo(item.type, item.nft_id)}>
-                <a className="cover">
-                  <div className="perfect-square">
-                    <img src={item.image} alt={item.name} />
-                    <span className={getTradeNameByType(item.type) == 'NFT' ? 'type' : ''}>
-                      {getTradeNameByType(item.type)}
-                    </span>
-                    {item.status == 1 ? (
-                      <p className="on-sale">
-                        <>{t('ON_SALE')}</>
-                      </p>
-                    ) : null}
-                  </div>
-                  <div className="own-name">{item.name}</div>
-                </a>
-              </Link>
-            </div>
-          )
-        })}
-      </div>
+      {data?.length !== 0 ? (
+        <div className="my-own">
+          {data?.map((item, index) => {
+            return (
+              <div className="item" key={index}>
+                <Link href={getAssetDetailPathByInfo(item.type, item.nft_id)}>
+                  <a className="cover">
+                    <div className="perfect-square">
+                      <img src={item.image} alt={item.name} />
+                      <span className={getTradeNameByType(item.type) == 'NFT' ? 'type' : ''}>
+                        {getTradeNameByType(item.type)}
+                      </span>
+                      {item.status == 1 ? (
+                        <p className="on-sale">
+                          <>{t('ON_SALE')}</>
+                        </p>
+                      ) : null}
+                    </div>
+                    <div className="own-name">{item.name}</div>
+                  </a>
+                </Link>
+              </div>
+            )
+          })}
+        </div>
+      ) : null}
       <div ref={ref}>
         <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data} />
       </div>

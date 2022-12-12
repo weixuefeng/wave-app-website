@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-04 20:43:46
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-07 15:30:25
+ * @LastEditTime: 2022-12-12 16:05:09
  * @FilePath: /wave-app-webiste/src/components/asset/MyListings.tsx
  */
 import LoadMoreComponent from 'components/layout/LoadMoreComponent'
@@ -31,42 +31,44 @@ export default function Mylistings(props) {
 
   return (
     <>
-      <div className="my-listings">
-        {data?.map((item, index) => {
-          return (
-            <div className="item" key={index}>
-              <Link href={getAssetDetailPathByInfo(item.nft.type, item.nft_id)}>
-                <a href="" className="cover">
-                  <div className="perfect-square">
-                    <img src={item.nft.image} alt={item.nft.name} />
-                    <span className={getTradeNameByType(item.nft.type) == 'NFT' ? 'type' : ''}>
-                      {getTradeNameByType(item.nft.type)}
-                    </span>
-                  </div>
-                  <div className="name">
-                    <h3>{item.nft.name}</h3>
-                    <p className="list-price">
-                      <span>
-                        <>{t('LIST_PRICE')}</>
+      {data?.length !== 0 ? (
+        <div className="my-listings">
+          {data?.map((item, index) => {
+            return (
+              <div className="item" key={index}>
+                <Link href={getAssetDetailPathByInfo(item.nft.type, item.nft_id)}>
+                  <a href="" className="cover">
+                    <div className="perfect-square">
+                      <img src={item.nft.image} alt={item.nft.name} />
+                      <span className={getTradeNameByType(item.nft.type) == 'NFT' ? 'type' : ''}>
+                        {getTradeNameByType(item.nft.type)}
                       </span>
-                      <span>
-                        <>{t('FLOOR_DIFFERENCE')}</>
-                      </span>
-                    </p>
-                    <p className="price">
-                      <span>{floorNum(item.price)} NEW</span>
-                      <span>{formatDateTime(item.expire_time)}</span>
-                    </p>
-                    <div className="cancel">
-                      <>{t('CANCEL')}</>
                     </div>
-                  </div>
-                </a>
-              </Link>
-            </div>
-          )
-        })}
-      </div>
+                    <div className="name">
+                      <h3>{item.nft.name}</h3>
+                      <p className="list-price">
+                        <span>
+                          <>{t('LIST_PRICE')}</>
+                        </span>
+                        <span>
+                          <>{t('FLOOR_DIFFERENCE')}</>
+                        </span>
+                      </p>
+                      <p className="price">
+                        <span>{floorNum(item.price)} NEW</span>
+                        <span>{formatDateTime(item.expire_time)}</span>
+                      </p>
+                      <div className="cancel">
+                        <>{t('CANCEL')}</>
+                      </div>
+                    </div>
+                  </a>
+                </Link>
+              </div>
+            )
+          })}
+        </div>
+      ) : null}
       <div ref={ref}>
         <LoadMoreComponent currentPage={currentPage} hasMore={hasMore} isLoading={isLoading} data={data} />
       </div>
