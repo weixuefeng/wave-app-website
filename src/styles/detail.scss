@@ -71,7 +71,7 @@
         @apply pt-4 pb-4 text-2xl font-medium;
       }
       .content {
-        @apply flex flex-col rounded-md bg-gray-100 p-4;
+        @apply flex flex-col rounded-md bg-grayf1 p-4;
         p {
           @apply whitespace-pre-line text-gray-500;
         }
@@ -183,7 +183,7 @@
 .properties {
   @apply grid grid-cols-2;
   .property {
-    @apply relative m-2 flex flex-col rounded-md bg-gray-100 p-4;
+    @apply relative m-2 flex flex-col rounded-md bg-grayf1 p-4;
     .type {
       @apply text-sm text-gray-700;
     }

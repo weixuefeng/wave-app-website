@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:33:51
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-06 14:34:02
+ * @LastEditTime: 2022-12-12 18:45:01
  * @FilePath: /wave-app-webiste/src/components/blindbox/BlindboxComponent.tsx
  */
 
@@ -28,6 +28,9 @@ export default function BlindboxComponent(props) {
       <div className="blindbox">
         <div className="container mx-auto">
           <div className="blindbod-detail">
+            <div className="block md:hidden">
+              <Countdown collectionInfo={collectionInfo} />
+            </div>
             <InfoImg collectionInfo={collectionInfo} />
             <div className="info-detail">
               <div className="hidden md:block">

@@ -238,7 +238,7 @@ export default function EVTDetailComponent(props) {
     // owner
     if (evtDetail.is_sell == AssetSellStatus.SELLING) {
       return (
-        <div className="action">
+        <div className="action w-full md:w-[60%]">
           {/* outline */}
           <button
             className="primary black"
@@ -252,7 +252,7 @@ export default function EVTDetailComponent(props) {
       )
     } else {
       return (
-        <div className="action">
+        <div className="action w-full md:w-[60%]">
           <button
             className="primary black ml-4"
             onClick={() => {
@@ -291,7 +291,7 @@ export default function EVTDetailComponent(props) {
       )
     } else {
       return (
-        <div className="action">
+        <div className="action w-full md:w-[60%]">
           <button
             className="primary black"
             onClick={() => {

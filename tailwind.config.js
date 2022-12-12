@@ -2,7 +2,7 @@
  * @Author: zxt0805 zhuxiaotong@diynova.com
  * @Date: 2022-10-24 11:54:01
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-07 20:15:12
+ * @LastEditTime: 2022-12-12 16:55:10
  * @FilePath: /wave-app-webiste/tailwind.config.js
  */
 module.exports = {
@@ -82,6 +82,7 @@ module.exports = {
         grayef: '#EFEFEF',
         grayc8: '#C8C8C8 ',
         gray6a: '#6a6a6a',
+        gray69: '#696969',
         green2d: '#2DD867',
         green00: '#00B548',
         greenIcon: '#00C6A8',

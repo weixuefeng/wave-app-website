@@ -230,31 +230,13 @@
   }
   //count-down
   .count-down {
-    @apply absolute left-2 top-3 w-[73%] text-sm text-white md:static md:bg-transparent;
-    .time {
-      @apply rounded-[0.25rem] bg-black bg-opacity-60 p-2 text-center;
-    }
-    .drop {
-      @apply flex items-center;
-      img {
-        @apply mr-1 h-[1.13rem] w-[1.13rem];
-      }
-      h3 {
-        @apply text-sm text-gray333;
-      }
-    }
-  }
-  .info-detail {
-    @apply col-span-7;
-    .count-down {
-      @apply flex items-center;
-    }
+    @apply mb-4 flex items-center md:mb-0;
     .time {
       @apply rounded-lg bg-yellowf7 p-2 text-sm font-normal text-white;
       font-family: 'AvenirNext-DemiBold';
     }
     .drop {
-      @apply ml-5 flex items-center;
+      @apply flex items-center;
       img {
         @apply mr-1 h-[1.13rem] w-[1.13rem];
       }
@@ -262,6 +244,9 @@
         @apply text-sm text-gray99;
       }
     }
+  }
+  .info-detail {
+    @apply col-span-7;
     .title {
       @apply mt-9 mb-10;
       h2 {
