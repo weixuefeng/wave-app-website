@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-10-12 19:08:34
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-02 15:38:18
+ * @LastEditTime: 2022-12-13 11:51:43
  * @FilePath: /wave-app-webiste/src/pages/index.tsx
  */
 
@@ -55,7 +55,12 @@ export default function Home() {
   }
 
   if (isLoading) {
-    return NormalLayoutComponent(<LoadingCompontent />, pageModel)
+    return NormalLayoutComponent(
+      <div className="md:pt-40">
+        <LoadingCompontent />
+      </div>,
+      pageModel
+    )
   }
 
   function content() {

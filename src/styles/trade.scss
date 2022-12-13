@@ -42,7 +42,8 @@
       @apply text-left;
     }
     h3 {
-      @apply truncate text-sm font-bold text-black08 md:my-3 md:text-xl;
+      @apply truncate text-lg font-normal text-black08 md:my-3 md:text-xl;
+      font-family: 'AvenirNext-DemiBold';
     }
     h4 {
       @apply mb-4 text-sm text-green57 md:text-lg;
@@ -51,7 +52,7 @@
       @apply flex items-center justify-between;
     }
     .price {
-      @apply text-xs text-gray99 md:text-sm;
+      @apply mt-[1.875rem] text-xs text-gray99 md:mt-0 md:text-sm;
     }
     .gains {
       @apply mt-1 text-xs text-gray333 md:mt-2 md:text-lg;

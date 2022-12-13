@@ -12,7 +12,7 @@
   .swiper-pagination-bullets.swiper-pagination-horizontal,
   .swiper-pagination-custom,
   .swiper-pagination-fraction {
-    @apply bottom-2 md:bottom-6 md:left-[82%];
+    @apply bottom-2 md:bottom-6;
   }
 
   .swiper-pagination {
@@ -23,7 +23,7 @@
   .banner .swiper-pagination-bullets.swiper-pagination-horizontal,
   .swiper-pagination-custom,
   .banner .swiper-pagination-fraction {
-    @apply md:flex md:h-8 md:items-center;
+    @apply md:h-8;
   }
 
   .swiper-pagination-bullet {

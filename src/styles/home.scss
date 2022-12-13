@@ -54,7 +54,7 @@
       .profile {
         @apply mt-1 flex flex-1 flex-col px-3 pb-1 text-left;
         h3 {
-          @apply truncate text-base font-bold text-gray333;
+          @apply truncate text-xl font-bold text-gray333 md:text-base;
           @apply dark:text-gray-300;
         }
         .blindbox-footer {
@@ -70,11 +70,11 @@
               border-width: 14px 3px;
             }
             .num {
-              @apply px-4 text-lg text-blackText;
+              @apply px-4 text-base text-blackText;
             }
           }
           .price {
-            @apply text-greenText;
+            @apply text-xl text-greenText md:text-lg;
           }
         }
       }
@@ -118,7 +118,7 @@
             @apply absolute bottom-0 flex w-full flex-col rounded-lg px-2 py-4;
             @apply bg-gradient-to-t from-current to-transparent;
             .name {
-              @apply text-left text-base text-white;
+              @apply text-left text-lg text-white md:text-base;
             }
             .price {
               @apply flex flex-row text-white;
@@ -132,7 +132,7 @@
       .info-box {
         @apply flex flex-col rounded-lg bg-white p-4;
         .name {
-          @apply mb-3 text-left text-base;
+          @apply mb-3 text-left text-lg md:text-base;
         }
         .price {
           @apply flex flex-row items-center justify-start;
@@ -153,7 +153,7 @@
           }
         }
         .title-collection {
-          @apply mt-3 justify-center text-center text-base;
+          @apply mt-3 justify-center text-center text-lg md:text-base;
         }
       }
     }

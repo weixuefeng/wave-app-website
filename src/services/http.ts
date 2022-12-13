@@ -343,7 +343,7 @@ class Http {
   // message
   getMessageList(session_id: number, pageId: number): Promise<Pagination<MessageList>> {
     let params = {
-      session_id: session_id,
+      session_id: session_id.toString(),
       page_id: pageId,
       page_size: PAGE_SIZE,
     }
