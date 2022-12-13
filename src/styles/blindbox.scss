@@ -314,7 +314,7 @@
       .content {
         @apply flex flex-col rounded-md bg-grayf1 p-4;
         p {
-          @apply whitespace-pre-line text-base leading-8 text-gray66;
+          @apply whitespace-pre-line text-sm leading-8 text-gray66;
         }
       }
       .multi-row {
@@ -332,7 +332,7 @@
     }
     .info-evt {
       p {
-        @apply rounded-xl bg-grayf1 p-4 text-base leading-8 text-gray66;
+        @apply rounded-xl bg-grayf1 p-4 text-sm leading-8 text-gray66;
       }
       a {
         @apply text-gray333;
