@@ -215,7 +215,7 @@
 .blindbox {
   @apply px-4 xl:px-0;
   .blindbod-detail {
-    @apply grid-cols-12 gap-10 pt-14 md:grid;
+    @apply grid-cols-12 gap-10 pt-7 md:grid md:pt-14;
   }
   .info-img {
     @apply relative col-span-5 overflow-hidden  rounded-xl bg-grayf3 pb-[100%];
@@ -248,9 +248,9 @@
   .info-detail {
     @apply col-span-7;
     .title {
-      @apply mt-9 mb-10;
+      @apply mt-6 mb-5 md:mt-9 md:mb-10;
       h2 {
-        @apply mb-4 text-font26xl font-bold text-gray333 md:text-4xl;
+        @apply mb-3 text-font26xl font-bold text-gray333 md:mb-4 md:text-4xl;
       }
       span {
         @apply rounded bg-green57 py-1 px-3 text-white;
@@ -267,17 +267,18 @@
       }
     }
     .price {
-      @apply mt-10 mb-8 text-font32xl font-bold text-green57;
+      @apply mt-7 mb-7 text-font26xl font-bold text-green57 md:mt-10 md:mb-8 md:text-font32xl;
       font-family: 'AvenirNext-Bold';
     }
     .button {
-      @apply w-1/2 cursor-pointer rounded-xl bg-gray333 py-2 text-center text-base text-white md:py-5 md:text-font22xl;
+      @apply w-full cursor-pointer rounded-xl bg-gray333 md:w-1/2;
+      @apply py-3 text-center text-lg text-white md:py-5 md:text-font22xl;
     }
   }
 
   //evt-detail
   .evt-detail {
-    @apply mt-16 grid-cols-12 gap-10 pb-7 md:grid md:pb-0;
+    @apply mt-9 grid-cols-12 gap-10 pb-7 md:mt-16 md:grid md:pb-0;
     .detail-info {
       @apply col-span-4;
       .chain-content {
@@ -289,7 +290,7 @@
     }
     .info-specifications {
       h3 {
-        @apply mb-5 text-2xl font-bold text-gray333;
+        @apply mb-5 text-lg font-bold text-gray333 md:text-2xl;
       }
       ul {
         @apply rounded-xl bg-grayf1 p-4;
@@ -305,9 +306,9 @@
       }
     }
     .info-content {
-      @apply my-10;
+      @apply mt-10 md:my-10;
       h3 {
-        @apply mb-5 text-2xl font-bold text-gray333;
+        @apply mb-5 text-lg font-bold text-gray333 md:text-2xl;
       }
       p {
         @apply rounded-xl bg-grayf1 p-4 text-base leading-8 text-gray66;
@@ -322,7 +323,7 @@
 
   .detail-description {
     h3 {
-      @apply mb-5 text-2xl font-bold text-gray333;
+      @apply mb-5 text-lg font-bold text-gray333 md:text-2xl;
     }
     .description {
       @apply rounded-xl bg-grayf1 p-4;

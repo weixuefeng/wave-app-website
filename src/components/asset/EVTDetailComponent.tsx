@@ -19,6 +19,7 @@ import Http from 'services/http'
 import { useAppDispatch, useAppSelector } from 'store/store'
 import Log from 'utils/log'
 import ChainInfoComponent from './ChainInfoComponent'
+import MoreComponent from './MoreComponent'
 import PropertiesComponents from './PropertiesComponents'
 export default function EVTDetailComponent(props) {
   const { t } = useTranslation()
@@ -359,27 +360,56 @@ export default function EVTDetailComponent(props) {
         </div>
       </div>
 
-      <div className="chain-info">
-        <div className="detail">
-          <h2>{t('Details')}</h2>
-          <ChainInfoComponent
-            address={evtDetail.chain_info.contract_address}
-            tokenStandard={evtDetail.chain_info.token_standard}
-            blockChain={evtDetail.chain_info.block_chain}
-            creatorEariningPercent={evtDetail.creator_earnings_percent}
-            tipCreatorEarningsPercent={evtDetail.creator_earnings_percent}
-          />
-          {evtDetail.properties.length > 0 && (
-            <>
-              <h2>{t('PROPERTIES')}</h2>
-              <PropertiesComponents properties={evtDetail.properties} />
-            </>
-          )}
+      {/* pc */}
+      <div className="hidden md:block">
+        <div className="chain-info">
+          <div className="detail">
+            <h2>{t('SPECIFICATTIONS')}</h2>
+            <ChainInfoComponent
+              address={evtDetail.chain_info.contract_address}
+              tokenStandard={evtDetail.chain_info.token_standard}
+              blockChain={evtDetail.chain_info.block_chain}
+              creatorEariningPercent={evtDetail.creator_earnings_percent}
+              tipCreatorEarningsPercent={evtDetail.creator_earnings_percent}
+            />
+            {evtDetail.properties.length > 0 && (
+              <>
+                <h2 className="properties-h2">{t('PROPERTIES')}</h2>
+                <PropertiesComponents properties={evtDetail.properties} />
+              </>
+            )}
+          </div>
+          <div className="intro">
+            <h2>{t('INTRODUCTION')}</h2>
+            <div className="content">
+              <p>{evtDetail.introduction}</p>
+            </div>
+          </div>
         </div>
+      </div>
+
+      {/* h5 */}
+      <div className="mt-7 block md:hidden">
         <div className="intro">
           <h2>{t('INTRODUCTION')}</h2>
-          <div className="content">
-            <p>{evtDetail.introduction}</p>
+          <MoreComponent description={evtDetail.introduction} />
+        </div>
+        <div className="chain-info">
+          <div className="detail">
+            <h2>{t('SPECIFICATTIONS')}</h2>
+            <ChainInfoComponent
+              address={evtDetail.chain_info.contract_address}
+              tokenStandard={evtDetail.chain_info.token_standard}
+              blockChain={evtDetail.chain_info.block_chain}
+              creatorEariningPercent={evtDetail.creator_earnings_percent}
+              tipCreatorEarningsPercent={evtDetail.creator_earnings_percent}
+            />
+            {evtDetail.properties.length > 0 && (
+              <>
+                <h2 className="properties-h2">{t('PROPERTIES')}</h2>
+                <PropertiesComponents properties={evtDetail.properties} />
+              </>
+            )}
           </div>
         </div>
       </div>

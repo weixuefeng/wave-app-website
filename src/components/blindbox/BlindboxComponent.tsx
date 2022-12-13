@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:33:51
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-12 18:45:01
+ * @LastEditTime: 2022-12-13 14:45:55
  * @FilePath: /wave-app-webiste/src/components/blindbox/BlindboxComponent.tsx
  */
 
@@ -47,7 +47,7 @@ export default function BlindboxComponent(props) {
               />
             </div>
           </div>
-          <div className="evt-detail">
+          <div className="evt-detail blindbox-detail">
             <div className="detail-info">
               <div className="info-specifications">
                 <h3>{t('SPECIFICATTIONS')}</h3>

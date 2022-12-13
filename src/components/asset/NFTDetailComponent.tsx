@@ -1,5 +1,5 @@
 import { NFTDetail } from 'model/nft_asset'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Http from 'services/http'
 import CountDownComponent from './detail/CountDownComponent'
 import ChainInfoComponent from './ChainInfoComponent'
@@ -23,6 +23,7 @@ import LoadingCompontent from 'components/layout/LoadingCompontent'
 import { UserInfo } from 'model/user'
 import { useRouter } from 'next/router'
 import PaymentPasswordDialog from 'components/dialog/PaymentPasswordDialog'
+import MoreComponent from './MoreComponent'
 
 export default function NFTDetailComponent(props) {
   const { t } = useTranslation()
@@ -338,7 +339,7 @@ export default function NFTDetailComponent(props) {
           {/** owner info */}
           <div className="owner">
             <Link href={`/collection/0/${nftDetail.collection.id}`}>
-              <div className="tl cursor-pointer">
+              <div className="tl title cursor-pointer">
                 <img src={nftDetail.collection.image} alt={nftDetail.user.name} />
                 <p className="ml-1">{nftDetail.collection.name}</p>
               </div>
@@ -370,33 +371,64 @@ export default function NFTDetailComponent(props) {
         </div>
       </div>
 
-      <div className="chain-info">
-        <div className="detail">
-          <h2>
-            <>{t('Details')}</>
-          </h2>
-          <ChainInfoComponent
-            address={nftDetail.chain_info.contract_address}
-            tokenStandard={nftDetail.chain_info.token_standard}
-            blockChain={nftDetail.chain_info.block_chain}
-            creatorEariningPercent={nftDetail.creator_earnings_percent}
-            tipCreatorEarningsPercent={nftDetail.creator_earnings_percent}
-          />
-          {nftDetail.properties.length > 0 && (
-            <>
-              <h2>
-                <>{t('PROPERTIES')}</>
-              </h2>
-              <PropertiesComponents properties={nftDetail.properties} />
-            </>
-          )}
+      {/* pc */}
+      <div className="hidden md:block">
+        <div className="chain-info">
+          <div className="detail">
+            <h2>{t('SPECIFICATTIONS')}</h2>
+            <ChainInfoComponent
+              address={nftDetail.chain_info.contract_address}
+              tokenStandard={nftDetail.chain_info.token_standard}
+              blockChain={nftDetail.chain_info.block_chain}
+              creatorEariningPercent={nftDetail.creator_earnings_percent}
+              tipCreatorEarningsPercent={nftDetail.creator_earnings_percent}
+            />
+            {nftDetail.properties.length > 0 && (
+              <>
+                <h2 className="properties-h2">
+                  <>{t('PROPERTIES')}</>
+                </h2>
+                <PropertiesComponents properties={nftDetail.properties} />
+              </>
+            )}
+          </div>
+          <div className="intro">
+            <h2>
+              <>{t('INTRODUCTION')}</>
+            </h2>
+            <div className="content">
+              <p>{nftDetail.description}</p>
+            </div>
+          </div>
         </div>
+      </div>
+
+      {/* h5 */}
+      <div className="mt-7 block md:hidden">
         <div className="intro">
           <h2>
             <>{t('INTRODUCTION')}</>
           </h2>
-          <div className="content">
-            <p>{nftDetail.description}</p>
+          <MoreComponent description={nftDetail.description} />
+        </div>
+        <div className="chain-info">
+          <div className="detail">
+            <h2>{t('SPECIFICATTIONS')}</h2>
+            <ChainInfoComponent
+              address={nftDetail.chain_info.contract_address}
+              tokenStandard={nftDetail.chain_info.token_standard}
+              blockChain={nftDetail.chain_info.block_chain}
+              creatorEariningPercent={nftDetail.creator_earnings_percent}
+              tipCreatorEarningsPercent={nftDetail.creator_earnings_percent}
+            />
+            {nftDetail.properties.length > 0 && (
+              <>
+                <h2 className="properties-h2">
+                  <>{t('PROPERTIES')}</>
+                </h2>
+                <PropertiesComponents properties={nftDetail.properties} />
+              </>
+            )}
           </div>
         </div>
       </div>
