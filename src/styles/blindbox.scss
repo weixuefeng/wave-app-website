@@ -310,8 +310,27 @@
       h3 {
         @apply mb-5 text-lg font-bold text-gray333 md:text-2xl;
       }
-      p {
-        @apply rounded-xl bg-grayf1 p-4 text-base leading-8 text-gray66;
+      // p {
+      //   @apply rounded-xl bg-grayf1 p-4 text-base leading-8 text-gray66;
+      // }
+
+      .content {
+        @apply flex flex-col rounded-md bg-grayf1 p-4;
+        p {
+          @apply whitespace-pre-line text-base leading-8 text-gray66;
+        }
+      }
+      .multi-row {
+        display: -webkit-box;
+        overflow: hidden;
+        white-space: normal !important;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+      }
+      .more {
+        @apply mt-1 cursor-pointer text-sm text-gray333;
       }
     }
     .info-evt {

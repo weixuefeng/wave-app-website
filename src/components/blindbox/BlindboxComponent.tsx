@@ -2,7 +2,7 @@
  * @Author: liukeke liukeke@diynova.com
  * @Date: 2022-11-03 15:33:51
  * @LastEditors: liukeke liukeke@diynova.com
- * @LastEditTime: 2022-12-13 14:45:55
+ * @LastEditTime: 2022-12-13 18:39:44
  * @FilePath: /wave-app-webiste/src/components/blindbox/BlindboxComponent.tsx
  */
 
@@ -49,18 +49,22 @@ export default function BlindboxComponent(props) {
           </div>
           <div className="evt-detail blindbox-detail">
             <div className="detail-info">
-              <div className="info-specifications">
-                <h3>{t('SPECIFICATTIONS')}</h3>
-                <ChainInfoComponent
-                  address={collectionInfo.specifications.contract_address}
-                  tokenStandard={collectionInfo.specifications.token_standard}
-                  blockChain={collectionInfo.specifications.block_chain}
-                  creatorEariningPercent={collectionInfo.specifications.creator_earnings}
-                  tipCreatorEarningsPercent={collectionInfo.specifications.creator_earnings}
-                />
+              {/* pc */}
+              <div className="hidden md:block">
+                <div className="info-specifications">
+                  <h3>{t('SPECIFICATTIONS')}</h3>
+                  <ChainInfoComponent
+                    address={collectionInfo.specifications.contract_address}
+                    tokenStandard={collectionInfo.specifications.token_standard}
+                    blockChain={collectionInfo.specifications.block_chain}
+                    creatorEariningPercent={collectionInfo.specifications.creator_earnings}
+                    tipCreatorEarningsPercent={collectionInfo.specifications.creator_earnings}
+                  />
+                </div>
               </div>
               <StaticInfo collectionInfo={collectionInfo} />
             </div>
+
             <Description collectionInfo={collectionInfo} />
           </div>
         </div>
