@@ -310,9 +310,6 @@
       h3 {
         @apply mb-5 text-lg font-bold text-gray333 md:text-2xl;
       }
-      // p {
-      //   @apply rounded-xl bg-grayf1 p-4 text-base leading-8 text-gray66;
-      // }
 
       .content {
         @apply flex flex-col rounded-md bg-grayf1 p-4;
@@ -334,6 +331,9 @@
       }
     }
     .info-evt {
+      p {
+        @apply rounded-xl bg-grayf1 p-4 text-base leading-8 text-gray66;
+      }
       a {
         @apply text-gray333;
       }
